@@ -6,7 +6,7 @@ class TourTableSeeder extends Seeder
 {
     public function run()
     {
-        factory(App\Tour::class, 3)->create();
+        factory(App\Tour::class, 8)->create();
         $faker = Faker\Factory::create();
         \App\Tour::all()->each(function ($tour) use ($faker) {
             $category = [];

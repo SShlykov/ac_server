@@ -1,10 +1,12 @@
 import Vue from 'vue';
-import Wellcome from './components/Wellcome.vue';
+import Welcome from './components/Welcome.vue';
+import Drivers from './components/Drivers.vue';
 require('./bootstrap');
 
 const app = new Vue({
     el: '#app',
     components: {
-        wellcome: Wellcome
+        drivers: Drivers,
+        welcome: Welcome,
     }
 });

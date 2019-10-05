@@ -4,12 +4,12 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRewiewsTable extends Migration
+class CreateReviewsTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('rewiews', function (Blueprint $table) {
+        Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
             $table->string('author');
             $table->string('text');
@@ -24,9 +24,9 @@ class CreateRewiewsTable extends Migration
 
     public function down()
     {
-        Schema::table('rewiews', function (Blueprint $table) {
+        Schema::table('reviews', function (Blueprint $table) {
             $table->dropForeign('rewiews_driver_id_foreign');
         });
-        Schema::dropIfExists('rewiews');
+        Schema::dropIfExists('reviews');
     }
 }

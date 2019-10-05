@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Rewiew;
+use App\Review;
 use Faker\Generator as Faker;
 
-$factory->define(Rewiew::class, function (Faker $faker) {
+$factory->define(Review::class, function (Faker $faker) {
     return [
         'author' => $faker->name() . '' . $faker->lastName(),
         'text' => $faker->paragraph(),

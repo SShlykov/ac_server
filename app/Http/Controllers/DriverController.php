@@ -6,8 +6,6 @@ use Illuminate\Http\Request;
 use App\Driver;
 use App\Car;
 use App\Carphoto;
-use App\Rewiew;
-use App\Http\Requests;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Http\Resources\Driver as DriverResource;
 
@@ -17,10 +15,6 @@ class DriverController extends Controller
     {
         $drivers = Driver::paginate(15);
         return DriverResource::collection($drivers);
-    }
-    public function create()
-    {
-        //
     }
     public function store(Request $request)
     {

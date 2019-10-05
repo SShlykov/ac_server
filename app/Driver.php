@@ -19,6 +19,6 @@ class Driver extends Model
     }
     public function rewiew()
     {
-        return $this->hasMany(Rewiew::class);
+        return $this->hasMany(Review::class);
     }
 }

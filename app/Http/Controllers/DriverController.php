@@ -11,9 +11,10 @@ use App\Http\Resources\Driver as DriverResource;
 
 class DriverController extends Controller
 {
-    public function index()
+    public function index($count)
     {
-        $drivers = Driver::paginate(15);
+        $count = gettype(intval($count)) == 'integer' ? $count: 5;
+        $drivers = Driver::paginate($count);
         return DriverResource::collection($drivers);
     }
     public function store(Request $request)

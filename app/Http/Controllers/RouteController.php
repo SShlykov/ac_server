@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 
 class RouteController extends Controller
 {
-    public function index()
+    public function index($count)
     {
-        $route = Route::paginate(15);
+        $count = gettype(intval($count)) == 'integer' ? $count: 5;
+        $route = Route::paginate($count);
         return RouteResource::collection($route);
     }
 

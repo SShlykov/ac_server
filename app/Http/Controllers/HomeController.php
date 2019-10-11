@@ -15,4 +15,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function drivers()
+    {
+        return view('pages.drivers');
+    }
+    public function routes()
+    {
+        return view('pages.routes');
+    }
 }

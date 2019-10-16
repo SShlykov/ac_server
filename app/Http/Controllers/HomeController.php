@@ -27,4 +27,8 @@ class HomeController extends Controller
     {
         return view('pages.routes');
     }
+    public function route($id)
+    {
+        return view('pages.route', ['id' => $id]);
+    }
 }

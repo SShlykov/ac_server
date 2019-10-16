@@ -10,5 +10,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/home/drivers', 'HomeController@drivers');
+Route::get('/home/driver/{id}', 'HomeController@driver');
 Route::get('/home/routes', 'HomeController@routes');

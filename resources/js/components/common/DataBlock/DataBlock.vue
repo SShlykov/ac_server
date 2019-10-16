@@ -2,38 +2,35 @@
     <div class="w-100">
         <div class="row">
             <h2>{{title}}</h2>
-            <a href="javascript:history.go(-1)">back</a>
+            <Goback></Goback>
         </div>
-        <div class="d-flex flex-wrap container-fluid w-100">
+        <div v-if="data.loading" class="loading">
+            <div class="card d-flex flex-wrap justify-content-center align-items-center container-fluid w-100" >
+                <Spinner></Spinner>
+            </div>
+        </div>
+        <div class="d-flex flex-wrap container-fluid w-100" >
+            <FormAddItem :fields="this.data.keys" :path="this.path" :fetchData="fetchData" v-if="this.data.keys" />
+        </div>
+        <div class="d-flex flex-wrap container-fluid w-100" v-if="!data.loading">
             <div class="card card-body m-1" v-for="item in data.list" v-bind:key="item.id" style="width: 18rem;">
                 <slot :item="item" :deleteItem="deleteItem" />
             </div>
-            <nav aria-label="Page navigation example" class="w-100 d-flex justify-content-end">
-                <ul class="pagination">
-                    <li :class="[{disabled: !data.pagination.prev_page_url}]" class="page-item">
-                        <a class="page-link" href="#" @click="fetchData(data.pagination.prev_page_url)">
-                            Предыдущий
-                        </a>
-                    </li>
-                    <li class="page-item disabled">
-                        <a class="page-link text-dark" href="#" >
-                            {{data.pagination.current_page}} из {{data.pagination.last_page}}
-                        </a>
-                    </li>
-                    <li :class="[{disabled: !data.pagination.next_page_url}]" class="page-item">
-                        <a class="page-link" href="#" @click="fetchData(data.pagination.next_page_url)">
-                            Следующий
-                        </a>
-                    </li>
-                </ul>
-            </nav>
+            <Pagination :pagination="this.data.pagination" :fetchData="fetchData" v-if="this.data.pagination.current_page" />
         </div>
     </div>
 
 </template>
 
 <script>
+    import FormAddItem from "../FormAddItem/FormAddItem";
+    import Pagination from "../Pagination/Pagination";
+    import Spinner from "../spinner";
+    import Goback from "../goback";
+
 export default {
+  name: 'DataBlock',
+  components: {Goback, Spinner, Pagination, FormAddItem: FormAddItem},
   props: {
     'title': {
       required: true
@@ -42,35 +39,39 @@ export default {
       required: true
     }
   },
-  name: 'DataBlock',
   data() {
     return{
       data : {
         id: '',
         list: [],
+        keys: null,
         curr_item:{},
         pagination: {},
-        edit: false
+        edit: false,
+        showAddForm: false,
+        loading: true
       }
     }
   },
-  created() {
-    this.fetchData();
-  },
-  updated(){
-    console.log(this.data)
+  async created() {
+    await this.fetchData();
+    this.data.loading = false;
   },
   methods: {
-    fetchData(page_url) {
+    async fetchData(page_url) {
+      this.data.loading = true;
       let vm = this;
       page_url = page_url || `/api/${this.path}/6`;
-      fetch(page_url)
+      await fetch(page_url)
         .then(res => res.json())
         .then(res => {
           this.data.list = res.data;
           vm.makePagination(res.meta, res.links);
         })
         .catch(err => console.warn(err));
+
+      await this.getKeys();
+      this.data.loading = false;
     },
     makePagination(meta, links){
       this.data.pagination = {
@@ -80,6 +81,13 @@ export default {
         prev_page_url: links.prev
       };
     },
+    getKeys() {
+      this.data.keys = Object.keys(this.data.list[0]);
+    },
+    showAddForm() {
+      this.data.loading = false;
+      this.data.showAddForm = true;
+    },
     deleteItem(id){
         if(confirm("Вы точно хотите удалить?")){
           fetch(`/api/${this.path.slice(0, -1)}/${id}`,  {
@@ -87,7 +95,7 @@ export default {
           })
             .then(res => res.json())
             .then(data => {
-              alert(`${this.title} удален`)
+              alert(`${this.name} удален`);
               this.fetchData()
             })
             .catch(err => console.log(err));

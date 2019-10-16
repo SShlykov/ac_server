@@ -1,10 +1,11 @@
 <template>
 <div>
-    <img :src="item.photo" :alt="'driver-' + item.id" class="card-img-top">
+    <img :src="item.photo" :alt="item.name + item.id" class="card-img-top">
     <h3>Водитель {{item.name + " " + item.last_name}}</h3>
     <p>Находится в {{item.locale}}</p>
     <p>Телефон - {{item.phone}}</p>
-    <button @click="deleteItem(item.id)" class="btn btn-danger">Delete</button>
+    <button @click="deleteItem(item.id)" class="btn btn-danger">Удалить</button>
+    <a :href="'driver/'+item.id" class="btn btn-outline-primary">К водителю</a>
 </div>
 </template>
 
@@ -19,10 +20,11 @@
       deleteItem: {
         required: true
       }
+    },
+    methods: {
+      redirectToItem(){
+
+      }
     }
   }
 </script>
-
-<style scoped>
-
-</style>

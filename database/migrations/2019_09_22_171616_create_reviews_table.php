@@ -12,7 +12,7 @@ class CreateReviewsTable extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->increments('id');
             $table->string('author');
-            $table->string('text');
+            $table->string('text', 500);
             $table->tinyInteger('rating');
             $table->unsignedInteger('driver_id');
 

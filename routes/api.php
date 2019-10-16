@@ -6,41 +6,58 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Driver routes and data around drivers (Cars, Carphotos and Rewiews)
 
 Route::get('drivers/{count}', 'DriverController@index');
-Route::get('driver/{id}', 'DriverController@show');
-Route::post('driver', 'DriverController@store');
-Route::put('driver', 'DriverController@store');
-Route::delete('driver/{id}', 'DriverController@destroy');
-
 Route::get('cars/{count}', 'CarController@index');
-Route::get('car/{id}', 'CarController@show');
-Route::post('car', 'CarController@store');
-Route::put('car', 'CarController@store');
-Route::delete('car/{id}', 'CarController@destroy');
-
 Route::get('carphotos/{count}', 'CarphotoController@index');
-Route::get('carphoto/{id}', 'CarphotoController@show');
-Route::post('carphoto', 'CarphotoController@store');
-Route::put('carphoto', 'CarphotoController@store');
-Route::delete('carphoto/{id}', 'CarphotoController@destroy');
-
 Route::get('reviews/{count}', 'ReviewController@index');
-Route::get('review/{id}', 'ReviewController@show');
-Route::post('review', 'ReviewController@store');
-Route::put('review', 'ReviewController@store');
-Route::delete('review/{id}', 'ReviewController@destroy');
-
-// Routes for tours and routes
 Route::get('routes/{count}', 'RouteController@index');
-Route::get('route/{id}', 'RouteController@show');
-Route::post('route', 'RouteController@store');
-Route::put('route', 'RouteController@store');
-Route::delete('route/{id}', 'RouteController@destroy');
-
 Route::get('tours/{count}', 'TourController@index');
-Route::get('tour/{id}', 'TourController@show');
-Route::post('tour', 'TourController@store');
-Route::put('tour', 'TourController@store');
-Route::delete('tour/{id}', 'TourController@destroy');
+
+Route::group(['prefix' => 'driver'], function (){
+    $controller = "DriverController@";
+    Route::get('/{id}', $controller . 'show');
+    Route::post('/', $controller . 'store');
+    Route::put('/', $controller . 'store');
+    Route::delete('/{id}', $controller . 'destroy');
+});
+
+Route::group(['prefix' => 'car'], function (){
+    $controller = "CarController@";
+    Route::get('/{id}', $controller . 'show');
+    Route::post('/', $controller . 'store');
+    Route::put('/', $controller . 'store');
+    Route::delete('/{id}', $controller . 'destroy');
+});
+
+Route::group(['prefix' => 'carphoto'], function (){
+    $controller = "CarphotoController@";
+    Route::get('/{id}', $controller . 'show');
+    Route::post('/', $controller . 'store');
+    Route::put('/', $controller . 'store');
+    Route::delete('/{id}', $controller . 'destroy');
+});
+
+Route::group(['prefix' => 'review'], function (){
+    $controller = "ReviewController@";
+    Route::get('/{id}', $controller . 'show');
+    Route::post('/', $controller . 'store');
+    Route::put('/', $controller . 'store');
+    Route::delete('/{id}', $controller . 'destroy');
+});
+
+Route::group(['prefix' => 'route'], function (){
+    $controller = "RouteController@";
+    Route::get('/{id}', $controller . 'show');
+    Route::post('/', $controller . 'store');
+    Route::put('/', $controller . 'store');
+    Route::delete('/{id}', $controller . 'destroy');
+});
+
+Route::group(['prefix' => 'tour'], function (){
+    $controller = "TourController@";
+    Route::get('/{id}', $controller . 'show');
+    Route::post('/', $controller . 'store');
+    Route::put('/', $controller . 'store');
+    Route::delete('/{id}', $controller . 'destroy');
+});

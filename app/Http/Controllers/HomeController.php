@@ -19,6 +19,10 @@ class HomeController extends Controller
     {
         return view('pages.drivers');
     }
+    public function driver($id)
+    {
+        return view('pages.driver', ['id' => $id]);
+    }
     public function routes()
     {
         return view('pages.routes');

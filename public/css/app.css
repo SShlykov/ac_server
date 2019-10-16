@@ -1,5 +1,45 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);@charset "UTF-8";
 
+.w49 {
+  width: 49% !important;
+}
+
+.w30 {
+  width: 30%;
+  min-width: 30%;
+}
+
+.data-block > h3 {
+  font-size: 1.1em;
+}
+
+.data-block > h3 > span {
+  display: block;
+  font-size: 1.1em;
+  font-weight: 600;
+  margin: 5px 0 5px;
+}
+
+.hfull {
+  height: inherit;
+  margin: 0;
+}
+
+.id-top {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #686868;
+}
+
+.driver-container {
+  min-height: 500px;
+}
+
+.main-carphoto-block {
+  min-width: 100%;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors

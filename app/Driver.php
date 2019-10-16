@@ -21,4 +21,8 @@ class Driver extends Model
     {
         return $this->hasMany(Review::class);
     }
+    public function route()
+    {
+        return $this->hasOne(Route::class);
+    }
 }

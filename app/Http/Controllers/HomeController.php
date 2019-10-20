@@ -31,4 +31,8 @@ class HomeController extends Controller
     {
         return view('pages.route', ['id' => $id]);
     }
+    public function tests()
+    {
+        return view('pages.tests');
+    }
 }

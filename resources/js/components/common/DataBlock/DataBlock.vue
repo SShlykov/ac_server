@@ -1,57 +1,72 @@
 <template>
-    <div class="w-100">
-        <div class="row">
-            <h2>{{title}}</h2>
-            <Goback></Goback>
-        </div>
-        <div v-if="data.loading" class="loading">
-            <div class="card d-flex flex-wrap justify-content-center align-items-center container-fluid w-100" >
-                <Spinner></Spinner>
-            </div>
-        </div>
-        <div class="d-flex flex-wrap container-fluid w-100" >
-            <FormAddItem :fields="this.data.keys" :path="this.path" :fetchData="fetchData" v-if="this.data.keys" />
-        </div>
-        <div class="d-flex flex-wrap container-fluid w-100" v-if="!data.loading">
-            <div class="card card-body m-1" v-for="item in data.list" v-bind:key="item.id" style="width: 18rem;">
-                <slot :item="item" :deleteItem="deleteItem" />
-            </div>
-            <Pagination :pagination="this.data.pagination" :fetchData="fetchData" v-if="this.data.pagination.current_page" />
-        </div>
+  <div class="w-100">
+    <div class="row">
+      <h2>{{title}}</h2>
+      <Goback></Goback>
     </div>
-
+    <div v-if="data.loading" class="loading">
+      <div
+        class="card d-flex flex-wrap justify-content-center align-items-center container-fluid w-100"
+      >
+        <Spinner></Spinner>
+      </div>
+    </div>
+    <div class="d-flex flex-wrap container-fluid w-100">
+      <FormAddItem
+        :fields="this.data.keys"
+        :path="this.path"
+        :fetchData="fetchData"
+        v-if="this.data.keys"
+      />
+    </div>
+    <div class="d-flex flex-wrap container-fluid w-100" v-if="!data.loading">
+      <div
+        class="card card-body m-1"
+        v-for="item in data.list"
+        v-bind:key="item.id"
+        style="width: 18rem;"
+      >
+        <slot :item="item" :deleteItem="deleteItem" />
+      </div>
+      <Pagination
+        :pagination="this.data.pagination"
+        :fetchData="fetchData"
+        v-if="this.data.pagination.current_page"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-    import FormAddItem from "../FormAddItem/FormAddItem";
-    import Pagination from "../Pagination/Pagination";
-    import Spinner from "../spinner";
-    import Goback from "../goback";
+import FormAddItem from "../FormAddItem/FormAddItem";
+import Pagination from "../Pagination/Pagination";
+import Spinner from "../spinner";
+import Goback from "../goback";
 
 export default {
-  name: 'DataBlock',
-  components: {Goback, Spinner, Pagination, FormAddItem: FormAddItem},
+  name: "DataBlock",
+  components: { Goback, Spinner, Pagination, FormAddItem: FormAddItem },
   props: {
-    'title': {
+    title: {
       required: true
     },
-    'path': {
+    path: {
       required: true
     }
   },
   data() {
-    return{
-      data : {
-        id: '',
+    return {
+      data: {
+        id: "",
         list: [],
         keys: null,
-        curr_item:{},
+        curr_item: {},
         pagination: {},
         edit: false,
         showAddForm: false,
         loading: true
       }
-    }
+    };
   },
   async created() {
     await this.fetchData();
@@ -73,7 +88,7 @@ export default {
       await this.getKeys();
       this.data.loading = false;
     },
-    makePagination(meta, links){
+    makePagination(meta, links) {
       this.data.pagination = {
         current_page: meta.current_page,
         last_page: meta.last_page,
@@ -88,19 +103,20 @@ export default {
       this.data.loading = false;
       this.data.showAddForm = true;
     },
-    deleteItem(id){
-        if(confirm("Вы точно хотите удалить?")){
-          fetch(`/api/${this.path.slice(0, -1)}/${id}`,  {
-            method: 'delete'
+    deleteItem(id) {
+      if (confirm("Вы точно хотите удалить?")) {
+        fetch(`/api/${this.path.slice(0, -1)}/${id}`, {
+          method: "delete"
+        })
+          .then(res => res.json())
+          .then(data => {
+            alert(`${this.name} удален`);
+            this.fetchData();
           })
-            .then(res => res.json())
-            .then(data => {
-              alert(`${this.name} удален`);
-              this.fetchData()
-            })
-            .catch(err => console.log(err));
-        }
+          .catch(err => console.log(err));
+      }
     }
-  },
-}
+  }
+};
 </script>
+

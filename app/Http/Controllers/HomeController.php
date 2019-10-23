@@ -35,4 +35,8 @@ class HomeController extends Controller
     {
         return view('pages.tests');
     }
+        public function tours()
+    {
+        return view('pages.tours');
+    }
 }

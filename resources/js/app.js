@@ -6,6 +6,7 @@ import Driver from './components/pages/Driver.vue';
 import Routes from './components/Routes.vue';
 import Route from './components/pages/Route.vue';
 import Tests from './components/Tests.vue';
+import Tours from './components/Tours.vue';
 
 require('./bootstrap');
 
@@ -17,6 +18,7 @@ const app = new Vue({
         routes: Routes,
         driver: Driver,
         route: Route,
-        tests: Tests
+        tests: Tests,
+        tours: Tours
     }
 });

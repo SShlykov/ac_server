@@ -54,6 +54,152 @@
   background-color: blue;
 }
 
+.sideBar {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 10px 0;
+  margin-top: 150px;
+  background-color: #FFFFFF;
+  box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  width: 100%;
+  min-height: 200px;
+}
+
+.sideBar > .block {
+  width: 40px;
+  height: 40px;
+  background-color: gray;
+  margin-bottom: 20px;
+}
+
+.sideBar > .block:first-child {
+  margin-bottom: 0;
+}
+
+.sideBar > .block:last-child {
+  margin-bottom: 0;
+}
+
+.sideBar_wrapper {
+  width: 40px;
+  height: 1px;
+  background-color: #b3b3b3;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.sideBar > .sideBar_photo > figure {
+  width: 100%;
+  height: 100%;
+}
+
+.sideBar > .sideBar_photo > figure > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.naw-wrapper_line {
+  height: 100%;
+  width: 1px;
+  background-color: #cdcdcd;
+  margin: 0 15px;
+}
+
+@media screen and (max-width: 760px) {
+  .naw-wrapper_line {
+    height: 1px;
+    width: 30%;
+    margin: 10px 0;
+  }
+}
+
+.page_container {
+  width: 100%;
+}
+
+.tour_title {
+  margin-bottom: 35px;
+}
+
+.tour_card {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40px;
+  align-items: center;
+  background: #FFFFFF;
+  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  width: 100%;
+  min-height: 60px;
+  margin-bottom: 40px;
+  transition: all 0.5s;
+  cursor: pointer;
+}
+
+.tour_card:hover {
+  background-color: #fafafa;
+  box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.35);
+}
+
+.tour_card_functions {
+  display: flex;
+}
+
+.tour_card_functions > a > figure {
+  margin: 0;
+}
+
+.tour_card_title {
+  margin-left: 20px;
+  font-size: 16px;
+}
+
+.tour_card_icon > figure {
+  margin: 0;
+}
+
+.tour_card_info {
+  display: flex;
+  align-items: center;
+}
+
+.tour_functions_delete {
+  margin-right: 25px;
+}
+
+.tour_functions_down {
+  margin-right: 10px;
+}
+
+.tour_add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tour_add > figure {
+  height: 50px;
+  margin: 0;
+}
+
+.tour_add > figure > div {
+  height: 100%;
+  font-size: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.tour_disabled {
+  opacity: 0.6;
+}
+
+.item-disaple {
+  opacity: 60%;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors

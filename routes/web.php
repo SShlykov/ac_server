@@ -18,3 +18,5 @@ Route::get('/home/routes', 'HomeController@routes');
 Route::get('/home/route/{id}', 'HomeController@route');
 
 Route::get('/home/tests', 'HomeController@tests');
+
+Route::get('/home/tours', 'HomeController@tours');

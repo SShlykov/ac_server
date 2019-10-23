@@ -2,7 +2,6 @@
   <div class="w-100">
     <div class="row">
       <h2>{{title}}</h2>
-      <Goback></Goback>
     </div>
     <div v-if="data.loading" class="loading">
       <div

@@ -54,6 +54,10 @@
   background-color: blue;
 }
 
+.driver_width {
+  max-width: 200px;
+}
+
 .sideBar {
   display: flex;
   align-items: center;
@@ -118,10 +122,14 @@
 
 .page_container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .tour_title {
   margin-bottom: 35px;
+  text-align: left;
 }
 
 .tour_card {
@@ -140,6 +148,10 @@
 }
 
 .tour_card:hover {
+  text-decoration: none;
+}
+
+.tour_card:hover {
   background-color: #fafafa;
   box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.35);
 }
@@ -155,6 +167,8 @@
 .tour_card_title {
   margin-left: 20px;
   font-size: 16px;
+  color: #47a6ff;
+  text-decoration: none;
 }
 
 .tour_card_icon > figure {
@@ -194,6 +208,332 @@
 
 .tour_disabled {
   opacity: 0.6;
+}
+
+.category_title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+
+.category_title > h2 {
+  margin: 0;
+}
+
+.category_title > img {
+  margin-right: 20px;
+}
+
+.category_card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 30px 40px 40px 40px;
+}
+
+@media screen and (max-width: 991px) {
+  .category_card {
+    flex-direction: column;
+  }
+}
+
+.category_card:hover {
+  box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.category_card > figure {
+  height: 300px;
+  width: 230px;
+  margin: 0;
+}
+
+@media screen and (max-width: 991px) {
+  .category_card > figure {
+    margin-bottom: 30px;
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .category_card > figure {
+    width: 240px;
+  }
+}
+
+.category_card > figure > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.category_card > div > textarea {
+  border: none;
+  resize: none;
+  height: 300px;
+  border-radius: 10px;
+  background: #e6e6e6;
+  transition: all 0.5s;
+  padding: 30px 10px 0 10px;
+  font-size: 14px;
+  width: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .category_card > div > textarea {
+    height: 250px;
+  }
+}
+
+.category_card > div > textarea:hover {
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35);
+}
+
+.category_card > div > textarea:focus {
+  background: white;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35);
+}
+
+.category_card > div > textarea:focus ~ label {
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.category_card_label {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.category_card_routs {
+  position: relative;
+  width: 30%;
+  height: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .category_card_routs {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+.category_card_description {
+  position: relative;
+  width: 40%;
+  height: 100%;
+}
+
+@media screen and (max-width: 991px) {
+  .category_card_description {
+    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+.category_card_functions {
+  position: absolute;
+  display: flex;
+  bottom: -20px;
+  right: 30px;
+}
+
+@media screen and (max-width: 991px) {
+  .category_card_functions {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+.category_card_functions-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  background-color: #ffffff;
+  border-radius: 100%;
+  margin-right: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.4s;
+}
+
+@media screen and (max-width: 420px) {
+  .category_card_functions-circle {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+.category_card_functions-circle:hover {
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.32);
+}
+
+.category_card_functions-circle:last-child {
+  margin: 0;
+}
+
+.category_card_functions-circle > figure {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.item_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.item_form > div {
+  display: flex;
+  justify-content: center;
+}
+
+.item_form > div > #photo {
+  background-color: transparent;
+  color: transparent;
+  border: none;
+  height: 45px;
+  width: 210px;
+}
+
+.item_form > div > #photo::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.item_form > div > #photo::before {
+  right: 0;
+  content: "\412\44B\431\435\440\438\442\435   \43A\430\440\442\438\43D\43A\443";
+  color: #31302a;
+  display: inline-block;
+  background: linear-gradient(top, #f9f9f9, #e3e3e3);
+  border: 1px solid #aaaaaa;
+  border-radius: 3px;
+  padding: 8px 30px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+  text-shadow: 1px 1px #fff;
+  font-weight: 600;
+  font-size: 9pt;
+}
+
+.item_form > div > #photo:hover::before {
+  border-color: #777777;
+}
+
+.item_form > div {
+  margin-bottom: 20px;
+}
+
+.item_form > button {
+  width: 220px;
+}
+
+.item_visible {
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.toggleForm > input {
+  width: 200px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.toggleForm > input:checked ~ .item_visible {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.toggleForm > input::before {
+  content: "+ \414\43E\431\430\432\438\442\44C";
+  background-color: white;
+  color: #34aeec;
+  padding: 15px 40px;
+  border: 1px solid #34aeec;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 5px;
+}
+
+.toggleForm > input:hover::before {
+  background-color: #34aeec;
+  color: white;
+}
+
+.reviews {
+  margin-top: 50px;
+  min-height: 200px;
+  width: 100%;
+}
+
+.review {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 95%;
+  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  position: relative;
+}
+
+.review_data_info-name {
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.review_data_info-date {
+  font-size: 12px;
+  color: #C1C1C1;
+}
+
+.review_data > figure {
+  width: 60px;
+  height: 60px;
+  margin: 0;
+}
+
+.review_data > figure > img {
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.review_data_stars {
+  display: flex;
+}
+
+.review_data_stars > div {
+  margin-right: 5px;
+}
+
+.review_data_stars > div:last-child {
+  margin: 0;
+}
+
+.review > textarea {
+  resize: none;
+  border: none;
+  font-size: 13px;
+  line-height: 165%;
+  overflow: visible;
 }
 
 .item-disaple {

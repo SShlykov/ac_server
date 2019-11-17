@@ -1,7 +1,8 @@
 <template>
-  <form @submit.prevent="addItem" class="card card-body mb-3" accept="image/jpg, image/jpeg">
-    <div v-for="item in this.data.fields" v-bind:key="item.name" style="width: 18rem;">
+  <form @submit.prevent="addItem" class="card-body mb-3 item_form" accept="image/jpg, image/jpeg">
+    <div v-for="item in this.data.fields" v-bind:key="item.name">
       <input
+        class="form-control"
         v-bind:placeholder="item.name"
         v-bind:name="item.fieldName"
         v-bind:id="item.name"
@@ -9,7 +10,7 @@
         v-model="data.item[item.name]"
       />
     </div>
-    <button type="submit">+ Добавить</button>
+    <button class="btn btn-primary" type="submit">+ Добавить</button>
   </form>
 </template>
 

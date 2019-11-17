@@ -7,6 +7,9 @@
   &.blue
     background-color:  blue
 
+.driver_width
+  max-width: 200px
+
 .sideBar
   display: flex
   align-items: center
@@ -55,10 +58,14 @@
 
 .page_container
   width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
 
 .tour
   &_title
     margin-bottom: 35px
+    text-align: left
   &_card
     display: flex
     justify-content: space-between
@@ -73,6 +80,8 @@
     transition: all .5s
     cursor: pointer
     &:hover
+      text-decoration: none
+    &:hover
       background-color: darken(#fff, 2)
       box-shadow: 2px 4px 25px rgba(0, 0, 0, 0.35)
     &_functions
@@ -83,6 +92,8 @@
     &_title
       margin-left: 20px
       font-size: 16px
+      color: #47a6ff
+      text-decoration: none
     &_icon
       &>figure
         margin: 0
@@ -109,6 +120,222 @@
   &_disabled
     opacity: .6
 
+.category
+  &_title
+    display: flex
+    align-items: center
+    margin-bottom: 30px
+    margin-top: 20px
+    &>h2
+      margin: 0
+    &>img
+      margin-right: 20px
+  &_card
+    display: flex
+    justify-content: space-between
+    align-items: center
+    position: relative
+    padding: 30px 40px 40px 40px
+    @media screen and ( max-width: 991px )
+      flex-direction: column
+    &:hover
+      box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25)
+    &>figure
+      height: 300px
+      width: 230px
+      margin: 0
+      @media screen and ( max-width: 991px )
+        margin-bottom: 30px
+        width: 300px
+      @media screen and ( max-width: 420px )
+        width:  240px
+      &>img
+        width: 100%
+        height: 100%
+        border-radius: 10px
+    &>div
+      &>textarea
+        border: none
+        resize: none
+        height: 300px
+        border-radius: 10px
+        background: lighten(gray, 40)
+        transition: all 0.5s 
+        padding: 30px 10px 0 10px
+        font-size: 14px
+        width: 100%
+        @media screen and ( max-width: 991px )
+          height: 250px
+        &:hover
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35)
+        &:focus
+          background: lighten(gray, 60)
+          box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35)
+          & ~ label
+            color: rgba(0, 0, 0, 0.45)
+    &_label
+      position: absolute
+      top: 5px
+      left: 10px
+      font-size: 12px
+      color: rgba(0, 0, 0, 0.54)
+    &_routs
+      position: relative
+      width: 30%
+      height: 100%
+      @media screen and ( max-width: 991px )
+        width: 100%
+        margin-bottom: 30px
+    &_description
+      position: relative
+      width: 40%
+      height: 100%
+      @media screen and ( max-width: 991px )
+        width: 100%
+        margin-bottom: 0
+    &_functions
+      position: absolute
+      display: flex
+      bottom: -20px
+      right: 30px
+      @media screen and ( max-width: 991px )
+        right: 50%
+        transform: translateX(50%)
+      &-circle
+        display: flex
+        justify-content: center
+        align-items: center
+        height: 50px
+        width: 50px
+        background-color: #ffffff
+        border-radius: 100%
+        margin-right: 15px
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25)
+        transition: all 0.4s
+        @media screen and ( max-width: 420px )
+          height: 40px
+          width: 40px
+        &:hover
+          box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.32)
+        &:last-child
+          margin: 0
+        &>figure
+          display: flex
+          justify-content: center
+          align-items: center
+          margin: 0
+          width: 100%
+          height: 100%
+            
+.item
+  &_form
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    &>div
+      display: flex
+      justify-content: center
+      &>#photo
+        background-color: transparent
+        color: transparent
+        border: none
+        height: 45px
+        width: 210px
+        &::-webkit-file-upload-button 
+          visibility: hidden
+        &::before
+          right: 0
+          content: 'Выберите картинку'
+          color: #31302a
+          display: inline-block
+          background: linear-gradient(top, #f9f9f9, #e3e3e3)
+          border: 1px solid #aaaaaa
+          border-radius: 3px
+          padding: 8px 30px
+          outline: none
+          white-space: nowrap
+          user-select: none
+          cursor: pointer
+          text-shadow: 1px 1px #fff
+          font-weight: 600
+          font-size: 9pt
+        &:hover::before
+          border-color: darken(#aaaaaa, 20)
+    &>div
+      margin-bottom: 20px
+    &>button
+      width: 220px
+  &_visible
+    max-height: 0
+    opacity: 0
+    transition: all 0.5s
+
+.toggleForm
+  &>input
+    width: 200px
+    margin-top: 20px
+    margin-bottom: 40px
+    &:checked ~ .item_visible
+      max-height: 500px
+      opacity: 1
+    &::before
+      content: '+ Добавить'
+      background-color: white
+      color: #34aeec
+      padding: 15px 40px
+      border: 1px solid #34aeec
+      cursor: pointer
+      transition: all 0.5s
+      border-radius: 5px
+    &:hover::before
+      background-color: #34aeec
+      color: white
+
+.reviews
+  margin-top: 50px
+  min-height: 200px
+  width: 100%
+
+.review
+  padding: 30px
+  display: flex
+  flex-direction: column
+  justify-content: center
+  width: 95%
+  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.25)
+  border-radius: 15px
+  position: relative
+  &_data
+    &_info
+      &-name
+        font-family: Roboto
+        font-weight: 600
+        font-size: 14px
+      &-date
+        font-size: 12px
+        color: #C1C1C1
+    &>figure
+      width: 60px
+      height: 60px
+      margin: 0
+      &>img
+        width: 100%
+        height: 100%
+        border-radius: 100%
+        object-fit: cover
+    &_stars
+      display: flex
+      &>div
+        margin-right: 5px
+        &:last-child
+          margin: 0
+  &>textarea
+    resize: none
+    border: none
+    font-size: 13px
+    line-height: 165%
+    overflow: visible
 .item-disaple
   opacity: 60%
       

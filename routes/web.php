@@ -20,3 +20,7 @@ Route::get('/home/route/{id}', 'HomeController@route');
 Route::get('/home/tests', 'HomeController@tests');
 
 Route::get('/home/tours', 'HomeController@tours');
+
+Route::get('/home/category/1', 'HomeController@category');
+
+Route::get('/home/drivers/deleted', 'HomeController@deleteddrivers');

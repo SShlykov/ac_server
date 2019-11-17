@@ -4,9 +4,8 @@
     <h3>Водитель {{item.name + " " + item.last_name}}</h3>
     <p>Находится в {{item.locale}}</p>
     <p>Телефон - {{item.phone}}</p>
-    <a :href="'driver/'+item.id" class="btn btn-primary ml-2">К водителю</a>
+    <button @click="restoreItem(item.id)" class="btn btn-primary ml-2">Восстановить</button>
     <button @click="destroyItem(item.id)" class="btn btn-outline-dark ml-2">Удалить</button>
-    <button @click="deleteItem(item.id)" class="btn btn-outline-dark ml-2">Скрыть</button>
   </div>
 </template>
 
@@ -17,10 +16,10 @@ export default {
     item: {
       required: true
     },
-    deleteItem: {
+    destroyItem: {
       required: true
     },
-    destroyItem: {
+    restoreItem: {
       required: true
     }
   },
@@ -29,4 +28,3 @@ export default {
   }
 };
 </script>
-

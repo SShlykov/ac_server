@@ -1,5 +1,5 @@
 <template>
-  <div class="tour_card">
+  <a href="/home/category/1" class="tour_card">
     <div class="tour_card_info">
       <div class="tour_card_icon">
         <figure>
@@ -25,7 +25,7 @@
         </figure>
       </a>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>

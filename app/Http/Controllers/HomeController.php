@@ -39,4 +39,12 @@ class HomeController extends Controller
     {
         return view('pages.tours');
     }
+        public function category()
+    {
+        return view('pages.category');
+    }
+
+    public function deleteddrivers(){
+        return view('pages.deleteddrivers');
+    }
 }

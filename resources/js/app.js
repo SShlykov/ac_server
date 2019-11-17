@@ -7,6 +7,8 @@ import Routes from './components/Routes.vue';
 import Route from './components/pages/Route.vue';
 import Tests from './components/Tests.vue';
 import Tours from './components/Tours.vue';
+import Category from './components/pages/Сategory.vue';
+import Deleted from './components/DeletedDrivers.vue';
 
 require('./bootstrap');
 
@@ -19,6 +21,8 @@ const app = new Vue({
         driver: Driver,
         route: Route,
         tests: Tests,
-        tours: Tours
+        tours: Tours,
+        category: Category,
+        deleted: Deleted
     }
 });

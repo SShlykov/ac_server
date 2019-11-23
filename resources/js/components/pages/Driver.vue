@@ -32,7 +32,7 @@
           <button @click.prevent="deleteDriver" class="btn btn-danger">Удалить</button>
           <button
             @click.prevent="toggleEditMode"
-            class="btn btn-outline-primary"
+            class="btn btn-outline-primary ml-2"
           >Редактировать водителя</button>
         </div>
         <div class="w49 p-4 data-block" v-if="editMode">
@@ -72,6 +72,22 @@
             class="btn btn-outline-secondary"
           >Выйти из режима редактирования</button>
         </div>
+        <div class="data-block" v-if="!editRouts">
+          <button class="btn btn-primary" @click.prevent="toggleEditRouts">Изменить маршруты</button>
+        </div>
+        <div class="d-flex justify-content-center flex-wrap w-100" v-if="editRouts">
+          <div class="routs_item_width">
+            <input type="text" />
+            <button class="btn btn-outline-primary ml-2">Добавить группу</button>
+          </div>
+          <RouteItem :name="'Новосибирск-Барнаул'"></RouteItem>
+          <RouteItem :name="'Барнаул-Ая'"></RouteItem>
+          <RouteItem :name="'Ая-Белуха'"></RouteItem>
+          <RouteItem :name="'Брянск-Девяткино'"></RouteItem>
+          <div class="w-100 d-flex justify-content-center">
+            <button class="btn btn-primary mt-4" @click.prevent="toggleEditRouts">Выйти</button>
+          </div>
+        </div>
         <section class="d-flex align-items-center flex-column reviews">
           <h3 class="mb-4">Отзывы</h3>
           <Review
@@ -95,9 +111,10 @@ import CarBlock from "../custom/CarBlock";
 import LoadingSpinner from "../common/LoadingSpinner/LoadingSpinner";
 import Goback from "../common/goback";
 import Review from "../custom/Review";
+import RouteItem from "../custom/RouteItem";
 export default {
   name: "Driver",
-  components: { Goback, LoadingSpinner, CarBlock, Spinner, Review },
+  components: { Goback, LoadingSpinner, CarBlock, Spinner, Review, RouteItem },
   props: ["id"],
 
   data() {
@@ -116,6 +133,7 @@ export default {
         phone: ""
       },
       editMode: false,
+      editRouts: false,
       imageSelected: null
     };
   },
@@ -168,6 +186,9 @@ export default {
     },
     toggleEditMode() {
       this.editMode = !this.editMode;
+    },
+    toggleEditRouts() {
+      this.editRouts = !this.editRouts;
     },
     onImageSelected(e) {
       this.imageSelected = e.target.files[0];

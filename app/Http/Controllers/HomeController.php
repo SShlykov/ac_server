@@ -47,4 +47,7 @@ class HomeController extends Controller
     public function deleteddrivers(){
         return view('pages.deleteddrivers');
     }
+    public function editrouts(){
+        return view('pages.editrouts');
+    }
 }

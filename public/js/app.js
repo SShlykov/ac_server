@@ -2035,6 +2035,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2167,7 +2171,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }).then(function (res) {
           return res.json();
         }).then(function (data) {
-          alert("\u0412\u043E\u0434\u0438\u0442\u0435\u043B\u044C \u0441\u043F\u0440\u044F\u0442\u0430\u043D");
+          alert("\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E");
 
           _this2.fetchData();
         })["catch"](function (err) {
@@ -2187,6 +2191,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           alert("\u0412\u043E\u0434\u0438\u0442\u0435\u043B\u044C \u0443\u0434\u0430\u043B\u0435\u043D");
 
           _this3.fetchData();
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      }
+    },
+    deleteRoute: function deleteRoute(id) {
+      var _this4 = this;
+
+      if (confirm("Вы точно хотите удалить точку?")) {
+        fetch("/api/route/" + id, {
+          method: "delete"
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          alert("\u0422\u043E\u0447\u043A\u0430 \u0443\u0434\u0430\u043B\u0435\u043D\u0430");
+
+          _this4.fetchData();
         })["catch"](function (err) {
           return console.log(err);
         });
@@ -3172,6 +3193,60 @@ function addAutoResize() {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _custom_RouteItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../custom/RouteItem */ "./resources/js/components/custom/RouteItem.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "RoutGroupCard",
+  components: {
+    RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      editCard: false
+    };
+  },
+  props: {
+    name: {
+      required: true
+    }
+  },
+  methods: {
+    toggleEditCard: function toggleEditCard() {
+      this.editCard = !this.editCard;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RouteCard.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/RouteCard.vue?vue&type=script&lang=js& ***!
@@ -3195,6 +3270,55 @@ __webpack_require__.r(__webpack_exports__);
   name: "RouteCard",
   props: {
     item: {
+      required: true
+    },
+    destroyItem: {
+      required: true
+    }
+  },
+  methods: {
+    deleteRoute: function deleteRoute(id) {
+      var _this = this;
+
+      if (confirm("Вы точно хотите удалить точку?")) {
+        fetch("/api/route/" + id, {
+          method: "delete"
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          alert("\u0422\u043E\u0447\u043A\u0430 \u0443\u0434\u0430\u043B\u0435\u043D\u0430");
+
+          _this.fetchData();
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      }
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RouteItem.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/RouteItem.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "RouteItem",
+  props: {
+    name: {
       required: true
     }
   }
@@ -3392,6 +3516,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../common/LoadingSpinner/LoadingSpinner */ "./resources/js/components/common/LoadingSpinner/LoadingSpinner.vue");
 /* harmony import */ var _common_goback__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/goback */ "./resources/js/components/common/goback.vue");
 /* harmony import */ var _custom_Review__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../custom/Review */ "./resources/js/components/custom/Review.vue");
+/* harmony import */ var _custom_RouteItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../custom/RouteItem */ "./resources/js/components/custom/RouteItem.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -3489,6 +3614,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 
@@ -3501,7 +3643,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     LoadingSpinner: _common_LoadingSpinner_LoadingSpinner__WEBPACK_IMPORTED_MODULE_3__["default"],
     CarBlock: _custom_CarBlock__WEBPACK_IMPORTED_MODULE_2__["default"],
     Spinner: _common_spinner__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Review: _custom_Review__WEBPACK_IMPORTED_MODULE_5__["default"]
+    Review: _custom_Review__WEBPACK_IMPORTED_MODULE_5__["default"],
+    RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_6__["default"]
   },
   props: ["id"],
   data: function data() {
@@ -3519,6 +3662,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         phone: ""
       },
       editMode: false,
+      editRouts: false,
       imageSelected: null
     };
   },
@@ -3707,8 +3851,65 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     toggleEditMode: function toggleEditMode() {
       this.editMode = !this.editMode;
     },
+    toggleEditRouts: function toggleEditRouts() {
+      this.editRouts = !this.editRouts;
+    },
     onImageSelected: function onImageSelected(e) {
       this.imageSelected = e.target.files[0];
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/EditRouts.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/EditRouts.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _custom_RoutGroupCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../custom/RoutGroupCard */ "./resources/js/components/custom/RoutGroupCard.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "EditRouts",
+  components: {
+    RouteGroupCard: _custom_RoutGroupCard__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      newGroup: false
+    };
+  },
+  props: {},
+  methods: {
+    toggleGroup: function toggleGroup() {
+      this.newGroup = !this.newGroup;
     }
   }
 });
@@ -40079,7 +40280,10 @@ var render = function() {
         key: "default",
         fn: function(ref) {
           var item = ref.item
-          return [_c("RouteCard", { attrs: { item: item } })]
+          var destroyItem = ref.destroyItem
+          return [
+            _c("RouteCard", { attrs: { item: item, destroyItem: destroyItem } })
+          ]
         }
       }
     ])
@@ -40217,9 +40421,28 @@ var render = function() {
       _vm._v(" "),
       _vm.title == "Водители"
         ? _c("div", [
-            _c("a", { attrs: { href: "http://ac/home/drivers/deleted" } }, [
-              _vm._v("К Спрятанным водителям")
-            ])
+            _c(
+              "a",
+              {
+                staticClass: "ml-2",
+                attrs: { href: "http://ac/home/drivers/deleted" }
+              },
+              [_vm._v("К Спрятанным водителям")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.title == "Маршруты"
+        ? _c("div", [
+            _c("a", { staticClass: "ml-4", attrs: { href: "#" } }, [
+              _vm._v("К Спрятанным маршрутам")
+            ]),
+            _vm._v(" "),
+            _c(
+              "a",
+              { staticClass: "ml-4", attrs: { href: "/home/routs/edit" } },
+              [_vm._v("Создать новую группу точек")]
+            )
           ])
         : _vm._e()
     ]),
@@ -41460,6 +41683,101 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RoutGroupCard.vue?vue&type=template&id=48ed0c00&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/RoutGroupCard.vue?vue&type=template&id=48ed0c00& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    !_vm.editCard
+      ? _c("div", { staticClass: "routgroup" }, [
+          _c("div", { staticClass: "routgroup_name" }, [
+            _vm._v(_vm._s(_vm.name))
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-primary ml-3",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.toggleEditCard($event)
+                }
+              }
+            },
+            [_vm._v("Изменить")]
+          ),
+          _vm._v(" "),
+          _c("button", { staticClass: "btn btn-outline-danger ml-3" }, [
+            _vm._v("Удалить")
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.editCard
+      ? _c(
+          "div",
+          { staticClass: "routgroup flex-column" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _c("RouteItem", { attrs: { name: "Krajcikborough" } }),
+            _vm._v(" "),
+            _c("RouteItem", { attrs: { name: "Douglasport" } }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-primary mt-3",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.toggleEditCard($event)
+                  }
+                }
+              },
+              [_vm._v("Сохранить")]
+            )
+          ],
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "v-flex flex-nowrap w-10" }, [
+      _c("input", {
+        staticClass: "main_input",
+        attrs: { type: "text", placeholder: "Название точки" }
+      }),
+      _vm._v(" "),
+      _c("button", { staticClass: "ml-4 btn btn-outline-success" }, [
+        _vm._v("добавить")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RouteCard.vue?vue&type=template&id=26d0f486&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/RouteCard.vue?vue&type=template&id=26d0f486& ***!
@@ -41493,9 +41811,47 @@ var render = function() {
     _vm._v(" "),
     _c(
       "a",
-      { staticClass: "btn btn-outline-dark ml-2", attrs: { href: "#" } },
+      {
+        staticClass: "btn btn-outline-dark ml-2",
+        attrs: { href: "#" },
+        on: {
+          click: function($event) {
+            return _vm.deleteRoute(_vm.item.id)
+          }
+        }
+      },
       [_vm._v("Скрыть точку")]
     )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RouteItem.vue?vue&type=template&id=6d7e3b09&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/RouteItem.vue?vue&type=template&id=6d7e3b09& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "routs_item_width" }, [
+    _c("div", [_vm._v(_vm._s(_vm.name))]),
+    _vm._v(" "),
+    _c("button", { staticClass: "btn btn-outline-danger ml-4" }, [
+      _vm._v("delete")
+    ])
   ])
 }
 var staticRenderFns = []
@@ -41875,7 +42231,7 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-outline-primary",
+                          staticClass: "btn btn-outline-primary ml-2",
                           on: {
                             click: function($event) {
                               $event.preventDefault()
@@ -42041,6 +42397,72 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
+                !_vm.editRouts
+                  ? _c("div", { staticClass: "data-block" }, [
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-primary",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.toggleEditRouts($event)
+                            }
+                          }
+                        },
+                        [_vm._v("Изменить маршруты")]
+                      )
+                    ])
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.editRouts
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex justify-content-center flex-wrap w-100"
+                      },
+                      [
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c("RouteItem", {
+                          attrs: { name: "Новосибирск-Барнаул" }
+                        }),
+                        _vm._v(" "),
+                        _c("RouteItem", { attrs: { name: "Барнаул-Ая" } }),
+                        _vm._v(" "),
+                        _c("RouteItem", { attrs: { name: "Ая-Белуха" } }),
+                        _vm._v(" "),
+                        _c("RouteItem", {
+                          attrs: { name: "Брянск-Девяткино" }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "w-100 d-flex justify-content-center"
+                          },
+                          [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-primary mt-4",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.toggleEditRouts($event)
+                                  }
+                                }
+                              },
+                              [_vm._v("Выйти")]
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
                 _c(
                   "section",
                   {
@@ -42070,6 +42492,117 @@ var render = function() {
           1
         )
       : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "routs_item_width" }, [
+      _c("input", { attrs: { type: "text" } }),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-outline-primary ml-2" }, [
+        _vm._v("Добавить группу")
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/EditRouts.vue?vue&type=template&id=9a81e572&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/EditRouts.vue?vue&type=template&id=9a81e572& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("a", { staticClass: "btn btn-dark", attrs: { href: "/home/routes" } }, [
+      _vm._v("Назад")
+    ]),
+    _vm._v(" "),
+    !_vm.newGroup
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-primary ml-3",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.toggleGroup()
+              }
+            }
+          },
+          [_vm._v("Новая группа")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.newGroup
+      ? _c("div", { staticClass: "rout_container rout_container_edit-routs" }, [
+          _c("input", {
+            staticClass: "main_input",
+            attrs: { type: "text", placeholder: "Название группы" }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn btn-primary ml-3",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.toggleGroup()
+                }
+              }
+            },
+            [_vm._v("Добавить")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-dark ml-3",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.toggleGroup()
+                }
+              }
+            },
+            [_vm._v("Отменить")]
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "d-flex flex-wrap" },
+      [
+        _c("RouteGroupCard", { attrs: { name: "Кош - Агач" } }),
+        _vm._v(" "),
+        _c("RouteGroupCard", { attrs: { name: "Новосибирск" } }),
+        _vm._v(" "),
+        _c("RouteGroupCard", { attrs: { name: "Усть - Кокса" } }),
+        _vm._v(" "),
+        _c("RouteGroupCard", { attrs: { name: "Чоя" } }),
+        _vm._v(" "),
+        _c("RouteGroupCard", { attrs: { name: "Турочак" } })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = []
@@ -54435,6 +54968,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Tours_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/Tours.vue */ "./resources/js/components/Tours.vue");
 /* harmony import */ var _components_pages_ategory_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/Сategory.vue */ "./resources/js/components/pages/Сategory.vue");
 /* harmony import */ var _components_DeletedDrivers_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/DeletedDrivers.vue */ "./resources/js/components/DeletedDrivers.vue");
+/* harmony import */ var _components_pages_EditRouts_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/pages/EditRouts.vue */ "./resources/js/components/pages/EditRouts.vue");
+
 
 
 
@@ -54459,7 +54994,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     tests: _components_Tests_vue__WEBPACK_IMPORTED_MODULE_6__["default"],
     tours: _components_Tours_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
     category: _components_pages_ategory_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
-    deleted: _components_DeletedDrivers_vue__WEBPACK_IMPORTED_MODULE_9__["default"]
+    deleted: _components_DeletedDrivers_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
+    editrouts: _components_pages_EditRouts_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
   }
 });
 
@@ -55887,6 +56423,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/custom/RoutGroupCard.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/custom/RoutGroupCard.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RoutGroupCard_vue_vue_type_template_id_48ed0c00___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RoutGroupCard.vue?vue&type=template&id=48ed0c00& */ "./resources/js/components/custom/RoutGroupCard.vue?vue&type=template&id=48ed0c00&");
+/* harmony import */ var _RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RoutGroupCard.vue?vue&type=script&lang=js& */ "./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RoutGroupCard_vue_vue_type_template_id_48ed0c00___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RoutGroupCard_vue_vue_type_template_id_48ed0c00___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/custom/RoutGroupCard.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./RoutGroupCard.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/RoutGroupCard.vue?vue&type=template&id=48ed0c00&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/custom/RoutGroupCard.vue?vue&type=template&id=48ed0c00& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RoutGroupCard_vue_vue_type_template_id_48ed0c00___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RoutGroupCard.vue?vue&type=template&id=48ed0c00& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RoutGroupCard.vue?vue&type=template&id=48ed0c00&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RoutGroupCard_vue_vue_type_template_id_48ed0c00___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RoutGroupCard_vue_vue_type_template_id_48ed0c00___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/custom/RouteCard.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/custom/RouteCard.vue ***!
@@ -55951,6 +56556,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteCard_vue_vue_type_template_id_26d0f486___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteCard_vue_vue_type_template_id_26d0f486___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/RouteItem.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/custom/RouteItem.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RouteItem_vue_vue_type_template_id_6d7e3b09___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RouteItem.vue?vue&type=template&id=6d7e3b09& */ "./resources/js/components/custom/RouteItem.vue?vue&type=template&id=6d7e3b09&");
+/* harmony import */ var _RouteItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RouteItem.vue?vue&type=script&lang=js& */ "./resources/js/components/custom/RouteItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RouteItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RouteItem_vue_vue_type_template_id_6d7e3b09___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RouteItem_vue_vue_type_template_id_6d7e3b09___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/custom/RouteItem.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/RouteItem.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/custom/RouteItem.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./RouteItem.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RouteItem.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteItem_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/RouteItem.vue?vue&type=template&id=6d7e3b09&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/custom/RouteItem.vue?vue&type=template&id=6d7e3b09& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteItem_vue_vue_type_template_id_6d7e3b09___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RouteItem.vue?vue&type=template&id=6d7e3b09& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/RouteItem.vue?vue&type=template&id=6d7e3b09&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteItem_vue_vue_type_template_id_6d7e3b09___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RouteItem_vue_vue_type_template_id_6d7e3b09___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -56227,6 +56901,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Driver_vue_vue_type_template_id_901d2184_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Driver_vue_vue_type_template_id_901d2184_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/EditRouts.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/pages/EditRouts.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _EditRouts_vue_vue_type_template_id_9a81e572___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditRouts.vue?vue&type=template&id=9a81e572& */ "./resources/js/components/pages/EditRouts.vue?vue&type=template&id=9a81e572&");
+/* harmony import */ var _EditRouts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditRouts.vue?vue&type=script&lang=js& */ "./resources/js/components/pages/EditRouts.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _EditRouts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _EditRouts_vue_vue_type_template_id_9a81e572___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _EditRouts_vue_vue_type_template_id_9a81e572___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/pages/EditRouts.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/EditRouts.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/pages/EditRouts.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRouts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditRouts.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/EditRouts.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRouts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/EditRouts.vue?vue&type=template&id=9a81e572&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/pages/EditRouts.vue?vue&type=template&id=9a81e572& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRouts_vue_vue_type_template_id_9a81e572___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./EditRouts.vue?vue&type=template&id=9a81e572& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/EditRouts.vue?vue&type=template&id=9a81e572&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRouts_vue_vue_type_template_id_9a81e572___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditRouts_vue_vue_type_template_id_9a81e572___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

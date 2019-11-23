@@ -3,7 +3,11 @@
     <div class="d-flex align-items-center row">
       <h2>{{title}}</h2>
       <div v-if="title=='Водители'">
-        <a href="http://ac/home/drivers/deleted">К Спрятанным водителям</a>
+        <a class="ml-2" href="http://ac/home/drivers/deleted">К Спрятанным водителям</a>
+      </div>
+      <div v-if="title=='Маршруты'">
+        <a class="ml-4" href="#">К Спрятанным маршрутам</a>
+        <a class="ml-4" href="/home/routs/edit">Создать новую группу точек</a>
       </div>
     </div>
     <div v-if="data.loading" class="loading">
@@ -115,7 +119,7 @@ export default {
         })
           .then(res => res.json())
           .then(data => {
-            alert(`Водитель спрятан`);
+            alert(`Выполнено`);
             this.fetchData();
           })
           .catch(err => console.log(err));
@@ -129,6 +133,19 @@ export default {
           .then(res => res.json())
           .then(data => {
             alert(`Водитель удален`);
+            this.fetchData();
+          })
+          .catch(err => console.log(err));
+      }
+    },
+    deleteRoute(id) {
+      if (confirm("Вы точно хотите удалить точку?")) {
+        fetch(`/api/route/` + id, {
+          method: "delete"
+        })
+          .then(res => res.json())
+          .then(data => {
+            alert(`Точка удалена`);
             this.fetchData();
           })
           .catch(err => console.log(err));

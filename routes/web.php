@@ -24,3 +24,5 @@ Route::get('/home/tours', 'HomeController@tours');
 Route::get('/home/category/1', 'HomeController@category');
 
 Route::get('/home/drivers/deleted', 'HomeController@deleteddrivers');
+
+Route::get('/home/routs/edit', 'HomeController@editrouts');

@@ -58,6 +58,13 @@
   max-width: 200px;
 }
 
+.main_input {
+  border: 1px solid #cdcdcd;
+  border-radius: 5px;
+  min-height: 35px;
+  padding-left: 5px;
+}
+
 .sideBar {
   display: flex;
   align-items: center;
@@ -538,6 +545,63 @@
 
 .item-disaple {
   opacity: 60%;
+}
+
+.routs_item_width {
+  width: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  border: #f3f3f3 1px solid;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.routs_item_width > input {
+  border: 1px solid #cdcdcd;
+  border-radius: 5px;
+  min-height: 35px;
+}
+
+@media screen and (max-width: 991px) {
+  .routs_item_width {
+    justify-content: space-around;
+  }
+}
+
+.routgroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  border: #d9d9d9 1px solid;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 20px;
+  width: 360px;
+}
+
+.routgroup_name {
+  display: inline-block;
+  width: 100px;
+  text-align: center;
+}
+
+.rout_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 30px;
+  border: #d9d9d9 1px solid;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.rout_container_edit-routs {
+  max-width: 400px;
 }
 
 /*!

@@ -31,4 +31,23 @@ class HomeController extends Controller
     {
         return view('pages.route', ['id' => $id]);
     }
+    public function tests()
+    {
+        return view('pages.tests');
+    }
+        public function tours()
+    {
+        return view('pages.tours');
+    }
+        public function category()
+    {
+        return view('pages.category');
+    }
+
+    public function deleteddrivers(){
+        return view('pages.deleteddrivers');
+    }
+    public function editrouts(){
+        return view('pages.editrouts');
+    }
 }

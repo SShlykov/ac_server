@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Review;
 use Illuminate\Http\Request;
 use App\Http\Resources\Review as ReviewResource;
+use App\Http\Resources\DReview as DReviewResource;
+use Illuminate\Support\Facades\DB;
 
 class ReviewController extends Controller
 {
@@ -32,8 +34,15 @@ class ReviewController extends Controller
     public function show($id)
     {
         $review = Review::findOrFail($id);
-
         return new ReviewResource($review);
+
+    }
+
+    public function dshow($id)
+    {
+        $review = Review::all()->where('driver_id', $id);
+      //  return new ReviewResource($review);
+      return new DReviewResource($review) ;
     }
 
     public function destroy($id)

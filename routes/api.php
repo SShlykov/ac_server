@@ -17,9 +17,13 @@ Route::get('tours/{count}', 'TourController@index');
 Route::group(['prefix' => 'driver'], function (){
     $controller = "DriverController@";
     Route::get('/{id}', $controller . 'show');
+    Route::get('/withTrashed/{count}', $controller . 'showWT');
+    Route::get('/onlyTrashed/{count}', $controller . 'showOT');
+    Route::put('/restore/{id}', $controller . 'restore');
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');
-    Route::delete('/{id}', $controller . 'destroy');
+    Route::delete('/delete/{id}', $controller . 'destroy');
+    Route::delete('/{id}', $controller . 'delete');
 });
 
 Route::group(['prefix' => 'car'], function (){
@@ -40,6 +44,7 @@ Route::group(['prefix' => 'carphoto'], function (){
 
 Route::group(['prefix' => 'review'], function (){
     $controller = "ReviewController@";
+    Route::get('/driver/{id}', $controller . 'dshow');
     Route::get('/{id}', $controller . 'show');
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');

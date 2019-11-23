@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <driver id="{{$id}}"></driver>
+            <editrouts></editrouts>
         </div>
     </div>
 @endsection

@@ -3,11 +3,7 @@
     <div class="d-flex align-items-center row">
       <h2>{{title}}</h2>
       <div v-if="title=='Водители'">
-        <a class="ml-2" href="http://ac/home/drivers/deleted">К Спрятанным водителям</a>
-      </div>
-      <div v-if="title=='Маршруты'">
-        <a class="ml-4" href="#">К Спрятанным маршрутам</a>
-        <a class="ml-4" href="/home/routs/edit">Создать новую группу точек</a>
+        <a href="http://ac/home/drivers/">К Видимым водителям</a>
       </div>
     </div>
     <div v-if="data.loading" class="loading">
@@ -17,17 +13,6 @@
         <Spinner></Spinner>
       </div>
     </div>
-    <div class="toggleForm">
-      <input type="checkbox" />
-      <div class="d-flex flex-wrap container-fluid w-100 item_visible">
-        <FormAddItem
-          :fields="this.data.keys"
-          :path="this.path"
-          :fetchData="fetchData"
-          v-if="this.data.keys"
-        />
-      </div>
-    </div>
     <div class="d-flex flex-wrap container-fluid w-100" v-if="!data.loading">
       <div
         class="card card-body m-1"
@@ -35,7 +20,7 @@
         v-bind:key="item.id"
         style="width: 18rem;"
       >
-        <slot :item="item" :destroyItem="destroyItem" :deleteItem="deleteItem" />
+        <slot :item="item" :restoreItem="restoreItem" />
       </div>
       <Pagination
         :pagination="this.data.pagination"
@@ -47,14 +32,13 @@
 </template>
 
 <script>
-import FormAddItem from "../FormAddItem/FormAddItem";
 import Pagination from "../Pagination/Pagination";
 import Spinner from "../spinner";
 import Goback from "../goback";
 
 export default {
   name: "DataBlock",
-  components: { Goback, Spinner, Pagination, FormAddItem: FormAddItem },
+  components: { Goback, Spinner, Pagination },
   props: {
     title: {
       required: true
@@ -85,7 +69,7 @@ export default {
     async fetchData(page_url) {
       this.data.loading = true;
       let vm = this;
-      page_url = page_url || `/api/${this.path}/6`;
+      page_url = page_url || `/api/driver/onlyTrashed/6`;
       await fetch(page_url)
         .then(res => res.json())
         .then(res => {
@@ -112,40 +96,14 @@ export default {
       this.data.loading = false;
       this.data.showAddForm = true;
     },
-    deleteItem(id) {
-      if (confirm("Вы точно хотите спрятать?")) {
-        fetch(`/api/${this.path.slice(0, -1)}/${id}`, {
-          method: "delete"
+    restoreItem(id) {
+      if (confirm("Вы точно хотите восстановить?")) {
+        fetch(`/api/driver/restore/${id}`, {
+          method: "put"
         })
           .then(res => res.json())
           .then(data => {
-            alert(`Выполнено`);
-            this.fetchData();
-          })
-          .catch(err => console.log(err));
-      }
-    },
-    destroyItem(id) {
-      if (confirm("Вы точно хотите удалить?")) {
-        fetch(`/api/${this.path.slice(0, -1)}/delete/${id}`, {
-          method: "delete"
-        })
-          .then(res => res.json())
-          .then(data => {
-            alert(`Водитель удален`);
-            this.fetchData();
-          })
-          .catch(err => console.log(err));
-      }
-    },
-    deleteRoute(id) {
-      if (confirm("Вы точно хотите удалить точку?")) {
-        fetch(`/api/route/` + id, {
-          method: "delete"
-        })
-          .then(res => res.json())
-          .then(data => {
-            alert(`Точка удалена`);
+            alert(`${this.name} восстановлен`);
             this.fetchData();
           })
           .catch(err => console.log(err));
@@ -154,3 +112,4 @@ export default {
   }
 };
 </script>
+

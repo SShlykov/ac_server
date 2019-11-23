@@ -40,6 +40,33 @@ class DriverController extends Controller
         return new DriverResource($driver);
     }
 
+    public function delete($id)
+    {
+        $driver = Driver::findOrFail($id);
+        $driver->delete();
+
+        return $driver;
+    }
+
+    public function showWt($count){ 
+        $count = gettype(intval($count)) == 'integer' ? $count: 5;
+        $drivers = Driver::withTrashed()->latest()->paginate($count);
+        return DriverResource::collection($drivers);
+    }
+
+    public function showOt($count){
+        $count = gettype(intval($count)) == 'integer' ? $count: 5;
+        $drivers = Driver::onlyTrashed()->latest()->paginate($count);
+        return DriverResource::collection($drivers);
+    }
+
+    public function restore($id){
+        $driver = Driver::withTrashed()->findOrFail($id);
+        $driver->restore();
+
+        return $driver;
+    }
+
     public function destroy($id)
     {
         try {
@@ -54,7 +81,7 @@ class DriverController extends Controller
                     $car->delete();
                 }
                 $driver->rewiew()->delete();
-                $driver->delete();
+                $driver->forceDelete();
                 return new DriverResource($driver);
             }
         } catch (\Exception $e) {

@@ -18,12 +18,12 @@ class RouteGroupController extends Controller
     public function store(Request $request)
     {
         $routeGroup = $request->isMethod('put') ? RouteGroup::findOrFail($request->id)
-            : new RouteGroup;
-
+        : new RouteGroup;
+        
         $routeGroup->id = $request->input('id');
         $routeGroup->name = $request->input('name');
-
         $routeGroup->save();
+
         return new RouteGroupResource($routeGroup);
     }
 

@@ -3943,6 +3943,28 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     toggleGroup: function toggleGroup() {
       this.newGroup = !this.newGroup;
+    },
+    route_group_post: function route_group_post() {
+      var _this = this;
+
+      console.log("post");
+      fetch("/api/route_group/", {
+        method: "POST",
+        body: JSON.stringify({
+          name: "123"
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        alert("\u0413\u0440\u0443\u043F\u043F\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0430");
+
+        _this.fetchData();
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   }
 });
@@ -42617,7 +42639,7 @@ var render = function() {
               on: {
                 click: function($event) {
                   $event.preventDefault()
-                  return _vm.toggleGroup()
+                  return _vm.route_group_post()
                 }
               }
             },
@@ -54909,7 +54931,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/StarGray.svg?308421bf51c8188749925b1f5bf0004d";
+module.exports = "/images/StarGray.svg?e6d063f2bf468417b86fca4c365ac427";
 
 /***/ }),
 
@@ -54920,7 +54942,7 @@ module.exports = "/images/StarGray.svg?308421bf51c8188749925b1f5bf0004d";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/StarGreen.svg?c5caf9ead63291d4e7455d5cb42a6303";
+module.exports = "/images/StarGreen.svg?141392310152c00ce643d294e630d465";
 
 /***/ }),
 
@@ -54931,7 +54953,7 @@ module.exports = "/images/StarGreen.svg?c5caf9ead63291d4e7455d5cb42a6303";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/arrow_down.svg?3154dc5b6981d79af7d0d756851de795";
+module.exports = "/images/arrow_down.svg?d98a57e98f0f54b71e8943fd8c7d30d0";
 
 /***/ }),
 
@@ -54942,7 +54964,7 @@ module.exports = "/images/arrow_down.svg?3154dc5b6981d79af7d0d756851de795";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/arrow_up.svg?f72e57dc08c2a030fb5eab94089ccb62";
+module.exports = "/images/arrow_up.svg?cb2ac4e3b184504fdf99d6b4f6f49abf";
 
 /***/ }),
 
@@ -54953,7 +54975,7 @@ module.exports = "/images/arrow_up.svg?f72e57dc08c2a030fb5eab94089ccb62";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/eye.svg?66e32d8c7b1c8951b48cdbaa9bb108d7";
+module.exports = "/images/eye.svg?e6f02caba5bd3ec90a855f386823197d";
 
 /***/ }),
 
@@ -54964,7 +54986,7 @@ module.exports = "/images/eye.svg?66e32d8c7b1c8951b48cdbaa9bb108d7";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/icon-fire.svg?e9c01a8449b2d8a0c3b0272c9d2bd57e";
+module.exports = "/images/icon-fire.svg?16593c883d9f52555cb78211ba58c171";
 
 /***/ }),
 
@@ -54975,7 +54997,7 @@ module.exports = "/images/icon-fire.svg?e9c01a8449b2d8a0c3b0272c9d2bd57e";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/pen.svg?3e3faa0bf9abd211923cf4733920cc28";
+module.exports = "/images/pen.svg?d1c5b2304eb119dd4834b92ba9b914d2";
 
 /***/ }),
 
@@ -54986,7 +55008,7 @@ module.exports = "/images/pen.svg?3e3faa0bf9abd211923cf4733920cc28";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/save.svg?fc509e29110f4cc1ffc19cc4d3d30dff";
+module.exports = "/images/save.svg?e098697c621fd800cb422a339a27fcf1";
 
 /***/ }),
 
@@ -54997,7 +55019,7 @@ module.exports = "/images/save.svg?fc509e29110f4cc1ffc19cc4d3d30dff";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/trash.svg?1ac3dc80b43d5bdad6091ee263f9fadb";
+module.exports = "/images/trash.svg?544611126da65299b967902b9eaec831";
 
 /***/ }),
 
@@ -57184,8 +57206,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /server/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /server/resources/sass/app.sass */"./resources/sass/app.sass");
+__webpack_require__(/*! C:\OpenServer\OSPanel\localhost\server\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OpenServer\OSPanel\localhost\server\resources\sass\app.sass */"./resources/sass/app.sass");
 
 
 /***/ })

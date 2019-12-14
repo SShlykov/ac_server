@@ -8,7 +8,7 @@
     >Новая группа</button>
     <div v-if="newGroup" class="rout_container rout_container_edit-routs">
       <input class="main_input" type="text" placeholder="Название группы" />
-      <button @click.prevent="toggleGroup()" class="btn btn btn-primary ml-3">Добавить</button>
+      <button @click.prevent="route_group_post()" class="btn btn btn-primary ml-3">Добавить</button>
       <button @click.prevent="toggleGroup()" class="btn btn-outline-dark ml-3">Отменить</button>
     </div>
     <div class="d-flex flex-wrap">
@@ -37,6 +37,24 @@ export default {
   methods: {
     toggleGroup() {
       this.newGroup = !this.newGroup;
+    },
+    route_group_post() {
+      console.log("post");
+      fetch(`/api/route_group/`, {
+        method: "POST",
+        body: JSON.stringify({
+          name: "123"
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert(`Группа создана`);
+          this.fetchData();
+        })
+        .catch(err => console.log(err));
     }
   }
 };

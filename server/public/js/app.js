@@ -2448,6 +2448,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     fields: {
@@ -3246,6 +3250,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoutGroupCard",
@@ -3254,17 +3285,34 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      deleted: false,
       editCard: false
     };
   },
   props: {
     name: {
       required: true
+    },
+    id: {
+      required: true
     }
   },
   methods: {
     toggleEditCard: function toggleEditCard() {
       this.editCard = !this.editCard;
+    },
+    route_group_delete: function route_group_delete() {
+      if (confirm("Вы точно хотите удалить?")) {
+        fetch("/api/route_group/" + this.id, {
+          method: "delete"
+        }).then(function (res) {
+          return res.json();
+        }).then(function (data) {
+          alert("\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E");
+        })["catch"](function (err) {
+          return console.log(err);
+        });
+      }
     }
   }
 });
@@ -3904,7 +3952,33 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _custom_RoutGroupCard__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../custom/RoutGroupCard */ "./resources/js/components/custom/RoutGroupCard.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _custom_RoutGroupCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../custom/RoutGroupCard */ "./resources/js/components/custom/RoutGroupCard.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3932,26 +4006,95 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EditRouts",
   components: {
-    RouteGroupCard: _custom_RoutGroupCard__WEBPACK_IMPORTED_MODULE_0__["default"]
+    RouteGroupCard: _custom_RoutGroupCard__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
+      data: {
+        item: {},
+        fields: {},
+        list: {}
+      },
       newGroup: false
     };
   },
   props: {},
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return this.fetchData();
+
+            case 2:
+              console.log(this.data.list);
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
   methods: {
+    fetchData: function () {
+      var _fetchData = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return fetch("/api/route_group/groups").then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  _this.data.list = res.data;
+                })["catch"](function (err) {
+                  return console.warn(err);
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function fetchData() {
+        return _fetchData.apply(this, arguments);
+      }
+
+      return fetchData;
+    }(),
     toggleGroup: function toggleGroup() {
       this.newGroup = !this.newGroup;
     },
+    key_random: function key_random(item) {
+      return Math.random() * Math.random();
+    },
     route_group_post: function route_group_post() {
-      var _this = this;
+      var _this2 = this;
 
-      console.log("post");
+      console.log(this.data.item.name);
       fetch("/api/route_group/", {
         method: "POST",
         body: JSON.stringify({
-          name: "123"
+          name: this.data.item.name
         }),
         headers: {
           "Content-type": "application/json; charset=UTF-8"
@@ -3959,9 +4102,9 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (res) {
         return res.json();
       }).then(function (data) {
-        alert("\u0413\u0440\u0443\u043F\u043F\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0430");
+        console.log("\u0413\u0440\u0443\u043F\u043F\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0430");
 
-        _this.fetchData();
+        _this2.fetchData();
       })["catch"](function (err) {
         return console.log(err);
       });
@@ -41782,12 +41925,22 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Изменить")]
+            [_vm._v("\n            Изменить\n        ")]
           ),
           _vm._v(" "),
-          _c("button", { staticClass: "btn btn-outline-danger ml-3" }, [
-            _vm._v("Удалить")
-          ])
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-danger ml-3",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.route_group_delete($event)
+                }
+              }
+            },
+            [_vm._v("\n            Удалить\n        ")]
+          )
         ])
       : _vm._e(),
     _vm._v(" "),
@@ -41802,19 +41955,35 @@ var render = function() {
             _vm._v(" "),
             _c("RouteItem", { attrs: { name: "Douglasport" } }),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-primary mt-3",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.toggleEditCard($event)
+            _c("div", { staticClass: "d-flex .align-items-center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-outline-primary mt-3",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.toggleEditCard($event)
+                    }
                   }
-                }
-              },
-              [_vm._v("Сохранить")]
-            )
+                },
+                [_vm._v("\n                Сохранить\n            ")]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "ml-3 btn btn-outline-danger mt-3",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.route_group_delete($event)
+                    }
+                  }
+                },
+                [_vm._v("\n                Удалить\n            ")]
+              )
+            ])
           ],
           1
         )
@@ -42621,15 +42790,32 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Новая группа")]
+          [_vm._v("\n        Новая группа\n    ")]
         )
       : _vm._e(),
     _vm._v(" "),
     _vm.newGroup
       ? _c("div", { staticClass: "rout_container rout_container_edit-routs" }, [
           _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.data.item["name"],
+                expression: "data.item['name']"
+              }
+            ],
             staticClass: "main_input",
-            attrs: { type: "text", placeholder: "Название группы" }
+            attrs: { type: "text", placeholder: "Название группы" },
+            domProps: { value: _vm.data.item["name"] },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.data.item, "name", $event.target.value)
+              }
+            }
           }),
           _vm._v(" "),
           _c(
@@ -42643,7 +42829,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Добавить")]
+            [_vm._v("\n            Добавить\n        ")]
           ),
           _vm._v(" "),
           _c(
@@ -42657,7 +42843,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Отменить")]
+            [_vm._v("\n            Отменить\n        ")]
           )
         ])
       : _vm._e(),
@@ -42665,17 +42851,12 @@ var render = function() {
     _c(
       "div",
       { staticClass: "d-flex flex-wrap" },
-      [
-        _c("RouteGroupCard", { attrs: { name: "Кош - Агач" } }),
-        _vm._v(" "),
-        _c("RouteGroupCard", { attrs: { name: "Новосибирск" } }),
-        _vm._v(" "),
-        _c("RouteGroupCard", { attrs: { name: "Усть - Кокса" } }),
-        _vm._v(" "),
-        _c("RouteGroupCard", { attrs: { name: "Чоя" } }),
-        _vm._v(" "),
-        _c("RouteGroupCard", { attrs: { name: "Турочак" } })
-      ],
+      _vm._l(this.data.list, function(item) {
+        return _c("RouteGroupCard", {
+          key: _vm.key_random(item),
+          attrs: { name: item.name, id: item.id }
+        })
+      }),
       1
     )
   ])

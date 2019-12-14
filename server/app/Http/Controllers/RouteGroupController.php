@@ -22,8 +22,6 @@ class RouteGroupController extends Controller
 
         $routeGroup->id = $request->input('id');
         $routeGroup->name = $request->input('name');
-        $routeGroup->latitude = $request->input('latitude');
-        $routeGroup->longitude = $request->input('longitude');
 
         $routeGroup->save();
         return new RouteGroupResource($routeGroup);

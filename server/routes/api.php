@@ -61,6 +61,16 @@ Route::group(['prefix' => 'route'], function (){
 
 Route::group(['prefix' => 'route_group'], function (){
     $controller = "RouteGroupController@";
+    Route::get('/groups/{count}', $controller . 'index');
+    Route::get('/{id}', $controller . 'show');
+    Route::post('/', $controller . 'store');
+    Route::put('/', $controller . 'store');
+    Route::delete('/{id}', $controller . 'destroy');
+});
+
+Route::group(['prefix' => 'routes_rout_group'], function (){
+    $controller = "RoutesRouteGroupController@";
+    Route::get('/groups/{count}', $controller . 'index');
     Route::get('/{id}', $controller . 'show');
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');

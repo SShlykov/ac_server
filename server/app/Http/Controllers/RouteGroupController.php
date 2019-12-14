@@ -9,10 +9,9 @@ use Illuminate\Http\Request;
 
 class RouteGroupController extends Controller
 {
-    public function index($count)
+    public function index()
     {
-        $count = gettype(intval($count)) == 'integer' ? $count: 5;
-        $routeGroup = RouteGroup::paginate($count);
+        $routeGroup = RouteGroup::all();
         return RouteGroupResource::collection($routeGroup);
     }
 
@@ -56,7 +55,7 @@ class RouteGroupController extends Controller
     public function destroy($id)
     {
         try {
-            $routeGroup = RouteGroup::findOneOrFail();
+            $routeGroup = RouteGroup::findOrFail($id);
             if ($routeGroup) {
                 $routeGroup->delete();
             }

@@ -8,7 +8,9 @@ FROM php:7.2-fpm
 RUN apt-get install && apt-get update -y 
 
 # RUN curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh -o install_nvm.sh \
-#     install_nvm.sh \
+#     bash install_nvm.sh \
+#     sh \
+#     bash \
 #     nvm install 8.16.2
 # Install required PHP extensions
 RUN docker-php-ext-install \

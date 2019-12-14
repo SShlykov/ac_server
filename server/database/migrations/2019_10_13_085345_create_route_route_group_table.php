@@ -4,11 +4,11 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRoutesRouteGroupsTable extends Migration
+class CreateRouteRouteGroupTable extends Migration
 {
     public function up()
     {
-        Schema::create('routes_route_groups', function (Blueprint $table) {
+        Schema::create('route_route_group', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('route_group_id');
             $table->unsignedInteger('route_id');
@@ -21,6 +21,6 @@ class CreateRoutesRouteGroupsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('routes_route_groups');
+        Schema::dropIfExists('route_route_group');
     }
 }

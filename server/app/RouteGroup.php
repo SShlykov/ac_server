@@ -12,6 +12,6 @@ class RouteGroup extends Model
     ];
     public function routes()
     {
-        return $this->hasMany(Route::class);
+        return $this->belongsToMany('App\Route');
     }
 }

@@ -15,4 +15,8 @@ class Route extends Model
     {
         return $this->belongsToMany(Tour::class);
     }
+    public function route_groups()
+    {
+        return $this->belongsToMany('App\RouteGroup');
+    }
 }

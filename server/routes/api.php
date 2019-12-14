@@ -54,6 +54,7 @@ Route::group(['prefix' => 'review'], function (){
 Route::group(['prefix' => 'route'], function (){
     $controller = "RouteController@";
     Route::get('/{id}', $controller . 'show');
+    Route::get('/wrg/{id}', $controller . 'showRG');
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');
     Route::delete('/{id}', $controller . 'destroy');
@@ -63,6 +64,8 @@ Route::group(['prefix' => 'route_group'], function (){
     $controller = "RouteGroupController@";
     Route::get('/groups/{count}', $controller . 'index');
     Route::get('/{id}', $controller . 'show');
+    Route::get('/show_connected/{id}', $controller . 'show_connected');
+    Route::post('/connect', $controller . 'connect');
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');
     Route::delete('/{id}', $controller . 'destroy');

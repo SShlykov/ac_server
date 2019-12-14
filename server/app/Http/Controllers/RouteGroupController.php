@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\RouteGroup;
+use App\Route;
 use App\Http\Resources\RouteGroup as RouteGroupResource;
 use Illuminate\Http\Request;
 
@@ -25,6 +26,24 @@ class RouteGroupController extends Controller
         $routeGroup->save();
 
         return new RouteGroupResource($routeGroup);
+    }
+
+    public function connect(Request $request)
+    {
+        $routeGroup = RouteGroup::findOrFail($request->input('route_group_id'));
+        
+        $route = Route::findOrFail($request->input('route_id'));
+        
+        $routeGroup->routes()->save($route);
+
+        return new RouteGroupResource($routeGroup);
+    }
+
+    public function show_connected($id)
+    {        
+        $routeGroup = RouteGroup::find($id)->routes()->get();
+
+        return $routeGroup;
     }
 
     public function show($id)

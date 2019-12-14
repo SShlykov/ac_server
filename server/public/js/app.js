@@ -2481,14 +2481,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var fileReader = new FileReader();
-      console.log(e.target.files);
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
         _this.data.item.photo = e.target.result;
       };
-
-      console.log(this.data.item);
     },
     parsePropsToState: function parsePropsToState(arr) {
       var _this2 = this;
@@ -3160,10 +3157,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
   props: {
-    photo: {
-      required: true,
-      type: String
-    },
     name: {
       required: true,
       type: String
@@ -3176,6 +3169,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       required: true
     },
     description: {
+      required: true
+    },
+    id: {
       required: true
     }
   },
@@ -3190,11 +3186,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              console.log(this.id);
+
+            case 1:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, this);
     }));
 
     function created() {
@@ -3203,7 +3202,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     return created;
   }(),
-  methods: {},
+  methods: {
+    review_delete: function review_delete() {},
+    review_update: function review_update() {},
+    random: function random(item) {
+      return Math.random();
+    }
+  },
   components: {}
 });
 
@@ -3252,31 +3257,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoutGroupCard",
@@ -3285,7 +3265,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      deleted: false,
       editCard: false
     };
   },
@@ -3295,6 +3274,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     id: {
       required: true
+    },
+    fetchData: {
+      required: true
     }
   },
   methods: {
@@ -3302,18 +3284,23 @@ __webpack_require__.r(__webpack_exports__);
       this.editCard = !this.editCard;
     },
     route_group_delete: function route_group_delete() {
+      var _this = this;
+
       if (confirm("Вы точно хотите удалить?")) {
         fetch("/api/route_group/" + this.id, {
           method: "delete"
         }).then(function (res) {
           return res.json();
         }).then(function (data) {
+          _this.fetchData();
+
           alert("\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E");
         })["catch"](function (err) {
           return console.log(err);
         });
       }
-    }
+    },
+    rout_group_add_rout: function rout_group_add_rout() {}
   }
 });
 
@@ -3919,6 +3906,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return updateDriver;
     }(),
+    random: function random(item) {
+      return Math.random();
+    },
     toggleEditMode: function toggleEditMode() {
       this.editMode = !this.editMode;
     },
@@ -3961,17 +3951,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -41805,7 +41784,7 @@ var render = function() {
           { staticClass: "review_data_stars" },
           [
             _vm._l(_vm.stars, function(item) {
-              return _c("div", { key: item }, [
+              return _c("div", { key: _vm.random(item) }, [
                 _c("img", {
                   attrs: {
                     src: __webpack_require__(/*! ../../../../public/images/StarGreen.svg */ "./public/images/StarGreen.svg"),
@@ -41816,7 +41795,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _vm._l(5 - _vm.stars, function(item) {
-              return _c("div", { key: item }, [
+              return _c("div", { key: _vm.random(item) }, [
                 _c("img", {
                   attrs: {
                     src: __webpack_require__(/*! ../../../../public/images/StarGray.svg */ "./public/images/StarGray.svg"),
@@ -41866,7 +41845,7 @@ var staticRenderFns = [
         _c("figure", [
           _c("img", {
             attrs: {
-              src: __webpack_require__(/*! ../../../../public/images/pen.svg */ "./public/images/pen.svg"),
+              src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"),
               alt: ""
             }
           })
@@ -41925,7 +41904,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Изменить\n        ")]
+            [_vm._v("Изменить")]
           ),
           _vm._v(" "),
           _c(
@@ -41939,7 +41918,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Удалить\n        ")]
+            [_vm._v("Удалить")]
           )
         ])
       : _vm._e(),
@@ -41959,7 +41938,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-outline-primary mt-3",
+                  staticClass: "ml-3 btn btn-outline-dark mt-3",
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -41967,21 +41946,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("\n                Сохранить\n            ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "ml-3 btn btn-outline-danger mt-3",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.route_group_delete($event)
-                    }
-                  }
-                },
-                [_vm._v("\n                Удалить\n            ")]
+                [_vm._v("Назад")]
               )
             ])
           ],
@@ -42687,13 +42652,13 @@ var render = function() {
                     _vm._v(" "),
                     _vm._l(_vm.reviews, function(item) {
                       return _c("Review", {
-                        key: item,
+                        key: _vm.random(item),
                         attrs: {
-                          photo: _vm.photo,
                           name: item.author,
                           date: item.updated_at,
                           stars: item.rating,
-                          description: item.text
+                          description: item.text,
+                          id: item.id
                         }
                       })
                     })
@@ -42790,7 +42755,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        Новая группа\n    ")]
+          [_vm._v("Новая группа")]
         )
       : _vm._e(),
     _vm._v(" "),
@@ -42829,7 +42794,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Добавить\n        ")]
+            [_vm._v("Добавить")]
           ),
           _vm._v(" "),
           _c(
@@ -42843,7 +42808,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Отменить\n        ")]
+            [_vm._v("Отменить")]
           )
         ])
       : _vm._e(),
@@ -42854,7 +42819,7 @@ var render = function() {
       _vm._l(this.data.list, function(item) {
         return _c("RouteGroupCard", {
           key: _vm.key_random(item),
-          attrs: { name: item.name, id: item.id }
+          attrs: { fetchData: _vm.fetchData, name: item.name, id: item.id }
         })
       }),
       1
@@ -55112,7 +55077,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/StarGray.svg?308421bf51c8188749925b1f5bf0004d";
+module.exports = "/images/StarGray.svg?e6d063f2bf468417b86fca4c365ac427";
 
 /***/ }),
 
@@ -55123,7 +55088,7 @@ module.exports = "/images/StarGray.svg?308421bf51c8188749925b1f5bf0004d";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/StarGreen.svg?c5caf9ead63291d4e7455d5cb42a6303";
+module.exports = "/images/StarGreen.svg?141392310152c00ce643d294e630d465";
 
 /***/ }),
 
@@ -55134,7 +55099,7 @@ module.exports = "/images/StarGreen.svg?c5caf9ead63291d4e7455d5cb42a6303";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/arrow_down.svg?3154dc5b6981d79af7d0d756851de795";
+module.exports = "/images/arrow_down.svg?d98a57e98f0f54b71e8943fd8c7d30d0";
 
 /***/ }),
 
@@ -55145,7 +55110,7 @@ module.exports = "/images/arrow_down.svg?3154dc5b6981d79af7d0d756851de795";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/arrow_up.svg?f72e57dc08c2a030fb5eab94089ccb62";
+module.exports = "/images/arrow_up.svg?cb2ac4e3b184504fdf99d6b4f6f49abf";
 
 /***/ }),
 
@@ -55156,7 +55121,7 @@ module.exports = "/images/arrow_up.svg?f72e57dc08c2a030fb5eab94089ccb62";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/eye.svg?66e32d8c7b1c8951b48cdbaa9bb108d7";
+module.exports = "/images/eye.svg?e6f02caba5bd3ec90a855f386823197d";
 
 /***/ }),
 
@@ -55167,18 +55132,7 @@ module.exports = "/images/eye.svg?66e32d8c7b1c8951b48cdbaa9bb108d7";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/icon-fire.svg?e9c01a8449b2d8a0c3b0272c9d2bd57e";
-
-/***/ }),
-
-/***/ "./public/images/pen.svg":
-/*!*******************************!*\
-  !*** ./public/images/pen.svg ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/pen.svg?3e3faa0bf9abd211923cf4733920cc28";
+module.exports = "/images/icon-fire.svg?16593c883d9f52555cb78211ba58c171";
 
 /***/ }),
 
@@ -55189,7 +55143,7 @@ module.exports = "/images/pen.svg?3e3faa0bf9abd211923cf4733920cc28";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/save.svg?fc509e29110f4cc1ffc19cc4d3d30dff";
+module.exports = "/images/save.svg?e098697c621fd800cb422a339a27fcf1";
 
 /***/ }),
 
@@ -55200,7 +55154,7 @@ module.exports = "/images/save.svg?fc509e29110f4cc1ffc19cc4d3d30dff";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/trash.svg?1ac3dc80b43d5bdad6091ee263f9fadb";
+module.exports = "/images/trash.svg?544611126da65299b967902b9eaec831";
 
 /***/ }),
 
@@ -57387,8 +57341,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /server/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /server/resources/sass/app.sass */"./resources/sass/app.sass");
+__webpack_require__(/*! C:\OpenServer\OSPanel\localhost\server\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OpenServer\OSPanel\localhost\server\resources\sass\app.sass */"./resources/sass/app.sass");
 
 
 /***/ })

@@ -64,7 +64,7 @@
           </h3>
           <h3>
             <span>Машина сзади:</span>
-            <input type="file"/>
+            <input type="file" />
           </h3>
           <button @click.prevent="updateDriver" class="btn btn-outline-primary">Сохранить</button>
           <button
@@ -91,13 +91,13 @@
         <section class="d-flex align-items-center flex-column reviews">
           <h3 class="mb-4">Отзывы</h3>
           <Review
-            v-bind:key="item"
+            v-bind:key="random(item)"
             v-for="item in reviews"
-            :photo="photo"
             :name="item.author"
             :date="item.updated_at"
             :stars="item.rating"
             :description="item.text"
+            :id="item.id"
           ></Review>
         </section>
       </div>
@@ -181,7 +181,9 @@ export default {
           window.location.href = "/home/drivers";
         })
         .catch(err => console.log(err));
-
+    },
+    random(item) {
+      return Math.random();
     },
     toggleEditMode() {
       this.editMode = !this.editMode;
@@ -192,15 +194,15 @@ export default {
     onImageSelected(e) {
       this.imageSelected = e.target.files[0];
     },
-    imageChanged(e){
-      let fileReader = new FileReader()
+    imageChanged(e) {
+      let fileReader = new FileReader();
 
-      fileReader.readAsDataURL(e.target.files[0])
+      fileReader.readAsDataURL(e.target.files[0]);
 
-      fileReader.onload = (e) => {
-        this.driver.photo =  e.target.result
-      }
-    },
+      fileReader.onload = e => {
+        this.driver.photo = e.target.result;
+      };
+    }
   }
 };
 </script>

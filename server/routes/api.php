@@ -55,6 +55,7 @@ Route::group(['prefix' => 'route'], function (){
     $controller = "RouteController@";
     Route::get('/{id}', $controller . 'show');
     Route::get('/wrg/{id}', $controller . 'showRG');
+    Route::get('/name/{name}', $controller . 'show_name');
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');
     Route::delete('/{id}', $controller . 'destroy');
@@ -83,6 +84,7 @@ Route::group(['prefix' => 'routes_rout_group'], function (){
 Route::group(['prefix' => 'tour'], function (){
     $controller = "TourController@";
     Route::get('/{id}', $controller . 'show');
+    Route::get('/category/{id}', $controller . 'show_category');
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');
     Route::delete('/{id}', $controller . 'destroy');

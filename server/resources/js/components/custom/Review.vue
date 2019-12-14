@@ -7,10 +7,10 @@
           <div class="ml-3 review_data_info-date">{{date}}</div>
         </div>
         <div class="review_data_stars">
-          <div v-bind:key="item" v-for="item in stars">
+          <div v-bind:key="random(item)" v-for="item in stars">
             <img src="../../../../public/images/StarGreen.svg" alt="GreenStars" />
           </div>
-          <div v-bind:key="item" v-for="item in 5-stars">
+          <div v-bind:key="random(item)" v-for="item in 5-stars">
             <img src="../../../../public/images/StarGray.svg" alt="GrayStars" />
           </div>
         </div>
@@ -20,7 +20,7 @@
     <div class="category_card_functions">
       <div class="category_card_functions-circle">
         <figure>
-          <img src="../../../../public/images/pen.svg" alt />
+          <img src="../../../../public/images/save.svg" alt />
         </figure>
       </div>
       <div class="category_card_functions-circle">
@@ -36,10 +36,6 @@
 export default {
   name: "Review",
   props: {
-    photo: {
-      required: true,
-      type: String
-    },
     name: {
       required: true,
       type: String
@@ -53,13 +49,24 @@ export default {
     },
     description: {
       required: true
+    },
+    id: {
+      required: true
     }
   },
   data() {
     return {};
   },
-  async created() {},
-  methods: {},
+  async created() {
+    console.log(this.id);
+  },
+  methods: {
+    review_delete() {},
+    review_update() {},
+    random(item) {
+      return Math.random();
+    }
+  },
   components: {}
 };
 

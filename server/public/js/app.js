@@ -3689,6 +3689,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3719,6 +3733,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         photo: "",
         phone: ""
       },
+      car: {
+        id: "",
+        name: "",
+        sits: "",
+        fuel: "",
+        price: "",
+        child: "",
+        driver: ""
+      },
+      carphotos: {
+        side: "",
+        back: "",
+        front: ""
+      },
       editMode: false,
       editRouts: false,
       imageSelected: null
@@ -3737,12 +3765,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 2:
               _context.next = 4;
-              return this.getReview();
+              return this.getCar();
 
             case 4:
+              _context.next = 6;
+              return this.getCarPhotos();
+
+            case 6:
+              _context.next = 8;
+              return this.getReview();
+
+            case 8:
               this.loading.data = true;
 
-            case 5:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -3823,8 +3859,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getDriver;
     }(),
-    deleteDriver: function () {
-      var _deleteDriver = _asyncToGenerator(
+    getCar: function () {
+      var _getCar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         var _this3 = this;
@@ -3833,18 +3869,87 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
+                _context4.next = 2;
+                return fetch("/api/car/".concat(this.id)).then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  return _this3.car = res.data;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function getCar() {
+        return _getCar.apply(this, arguments);
+      }
+
+      return getCar;
+    }(),
+    getCarPhotos: function () {
+      var _getCarPhotos = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var _this4 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return fetch("/api/carphoto/".concat(this.car.id)).then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  return _this4.carphotos = res.data;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+                console.log(this.carphotos);
+
+              case 3:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function getCarPhotos() {
+        return _getCarPhotos.apply(this, arguments);
+      }
+
+      return getCarPhotos;
+    }(),
+    deleteDriver: function () {
+      var _deleteDriver = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var _this5 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
                 if (!confirm("Вы точно хотите удалить?")) {
-                  _context4.next = 3;
+                  _context6.next = 3;
                   break;
                 }
 
-                _context4.next = 3;
+                _context6.next = 3;
                 return fetch("/api/driver/".concat(this.driver.id), {
                   method: "delete"
                 }).then(function (res) {
                   return res.json();
                 }).then(function (data) {
-                  alert("".concat(_this3.driver.name, " \u0443\u0434\u0430\u043B\u0435\u043D"));
+                  alert("".concat(_this5.driver.name, " \u0443\u0434\u0430\u043B\u0435\u043D"));
                   window.location.href = "/home/drivers";
                 })["catch"](function (err) {
                   return console.log(err);
@@ -3852,10 +3957,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
               case "end":
-                return _context4.stop();
+                return _context6.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee6, this);
       }));
 
       function deleteDriver() {
@@ -3867,16 +3972,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updateDriver: function () {
       var _updateDriver = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var _this4 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var _this6 = this;
 
         var driver;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
                 driver = this.driver;
-                _context5.next = 3;
+                _context7.next = 3;
                 return fetch("/api/driver/", {
                   method: "put",
                   body: JSON.stringify(driver),
@@ -3886,7 +3991,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(function (res) {
                   return res.json();
                 }).then(function (data) {
-                  alert("".concat(_this4.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
+                  alert("".concat(_this6.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
                   window.location.href = "/home/drivers";
                 })["catch"](function (err) {
                   return console.log(err);
@@ -3894,10 +3999,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
               case "end":
-                return _context5.stop();
+                return _context7.stop();
             }
           }
-        }, _callee5, this);
+        }, _callee7, this);
       }));
 
       function updateDriver() {
@@ -3905,6 +4010,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return updateDriver;
+    }(),
+    updateCarPhotos: function () {
+      var _updateCarPhotos = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var carphotos;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                carphotos = this.carphotos;
+                _context8.next = 3;
+                return fetch("/api/carphoto/", {
+                  method: "put",
+                  body: JSON.stringify(carphotos),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/carphoto";
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 3:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      function updateCarPhotos() {
+        return _updateCarPhotos.apply(this, arguments);
+      }
+
+      return updateCarPhotos;
     }(),
     random: function random(item) {
       return Math.random();
@@ -3918,14 +4063,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     onImageSelected: function onImageSelected(e) {
       this.imageSelected = e.target.files[0];
     },
-    imageChanged: function imageChanged(e) {
-      var _this5 = this;
+    imageDriverChanged: function imageDriverChanged(e) {
+      var _this7 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this5.driver.photo = e.target.result;
+        _this7.driver.photo = e.target.result;
+      };
+    },
+    imageCarBackChanged: function imageCarBackChanged(e) {
+      var _this8 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this8.car.back = e.target.result;
+      };
+    },
+    imageCarSideChanged: function imageCarSideChanged(e) {
+      var _this9 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this9.car.side = e.target.result;
+      };
+    },
+    imageCarFrontChanged: function imageCarFrontChanged(e) {
+      var _this10 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this10.car.front = e.target.result;
       };
     }
   }
@@ -42536,15 +42711,9 @@ var render = function() {
                         _vm._v(" "),
                         _c("input", {
                           attrs: { type: "file" },
-                          on: { change: _vm.imageChanged }
+                          on: { change: _vm.imageDriverChanged }
                         })
                       ]),
-                      _vm._v(" "),
-                      _vm._m(0),
-                      _vm._v(" "),
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _vm._m(2),
                       _vm._v(" "),
                       _c(
                         "button",
@@ -42576,6 +42745,104 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
+                _c("section", { staticClass: "driver_car" }, [
+                  _c("div", { staticClass: "driver_car_container" }, [
+                    _c("p", [_vm._v("Вид сзади")]),
+                    _vm._v(" "),
+                    _c("figure", [
+                      _c("img", {
+                        attrs: {
+                          src: this.carphotos.car_photo_back,
+                          alt: "car side"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "file" },
+                      on: { change: _vm.imageCarBackChanged }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary mt-2",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.updateCarPhotos($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Сохранить")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "driver_car_container" }, [
+                    _c("p", [_vm._v("Вид сбоку")]),
+                    _vm._v(" "),
+                    _c("figure", [
+                      _c("img", {
+                        attrs: {
+                          src: this.carphotos.car_photo_side,
+                          alt: "car_back"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "file" },
+                      on: { change: _vm.imageCarSideChanged }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary mt-2",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.updateCarPhotos($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Сохранить")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "driver_car_container" }, [
+                    _c("p", [_vm._v("Вид спереди")]),
+                    _vm._v(" "),
+                    _c("figure", [
+                      _c("img", {
+                        attrs: {
+                          src: this.carphotos.car_photo_front,
+                          alt: "car front"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "file" },
+                      on: { change: _vm.imageCarFrontChanged }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary mt-2",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.updateCarPhotos($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Сохранить")]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
                 !_vm.editRouts
                   ? _c("div", { staticClass: "data-block" }, [
                       _c(
@@ -42602,7 +42869,7 @@ var render = function() {
                           "d-flex justify-content-center flex-wrap w-100"
                       },
                       [
-                        _vm._m(3),
+                        _vm._m(0),
                         _vm._v(" "),
                         _c("RouteItem", {
                           attrs: { name: "Новосибирск-Барнаул" }
@@ -42674,36 +42941,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h3", [
-      _c("span", [_vm._v("Машина перед:")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "file" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h3", [
-      _c("span", [_vm._v("Машина сбоку:")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "file" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h3", [
-      _c("span", [_vm._v("Машина сзади:")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "file" } })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

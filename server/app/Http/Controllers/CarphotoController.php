@@ -14,10 +14,29 @@ class CarphotoController extends Controller
         return CarphotoResource::collection($carphotos);
     }
 
+
     public function store(Request $request)
     {
+        $exploded = explode(',', $request->photo);
+        $decoded = base64_decode($exploded[1]);
+
+        
+        if(Str::contains($exploded[0], 'jpeg'))
+        $extension = 'jpg';
+        else
+        $extension = 'png';
+        
+        
+        $file_name = Str::random(40).'.'.$extension;
+        
+        $path = public_path().'/'.'images/'.'cars/'.$file_name;
+        
+        file_put_contents($path, $decoded);
+
         $carphotos = $request->isMethod('put') ? Carphoto::findOrFail($request->id)
             : new Car;
+
+        $carphotos->photo = '/'.'images/'.'drivers/'.$file_name;
 
         $carphotos->id = $request->input('id');
 

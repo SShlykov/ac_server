@@ -52,19 +52,7 @@
           </h3>
           <h3>
             <span>Картинка водителя:</span>
-            <input type="file" @change="imageChanged" />
-          </h3>
-          <h3>
-            <span>Машина перед:</span>
-            <input type="file" />
-          </h3>
-          <h3>
-            <span>Машина сбоку:</span>
-            <input type="file" />
-          </h3>
-          <h3>
-            <span>Машина сзади:</span>
-            <input type="file" />
+            <input type="file" @change="imageDriverChanged" />
           </h3>
           <button @click.prevent="updateDriver" class="btn btn-outline-primary">Сохранить</button>
           <button
@@ -72,6 +60,32 @@
             class="btn btn-outline-secondary"
           >Выйти из режима редактирования</button>
         </div>
+        <section class="driver_car">
+          <div class="driver_car_container">
+            <p>Вид сзади</p>
+            <figure>
+              <img :src="this.carphotos.car_photo_back" alt="car side" />
+            </figure>
+            <input type="file" @change="imageCarBackChanged" />
+            <button class="btn btn-outline-primary mt-2" @click.prevent="updateCarPhotos">Сохранить</button>
+          </div>
+          <div class="driver_car_container">
+            <p>Вид сбоку</p>
+            <figure>
+              <img :src="this.carphotos.car_photo_side" alt="car_back" />
+            </figure>
+            <input type="file" @change="imageCarSideChanged" />
+            <button class="btn btn-outline-primary mt-2" @click.prevent="updateCarPhotos">Сохранить</button>
+          </div>
+          <div class="driver_car_container">
+            <p>Вид спереди</p>
+            <figure>
+              <img :src="this.carphotos.car_photo_front" alt="car front" />
+            </figure>
+            <input type="file" @change="imageCarFrontChanged" />
+            <button class="btn btn-outline-primary mt-2" @click.prevent="updateCarPhotos">Сохранить</button>
+          </div>
+        </section>
         <div class="data-block" v-if="!editRouts">
           <button class="btn btn-primary" @click.prevent="toggleEditRouts">Изменить маршруты</button>
         </div>
@@ -114,7 +128,14 @@ import Review from "../custom/Review";
 import RouteItem from "../custom/RouteItem";
 export default {
   name: "Driver",
-  components: { Goback, LoadingSpinner, CarBlock, Spinner, Review, RouteItem },
+  components: {
+    Goback,
+    LoadingSpinner,
+    CarBlock,
+    Spinner,
+    Review,
+    RouteItem
+  },
   props: ["id"],
 
   data() {
@@ -130,6 +151,20 @@ export default {
         photo: "",
         phone: ""
       },
+      car: {
+        id: "",
+        name: "",
+        sits: "",
+        fuel: "",
+        price: "",
+        child: "",
+        driver: ""
+      },
+      carphotos: {
+        side: "",
+        back: "",
+        front: ""
+      },
       editMode: false,
       editRouts: false,
       imageSelected: null
@@ -137,6 +172,8 @@ export default {
   },
   async created() {
     await this.getDriver();
+    await this.getCar();
+    await this.getCarPhotos();
     await this.getReview();
     this.loading.data = true;
   },
@@ -152,6 +189,20 @@ export default {
         .then(res => res.json())
         .then(res => (this.driver = res.data))
         .catch(err => console.log(err));
+    },
+    async getCar() {
+      await fetch(`/api/car/${this.id}`)
+        .then(res => res.json())
+        .then(res => (this.car = res.data))
+        .catch(err => console.log(err));
+    },
+
+    async getCarPhotos() {
+      await fetch(`/api/carphoto/${this.car.id}`)
+        .then(res => res.json())
+        .then(res => (this.carphotos = res.data))
+        .catch(err => console.log(err));
+      console.log(this.carphotos);
     },
     async deleteDriver() {
       if (confirm("Вы точно хотите удалить?")) {
@@ -182,6 +233,22 @@ export default {
         })
         .catch(err => console.log(err));
     },
+    async updateCarPhotos() {
+      let carphotos = this.carphotos;
+      await fetch(`/api/carphoto/`, {
+        method: "put",
+        body: JSON.stringify(carphotos),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert(`машина обновлена`);
+          window.location.href = "/home/carphoto";
+        })
+        .catch(err => console.log(err));
+    },
     random(item) {
       return Math.random();
     },
@@ -194,13 +261,40 @@ export default {
     onImageSelected(e) {
       this.imageSelected = e.target.files[0];
     },
-    imageChanged(e) {
+    imageDriverChanged(e) {
       let fileReader = new FileReader();
 
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = e => {
         this.driver.photo = e.target.result;
+      };
+    },
+    imageCarBackChanged(e) {
+      let fileReader = new FileReader();
+
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = e => {
+        this.car.back = e.target.result;
+      };
+    },
+    imageCarSideChanged(e) {
+      let fileReader = new FileReader();
+
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = e => {
+        this.car.side = e.target.result;
+      };
+    },
+    imageCarFrontChanged(e) {
+      let fileReader = new FileReader();
+
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = e => {
+        this.car.front = e.target.result;
       };
     }
   }

@@ -20,6 +20,7 @@ class DriverController extends Controller
     }
     public function store(Request $request)
     {
+        \Log::info($request);
         $exploded = explode(',', $request->photo);
         $decoded = base64_decode($exploded[1]);
 
@@ -51,6 +52,7 @@ class DriverController extends Controller
         return new DriverResource($driver);
     }
 
+    
     public function show($id)
     {
         $driver = Driver::findOrFail($id);

@@ -3703,6 +3703,79 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3743,11 +3816,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         driver: ""
       },
       carphotos: {
-        side: "",
-        back: "",
-        front: ""
+        car_photo_side: "",
+        car_photo_back: "",
+        car_photo_front: ""
+      },
+      postphoto: {
+        id: "",
+        photo: ""
       },
       editMode: false,
+      editCar: false,
       editRouts: false,
       imageSelected: null
     };
@@ -3912,7 +3990,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 2:
-                console.log(this.carphotos);
+                this.postphoto.id = this.car.id;
 
               case 3:
               case "end":
@@ -3992,7 +4070,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return res.json();
                 }).then(function (data) {
                   alert("".concat(_this6.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
-                  window.location.href = "/home/drivers";
+                  window.location.href = "/home/driver/" + driver.id;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
@@ -4011,20 +4089,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return updateDriver;
     }(),
-    updateCarPhotos: function () {
-      var _updateCarPhotos = _asyncToGenerator(
+    updateCarPhotosBack: function () {
+      var _updateCarPhotosBack = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
-        var carphotos;
+        var carphotos, postphoto;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
                 carphotos = this.carphotos;
-                _context8.next = 3;
-                return fetch("/api/carphoto/", {
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_back;
+                postphoto.id = this.car.id;
+                _context8.next = 6;
+                return fetch("/api/carphoto/back", {
                   method: "put",
-                  body: JSON.stringify(carphotos),
+                  body: JSON.stringify(postphoto),
                   headers: {
                     "Content-Type": "application/json"
                   }
@@ -4032,12 +4113,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return res.json();
                 }).then(function (data) {
                   alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
-                  window.location.href = "/home/carphoto";
+                  window.location.href = "/home/driver/" + driver.id;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
 
-              case 3:
+              case 6:
               case "end":
                 return _context8.stop();
             }
@@ -4045,11 +4126,97 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee8, this);
       }));
 
-      function updateCarPhotos() {
-        return _updateCarPhotos.apply(this, arguments);
+      function updateCarPhotosBack() {
+        return _updateCarPhotosBack.apply(this, arguments);
       }
 
-      return updateCarPhotos;
+      return updateCarPhotosBack;
+    }(),
+    updateCarPhotosSide: function () {
+      var _updateCarPhotosSide = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var carphotos, postphoto;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                carphotos = this.carphotos;
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_side;
+                postphoto.id = this.car.id;
+                _context9.next = 6;
+                return fetch("/api/carphoto/side", {
+                  method: "put",
+                  body: JSON.stringify(postphoto),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 6:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this);
+      }));
+
+      function updateCarPhotosSide() {
+        return _updateCarPhotosSide.apply(this, arguments);
+      }
+
+      return updateCarPhotosSide;
+    }(),
+    updateCarPhotosFront: function () {
+      var _updateCarPhotosFront = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+        var carphotos, postphoto;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                carphotos = this.carphotos;
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_front;
+                postphoto.id = this.car.id;
+                _context10.next = 6;
+                return fetch("/api/carphoto/front", {
+                  method: "put",
+                  body: JSON.stringify(postphoto),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 6:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, this);
+      }));
+
+      function updateCarPhotosFront() {
+        return _updateCarPhotosFront.apply(this, arguments);
+      }
+
+      return updateCarPhotosFront;
     }(),
     random: function random(item) {
       return Math.random();
@@ -4059,6 +4226,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     toggleEditRouts: function toggleEditRouts() {
       this.editRouts = !this.editRouts;
+    },
+    toggleEditCar: function toggleEditCar() {
+      this.editCar = !this.editCar;
     },
     onImageSelected: function onImageSelected(e) {
       this.imageSelected = e.target.files[0];
@@ -4080,7 +4250,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this8.car.back = e.target.result;
+        _this8.carphotos.car_photo_back = e.target.result;
       };
     },
     imageCarSideChanged: function imageCarSideChanged(e) {
@@ -4090,7 +4260,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this9.car.side = e.target.result;
+        _this9.carphotos.car_photo_side = e.target.result;
       };
     },
     imageCarFrontChanged: function imageCarFrontChanged(e) {
@@ -4100,7 +4270,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this10.car.front = e.target.result;
+        _this10.carphotos.car_photo_front = e.target.result;
       };
     }
   }
@@ -42745,6 +42915,167 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
+                _c("section", { staticClass: "car_data" }, [
+                  !this.editCar
+                    ? _c("div", { staticClass: "car_data_noedit" }, [
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Название:")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.name))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [_vm._v("Тип:")]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.type))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Количество мест:")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.sits))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Топливо:")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.fuel))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Цена/час:")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.price))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Дети:")
+                          ]),
+                          _vm._v(" "),
+                          _vm.car.child
+                            ? _c("span", { staticClass: "text" }, [
+                                _vm._v("Есть детское кресло")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          !_vm.car.child
+                            ? _c("span", { staticClass: "text" }, [
+                                _vm._v("Нет детского кресла")
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-dark",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.toggleEditCar($event)
+                              }
+                            }
+                          },
+                          [_vm._v("Редактировать")]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.editCar
+                    ? _c("div", { staticClass: "car_data_noedit" }, [
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Название:")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.name }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [_vm._v("Тип:")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.type }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Количество мест:")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.sits }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Топливо:")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.fuel }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Цена/час:")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.price }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-dark",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.toggleEditCar($event)
+                              }
+                            }
+                          },
+                          [_vm._v("Редактировать")]
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
                 _c("section", { staticClass: "driver_car" }, [
                   _c("div", { staticClass: "driver_car_container" }, [
                     _c("p", [_vm._v("Вид сзади")]),
@@ -42770,7 +43101,7 @@ var render = function() {
                         on: {
                           click: function($event) {
                             $event.preventDefault()
-                            return _vm.updateCarPhotos($event)
+                            return _vm.updateCarPhotosBack($event)
                           }
                         }
                       },
@@ -42802,7 +43133,7 @@ var render = function() {
                         on: {
                           click: function($event) {
                             $event.preventDefault()
-                            return _vm.updateCarPhotos($event)
+                            return _vm.updateCarPhotosSide($event)
                           }
                         }
                       },
@@ -42834,7 +43165,7 @@ var render = function() {
                         on: {
                           click: function($event) {
                             $event.preventDefault()
-                            return _vm.updateCarPhotos($event)
+                            return _vm.updateCarPhotosFront($event)
                           }
                         }
                       },
@@ -42869,7 +43200,7 @@ var render = function() {
                           "d-flex justify-content-center flex-wrap w-100"
                       },
                       [
-                        _vm._m(0),
+                        _vm._m(1),
                         _vm._v(" "),
                         _c("RouteItem", {
                           attrs: { name: "Новосибирск-Барнаул" }
@@ -42941,6 +43272,14 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "car_data_item" }, [
+      _c("span", { staticClass: "data" }, [_vm._v("Дети:")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -57288,14 +57627,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./resources/js/components/pages/Driver.vue ***!
   \**************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Driver_vue_vue_type_template_id_901d2184_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Driver.vue?vue&type=template&id=901d2184&scoped=true& */ "./resources/js/components/pages/Driver.vue?vue&type=template&id=901d2184&scoped=true&");
 /* harmony import */ var _Driver_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Driver.vue?vue&type=script&lang=js& */ "./resources/js/components/pages/Driver.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Driver_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Driver_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -57325,7 +57665,7 @@ component.options.__file = "resources/js/components/pages/Driver.vue"
 /*!***************************************************************************!*\
   !*** ./resources/js/components/pages/Driver.vue?vue&type=script&lang=js& ***!
   \***************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

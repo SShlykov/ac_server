@@ -39,6 +39,9 @@ Route::group(['prefix' => 'carphoto'], function (){
     Route::get('/{id}', $controller . 'show');
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');
+    Route::put('/back', $controller . 'postBackPhoto');
+    Route::put('/front', $controller . 'postFrontPhoto');
+    Route::put('/side', $controller . 'postSidePhoto');
     Route::delete('/{id}', $controller . 'destroy');
 });
 

@@ -36,6 +36,12 @@ class TourController extends Controller
         return new TourResource($tour);
     }
 
+    public function show_category($id){
+        $tour = Tour::findOrFail($id)->category()->get();
+
+        return $tour;
+    }
+
     public function destroy($id)
     {
         try {

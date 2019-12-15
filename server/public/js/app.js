@@ -2481,14 +2481,11 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       var fileReader = new FileReader();
-      console.log(e.target.files);
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
         _this.data.item.photo = e.target.result;
       };
-
-      console.log(this.data.item);
     },
     parsePropsToState: function parsePropsToState(arr) {
       var _this2 = this;
@@ -3160,10 +3157,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Review",
   props: {
-    photo: {
-      required: true,
-      type: String
-    },
     name: {
       required: true,
       type: String
@@ -3176,6 +3169,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       required: true
     },
     description: {
+      required: true
+    },
+    id: {
       required: true
     }
   },
@@ -3190,11 +3186,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              console.log(this.id);
+
+            case 1:
             case "end":
               return _context.stop();
           }
         }
-      }, _callee);
+      }, _callee, this);
     }));
 
     function created() {
@@ -3203,7 +3202,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     return created;
   }(),
-  methods: {},
+  methods: {
+    review_delete: function review_delete() {},
+    review_update: function review_update() {},
+    random: function random(item) {
+      return Math.random();
+    }
+  },
   components: {}
 });
 
@@ -3252,31 +3257,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoutGroupCard",
@@ -3285,7 +3265,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      deleted: false,
       editCard: false
     };
   },
@@ -3295,6 +3274,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     id: {
       required: true
+    },
+    fetchData: {
+      required: true
     }
   },
   methods: {
@@ -3302,18 +3284,23 @@ __webpack_require__.r(__webpack_exports__);
       this.editCard = !this.editCard;
     },
     route_group_delete: function route_group_delete() {
+      var _this = this;
+
       if (confirm("Вы точно хотите удалить?")) {
         fetch("/api/route_group/" + this.id, {
           method: "delete"
         }).then(function (res) {
           return res.json();
         }).then(function (data) {
+          _this.fetchData();
+
           alert("\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E");
         })["catch"](function (err) {
           return console.log(err);
         });
       }
-    }
+    },
+    rout_group_add_rout: function rout_group_add_rout() {}
   }
 });
 
@@ -3702,6 +3689,93 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3732,7 +3806,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         photo: "",
         phone: ""
       },
+      car: {
+        id: "",
+        name: "",
+        sits: "",
+        fuel: "",
+        price: "",
+        child: "",
+        driver: ""
+      },
+      carphotos: {
+        car_photo_side: "",
+        car_photo_back: "",
+        car_photo_front: ""
+      },
+      postphoto: {
+        id: "",
+        photo: ""
+      },
       editMode: false,
+      editCar: false,
       editRouts: false,
       imageSelected: null
     };
@@ -3750,12 +3843,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 2:
               _context.next = 4;
-              return this.getReview();
+              return this.getCar();
 
             case 4:
+              _context.next = 6;
+              return this.getCarPhotos();
+
+            case 6:
+              _context.next = 8;
+              return this.getReview();
+
+            case 8:
               this.loading.data = true;
 
-            case 5:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -3836,8 +3937,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getDriver;
     }(),
-    deleteDriver: function () {
-      var _deleteDriver = _asyncToGenerator(
+    getCar: function () {
+      var _getCar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         var _this3 = this;
@@ -3846,18 +3947,87 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
+                _context4.next = 2;
+                return fetch("/api/car/".concat(this.id)).then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  return _this3.car = res.data;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function getCar() {
+        return _getCar.apply(this, arguments);
+      }
+
+      return getCar;
+    }(),
+    getCarPhotos: function () {
+      var _getCarPhotos = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var _this4 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return fetch("/api/carphoto/".concat(this.car.id)).then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  return _this4.carphotos = res.data;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+                this.postphoto.id = this.car.id;
+
+              case 3:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5, this);
+      }));
+
+      function getCarPhotos() {
+        return _getCarPhotos.apply(this, arguments);
+      }
+
+      return getCarPhotos;
+    }(),
+    deleteDriver: function () {
+      var _deleteDriver = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var _this5 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
                 if (!confirm("Вы точно хотите удалить?")) {
-                  _context4.next = 3;
+                  _context6.next = 3;
                   break;
                 }
 
-                _context4.next = 3;
+                _context6.next = 3;
                 return fetch("/api/driver/".concat(this.driver.id), {
                   method: "delete"
                 }).then(function (res) {
                   return res.json();
                 }).then(function (data) {
-                  alert("".concat(_this3.driver.name, " \u0443\u0434\u0430\u043B\u0435\u043D"));
+                  alert("".concat(_this5.driver.name, " \u0443\u0434\u0430\u043B\u0435\u043D"));
                   window.location.href = "/home/drivers";
                 })["catch"](function (err) {
                   return console.log(err);
@@ -3865,10 +4035,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
               case "end":
-                return _context4.stop();
+                return _context6.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee6, this);
       }));
 
       function deleteDriver() {
@@ -3880,16 +4050,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updateDriver: function () {
       var _updateDriver = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        var _this4 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var _this6 = this;
 
         var driver;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
                 driver = this.driver;
-                _context5.next = 3;
+                _context7.next = 3;
                 return fetch("/api/driver/", {
                   method: "put",
                   body: JSON.stringify(driver),
@@ -3899,18 +4069,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(function (res) {
                   return res.json();
                 }).then(function (data) {
-                  alert("".concat(_this4.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
-                  window.location.href = "/home/drivers";
+                  alert("".concat(_this6.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
+                  window.location.href = "/home/driver/" + driver.id;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
 
               case 3:
               case "end":
-                return _context5.stop();
+                return _context7.stop();
             }
           }
-        }, _callee5, this);
+        }, _callee7, this);
       }));
 
       function updateDriver() {
@@ -3919,23 +4089,188 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return updateDriver;
     }(),
+    updateCarPhotosBack: function () {
+      var _updateCarPhotosBack = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var carphotos, postphoto;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                carphotos = this.carphotos;
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_back;
+                postphoto.id = this.car.id;
+                _context8.next = 6;
+                return fetch("/api/carphoto/back", {
+                  method: "put",
+                  body: JSON.stringify(postphoto),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 6:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      function updateCarPhotosBack() {
+        return _updateCarPhotosBack.apply(this, arguments);
+      }
+
+      return updateCarPhotosBack;
+    }(),
+    updateCarPhotosSide: function () {
+      var _updateCarPhotosSide = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var carphotos, postphoto;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                carphotos = this.carphotos;
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_side;
+                postphoto.id = this.car.id;
+                _context9.next = 6;
+                return fetch("/api/carphoto/side", {
+                  method: "put",
+                  body: JSON.stringify(postphoto),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 6:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this);
+      }));
+
+      function updateCarPhotosSide() {
+        return _updateCarPhotosSide.apply(this, arguments);
+      }
+
+      return updateCarPhotosSide;
+    }(),
+    updateCarPhotosFront: function () {
+      var _updateCarPhotosFront = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+        var carphotos, postphoto;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                carphotos = this.carphotos;
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_front;
+                postphoto.id = this.car.id;
+                _context10.next = 6;
+                return fetch("/api/carphoto/front", {
+                  method: "put",
+                  body: JSON.stringify(postphoto),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 6:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, this);
+      }));
+
+      function updateCarPhotosFront() {
+        return _updateCarPhotosFront.apply(this, arguments);
+      }
+
+      return updateCarPhotosFront;
+    }(),
+    random: function random(item) {
+      return Math.random();
+    },
     toggleEditMode: function toggleEditMode() {
       this.editMode = !this.editMode;
     },
     toggleEditRouts: function toggleEditRouts() {
       this.editRouts = !this.editRouts;
     },
+    toggleEditCar: function toggleEditCar() {
+      this.editCar = !this.editCar;
+    },
     onImageSelected: function onImageSelected(e) {
       this.imageSelected = e.target.files[0];
     },
-    imageChanged: function imageChanged(e) {
-      var _this5 = this;
+    imageDriverChanged: function imageDriverChanged(e) {
+      var _this7 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this5.driver.photo = e.target.result;
+        _this7.driver.photo = e.target.result;
+      };
+    },
+    imageCarBackChanged: function imageCarBackChanged(e) {
+      var _this8 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this8.carphotos.car_photo_back = e.target.result;
+      };
+    },
+    imageCarSideChanged: function imageCarSideChanged(e) {
+      var _this9 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this9.carphotos.car_photo_side = e.target.result;
+      };
+    },
+    imageCarFrontChanged: function imageCarFrontChanged(e) {
+      var _this10 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this10.carphotos.car_photo_front = e.target.result;
       };
     }
   }
@@ -3961,17 +4296,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -41805,7 +42129,7 @@ var render = function() {
           { staticClass: "review_data_stars" },
           [
             _vm._l(_vm.stars, function(item) {
-              return _c("div", { key: item }, [
+              return _c("div", { key: _vm.random(item) }, [
                 _c("img", {
                   attrs: {
                     src: __webpack_require__(/*! ../../../../public/images/StarGreen.svg */ "./public/images/StarGreen.svg"),
@@ -41816,7 +42140,7 @@ var render = function() {
             }),
             _vm._v(" "),
             _vm._l(5 - _vm.stars, function(item) {
-              return _c("div", { key: item }, [
+              return _c("div", { key: _vm.random(item) }, [
                 _c("img", {
                   attrs: {
                     src: __webpack_require__(/*! ../../../../public/images/StarGray.svg */ "./public/images/StarGray.svg"),
@@ -41866,7 +42190,7 @@ var staticRenderFns = [
         _c("figure", [
           _c("img", {
             attrs: {
-              src: __webpack_require__(/*! ../../../../public/images/pen.svg */ "./public/images/pen.svg"),
+              src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"),
               alt: ""
             }
           })
@@ -41925,7 +42249,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Изменить\n        ")]
+            [_vm._v("Изменить")]
           ),
           _vm._v(" "),
           _c(
@@ -41939,7 +42263,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Удалить\n        ")]
+            [_vm._v("Удалить")]
           )
         ])
       : _vm._e(),
@@ -41959,7 +42283,7 @@ var render = function() {
               _c(
                 "button",
                 {
-                  staticClass: "btn btn-outline-primary mt-3",
+                  staticClass: "ml-3 btn btn-outline-dark mt-3",
                   on: {
                     click: function($event) {
                       $event.preventDefault()
@@ -41967,21 +42291,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("\n                Сохранить\n            ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "ml-3 btn btn-outline-danger mt-3",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.route_group_delete($event)
-                    }
-                  }
-                },
-                [_vm._v("\n                Удалить\n            ")]
+                [_vm._v("Назад")]
               )
             ])
           ],
@@ -42571,15 +42881,9 @@ var render = function() {
                         _vm._v(" "),
                         _c("input", {
                           attrs: { type: "file" },
-                          on: { change: _vm.imageChanged }
+                          on: { change: _vm.imageDriverChanged }
                         })
                       ]),
-                      _vm._v(" "),
-                      _vm._m(0),
-                      _vm._v(" "),
-                      _vm._m(1),
-                      _vm._v(" "),
-                      _vm._m(2),
                       _vm._v(" "),
                       _c(
                         "button",
@@ -42611,6 +42915,265 @@ var render = function() {
                     ])
                   : _vm._e(),
                 _vm._v(" "),
+                _c("section", { staticClass: "car_data" }, [
+                  !this.editCar
+                    ? _c("div", { staticClass: "car_data_noedit" }, [
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Название:")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.name))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [_vm._v("Тип:")]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.type))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Количество мест:")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.sits))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Топливо:")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.fuel))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Цена/час:")
+                          ]),
+                          _vm._v(" "),
+                          _c("span", { staticClass: "text" }, [
+                            _vm._v(_vm._s(_vm.car.price))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Дети:")
+                          ]),
+                          _vm._v(" "),
+                          _vm.car.child
+                            ? _c("span", { staticClass: "text" }, [
+                                _vm._v("Есть детское кресло")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          !_vm.car.child
+                            ? _c("span", { staticClass: "text" }, [
+                                _vm._v("Нет детского кресла")
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-dark",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.toggleEditCar($event)
+                              }
+                            }
+                          },
+                          [_vm._v("Редактировать")]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  this.editCar
+                    ? _c("div", { staticClass: "car_data_noedit" }, [
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Название:")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.name }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [_vm._v("Тип:")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.type }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Количество мест:")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.sits }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Топливо:")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.fuel }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Цена/час:")
+                          ]),
+                          _vm._v(" "),
+                          _c("input", {
+                            attrs: { type: "text" },
+                            domProps: { value: this.car.price }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(0),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-dark",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.toggleEditCar($event)
+                              }
+                            }
+                          },
+                          [_vm._v("Редактировать")]
+                        )
+                      ])
+                    : _vm._e()
+                ]),
+                _vm._v(" "),
+                _c("section", { staticClass: "driver_car" }, [
+                  _c("div", { staticClass: "driver_car_container" }, [
+                    _c("p", [_vm._v("Вид сзади")]),
+                    _vm._v(" "),
+                    _c("figure", [
+                      _c("img", {
+                        attrs: {
+                          src: this.carphotos.car_photo_back,
+                          alt: "car side"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "file" },
+                      on: { change: _vm.imageCarBackChanged }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary mt-2",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.updateCarPhotosBack($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Сохранить")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "driver_car_container" }, [
+                    _c("p", [_vm._v("Вид сбоку")]),
+                    _vm._v(" "),
+                    _c("figure", [
+                      _c("img", {
+                        attrs: {
+                          src: this.carphotos.car_photo_side,
+                          alt: "car_back"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "file" },
+                      on: { change: _vm.imageCarSideChanged }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary mt-2",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.updateCarPhotosSide($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Сохранить")]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "driver_car_container" }, [
+                    _c("p", [_vm._v("Вид спереди")]),
+                    _vm._v(" "),
+                    _c("figure", [
+                      _c("img", {
+                        attrs: {
+                          src: this.carphotos.car_photo_front,
+                          alt: "car front"
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "file" },
+                      on: { change: _vm.imageCarFrontChanged }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary mt-2",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.updateCarPhotosFront($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Сохранить")]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
                 !_vm.editRouts
                   ? _c("div", { staticClass: "data-block" }, [
                       _c(
@@ -42637,7 +43200,7 @@ var render = function() {
                           "d-flex justify-content-center flex-wrap w-100"
                       },
                       [
-                        _vm._m(3),
+                        _vm._m(1),
                         _vm._v(" "),
                         _c("RouteItem", {
                           attrs: { name: "Новосибирск-Барнаул" }
@@ -42687,13 +43250,13 @@ var render = function() {
                     _vm._v(" "),
                     _vm._l(_vm.reviews, function(item) {
                       return _c("Review", {
-                        key: item,
+                        key: _vm.random(item),
                         attrs: {
-                          photo: _vm.photo,
                           name: item.author,
                           date: item.updated_at,
                           stars: item.rating,
-                          description: item.text
+                          description: item.text,
+                          id: item.id
                         }
                       })
                     })
@@ -42713,30 +43276,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h3", [
-      _c("span", [_vm._v("Машина перед:")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "file" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h3", [
-      _c("span", [_vm._v("Машина сбоку:")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "file" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("h3", [
-      _c("span", [_vm._v("Машина сзади:")]),
-      _vm._v(" "),
-      _c("input", { attrs: { type: "file" } })
+    return _c("div", { staticClass: "car_data_item" }, [
+      _c("span", { staticClass: "data" }, [_vm._v("Дети:")])
     ])
   },
   function() {
@@ -42790,7 +43331,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        Новая группа\n    ")]
+          [_vm._v("Новая группа")]
         )
       : _vm._e(),
     _vm._v(" "),
@@ -42829,7 +43370,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Добавить\n        ")]
+            [_vm._v("Добавить")]
           ),
           _vm._v(" "),
           _c(
@@ -42843,7 +43384,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("\n            Отменить\n        ")]
+            [_vm._v("Отменить")]
           )
         ])
       : _vm._e(),
@@ -42854,7 +43395,7 @@ var render = function() {
       _vm._l(this.data.list, function(item) {
         return _c("RouteGroupCard", {
           key: _vm.key_random(item),
-          attrs: { name: item.name, id: item.id }
+          attrs: { fetchData: _vm.fetchData, name: item.name, id: item.id }
         })
       }),
       1
@@ -55112,7 +55653,7 @@ module.exports = function(module) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/StarGray.svg?308421bf51c8188749925b1f5bf0004d";
+module.exports = "/images/StarGray.svg?e6d063f2bf468417b86fca4c365ac427";
 
 /***/ }),
 
@@ -55123,7 +55664,7 @@ module.exports = "/images/StarGray.svg?308421bf51c8188749925b1f5bf0004d";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/StarGreen.svg?c5caf9ead63291d4e7455d5cb42a6303";
+module.exports = "/images/StarGreen.svg?141392310152c00ce643d294e630d465";
 
 /***/ }),
 
@@ -55134,7 +55675,7 @@ module.exports = "/images/StarGreen.svg?c5caf9ead63291d4e7455d5cb42a6303";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/arrow_down.svg?3154dc5b6981d79af7d0d756851de795";
+module.exports = "/images/arrow_down.svg?d98a57e98f0f54b71e8943fd8c7d30d0";
 
 /***/ }),
 
@@ -55145,7 +55686,7 @@ module.exports = "/images/arrow_down.svg?3154dc5b6981d79af7d0d756851de795";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/arrow_up.svg?f72e57dc08c2a030fb5eab94089ccb62";
+module.exports = "/images/arrow_up.svg?cb2ac4e3b184504fdf99d6b4f6f49abf";
 
 /***/ }),
 
@@ -55156,7 +55697,7 @@ module.exports = "/images/arrow_up.svg?f72e57dc08c2a030fb5eab94089ccb62";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/eye.svg?66e32d8c7b1c8951b48cdbaa9bb108d7";
+module.exports = "/images/eye.svg?e6f02caba5bd3ec90a855f386823197d";
 
 /***/ }),
 
@@ -55167,18 +55708,7 @@ module.exports = "/images/eye.svg?66e32d8c7b1c8951b48cdbaa9bb108d7";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/icon-fire.svg?e9c01a8449b2d8a0c3b0272c9d2bd57e";
-
-/***/ }),
-
-/***/ "./public/images/pen.svg":
-/*!*******************************!*\
-  !*** ./public/images/pen.svg ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/pen.svg?3e3faa0bf9abd211923cf4733920cc28";
+module.exports = "/images/icon-fire.svg?16593c883d9f52555cb78211ba58c171";
 
 /***/ }),
 
@@ -55189,7 +55719,7 @@ module.exports = "/images/pen.svg?3e3faa0bf9abd211923cf4733920cc28";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/save.svg?fc509e29110f4cc1ffc19cc4d3d30dff";
+module.exports = "/images/save.svg?e098697c621fd800cb422a339a27fcf1";
 
 /***/ }),
 
@@ -55200,7 +55730,7 @@ module.exports = "/images/save.svg?fc509e29110f4cc1ffc19cc4d3d30dff";
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/trash.svg?1ac3dc80b43d5bdad6091ee263f9fadb";
+module.exports = "/images/trash.svg?544611126da65299b967902b9eaec831";
 
 /***/ }),
 
@@ -57097,14 +57627,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./resources/js/components/pages/Driver.vue ***!
   \**************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Driver_vue_vue_type_template_id_901d2184_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Driver.vue?vue&type=template&id=901d2184&scoped=true& */ "./resources/js/components/pages/Driver.vue?vue&type=template&id=901d2184&scoped=true&");
 /* harmony import */ var _Driver_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Driver.vue?vue&type=script&lang=js& */ "./resources/js/components/pages/Driver.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Driver_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Driver_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -57134,7 +57665,7 @@ component.options.__file = "resources/js/components/pages/Driver.vue"
 /*!***************************************************************************!*\
   !*** ./resources/js/components/pages/Driver.vue?vue&type=script&lang=js& ***!
   \***************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -57387,8 +57918,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /server/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /server/resources/sass/app.sass */"./resources/sass/app.sass");
+__webpack_require__(/*! C:\OpenServer\OSPanel\localhost\server\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OpenServer\OSPanel\localhost\server\resources\sass\app.sass */"./resources/sass/app.sass");
 
 
 /***/ })

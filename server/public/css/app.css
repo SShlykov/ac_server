@@ -606,6 +606,53 @@
   max-width: 400px;
 }
 
+.card-body {
+  max-width: 400px;
+}
+
+.driver_car {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.driver_car_container {
+  display: flex;
+  flex-direction: column;
+}
+
+.driver_car_container > figure {
+  width: 250px;
+}
+
+.driver_car_container > figure > img {
+  width: 100%;
+}
+
+.car_data {
+  width: 100%;
+}
+
+.car_data_noedit {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.car_data_item {
+  display: flex;
+  margin-right: 20px;
+}
+
+.car_data_item > .text {
+  margin-left: 5px;
+}
+
+.car_data_item:last-child {
+  margin-right: 0;
+}
+
 /*!
  * Bootstrap v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors

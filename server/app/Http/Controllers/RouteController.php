@@ -36,6 +36,13 @@ class RouteController extends Controller
         return new RouteResource($review);
     }
 
+    public function show_name($name)
+    {
+        $review =  Route::where('name', $name)->first();
+
+        return new RouteResource($review);
+    }
+
     public function showRG($id)
     {
         $route = Route::find($id)->route_groups()->get();

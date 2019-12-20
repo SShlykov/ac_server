@@ -16,6 +16,9 @@
   min-height: 35px
   padding-left: 5px
 
+.mw100
+  min-width: 100px
+
 .sideBar
   display: flex
   align-items: center
@@ -414,13 +417,35 @@
 
 .car_data
   width:100%
+  margin-bottom: 40px
   &_noedit
     width: 100%
     display: flex
     flex-wrap: wrap
+    &>button
+      height: 43px
+    &>button.btn_edit
+      height: 54px
+      margin-right: 15px
   &_item
     display: flex
     margin-right: 20px
+    padding: 10px 20px
+    box-shadow: 4px 2px 15px lighten(grey, 20)
+    border-radius: 3px
+    margin-bottom: 15px
+    &>select
+      margin-left: 10px
+      border-radius: 3px
+      padding: 4px 8px
+    &>span
+      display: flex
+      align-items: center
+    &>input
+      max-width: 150px
+      margin-left: 10px
+    &>input.w50
+      max-width: 50px
     &>.text
       margin-left: 5px
     &:last-child

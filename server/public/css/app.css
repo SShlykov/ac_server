@@ -40,6 +40,18 @@
   min-width: 100%;
 }
 
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
 .block {
   height: 60px;
   width: 60px;
@@ -63,6 +75,10 @@
   border-radius: 5px;
   min-height: 35px;
   padding-left: 5px;
+}
+
+.mw100 {
+  min-width: 100px;
 }
 
 .sideBar {
@@ -632,6 +648,7 @@
 
 .car_data {
   width: 100%;
+  margin-bottom: 40px;
 }
 
 .car_data_noedit {
@@ -640,9 +657,42 @@
   flex-wrap: wrap;
 }
 
+.car_data_noedit > button {
+  height: 43px;
+}
+
+.car_data_noedit > button.btn_edit {
+  height: 54px;
+  margin-right: 15px;
+}
+
 .car_data_item {
   display: flex;
   margin-right: 20px;
+  padding: 10px 20px;
+  box-shadow: 4px 2px 15px #b3b3b3;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.car_data_item > select {
+  margin-left: 10px;
+  border-radius: 3px;
+  padding: 4px 8px;
+}
+
+.car_data_item > span {
+  display: flex;
+  align-items: center;
+}
+
+.car_data_item > input {
+  max-width: 150px;
+  margin-left: 10px;
+}
+
+.car_data_item > input.w50 {
+  max-width: 50px;
 }
 
 .car_data_item > .text {

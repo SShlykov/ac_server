@@ -3108,121 +3108,9 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/Review.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Review",
-  props: {
-    name: {
-      required: true,
-      type: String
-    },
-    date: {
-      required: true,
-      type: String
-    },
-    stars: {
-      required: true
-    },
-    description: {
-      required: true
-    },
-    id: {
-      required: true
-    }
-  },
-  data: function data() {
-    return {};
-  },
-  created: function () {
-    var _created = _asyncToGenerator(
-    /*#__PURE__*/
-    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              console.log(this.id);
-
-            case 1:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee, this);
-    }));
-
-    function created() {
-      return _created.apply(this, arguments);
-    }
-
-    return created;
-  }(),
-  methods: {
-    review_delete: function review_delete() {},
-    review_update: function review_update() {},
-    random: function random(item) {
-      return Math.random();
-    }
-  },
-  components: {}
-});
-
-function addAutoResize() {
-  document.querySelectorAll("[data-autoresize]").forEach(function (element) {
-    element.style.boxSizing = "border-box";
-    var offset = element.offsetHeight - element.clientHeight;
-    document.addEventListener("input", function (event) {
-      event.target.style.height = "auto";
-      event.target.style.height = event.target.scrollHeight + offset + "px";
-    });
-    element.removeAttribute("data-autoresize");
-  });
-}
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\OpenServer\\OSPanel\\localhost\\server\\resources\\js\\components\\custom\\Review.vue: Can not use keyword 'await' outside an async function (83:6)\n\n\u001b[0m \u001b[90m 81 | \u001b[39m        review_delete() {}\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 82 | \u001b[39m        review_update() {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 83 | \u001b[39m      await fetch(\u001b[32m`/api/driver/`\u001b[39m\u001b[33m,\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 84 | \u001b[39m        method\u001b[33m:\u001b[39m \u001b[32m\"put\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 85 | \u001b[39m        body\u001b[33m:\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mstringify(driver)\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 86 | \u001b[39m        headers\u001b[33m:\u001b[39m {\u001b[0m\n    at Parser.raise (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:6400:17)\n    at Parser.checkReservedWord (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9656:14)\n    at Parser.parseIdentifierName (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9628:12)\n    at Parser.parseIdentifier (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9598:23)\n    at Parser.parseExprAtom (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8800:27)\n    at Parser.parseExprSubscripts (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8507:23)\n    at Parser.parseMaybeUnary (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8487:21)\n    at Parser.parseExprOps (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8353:23)\n    at Parser.parseMaybeConditional (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8326:23)\n    at Parser.parseMaybeAssign (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8273:21)\n    at Parser.parseExpression (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8221:23)\n    at Parser.parseStatementContent (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:10061:23)\n    at Parser.parseStatement (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9932:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:10508:25)\n    at Parser.parseBlockBody (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:10495:10)\n    at Parser.parseBlock (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:10479:10)\n    at Parser.parseFunctionBody (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9523:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9493:10)\n    at Parser.parseMethod (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9447:10)\n    at Parser.parseObjectMethod (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9363:19)\n    at Parser.parseObjPropValue (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9405:23)\n    at Parser.parseObjectMember (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9329:10)\n    at Parser.parseObj (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9253:25)\n    at Parser.parseExprAtom (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8883:28)\n    at Parser.parseExprSubscripts (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8507:23)\n    at Parser.parseMaybeUnary (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8487:21)\n    at Parser.parseExprOps (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8353:23)\n    at Parser.parseMaybeConditional (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8326:23)\n    at Parser.parseMaybeAssign (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8273:21)\n    at Parser.parseObjectProperty (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9380:101)\n    at Parser.parseObjPropValue (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9405:101)\n    at Parser.parseObjectMember (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9329:10)\n    at Parser.parseObj (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9253:25)\n    at Parser.parseExprAtom (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8883:28)\n    at Parser.parseExprSubscripts (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8507:23)\n    at Parser.parseMaybeUnary (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8487:21)");
 
 /***/ }),
 
@@ -3776,6 +3664,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3809,6 +3723,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       car: {
         id: "",
         name: "",
+        type: "",
         sits: "",
         fuel: "",
         price: "",
@@ -3820,6 +3735,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         car_photo_back: "",
         car_photo_front: ""
       },
+      types: {
+        cartypes: ["Седан", "Внедорожник", "Минивэн", "Хэтчбэк"],
+        fueltypes: ["Газ", "Дизель", "Бензин"]
+      },
       postphoto: {
         id: "",
         photo: ""
@@ -3827,6 +3746,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       editMode: false,
       editCar: false,
       editRouts: false,
+      selected: {
+        child: "",
+        fuel: "",
+        type: ""
+      },
       imageSelected: null
     };
   },
@@ -3957,6 +3881,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 2:
+                if (this.car.child == 1) this.selected.child = "Есть";else this.selected.child = "Нет";
+                console.log(this.types.cartypes);
+                console.log(this.types.cartypes.indexOf("Минивэн"));
+
+              case 5:
               case "end":
                 return _context4.stop();
             }
@@ -4089,36 +4018,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return updateDriver;
     }(),
-    updateCarPhotosBack: function () {
-      var _updateCarPhotosBack = _asyncToGenerator(
+    updateCar: function () {
+      var _updateCar = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
-        var carphotos, postphoto;
+        var _this7 = this;
+
+        var car;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
-                carphotos = this.carphotos;
-                postphoto = this.postphoto;
-                postphoto.photo = carphotos.car_photo_back;
-                postphoto.id = this.car.id;
-                _context8.next = 6;
-                return fetch("/api/carphoto/back", {
+                car = this.car;
+                if (this.selected.child == "Есть") car.child = 1;else car.child = 0;
+                _context8.next = 4;
+                return fetch("/api/car/", {
                   method: "put",
-                  body: JSON.stringify(postphoto),
+                  body: JSON.stringify(car),
                   headers: {
                     "Content-Type": "application/json"
                   }
                 }).then(function (res) {
                   return res.json();
                 }).then(function (data) {
-                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  alert("".concat(_this7.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
+
+                  _this7.toggleEditCar();
+
                   window.location.href = "/home/driver/" + driver.id;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
 
-              case 6:
+              case 4:
               case "end":
                 return _context8.stop();
             }
@@ -4126,14 +4058,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee8, this);
       }));
 
-      function updateCarPhotosBack() {
-        return _updateCarPhotosBack.apply(this, arguments);
+      function updateCar() {
+        return _updateCar.apply(this, arguments);
       }
 
-      return updateCarPhotosBack;
+      return updateCar;
     }(),
-    updateCarPhotosSide: function () {
-      var _updateCarPhotosSide = _asyncToGenerator(
+    updateCarPhotosBack: function () {
+      var _updateCarPhotosBack = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
         var carphotos, postphoto;
@@ -4143,10 +4075,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 carphotos = this.carphotos;
                 postphoto = this.postphoto;
-                postphoto.photo = carphotos.car_photo_side;
+                postphoto.photo = carphotos.car_photo_back;
                 postphoto.id = this.car.id;
                 _context9.next = 6;
-                return fetch("/api/carphoto/side", {
+                return fetch("/api/carphoto/back", {
                   method: "put",
                   body: JSON.stringify(postphoto),
                   headers: {
@@ -4169,14 +4101,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee9, this);
       }));
 
-      function updateCarPhotosSide() {
-        return _updateCarPhotosSide.apply(this, arguments);
+      function updateCarPhotosBack() {
+        return _updateCarPhotosBack.apply(this, arguments);
       }
 
-      return updateCarPhotosSide;
+      return updateCarPhotosBack;
     }(),
-    updateCarPhotosFront: function () {
-      var _updateCarPhotosFront = _asyncToGenerator(
+    updateCarPhotosSide: function () {
+      var _updateCarPhotosSide = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
         var carphotos, postphoto;
@@ -4186,10 +4118,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 carphotos = this.carphotos;
                 postphoto = this.postphoto;
-                postphoto.photo = carphotos.car_photo_front;
+                postphoto.photo = carphotos.car_photo_side;
                 postphoto.id = this.car.id;
                 _context10.next = 6;
-                return fetch("/api/carphoto/front", {
+                return fetch("/api/carphoto/side", {
                   method: "put",
                   body: JSON.stringify(postphoto),
                   headers: {
@@ -4210,6 +4142,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee10, this);
+      }));
+
+      function updateCarPhotosSide() {
+        return _updateCarPhotosSide.apply(this, arguments);
+      }
+
+      return updateCarPhotosSide;
+    }(),
+    updateCarPhotosFront: function () {
+      var _updateCarPhotosFront = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
+        var carphotos, postphoto;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                carphotos = this.carphotos;
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_front;
+                postphoto.id = this.car.id;
+                _context11.next = 6;
+                return fetch("/api/carphoto/front", {
+                  method: "put",
+                  body: JSON.stringify(postphoto),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 6:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11, this);
       }));
 
       function updateCarPhotosFront() {
@@ -4234,44 +4209,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.imageSelected = e.target.files[0];
     },
     imageDriverChanged: function imageDriverChanged(e) {
-      var _this7 = this;
-
-      var fileReader = new FileReader();
-      fileReader.readAsDataURL(e.target.files[0]);
-
-      fileReader.onload = function (e) {
-        _this7.driver.photo = e.target.result;
-      };
-    },
-    imageCarBackChanged: function imageCarBackChanged(e) {
       var _this8 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this8.carphotos.car_photo_back = e.target.result;
+        _this8.driver.photo = e.target.result;
       };
     },
-    imageCarSideChanged: function imageCarSideChanged(e) {
+    imageCarBackChanged: function imageCarBackChanged(e) {
       var _this9 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this9.carphotos.car_photo_side = e.target.result;
+        _this9.carphotos.car_photo_back = e.target.result;
       };
     },
-    imageCarFrontChanged: function imageCarFrontChanged(e) {
+    imageCarSideChanged: function imageCarSideChanged(e) {
       var _this10 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this10.carphotos.car_photo_front = e.target.result;
+        _this10.carphotos.car_photo_side = e.target.result;
       };
+    },
+    imageCarFrontChanged: function imageCarFrontChanged(e) {
+      var _this11 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this11.carphotos.car_photo_front = e.target.result;
+      };
+    }
+  },
+  computed: {
+    typesFuel: function typesFuel() {
+      var fuel = this.car.fuel;
+      return this.types.fueltypes.filter(function (item) {
+        return item != fuel;
+      });
+    },
+    typesModel: function typesModel() {
+      var model = this.car.type;
+      return this.types.cartypes.filter(function (item) {
+        return item != model;
+      });
     }
   }
 });
@@ -42111,74 +42100,78 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "review" }, [
-    _c("div", { staticClass: "d-flex review_data" }, [
-      _c("div", [
-        _c("div", { staticClass: "d-flex review_data_info" }, [
-          _c("div", { staticClass: "review_data_info-name" }, [
-            _vm._v(_vm._s(_vm.name))
+  return _c(
+    "div",
+    { staticClass: "review" },
+    [
+      _c("div", { staticClass: "d-flex review_data" }, [
+        _c("div", [
+          _c("div", { staticClass: "d-flex review_data_info" }, [
+            _c("div", { staticClass: "review_data_info-name" }, [
+              _vm._v(_vm._s(_vm.name))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "ml-3 review_data_info-date" }, [
+              _vm._v(_vm._s(_vm.date))
+            ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "ml-3 review_data_info-date" }, [
-            _vm._v(_vm._s(_vm.date))
-          ])
-        ]),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "review_data_stars" },
-          [
-            _vm._l(_vm.stars, function(item) {
-              return _c("div", { key: _vm.random(item) }, [
-                _c("img", {
-                  attrs: {
-                    src: __webpack_require__(/*! ../../../../public/images/StarGreen.svg */ "./public/images/StarGreen.svg"),
-                    alt: "GreenStars"
-                  }
-                })
-              ])
-            }),
-            _vm._v(" "),
-            _vm._l(5 - _vm.stars, function(item) {
-              return _c("div", { key: _vm.random(item) }, [
-                _c("img", {
-                  attrs: {
-                    src: __webpack_require__(/*! ../../../../public/images/StarGray.svg */ "./public/images/StarGray.svg"),
-                    alt: "GrayStars"
-                  }
-                })
-              ])
-            })
-          ],
-          2
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("textarea", {
-      directives: [
-        {
-          name: "model",
-          rawName: "v-model",
+          _c(
+            "div",
+            { staticClass: "review_data_stars" },
+            [
+              _vm._l(_vm.stars, function(item) {
+                return _c("div", { key: _vm.random(item) }, [
+                  _c("img", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../../public/images/StarGreen.svg */ "./public/images/StarGreen.svg"),
+                      alt: "GreenStars"
+                    }
+                  })
+                ])
+              }),
+              _vm._v(" "),
+              _vm._l(5 - _vm.stars, function(item) {
+                return _c("div", { key: _vm.random(item) }, [
+                  _c("img", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../../public/images/StarGray.svg */ "./public/images/StarGray.svg"),
+                      alt: "GrayStars"
+                    }
+                  })
+                ])
+              })
+            ],
+            2
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("textarea-autosize", {
+        ref: "myTextarea",
+        attrs: {
+          placeholder: "Текст отзыва",
+          "min-height": 30,
+          "max-height": 350
+        },
+        nativeOn: {
+          blur: function($event) {
+            return _vm.onBlurTextarea($event)
+          }
+        },
+        model: {
           value: _vm.description,
+          callback: function($$v) {
+            _vm.description = $$v
+          },
           expression: "description"
         }
-      ],
-      staticClass: "mt-4",
-      attrs: { addAutoResize: "", name: "", rows: "13" },
-      domProps: { value: _vm.description },
-      on: {
-        input: function($event) {
-          if ($event.target.composing) {
-            return
-          }
-          _vm.description = $event.target.value
-        }
-      }
-    }),
-    _vm._v(" "),
-    _vm._m(0)
-  ])
+      }),
+      _vm._v(" "),
+      _vm._m(0)
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -42725,7 +42718,7 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 !_vm.editMode
-                  ? _c("div", { staticClass: "w49 p-4 data-block" }, [
+                  ? _c("div", { staticClass: "w49 p-4 data-block mb30" }, [
                       _c("h2", [_vm._v("Водитель")]),
                       _vm._v(" "),
                       _c("span", { staticClass: "id-top" }, [
@@ -42790,7 +42783,7 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _vm.editMode
-                  ? _c("div", { staticClass: "w49 p-4 data-block" }, [
+                  ? _c("div", { staticClass: "w49 p-4 data-block mb30" }, [
                       _c("h2", [_vm._v("Водитель")]),
                       _vm._v(" "),
                       _c("span", { staticClass: "id-top" }, [
@@ -42916,6 +42909,8 @@ var render = function() {
                   : _vm._e(),
                 _vm._v(" "),
                 _c("section", { staticClass: "car_data" }, [
+                  _c("h4", [_vm._v("Данные машины")]),
+                  _vm._v(" "),
                   !this.editCar
                     ? _c("div", { staticClass: "car_data_noedit" }, [
                         _c("div", { staticClass: "car_data_item" }, [
@@ -42929,7 +42924,9 @@ var render = function() {
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [_vm._v("Тип:")]),
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Тип машины:")
+                          ]),
                           _vm._v(" "),
                           _c("span", { staticClass: "text" }, [
                             _vm._v(_vm._s(_vm.car.type))
@@ -43009,18 +43006,88 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.car.name,
+                                expression: "car.name"
+                              }
+                            ],
+                            staticClass: "main_input",
                             attrs: { type: "text" },
-                            domProps: { value: this.car.name }
+                            domProps: { value: _vm.car.name },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.car, "name", $event.target.value)
+                              }
+                            }
                           })
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [_vm._v("Тип:")]),
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Тип машины:")
+                          ]),
                           _vm._v(" "),
-                          _c("input", {
-                            attrs: { type: "text" },
-                            domProps: { value: this.car.type }
-                          })
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.car.type,
+                                  expression: "car.type"
+                                }
+                              ],
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.car,
+                                    "type",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  attrs: { selected: "" },
+                                  domProps: { value: _vm.car.type }
+                                },
+                                [_vm._v(_vm._s(_vm.car.type))]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.typesModel, function(option) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: _vm.random(option),
+                                    domProps: { value: option }
+                                  },
+                                  [_vm._v(_vm._s(option))]
+                                )
+                              })
+                            ],
+                            2
+                          )
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "car_data_item" }, [
@@ -43029,8 +43096,25 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.car.sits,
+                                expression: "car.sits"
+                              }
+                            ],
+                            staticClass: "main_input w50",
                             attrs: { type: "text" },
-                            domProps: { value: this.car.sits }
+                            domProps: { value: _vm.car.sits },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.car, "sits", $event.target.value)
+                              }
+                            }
                           })
                         ]),
                         _vm._v(" "),
@@ -43039,10 +43123,61 @@ var render = function() {
                             _vm._v("Топливо:")
                           ]),
                           _vm._v(" "),
-                          _c("input", {
-                            attrs: { type: "text" },
-                            domProps: { value: this.car.fuel }
-                          })
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.car.fuel,
+                                  expression: "car.fuel"
+                                }
+                              ],
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.car,
+                                    "fuel",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _c(
+                                "option",
+                                {
+                                  attrs: { selected: "" },
+                                  domProps: { value: _vm.car.fuel }
+                                },
+                                [_vm._v(_vm._s(_vm.car.fuel))]
+                              ),
+                              _vm._v(" "),
+                              _vm._l(_vm.typesFuel, function(option) {
+                                return _c(
+                                  "option",
+                                  {
+                                    key: _vm.random(option),
+                                    domProps: { value: option }
+                                  },
+                                  [_vm._v(_vm._s(option))]
+                                )
+                              })
+                            ],
+                            2
+                          )
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "car_data_item" }, [
@@ -43051,17 +43186,116 @@ var render = function() {
                           ]),
                           _vm._v(" "),
                           _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.car.price,
+                                expression: "car.price"
+                              }
+                            ],
+                            staticClass: "main_input w50",
                             attrs: { type: "text" },
-                            domProps: { value: this.car.price }
+                            domProps: { value: _vm.car.price },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.car, "price", $event.target.value)
+                              }
+                            }
                           })
                         ]),
                         _vm._v(" "),
-                        _vm._m(0),
+                        _c("div", { staticClass: "car_data_item" }, [
+                          _c("span", { staticClass: "data" }, [
+                            _vm._v("Детское кресло:")
+                          ]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.selected.child,
+                                  expression: "selected.child"
+                                }
+                              ],
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.selected,
+                                    "child",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            [
+                              _vm.car.child
+                                ? _c(
+                                    "option",
+                                    { attrs: { selected: "", value: "Есть" } },
+                                    [_vm._v("Есть")]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              _vm.car.child
+                                ? _c("option", { attrs: { value: "Нет" } }, [
+                                    _vm._v("Нет")
+                                  ])
+                                : _vm._e(),
+                              _vm._v(" "),
+                              !_vm.car.child
+                                ? _c(
+                                    "option",
+                                    { attrs: { selected: "", value: "Нет" } },
+                                    [_vm._v("Нет")]
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              !_vm.car.child
+                                ? _c("option", { attrs: { value: "Есть" } }, [
+                                    _vm._v("Есть")
+                                  ])
+                                : _vm._e()
+                            ]
+                          )
+                        ]),
                         _vm._v(" "),
                         _c(
                           "button",
                           {
-                            staticClass: "btn btn-outline-dark",
+                            staticClass: "btn btn-outline-primary btn_edit",
+                            attrs: { type: "button" },
+                            on: {
+                              click: function($event) {
+                                $event.preventDefault()
+                                return _vm.updateCar($event)
+                              }
+                            }
+                          },
+                          [_vm._v("Сохранить")]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "btn btn-outline-dark btn_edit",
                             attrs: { type: "button" },
                             on: {
                               click: function($event) {
@@ -43070,7 +43304,7 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Редактировать")]
+                          [_vm._v("Отмена")]
                         )
                       ])
                     : _vm._e()
@@ -43200,7 +43434,7 @@ var render = function() {
                           "d-flex justify-content-center flex-wrap w-100"
                       },
                       [
-                        _vm._m(1),
+                        _vm._m(0),
                         _vm._v(" "),
                         _c("RouteItem", {
                           attrs: { name: "Новосибирск-Барнаул" }
@@ -43272,14 +43506,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "car_data_item" }, [
-      _c("span", { staticClass: "data" }, [_vm._v("Дети:")])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -57627,15 +57853,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************!*\
   !*** ./resources/js/components/pages/Driver.vue ***!
   \**************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Driver_vue_vue_type_template_id_901d2184_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Driver.vue?vue&type=template&id=901d2184&scoped=true& */ "./resources/js/components/pages/Driver.vue?vue&type=template&id=901d2184&scoped=true&");
 /* harmony import */ var _Driver_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Driver.vue?vue&type=script&lang=js& */ "./resources/js/components/pages/Driver.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Driver_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Driver_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -57665,7 +57890,7 @@ component.options.__file = "resources/js/components/pages/Driver.vue"
 /*!***************************************************************************!*\
   !*** ./resources/js/components/pages/Driver.vue?vue&type=script&lang=js& ***!
   \***************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

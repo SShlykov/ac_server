@@ -2736,8 +2736,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2747,7 +2753,104 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "AddTour"
+  name: "AddTour",
+  props: {
+    driver_id: {
+      required: false
+    }
+  },
+  data: function data() {
+    return {
+      review: {
+        driver_id: "",
+        author: "",
+        text: "",
+        rating: ""
+      }
+    };
+  },
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              if (this.driver_id) {
+                this.review.driver_id = this.driver_id;
+                this.review.author = "some name";
+                this.review.rating = "1", this.review.text = "text";
+              }
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
+  methods: {
+    add_item: function () {
+      var _add_item = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this = this;
+
+        var review;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                review = this.review;
+
+                if (!this.driver_id) {
+                  _context2.next = 5;
+                  break;
+                }
+
+                console.log(this.review);
+                _context2.next = 5;
+                return fetch("/api/review/", {
+                  method: "post",
+                  body: JSON.stringify(review),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("".concat(_this.driver.name, " \u0443\u0434\u0430\u043B\u0435\u043D"));
+                  window.location.href = "/home/driver/" + _this.driver_id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 5:
+                window.location.href = "/home/driver/" + this.driver_id;
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function add_item() {
+        return _add_item.apply(this, arguments);
+      }
+
+      return add_item;
+    }()
+  }
 });
 
 /***/ }),
@@ -3108,9 +3211,290 @@ __webpack_require__.r(__webpack_exports__);
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/Review.vue?vue&type=script&lang=js& ***!
   \************************************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\OpenServer\\OSPanel\\localhost\\server\\resources\\js\\components\\custom\\Review.vue: Can not use keyword 'await' outside an async function (83:6)\n\n\u001b[0m \u001b[90m 81 | \u001b[39m        review_delete() {}\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 82 | \u001b[39m        review_update() {\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 83 | \u001b[39m      await fetch(\u001b[32m`/api/driver/`\u001b[39m\u001b[33m,\u001b[39m {\u001b[0m\n\u001b[0m \u001b[90m    | \u001b[39m      \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 84 | \u001b[39m        method\u001b[33m:\u001b[39m \u001b[32m\"put\"\u001b[39m\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 85 | \u001b[39m        body\u001b[33m:\u001b[39m \u001b[33mJSON\u001b[39m\u001b[33m.\u001b[39mstringify(driver)\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 86 | \u001b[39m        headers\u001b[33m:\u001b[39m {\u001b[0m\n    at Parser.raise (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:6400:17)\n    at Parser.checkReservedWord (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9656:14)\n    at Parser.parseIdentifierName (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9628:12)\n    at Parser.parseIdentifier (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9598:23)\n    at Parser.parseExprAtom (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8800:27)\n    at Parser.parseExprSubscripts (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8507:23)\n    at Parser.parseMaybeUnary (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8487:21)\n    at Parser.parseExprOps (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8353:23)\n    at Parser.parseMaybeConditional (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8326:23)\n    at Parser.parseMaybeAssign (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8273:21)\n    at Parser.parseExpression (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8221:23)\n    at Parser.parseStatementContent (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:10061:23)\n    at Parser.parseStatement (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9932:17)\n    at Parser.parseBlockOrModuleBlockBody (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:10508:25)\n    at Parser.parseBlockBody (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:10495:10)\n    at Parser.parseBlock (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:10479:10)\n    at Parser.parseFunctionBody (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9523:24)\n    at Parser.parseFunctionBodyAndFinish (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9493:10)\n    at Parser.parseMethod (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9447:10)\n    at Parser.parseObjectMethod (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9363:19)\n    at Parser.parseObjPropValue (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9405:23)\n    at Parser.parseObjectMember (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9329:10)\n    at Parser.parseObj (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9253:25)\n    at Parser.parseExprAtom (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8883:28)\n    at Parser.parseExprSubscripts (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8507:23)\n    at Parser.parseMaybeUnary (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8487:21)\n    at Parser.parseExprOps (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8353:23)\n    at Parser.parseMaybeConditional (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8326:23)\n    at Parser.parseMaybeAssign (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8273:21)\n    at Parser.parseObjectProperty (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9380:101)\n    at Parser.parseObjPropValue (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9405:101)\n    at Parser.parseObjectMember (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9329:10)\n    at Parser.parseObj (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:9253:25)\n    at Parser.parseExprAtom (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8883:28)\n    at Parser.parseExprSubscripts (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8507:23)\n    at Parser.parseMaybeUnary (C:\\OpenServer\\OSPanel\\localhost\\server\\node_modules\\@babel\\parser\\lib\\index.js:8487:21)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue_textarea_autosize__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-textarea-autosize */ "./node_modules/vue-textarea-autosize/dist/vue-textarea-autosize.esm.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IMPORTED_MODULE_2__["default"]);
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "Review",
+  props: {
+    name: {
+      required: true,
+      type: String
+    },
+    date: {
+      required: true,
+      type: String
+    },
+    stars: {
+      required: true
+    },
+    description: {
+      required: true
+    },
+    id: {
+      required: true
+    },
+    driver_id: {
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      work: true,
+      item: {
+        id: "",
+        author: "",
+        text: "",
+        rating: "",
+        driver_id: ""
+      },
+      editMode: false
+    };
+  },
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return this.getReview();
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
+  methods: {
+    getReview: function () {
+      var _getReview = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.item.id = this.id;
+                this.item.author = this.name;
+                this.item.text = this.description;
+                this.item.rating = this.stars;
+                this.item.driver_id = this.driver_id;
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function getReview() {
+        return _getReview.apply(this, arguments);
+      }
+
+      return getReview;
+    }(),
+    update_review: function () {
+      var _update_review = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (this.item.rating < 1 || this.item.rating > 5) {
+                  alert("Рейтинг должен быть в пределах от 1 до 5");
+                }
+
+                if (!(confirm("Обновить?") && this.item.rating > 0 && this.item.rating < 6)) {
+                  _context3.next = 4;
+                  break;
+                }
+
+                _context3.next = 4;
+                return fetch("/api/review/", {
+                  method: "put",
+                  body: JSON.stringify(this.item),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u041E\u0442\u0437\u044B\u0432 \u0431\u044B\u043B \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D");
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 4:
+                this.toggleEdit();
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function update_review() {
+        return _update_review.apply(this, arguments);
+      }
+
+      return update_review;
+    }(),
+    delete_review: function () {
+      var _delete_review = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                if (!confirm("Вы точно хотите удалить отзыв?")) {
+                  _context4.next = 3;
+                  break;
+                }
+
+                _context4.next = 3;
+                return fetch("/api/review/".concat(this.id), {
+                  method: "delete"
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u041E\u0442\u0437\u044B\u0432 \u0443\u0434\u0430\u043B\u0435\u043D");
+                  _this.work = false;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function delete_review() {
+        return _delete_review.apply(this, arguments);
+      }
+
+      return delete_review;
+    }(),
+    random: function random(item) {
+      return Math.floor(Math.random() * Math.pow(10, 20)) + Math.random();
+    },
+    toggleEdit: function toggleEdit() {
+      this.editMode = !this.editMode;
+    }
+  },
+  components: {}
+});
 
 /***/ }),
 
@@ -3464,7 +3848,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _common_goback__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../common/goback */ "./resources/js/components/common/goback.vue");
 /* harmony import */ var _custom_Review__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../custom/Review */ "./resources/js/components/custom/Review.vue");
 /* harmony import */ var _custom_RouteItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../custom/RouteItem */ "./resources/js/components/custom/RouteItem.vue");
+/* harmony import */ var _custom_AddTour__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../custom/AddTour */ "./resources/js/components/custom/AddTour.vue");
 
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -3690,6 +4077,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+
 
 
 
@@ -3704,7 +4094,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     CarBlock: _custom_CarBlock__WEBPACK_IMPORTED_MODULE_2__["default"],
     Spinner: _common_spinner__WEBPACK_IMPORTED_MODULE_1__["default"],
     Review: _custom_Review__WEBPACK_IMPORTED_MODULE_5__["default"],
-    RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_6__["default"]
+    RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_6__["default"],
+    AddTour: _custom_AddTour__WEBPACK_IMPORTED_MODULE_7__["default"]
   },
   props: ["id"],
   data: function data() {
@@ -3758,6 +4149,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _created = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      var i;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -3778,9 +4170,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getReview();
 
             case 8:
+              console.log(_typeof(this.reviews));
+
+              for (i = 0; i < this.reviews.lenght; i++) {
+                console.log(this.reviewsp[i]);
+              }
+
               this.loading.data = true;
 
-            case 9:
+            case 11:
             case "end":
               return _context.stop();
           }
@@ -3882,10 +4280,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 if (this.car.child == 1) this.selected.child = "Есть";else this.selected.child = "Нет";
-                console.log(this.types.cartypes);
                 console.log(this.types.cartypes.indexOf("Минивэн"));
 
-              case 5:
+              case 4:
               case "end":
                 return _context4.stop();
             }
@@ -41748,18 +42145,23 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "w-100 d-flex justify-content-center" }, [
+    _c(
+      "button",
+      {
+        staticClass: "button_add_item",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.add_item($event)
+          }
+        }
+      },
+      [_vm._v("+")]
+    )
+  ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tour_add tour_card" }, [
-      _c("figure", [_c("div", [_vm._v("+")])])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -42100,106 +42502,277 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "review" },
-    [
-      _c("div", { staticClass: "d-flex review_data" }, [
-        _c("div", [
-          _c("div", { staticClass: "d-flex review_data_info" }, [
-            _c("div", { staticClass: "review_data_info-name" }, [
-              _vm._v(_vm._s(_vm.name))
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "ml-3 review_data_info-date" }, [
-              _vm._v(_vm._s(_vm.date))
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "review_data_stars" },
-            [
-              _vm._l(_vm.stars, function(item) {
-                return _c("div", { key: _vm.random(item) }, [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(/*! ../../../../public/images/StarGreen.svg */ "./public/images/StarGreen.svg"),
-                      alt: "GreenStars"
-                    }
-                  })
+  return _vm.work
+    ? _c("div", { staticClass: "mb-5 w-100 d-flex justify-content-center" }, [
+        !_vm.editMode
+          ? _c(
+              "div",
+              { staticClass: "review" },
+              [
+                _c("div", { staticClass: "d-flex review_data" }, [
+                  _c("div", [
+                    _c("div", { staticClass: "d-flex review_data_info" }, [
+                      _c("div", { staticClass: "review_data_info-name" }, [
+                        _vm._v(_vm._s(_vm.item.author))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "ml-3 review_data_info-date" }, [
+                        _vm._v(_vm._s(_vm.date))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "review_data_stars" },
+                      [
+                        _vm._l(_vm.stars, function(item) {
+                          return _c("div", { key: _vm.random(item) }, [
+                            _c("img", {
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../../public/images/StarGreen.svg */ "./public/images/StarGreen.svg"),
+                                alt: "GreenStars"
+                              }
+                            })
+                          ])
+                        }),
+                        _vm._v(" "),
+                        _vm._l(5 - _vm.stars, function(item) {
+                          return _c("div", { key: _vm.random(item) }, [
+                            _c("img", {
+                              attrs: {
+                                src: __webpack_require__(/*! ../../../../public/images/StarGray.svg */ "./public/images/StarGray.svg"),
+                                alt: "GrayStars"
+                              }
+                            })
+                          ])
+                        })
+                      ],
+                      2
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("textarea-autosize", {
+                  ref: "myTextarea",
+                  attrs: {
+                    readonly: "",
+                    placeholder: "Текст отзыва",
+                    "min-height": 30,
+                    "max-height": 350
+                  },
+                  model: {
+                    value: _vm.item.text,
+                    callback: function($$v) {
+                      _vm.$set(_vm.item, "text", $$v)
+                    },
+                    expression: "item.text"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "category_card_functions" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "category_card_functions-circle",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.toggleEdit($event)
+                        }
+                      }
+                    },
+                    [_vm._m(0)]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "category_card_functions-circle",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.delete_review($event)
+                        }
+                      }
+                    },
+                    [_vm._m(1)]
+                  )
                 ])
-              }),
-              _vm._v(" "),
-              _vm._l(5 - _vm.stars, function(item) {
-                return _c("div", { key: _vm.random(item) }, [
-                  _c("img", {
-                    attrs: {
-                      src: __webpack_require__(/*! ../../../../public/images/StarGray.svg */ "./public/images/StarGray.svg"),
-                      alt: "GrayStars"
-                    }
-                  })
+              ],
+              1
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.editMode
+          ? _c(
+              "div",
+              { staticClass: "review" },
+              [
+                _c("div", { staticClass: "d-flex review_data" }, [
+                  _c("div", [
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "d-flex review_data_info d-flex align-items-center mb-2"
+                      },
+                      [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.item.author,
+                              expression: "item.author"
+                            }
+                          ],
+                          staticClass: "review_data_info-name main_input",
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.item.author },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.item, "author", $event.target.value)
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "ml-3 review_data_info-date" },
+                          [_vm._v(_vm._s(_vm.date))]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass:
+                          "review_data_stars d-flex align-items-center"
+                      },
+                      [
+                        _c("span", [_vm._v("Рейтинг:")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.item.rating,
+                              expression: "item.rating"
+                            }
+                          ],
+                          staticClass:
+                            "ml-3 main_input main_input_40 main_input_center",
+                          domProps: { value: _vm.item.rating },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.item, "rating", $event.target.value)
+                            }
+                          }
+                        })
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("textarea-autosize", {
+                  ref: "myTextarea",
+                  attrs: {
+                    placeholder: "Текст отзыва",
+                    "min-height": 30,
+                    "max-height": 350
+                  },
+                  model: {
+                    value: _vm.item.text,
+                    callback: function($$v) {
+                      _vm.$set(_vm.item, "text", $$v)
+                    },
+                    expression: "item.text"
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "category_card_functions" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "category_card_functions-circle",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.update_review($event)
+                        }
+                      }
+                    },
+                    [_vm._m(2)]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "category_card_functions-circle",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.toggleEdit($event)
+                        }
+                      }
+                    },
+                    [_vm._m(3)]
+                  )
                 ])
-              })
-            ],
-            2
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _c("textarea-autosize", {
-        ref: "myTextarea",
-        attrs: {
-          placeholder: "Текст отзыва",
-          "min-height": 30,
-          "max-height": 350
-        },
-        nativeOn: {
-          blur: function($event) {
-            return _vm.onBlurTextarea($event)
-          }
-        },
-        model: {
-          value: _vm.description,
-          callback: function($$v) {
-            _vm.description = $$v
-          },
-          expression: "description"
-        }
-      }),
-      _vm._v(" "),
-      _vm._m(0)
-    ],
-    1
-  )
+              ],
+              1
+            )
+          : _vm._e()
+      ])
+    : _vm._e()
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "category_card_functions" }, [
-      _c("div", { staticClass: "category_card_functions-circle" }, [
-        _c("figure", [
-          _c("img", {
-            attrs: {
-              src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"),
-              alt: ""
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "category_card_functions-circle" }, [
-        _c("figure", [
-          _c("img", {
-            attrs: {
-              src: __webpack_require__(/*! ../../../../public/images/trash.svg */ "./public/images/trash.svg"),
-              alt: ""
-            }
-          })
-        ])
-      ])
+    return _c("figure", [
+      _c("img", {
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/pen.svg */ "./public/images/pen.svg"), alt: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", [
+      _c("img", {
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/trash.svg */ "./public/images/trash.svg"), alt: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", [
+      _c("img", {
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"), alt: "" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("figure", [
+      _c("img", {
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/close.svg */ "./public/images/close.svg"), alt: "" }
+      })
     ])
   }
 ]
@@ -43482,6 +44055,8 @@ var render = function() {
                   [
                     _c("h3", { staticClass: "mb-4" }, [_vm._v("Отзывы")]),
                     _vm._v(" "),
+                    _c("AddTour", { attrs: { driver_id: _vm.driver.id } }),
+                    _vm._v(" "),
                     _vm._l(_vm.reviews, function(item) {
                       return _c("Review", {
                         key: _vm.random(item),
@@ -43490,7 +44065,8 @@ var render = function() {
                           date: item.updated_at,
                           stars: item.rating,
                           description: item.text,
-                          id: item.id
+                          id: item.id,
+                          driver_id: _vm.driver.id
                         }
                       })
                     })
@@ -43839,6 +44415,277 @@ function normalizeComponent (
     options: options
   }
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-textarea-autosize/dist/vue-textarea-autosize.esm.js":
+/*!******************************************************************************!*\
+  !*** ./node_modules/vue-textarea-autosize/dist/vue-textarea-autosize.esm.js ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/*!
+ * vue-textarea-autosize v1.1.1 
+ * (c) 2019 Saymon
+ * Released under the MIT License.
+ */
+//
+//
+//
+//
+//
+//
+//
+var script = {
+  name: 'TextareaAutosize',
+  props: {
+    value: {
+      type: [String, Number],
+      default: ''
+    },
+    autosize: {
+      type: Boolean,
+      default: true
+    },
+    minHeight: {
+      type: [Number],
+      'default': null
+    },
+    maxHeight: {
+      type: [Number],
+      'default': null
+    },
+
+    /*
+     * Force !important for style properties
+     */
+    important: {
+      type: [Boolean, Array],
+      default: false
+    }
+  },
+  data: function data() {
+    return {
+      // data property for v-model binding with real textarea tag
+      val: null,
+      // works when content height becomes more then value of the maxHeight property
+      maxHeightScroll: false,
+      height: 'auto'
+    };
+  },
+  computed: {
+    computedStyles: function computedStyles() {
+      if (!this.autosize) return {};
+      return {
+        resize: !this.isResizeImportant ? 'none' : 'none !important',
+        height: this.height,
+        overflow: this.maxHeightScroll ? 'auto' : !this.isOverflowImportant ? 'hidden' : 'hidden !important'
+      };
+    },
+    isResizeImportant: function isResizeImportant() {
+      var imp = this.important;
+      return imp === true || Array.isArray(imp) && imp.includes('resize');
+    },
+    isOverflowImportant: function isOverflowImportant() {
+      var imp = this.important;
+      return imp === true || Array.isArray(imp) && imp.includes('overflow');
+    },
+    isHeightImportant: function isHeightImportant() {
+      var imp = this.important;
+      return imp === true || Array.isArray(imp) && imp.includes('height');
+    }
+  },
+  watch: {
+    value: function value(val) {
+      this.val = val;
+    },
+    val: function val(_val) {
+      this.$nextTick(this.resize);
+      this.$emit('input', _val);
+    },
+    minHeight: function minHeight() {
+      this.$nextTick(this.resize);
+    },
+    maxHeight: function maxHeight() {
+      this.$nextTick(this.resize);
+    },
+    autosize: function autosize(val) {
+      if (val) this.resize();
+    }
+  },
+  methods: {
+    resize: function resize() {
+      var _this = this;
+
+      var important = this.isHeightImportant ? 'important' : '';
+      this.height = "auto".concat(important ? ' !important' : '');
+      this.$nextTick(function () {
+        var contentHeight = _this.$el.scrollHeight + 1;
+
+        if (_this.minHeight) {
+          contentHeight = contentHeight < _this.minHeight ? _this.minHeight : contentHeight;
+        }
+
+        if (_this.maxHeight) {
+          if (contentHeight > _this.maxHeight) {
+            contentHeight = _this.maxHeight;
+            _this.maxHeightScroll = true;
+          } else {
+            _this.maxHeightScroll = false;
+          }
+        }
+
+        var heightVal = contentHeight + 'px';
+        _this.height = "".concat(heightVal).concat(important ? ' !important' : '');
+      });
+      return this;
+    }
+  },
+  created: function created() {
+    this.val = this.value;
+  },
+  mounted: function mounted() {
+    this.resize();
+  }
+};
+
+function normalizeComponent(template, style, script, scopeId, isFunctionalTemplate, moduleIdentifier
+/* server only */
+, shadowMode, createInjector, createInjectorSSR, createInjectorShadow) {
+  if (typeof shadowMode !== 'boolean') {
+    createInjectorSSR = createInjector;
+    createInjector = shadowMode;
+    shadowMode = false;
+  } // Vue.extend constructor export interop.
+
+
+  var options = typeof script === 'function' ? script.options : script; // render functions
+
+  if (template && template.render) {
+    options.render = template.render;
+    options.staticRenderFns = template.staticRenderFns;
+    options._compiled = true; // functional template
+
+    if (isFunctionalTemplate) {
+      options.functional = true;
+    }
+  } // scopedId
+
+
+  if (scopeId) {
+    options._scopeId = scopeId;
+  }
+
+  var hook;
+
+  if (moduleIdentifier) {
+    // server build
+    hook = function hook(context) {
+      // 2.3 injection
+      context = context || // cached call
+      this.$vnode && this.$vnode.ssrContext || // stateful
+      this.parent && this.parent.$vnode && this.parent.$vnode.ssrContext; // functional
+      // 2.2 with runInNewContext: true
+
+      if (!context && typeof __VUE_SSR_CONTEXT__ !== 'undefined') {
+        context = __VUE_SSR_CONTEXT__;
+      } // inject component styles
+
+
+      if (style) {
+        style.call(this, createInjectorSSR(context));
+      } // register component module identifier for async chunk inference
+
+
+      if (context && context._registeredComponents) {
+        context._registeredComponents.add(moduleIdentifier);
+      }
+    }; // used by ssr in case component is cached and beforeCreate
+    // never gets called
+
+
+    options._ssrRegister = hook;
+  } else if (style) {
+    hook = shadowMode ? function () {
+      style.call(this, createInjectorShadow(this.$root.$options.shadowRoot));
+    } : function (context) {
+      style.call(this, createInjector(context));
+    };
+  }
+
+  if (hook) {
+    if (options.functional) {
+      // register for functional component in vue file
+      var originalRender = options.render;
+
+      options.render = function renderWithStyleInjection(h, context) {
+        hook.call(context);
+        return originalRender(h, context);
+      };
+    } else {
+      // inject component registration as beforeCreate hook
+      var existing = options.beforeCreate;
+      options.beforeCreate = existing ? [].concat(existing, hook) : [hook];
+    }
+  }
+
+  return script;
+}
+
+var normalizeComponent_1 = normalizeComponent;
+
+/* script */
+const __vue_script__ = script;
+
+/* template */
+var __vue_render__ = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('textarea',{directives:[{name:"model",rawName:"v-model",value:(_vm.val),expression:"val"}],style:(_vm.computedStyles),domProps:{"value":(_vm.val)},on:{"focus":_vm.resize,"input":function($event){if($event.target.composing){ return; }_vm.val=$event.target.value;}}})};
+var __vue_staticRenderFns__ = [];
+
+  /* style */
+  const __vue_inject_styles__ = undefined;
+  /* scoped */
+  const __vue_scope_id__ = undefined;
+  /* module identifier */
+  const __vue_module_identifier__ = undefined;
+  /* functional template */
+  const __vue_is_functional_template__ = false;
+  /* style inject */
+  
+  /* style inject SSR */
+  
+
+  
+  var TextareaAutosize = normalizeComponent_1(
+    { render: __vue_render__, staticRenderFns: __vue_staticRenderFns__ },
+    __vue_inject_styles__,
+    __vue_script__,
+    __vue_scope_id__,
+    __vue_is_functional_template__,
+    __vue_module_identifier__,
+    undefined,
+    undefined
+  );
+
+var version = '1.1.1';
+
+var install = function install(Vue) {
+  Vue.component('TextareaAutosize', TextareaAutosize);
+};
+
+var plugin = {
+  install: install,
+  version: version
+};
+
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(plugin);
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (plugin);
 
 
 /***/ }),
@@ -55916,6 +56763,17 @@ module.exports = "/images/arrow_up.svg?cb2ac4e3b184504fdf99d6b4f6f49abf";
 
 /***/ }),
 
+/***/ "./public/images/close.svg":
+/*!*********************************!*\
+  !*** ./public/images/close.svg ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/close.svg?8edc06cefb0e5b9788738a43dbf21cb5";
+
+/***/ }),
+
 /***/ "./public/images/eye.svg":
 /*!*******************************!*\
   !*** ./public/images/eye.svg ***!
@@ -55935,6 +56793,17 @@ module.exports = "/images/eye.svg?e6f02caba5bd3ec90a855f386823197d";
 /***/ (function(module, exports) {
 
 module.exports = "/images/icon-fire.svg?16593c883d9f52555cb78211ba58c171";
+
+/***/ }),
+
+/***/ "./public/images/pen.svg":
+/*!*******************************!*\
+  !*** ./public/images/pen.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/pen.svg?d1c5b2304eb119dd4834b92ba9b914d2";
 
 /***/ }),
 

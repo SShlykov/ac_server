@@ -203,6 +203,7 @@
         </div>
         <section class="d-flex align-items-center flex-column reviews">
           <h3 class="mb-4">Отзывы</h3>
+          <AddTour :driver_id="driver.id"></AddTour>
           <Review
             v-bind:key="random(item)"
             v-for="item in reviews"
@@ -211,6 +212,7 @@
             :stars="item.rating"
             :description="item.text"
             :id="item.id"
+            :driver_id="driver.id"
           ></Review>
         </section>
       </div>
@@ -225,6 +227,7 @@ import LoadingSpinner from "../common/LoadingSpinner/LoadingSpinner";
 import Goback from "../common/goback";
 import Review from "../custom/Review";
 import RouteItem from "../custom/RouteItem";
+import AddTour from "../custom/AddTour";
 export default {
   name: "Driver",
   components: {
@@ -233,7 +236,8 @@ export default {
     CarBlock,
     Spinner,
     Review,
-    RouteItem
+    RouteItem,
+    AddTour
   },
   props: ["id"],
 
@@ -289,6 +293,10 @@ export default {
     await this.getCar();
     await this.getCarPhotos();
     await this.getReview();
+    console.log(typeof this.reviews);
+    for (let i = 0; i < this.reviews.lenght; i++) {
+      console.log(this.reviewsp[i]);
+    }
     this.loading.data = true;
   },
   methods: {
@@ -312,7 +320,6 @@ export default {
 
       if (this.car.child == 1) this.selected.child = "Есть";
       else this.selected.child = "Нет";
-      console.log(this.types.cartypes);
       console.log(this.types.cartypes.indexOf("Минивэн"));
     },
     async getCarPhotos() {

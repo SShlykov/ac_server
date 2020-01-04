@@ -11,7 +11,7 @@
   max-width: 200px
 
 .main_input
-  border: 1px solid lighten(gray,30)
+  border: 1px solid lighten(gray, 30)
   border-radius: 5px
   min-height: 35px
   padding-left: 5px
@@ -20,6 +20,26 @@
   &_center
     padding: 0
     text-align: center
+  &:focus
+    outline: 1px solid lighten(blue, 10)
+  &_dropitems
+    border: 1px solid lighten(gray, 28)
+    padding: 7px
+    padding-left: 5px
+    width: 164px
+    background-color: white
+    &:hover
+      background-color: lighten(blue, 40)
+      color: black
+      cursor: pointer
+      border-radius: 2px
+  &_close
+    border: none
+    background-color: transparent
+    color: darken(blue, 30)
+    font-weight: 600
+  &_container
+    position: absolute
 
 .mw100
   min-width: 100px

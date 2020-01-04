@@ -2937,6 +2937,135 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/AutoInput.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/AutoInput.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "AutoInput",
+  props: {
+    items: {
+      require: true
+    },
+    returnData: {
+      require: true
+    }
+  },
+  data: function data() {
+    return {
+      showItems: [],
+      countShow: 5,
+      textInput: "",
+      magic_flag: false
+    };
+  },
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              this.updateShowItems();
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
+  methods: {
+    updateShowItems: function updateShowItems() {
+      this.showItems = [];
+
+      for (var i = 0; i < this.countShow; i++) {
+        if (this.items[i]) this.showItems.push(this.items[i]);
+      }
+    },
+    writeToInput: function writeToInput(item) {
+      this.textInput = item;
+      this.closeDropList();
+      this.returnData(item);
+    },
+    filterText: function filterText() {
+      if (this.textInput == "") this.updateShowItems();else {
+        this.showItems = [];
+        var count = 0;
+
+        for (var i = 0; i < this.items.length; i++) {
+          if (count == this.countShow) {
+            break;
+          }
+
+          if (this.items[i].toUpperCase().indexOf(this.textInput.toUpperCase()) != -1) {
+            this.showItems.push(this.items[i]);
+            count++;
+          }
+        }
+      }
+    },
+    random: function random(item) {
+      return Math.random();
+    },
+    closeDropList: function closeDropList() {
+      this.magic_flag = false;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/CarBlock.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/CarBlock.vue?vue&type=script&lang=js& ***!
@@ -3308,6 +3437,38 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4241,6 +4402,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _custom_Review__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../custom/Review */ "./resources/js/components/custom/Review.vue");
 /* harmony import */ var _custom_RouteItem__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../custom/RouteItem */ "./resources/js/components/custom/RouteItem.vue");
 /* harmony import */ var _custom_AddTour__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../custom/AddTour */ "./resources/js/components/custom/AddTour.vue");
+/* harmony import */ var _custom_AutoInput__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../custom/AutoInput */ "./resources/js/components/custom/AutoInput.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4482,6 +4644,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Driver",
   components: {
@@ -4491,13 +4654,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Spinner: _common_spinner__WEBPACK_IMPORTED_MODULE_1__["default"],
     Review: _custom_Review__WEBPACK_IMPORTED_MODULE_5__["default"],
     RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_6__["default"],
-    AddTour: _custom_AddTour__WEBPACK_IMPORTED_MODULE_7__["default"]
+    AddTour: _custom_AddTour__WEBPACK_IMPORTED_MODULE_7__["default"],
+    AutoInput: _custom_AutoInput__WEBPACK_IMPORTED_MODULE_8__["default"]
   },
   props: ["id"],
   data: function data() {
     return {
       reviews: [],
       routegroups: [],
+      nameRouteGroups: [],
       routeGroupName: "",
       loading: {
         data: false
@@ -4572,15 +4737,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getRouteGroups();
 
             case 10:
-              console.log(this.routegroups);
+              _context.next = 12;
+              return this.getRotesNames();
 
+            case 12:
               for (i = 0; i < this.reviews.lenght; i++) {
                 console.log(this.reviewsp[i]);
               }
 
               this.loading.data = true;
 
-            case 13:
+            case 14:
             case "end":
               return _context.stop();
           }
@@ -4767,22 +4934,61 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getRouteGroups;
     }(),
-    deleteDriver: function () {
-      var _deleteDriver = _asyncToGenerator(
+    getRotesNames: function () {
+      var _getRotesNames = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
-        var _this6 = this;
-
+        var cashRoutes;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
+                cashRoutes = '';
+                _context7.next = 3;
+                return fetch("/api/route_group/groups").then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  cashRoutes = res.data;
+                })["catch"](function (err) {
+                  return console.warn(err);
+                });
+
+              case 3:
+                this.nameRouteGroups = cashRoutes.map(function (x) {
+                  return x.name;
+                });
+                console.log(this.nameRouteGroups);
+
+              case 5:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, this);
+      }));
+
+      function getRotesNames() {
+        return _getRotesNames.apply(this, arguments);
+      }
+
+      return getRotesNames;
+    }(),
+    deleteDriver: function () {
+      var _deleteDriver = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var _this6 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
                 if (!confirm("Вы точно хотите удалить?")) {
-                  _context7.next = 3;
+                  _context8.next = 3;
                   break;
                 }
 
-                _context7.next = 3;
+                _context8.next = 3;
                 return fetch("/api/driver/".concat(this.driver.id), {
                   method: "delete"
                 }).then(function (res) {
@@ -4796,10 +5002,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
               case "end":
-                return _context7.stop();
+                return _context8.stop();
             }
           }
-        }, _callee7, this);
+        }, _callee8, this);
       }));
 
       function deleteDriver() {
@@ -4811,15 +5017,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     connectRG: function () {
       var _connectRG = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
         var _this7 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
           while (1) {
-            switch (_context8.prev = _context8.next) {
+            switch (_context9.prev = _context9.next) {
               case 0:
                 console.log(this.routeGroupName);
-                _context8.next = 3;
+                _context9.next = 3;
                 return fetch("/api/driver/rg/connect/" + this.id + "/" + this.routeGroupName, {
                   method: "post"
                 }).then(function (res) {
@@ -4834,10 +5040,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
               case "end":
-                return _context8.stop();
+                return _context9.stop();
             }
           }
-        }, _callee8, this);
+        }, _callee9, this);
       }));
 
       function connectRG() {
@@ -4849,16 +5055,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updateDriver: function () {
       var _updateDriver = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
         var _this8 = this;
 
         var driver;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
           while (1) {
-            switch (_context9.prev = _context9.next) {
+            switch (_context10.prev = _context10.next) {
               case 0:
                 driver = this.driver;
-                _context9.next = 3;
+                _context10.next = 3;
                 return fetch("/api/driver/", {
                   method: "put",
                   body: JSON.stringify(driver),
@@ -4876,10 +5082,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
               case "end":
-                return _context9.stop();
+                return _context10.stop();
             }
           }
-        }, _callee9, this);
+        }, _callee10, this);
       }));
 
       function updateDriver() {
@@ -4891,17 +5097,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updateCar: function () {
       var _updateCar = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
         var _this9 = this;
 
         var car;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
           while (1) {
-            switch (_context10.prev = _context10.next) {
+            switch (_context11.prev = _context11.next) {
               case 0:
                 car = this.car;
                 if (this.selected.child == "Есть") car.child = 1;else car.child = 0;
-                _context10.next = 4;
+                _context11.next = 4;
                 return fetch("/api/car/", {
                   method: "put",
                   body: JSON.stringify(car),
@@ -4922,10 +5128,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
               case "end":
-                return _context10.stop();
+                return _context11.stop();
             }
           }
-        }, _callee10, this);
+        }, _callee11, this);
       }));
 
       function updateCar() {
@@ -4937,49 +5143,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updateCarPhotosBack: function () {
       var _updateCarPhotosBack = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
-        var carphotos, postphoto;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
-          while (1) {
-            switch (_context11.prev = _context11.next) {
-              case 0:
-                carphotos = this.carphotos;
-                postphoto = this.postphoto;
-                postphoto.photo = carphotos.car_photo_back;
-                postphoto.id = this.car.id;
-                _context11.next = 6;
-                return fetch("/api/carphoto/back", {
-                  method: "put",
-                  body: JSON.stringify(postphoto),
-                  headers: {
-                    "Content-Type": "application/json"
-                  }
-                }).then(function (res) {
-                  return res.json();
-                }).then(function (data) {
-                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
-                  window.location.href = "/home/driver/" + driver.id;
-                })["catch"](function (err) {
-                  return console.log(err);
-                });
-
-              case 6:
-              case "end":
-                return _context11.stop();
-            }
-          }
-        }, _callee11, this);
-      }));
-
-      function updateCarPhotosBack() {
-        return _updateCarPhotosBack.apply(this, arguments);
-      }
-
-      return updateCarPhotosBack;
-    }(),
-    updateCarPhotosSide: function () {
-      var _updateCarPhotosSide = _asyncToGenerator(
-      /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
         var carphotos, postphoto;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
@@ -4988,10 +5151,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 carphotos = this.carphotos;
                 postphoto = this.postphoto;
-                postphoto.photo = carphotos.car_photo_side;
+                postphoto.photo = carphotos.car_photo_back;
                 postphoto.id = this.car.id;
                 _context12.next = 6;
-                return fetch("/api/carphoto/side", {
+                return fetch("/api/carphoto/back", {
                   method: "put",
                   body: JSON.stringify(postphoto),
                   headers: {
@@ -5014,14 +5177,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee12, this);
       }));
 
-      function updateCarPhotosSide() {
-        return _updateCarPhotosSide.apply(this, arguments);
+      function updateCarPhotosBack() {
+        return _updateCarPhotosBack.apply(this, arguments);
       }
 
-      return updateCarPhotosSide;
+      return updateCarPhotosBack;
     }(),
-    updateCarPhotosFront: function () {
-      var _updateCarPhotosFront = _asyncToGenerator(
+    updateCarPhotosSide: function () {
+      var _updateCarPhotosSide = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
         var carphotos, postphoto;
@@ -5031,10 +5194,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 carphotos = this.carphotos;
                 postphoto = this.postphoto;
-                postphoto.photo = carphotos.car_photo_front;
+                postphoto.photo = carphotos.car_photo_side;
                 postphoto.id = this.car.id;
                 _context13.next = 6;
-                return fetch("/api/carphoto/front", {
+                return fetch("/api/carphoto/side", {
                   method: "put",
                   body: JSON.stringify(postphoto),
                   headers: {
@@ -5057,12 +5220,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee13, this);
       }));
 
+      function updateCarPhotosSide() {
+        return _updateCarPhotosSide.apply(this, arguments);
+      }
+
+      return updateCarPhotosSide;
+    }(),
+    updateCarPhotosFront: function () {
+      var _updateCarPhotosFront = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee14() {
+        var carphotos, postphoto;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee14$(_context14) {
+          while (1) {
+            switch (_context14.prev = _context14.next) {
+              case 0:
+                carphotos = this.carphotos;
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_front;
+                postphoto.id = this.car.id;
+                _context14.next = 6;
+                return fetch("/api/carphoto/front", {
+                  method: "put",
+                  body: JSON.stringify(postphoto),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 6:
+              case "end":
+                return _context14.stop();
+            }
+          }
+        }, _callee14, this);
+      }));
+
       function updateCarPhotosFront() {
         return _updateCarPhotosFront.apply(this, arguments);
       }
 
       return updateCarPhotosFront;
     }(),
+    postRouteName: function postRouteName(item) {
+      this.routeGroupName = item;
+    },
     random: function random(item) {
       return Math.random();
     },
@@ -5516,6 +5725,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _custom_AutoInput_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../custom/AutoInput.vue */ "./resources/js/components/custom/AutoInput.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5533,9 +5743,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContentValue",
-  components: {},
+  components: {
+    AutoInput: _custom_AutoInput_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
   data: function data() {
     return {
       data: {
@@ -42810,6 +43026,96 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/AutoInput.vue?vue&type=template&id=7ec75de8&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/AutoInput.vue?vue&type=template&id=7ec75de8& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.textInput,
+          expression: "textInput"
+        }
+      ],
+      staticClass: "main_input",
+      attrs: { type: "text" },
+      domProps: { value: _vm.textInput },
+      on: {
+        focus: function($event) {
+          _vm.magic_flag = true
+        },
+        keyup: _vm.filterText,
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.textInput = $event.target.value
+        }
+      }
+    }),
+    _vm._v(" "),
+    _vm.magic_flag
+      ? _c(
+          "button",
+          {
+            staticClass: "main_input_close",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.closeDropList($event)
+              }
+            }
+          },
+          [_vm._v("\n        X\n    ")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.magic_flag
+      ? _c(
+          "div",
+          { staticClass: "main_input_container" },
+          _vm._l(_vm.showItems, function(item) {
+            return _c(
+              "div",
+              {
+                key: _vm.random(item),
+                staticClass: "main_input_dropitems",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.writeToInput(item)
+                  }
+                }
+              },
+              [_vm._v("\n            " + _vm._s(item) + "\n        ")]
+            )
+          }),
+          0
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/CarBlock.vue?vue&type=template&id=04a5031c&scoped=true&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/CarBlock.vue?vue&type=template&id=04a5031c&scoped=true& ***!
@@ -43155,7 +43461,11 @@ var render = function() {
                   _c("div", [
                     _c("div", { staticClass: "d-flex review_data_info" }, [
                       _c("div", { staticClass: "review_data_info-name" }, [
-                        _vm._v(_vm._s(_vm.item.author))
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(_vm.item.author) +
+                            "\n                    "
+                        )
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "ml-3 review_data_info-date" }, [
@@ -44696,42 +45006,33 @@ var render = function() {
                           "d-flex justify-content-center flex-wrap w-100"
                       },
                       [
-                        _c("div", { staticClass: "routs_item_width" }, [
-                          _c("input", {
-                            directives: [
+                        _c(
+                          "div",
+                          { staticClass: "routs_item_width" },
+                          [
+                            _c("AutoInput", {
+                              attrs: {
+                                items: _vm.nameRouteGroups,
+                                returnData: _vm.postRouteName
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "button",
                               {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.routeGroupName,
-                                expression: "routeGroupName"
-                              }
-                            ],
-                            attrs: { type: "text" },
-                            domProps: { value: _vm.routeGroupName },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                                staticClass: "btn btn-outline-primary ml-2",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.connectRG($event)
+                                  }
                                 }
-                                _vm.routeGroupName = $event.target.value
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-outline-primary ml-2",
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  return _vm.connectRG($event)
-                                }
-                              }
-                            },
-                            [_vm._v("Добавить группу")]
-                          )
-                        ]),
+                              },
+                              [_vm._v("Добавить группу")]
+                            )
+                          ],
+                          1
+                        ),
                         _vm._v(" "),
                         _vm._l(_vm.routegroups, function(item) {
                           return _c("RouteItem", {
@@ -44986,23 +45287,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    { staticClass: "w100" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("AutoInput"),
+      _vm._v(" "),
+      _c("section", [_vm._v("content")])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("section", [
-        _c("button", [_vm._v("Туры")]),
-        _vm._v(" "),
-        _c("button", [_vm._v("О нас")]),
-        _vm._v(" "),
-        _c("button", [_vm._v("Иконки")])
-      ]),
+    return _c("section", [
+      _c(
+        "button",
+        { staticClass: "btn btn-outline-dark", attrs: { type: "button" } },
+        [_vm._v("Туры")]
+      ),
       _vm._v(" "),
-      _c("section", [_vm._v("content")])
+      _c(
+        "button",
+        { staticClass: "btn btn-outline-dark", attrs: { type: "button" } },
+        [_vm._v("О нас")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-outline-dark", attrs: { type: "button" } },
+        [_vm._v("Иконки")]
+      )
     ])
   }
 ]
@@ -57620,7 +57940,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
-  el: '#app',
+  el: "#app",
   components: {
     drivers: _components_Drivers_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
     welcome: _components_Welcome_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
@@ -58710,6 +59030,76 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddTour_vue_vue_type_template_id_f2927134___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddTour_vue_vue_type_template_id_f2927134___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/AutoInput.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/custom/AutoInput.vue ***!
+  \******************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AutoInput_vue_vue_type_template_id_7ec75de8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AutoInput.vue?vue&type=template&id=7ec75de8& */ "./resources/js/components/custom/AutoInput.vue?vue&type=template&id=7ec75de8&");
+/* harmony import */ var _AutoInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AutoInput.vue?vue&type=script&lang=js& */ "./resources/js/components/custom/AutoInput.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AutoInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AutoInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AutoInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AutoInput_vue_vue_type_template_id_7ec75de8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AutoInput_vue_vue_type_template_id_7ec75de8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/custom/AutoInput.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/AutoInput.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/custom/AutoInput.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AutoInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AutoInput.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/AutoInput.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AutoInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/AutoInput.vue?vue&type=template&id=7ec75de8&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/custom/AutoInput.vue?vue&type=template&id=7ec75de8& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AutoInput_vue_vue_type_template_id_7ec75de8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AutoInput.vue?vue&type=template&id=7ec75de8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/AutoInput.vue?vue&type=template&id=7ec75de8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AutoInput_vue_vue_type_template_id_7ec75de8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AutoInput_vue_vue_type_template_id_7ec75de8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

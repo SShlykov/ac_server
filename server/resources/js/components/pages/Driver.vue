@@ -190,7 +190,7 @@
         </div>
         <div class="d-flex justify-content-center flex-wrap w-100" v-if="editRouts">
           <div class="routs_item_width">
-            <input type="text" v-model="routeGroupName" />
+            <AutoInput :items="nameRouteGroups" :returnData="postRouteName"></AutoInput>
             <button class="btn btn-outline-primary ml-2" @click.prevent="connectRG">Добавить группу</button>
           </div>
           <RouteItem
@@ -206,7 +206,7 @@
             <button class="btn btn-primary mt-4" @click.prevent="toggleEditRouts">Выйти</button>
           </div>
         </div>
-
+        
         <section class="d-flex align-items-center flex-column reviews">
           <h3 class="mb-4">Отзывы</h3>
           <AddTour :driver_id="driver.id"></AddTour>
@@ -234,6 +234,7 @@ import Goback from "../common/goback";
 import Review from "../custom/Review";
 import RouteItem from "../custom/RouteItem";
 import AddTour from "../custom/AddTour";
+import AutoInput from '../custom/AutoInput';
 
 export default {
   name: "Driver",
@@ -244,7 +245,8 @@ export default {
     Spinner,
     Review,
     RouteItem,
-    AddTour
+    AddTour,
+    AutoInput
   },
   props: ["id"],
 
@@ -252,6 +254,7 @@ export default {
     return {
       reviews: [],
       routegroups: [],
+      nameRouteGroups: [],
       routeGroupName: "",
       loading: {
         data: false
@@ -303,7 +306,7 @@ export default {
     await this.getCarPhotos();
     await this.getReview();
     await this.getRouteGroups();
-    console.log(this.routegroups);
+    await this.getRotesNames();
     for (let i = 0; i < this.reviews.lenght; i++) {
       console.log(this.reviewsp[i]);
     }
@@ -346,6 +349,19 @@ export default {
           this.routegroups = res;
         })
         .catch(err => console.warn(err));
+    },
+    async getRotesNames()
+    {
+      let cashRoutes ='';
+      await fetch("/api/route_group/groups")
+        .then(res => res.json())
+        .then(res => {
+          cashRoutes = res.data;
+        })
+        .catch(err => console.warn(err));
+      
+      this.nameRouteGroups = cashRoutes.map(x => x.name);
+      console.log(this.nameRouteGroups);
     },
     async deleteDriver() {
       if (confirm("Вы точно хотите удалить?")) {
@@ -466,6 +482,10 @@ export default {
           window.location.href = "/home/driver/" + driver.id;
         })
         .catch(err => console.log(err));
+    },
+    postRouteName(item)
+    {
+      this.routeGroupName = item;
     },
     random(item) {
       return Math.random();

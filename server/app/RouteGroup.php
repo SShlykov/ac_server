@@ -14,4 +14,9 @@ class RouteGroup extends Model
     {
         return $this->belongsToMany('App\Route');
     }
+
+    public function  drivers()
+    {
+        return $this->belongsToMany('\App\Driver');
+    }
 }

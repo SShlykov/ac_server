@@ -19,10 +19,13 @@ Route::group(['prefix' => 'driver'], function (){
     Route::get('/{id}', $controller . 'show');
     Route::get('/withTrashed/{count}', $controller . 'showWT');
     Route::get('/onlyTrashed/{count}', $controller . 'showOT');
+    Route::get('/rg/show_connected/{driver_id}', $controller . 'show_connected');
     Route::put('/restore/{id}', $controller . 'restore');
     Route::post('/', $controller . 'store');
+    Route::post('/rg/connect/{driver_id}/{rg_id}', $controller . 'addRG');
     Route::put('/', $controller . 'store');
     Route::delete('/delete/{id}', $controller . 'destroy');
+    Route::delete('/rg/disconnect', $controller . 'disconnect');
     Route::delete('/{id}', $controller . 'delete');
 });
 
@@ -73,12 +76,14 @@ Route::group(['prefix' => 'route_group'], function (){
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');
     Route::delete('/{id}', $controller . 'destroy');
+    
 });
+
+
+Route::delete('/disconnect', 'RouteGroupController@disconnect');
 
 Route::group(['prefix' => 'routes_rout_group'], function (){
     $controller = "RoutesRouteGroupController@";
-    Route::get('/groups/{count}', $controller . 'index');
-    Route::get('/{id}', $controller . 'show');
     Route::post('/', $controller . 'store');
     Route::put('/', $controller . 'store');
     Route::delete('/{id}', $controller . 'destroy');
@@ -87,10 +92,16 @@ Route::group(['prefix' => 'routes_rout_group'], function (){
 Route::group(['prefix' => 'tour'], function (){
     $controller = "TourController@";
     Route::get('/{id}', $controller . 'show');
+    Route::get('/all', $controller . 'show_all');
     Route::get('/category/{id}', $controller . 'show_category');
     Route::post('/', $controller . 'store');
+    Route::post('/connect/route', $controller . 'connect_rout_to_tour');
     Route::put('/', $controller . 'store');
     Route::delete('/{id}', $controller . 'destroy');
 });
 
+Route::group(['prefix' => 'category'], function (){
+    $controller = "CategoryController@";
+    Route::get('/', $controller . 'index');
+});
 

@@ -14,6 +14,13 @@ class TourController extends Controller
         return TourResource::collection($tours);
     }
 
+    public function show_all()
+    {
+        $tours = Tour::all();
+
+        return new TourResource($tours);
+    }
+
     public function store(Request $request)
     {
         $tour = $request->isMethod('put') ? TourResource::findOrFail($request->id)
@@ -40,6 +47,18 @@ class TourController extends Controller
         $tour = Tour::findOrFail($id)->category()->get();
 
         return $tour;
+    }
+
+    public function connect_rout_to_tour(Request $request)
+    {   
+        $tour = Tour::findOrFail($request->input('tour_id'));
+
+        $route = \App\Route::findOrFail($request->input('route_id'));
+
+        $tour->routes()->attach($route);
+
+        return new TourResource($tour);
+
     }
 
     public function destroy($id)

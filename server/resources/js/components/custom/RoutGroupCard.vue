@@ -7,11 +7,18 @@
     </div>
     <div class="routgroup flex-column" v-if="editCard">
       <div class="v-flex flex-nowrap w-10">
-        <input class="main_input" type="text" placeholder="Название точки" />
-        <button class="ml-4 btn btn-outline-success">добавить</button>
+        <input class="main_input" type="text" v-model="new_item.route_name" />
+        <button class="ml-4 btn btn-outline-success" @click.prevent="rout_group_add_rout">добавить</button>
       </div>
-      <RouteItem :name="'Krajcikborough'"></RouteItem>
-      <RouteItem :name="'Douglasport'"></RouteItem>
+      <RouteItem
+        v-for="item in routes"
+        v-bind:key="random(item)"
+        :route_id="id"
+        :id="item.id"
+        :name="item.name"
+        :getRouts="getRouts"
+        :purpose="'routegroups'"
+      ></RouteItem>
       <div class="d-flex .align-items-center">
         <button @click.prevent="toggleEditCard" class="ml-3 btn btn-outline-dark mt-3">Назад</button>
       </div>
@@ -28,7 +35,12 @@ export default {
   },
   data() {
     return {
-      editCard: false
+      editCard: false,
+      routes: {},
+      new_item: {
+        route_group_id: "",
+        route_name: ""
+      }
     };
   },
   props: {
@@ -42,7 +54,22 @@ export default {
       required: true
     }
   },
+  async created() {
+    await this.getRouts();
+    this.new_item.route_group_id = this.id;
+    //console.log(this.routes);
+    //console.log(this.id);
+    //console.log(`_____________________`);
+  },
   methods: {
+    async getRouts() {
+      await fetch(`/api/route_group/show_connected/${this.id}`)
+        .then(res => res.json())
+        .then(res => {
+          this.routes = res;
+        })
+        .catch(err => console.log(err));
+    },
     toggleEditCard() {
       this.editCard = !this.editCard;
     },
@@ -59,7 +86,25 @@ export default {
           .catch(err => console.log(err));
       }
     },
-    rout_group_add_rout() {}
+    random(item) {
+      return Math.random();
+    },
+    async rout_group_add_rout() {
+      console.log(this.new_item.route_name);
+      await fetch(`/api/route_group/connect`, {
+        method: "post",
+        body: JSON.stringify(this.new_item),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert(`добавлен`);
+          this.getRouts();
+        })
+        .catch(err => console.log(err));
+    }
   }
 };
 </script>

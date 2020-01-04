@@ -190,17 +190,23 @@
         </div>
         <div class="d-flex justify-content-center flex-wrap w-100" v-if="editRouts">
           <div class="routs_item_width">
-            <input type="text" />
-            <button class="btn btn-outline-primary ml-2">Добавить группу</button>
+            <input type="text" v-model="routeGroupName" />
+            <button class="btn btn-outline-primary ml-2" @click.prevent="connectRG">Добавить группу</button>
           </div>
-          <RouteItem :name="'Новосибирск-Барнаул'"></RouteItem>
-          <RouteItem :name="'Барнаул-Ая'"></RouteItem>
-          <RouteItem :name="'Ая-Белуха'"></RouteItem>
-          <RouteItem :name="'Брянск-Девяткино'"></RouteItem>
+          <RouteItem
+            v-bind:key="random(item)"
+            v-for="item in routegroups"
+            :name="item.name"
+            :id="id"
+            :route_id="item.id"
+            :purpose="'driverrouts'"
+            :getRouts="getRouteGroups"
+          ></RouteItem>
           <div class="w-100 d-flex justify-content-center">
             <button class="btn btn-primary mt-4" @click.prevent="toggleEditRouts">Выйти</button>
           </div>
         </div>
+
         <section class="d-flex align-items-center flex-column reviews">
           <h3 class="mb-4">Отзывы</h3>
           <AddTour :driver_id="driver.id"></AddTour>
@@ -228,6 +234,7 @@ import Goback from "../common/goback";
 import Review from "../custom/Review";
 import RouteItem from "../custom/RouteItem";
 import AddTour from "../custom/AddTour";
+
 export default {
   name: "Driver",
   components: {
@@ -244,6 +251,8 @@ export default {
   data() {
     return {
       reviews: [],
+      routegroups: [],
+      routeGroupName: "",
       loading: {
         data: false
       },
@@ -293,7 +302,8 @@ export default {
     await this.getCar();
     await this.getCarPhotos();
     await this.getReview();
-    console.log(typeof this.reviews);
+    await this.getRouteGroups();
+    console.log(this.routegroups);
     for (let i = 0; i < this.reviews.lenght; i++) {
       console.log(this.reviewsp[i]);
     }
@@ -329,6 +339,14 @@ export default {
         .catch(err => console.log(err));
       this.postphoto.id = this.car.id;
     },
+    async getRouteGroups() {
+      await fetch("/api/driver/rg/show_connected/" + this.id)
+        .then(res => res.json())
+        .then(res => {
+          this.routegroups = res;
+        })
+        .catch(err => console.warn(err));
+    },
     async deleteDriver() {
       if (confirm("Вы точно хотите удалить?")) {
         await fetch(`/api/driver/${this.driver.id}`, {
@@ -341,6 +359,21 @@ export default {
           })
           .catch(err => console.log(err));
       }
+    },
+    async connectRG() {
+      console.log(this.routeGroupName);
+      await fetch(
+        `/api/driver/rg/connect/` + this.id + `/` + this.routeGroupName,
+        {
+          method: "post"
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          alert(`Роут группа успешно добавлена`);
+          this.getRouteGroups();
+        })
+        .catch(err => console.log(err));
     },
     async updateDriver() {
       let driver = this.driver;

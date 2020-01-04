@@ -21,7 +21,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/home/tours">Туры</a></li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Наcтройки</a></li>
+                    <a class="nav-link" href="/home/settings">Наcтройки</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Altaycross</a></li>
                 <li class="nav-item dropdown">

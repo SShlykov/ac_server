@@ -601,6 +601,7 @@
   border: 1px solid #cdcdcd;
   border-radius: 5px;
   min-height: 35px;
+  padding-left: 8px;
 }
 
 @media screen and (max-width: 991px) {

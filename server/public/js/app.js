@@ -1952,21 +1952,103 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _custom_Tour_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./custom/Tour.vue */ "./resources/js/components/custom/Tour.vue");
-/* harmony import */ var _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./custom/AddTour.vue */ "./resources/js/components/custom/AddTour.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _custom_Tour_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./custom/Tour.vue */ "./resources/js/components/custom/Tour.vue");
+/* harmony import */ var _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./custom/AddTour.vue */ "./resources/js/components/custom/AddTour.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Tours",
   components: {
-    Tour: _custom_Tour_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    AddTour: _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Tour: _custom_Tour_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AddTour: _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
-    return {};
+    return {
+      categories: {}
+    };
   },
-  methods: {}
-});
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              this.getCategories();
+              console.log(this.categories);
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
+  methods: {
+    getCategories: function () {
+      var _getCategories = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return fetch("/api/category").then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  return _this.categories = res.data;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function getCategories() {
+        return _getCategories.apply(this, arguments);
+      }
+
+      return getCategories;
+    }(),
+    random: function random(item) {
+      return Math.random();
+    }
+  }
+}); //<tour :tour_disabled_up="'tour_disabled'"></tour>
+//<tour :tour_disabled_down="'tour_disabled'"></tour>
 
 /***/ }),
 
@@ -3507,7 +3589,22 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _custom_RouteItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../custom/RouteItem */ "./resources/js/components/custom/RouteItem.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _custom_RouteItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../custom/RouteItem */ "./resources/js/components/custom/RouteItem.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3533,11 +3630,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoutGroupCard",
   components: {
-    RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_0__["default"]
+    RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   data: function data() {
     return {
-      editCard: false
+      editCard: false,
+      routes: {},
+      new_item: {
+        route_group_id: "",
+        route_name: ""
+      }
     };
   },
   props: {
@@ -3551,12 +3653,75 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     }
   },
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return this.getRouts();
+
+            case 2:
+              this.new_item.route_group_id = this.id; //console.log(this.routes);
+              //console.log(this.id);
+              //console.log(`_____________________`);
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
   methods: {
+    getRouts: function () {
+      var _getRouts = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return fetch("/api/route_group/show_connected/".concat(this.id)).then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  _this.routes = res;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function getRouts() {
+        return _getRouts.apply(this, arguments);
+      }
+
+      return getRouts;
+    }(),
     toggleEditCard: function toggleEditCard() {
       this.editCard = !this.editCard;
     },
     route_group_delete: function route_group_delete() {
-      var _this = this;
+      var _this2 = this;
 
       if (confirm("Вы точно хотите удалить?")) {
         fetch("/api/route_group/" + this.id, {
@@ -3564,7 +3729,7 @@ __webpack_require__.r(__webpack_exports__);
         }).then(function (res) {
           return res.json();
         }).then(function (data) {
-          _this.fetchData();
+          _this2.fetchData();
 
           alert("\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E");
         })["catch"](function (err) {
@@ -3572,7 +3737,51 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
-    rout_group_add_rout: function rout_group_add_rout() {}
+    random: function random(item) {
+      return Math.random();
+    },
+    rout_group_add_rout: function () {
+      var _rout_group_add_rout = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this3 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                console.log(this.new_item.route_name);
+                _context3.next = 3;
+                return fetch("/api/route_group/connect", {
+                  method: "post",
+                  body: JSON.stringify(this.new_item),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D");
+
+                  _this3.getRouts();
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function rout_group_add_rout() {
+        return _rout_group_add_rout.apply(this, arguments);
+      }
+
+      return rout_group_add_rout;
+    }()
   }
 });
 
@@ -3639,6 +3848,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -3651,7 +3868,135 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     name: {
       required: true
+    },
+    id: {
+      required: true
+    },
+    route_id: {
+      required: true
+    },
+    getRouts: {
+      required: true
+    },
+    purpose: {
+      required: true
     }
+  },
+  data: function data() {
+    return {
+      item: {
+        route_group_id: "",
+        route_id: ""
+      }
+    };
+  },
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              this.item.route_group_id = this.route_id;
+              this.item.route_id = this.id;
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
+  methods: {
+    disconnect: function () {
+      var _disconnect = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (!(this.purpose == "routegroups")) {
+                  _context2.next = 4;
+                  break;
+                }
+
+                if (!confirm("Вы точно хотите удалить?")) {
+                  _context2.next = 4;
+                  break;
+                }
+
+                _context2.next = 4;
+                return fetch("/api/disconnect", {
+                  method: "delete",
+                  body: JSON.stringify(this.item),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u0443\u0434\u0430\u043B\u0435\u043D");
+
+                  _this.getRouts();
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 4:
+                console.log(this.item);
+
+                if (!(this.purpose == "driverrouts")) {
+                  _context2.next = 9;
+                  break;
+                }
+
+                if (!confirm("Вы точно хотите удалить?")) {
+                  _context2.next = 9;
+                  break;
+                }
+
+                _context2.next = 9;
+                return fetch("/api/driver/rg/disconnect", {
+                  method: "delete",
+                  body: JSON.stringify(this.item),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u0443\u0434\u0430\u043B\u0435\u043D");
+
+                  _this.getRouts();
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 9:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function disconnect() {
+        return _disconnect.apply(this, arguments);
+      }
+
+      return disconnect;
+    }()
   }
 });
 
@@ -3708,11 +4053,14 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -3746,20 +4094,64 @@ __webpack_require__.r(__webpack_exports__);
     },
     tour_disabled_down: {
       required: false
+    },
+    name: {
+      required: true
+    },
+    id: {
+      required: true
     }
   },
   data: function data() {
     return {
-      outputDiv: "Hellow my friend!"
+      outputDiv: "Hellow my friend!",
+      edit: false,
+      tour_name: ""
     };
   },
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              this.tour_name = this.name;
+
+            case 1:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
   methods: {
     changeText: function changeText() {
       this.outputDiv = "my little code";
+    },
+    toggleEdit: function toggleEdit() {
+      this.edit = !this.edit;
     }
   },
   components: {}
-});
+}); // <a :class="'tour_functions_down ' + tour_disabled_down" href="#">
+//   <figure>
+//     <img src="../../../../public/images/arrow_down.svg" alt="down" />
+//   </figure>
+// </a>
+// <a :class="'tour_functions_up ' + tour_disabled_up" href="#">
+//   <figure>
+//     <img src="../../../../public/images/arrow_up.svg" alt="up" />
+//   </figure>
+// </a>
 
 /***/ }),
 
@@ -3851,12 +4243,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _custom_AddTour__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../custom/AddTour */ "./resources/js/components/custom/AddTour.vue");
 
 
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4101,6 +4497,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       reviews: [],
+      routegroups: [],
+      routeGroupName: "",
       loading: {
         data: false
       },
@@ -4170,7 +4568,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getReview();
 
             case 8:
-              console.log(_typeof(this.reviews));
+              _context.next = 10;
+              return this.getRouteGroups();
+
+            case 10:
+              console.log(this.routegroups);
 
               for (i = 0; i < this.reviews.lenght; i++) {
                 console.log(this.reviewsp[i]);
@@ -4178,7 +4580,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               this.loading.data = true;
 
-            case 11:
+            case 13:
             case "end":
               return _context.stop();
           }
@@ -4332,8 +4734,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       return getCarPhotos;
     }(),
-    deleteDriver: function () {
-      var _deleteDriver = _asyncToGenerator(
+    getRouteGroups: function () {
+      var _getRouteGroups = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
         var _this5 = this;
@@ -4342,24 +4744,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context6.prev = _context6.next) {
               case 0:
-                if (!confirm("Вы точно хотите удалить?")) {
-                  _context6.next = 3;
-                  break;
-                }
-
-                _context6.next = 3;
-                return fetch("/api/driver/".concat(this.driver.id), {
-                  method: "delete"
-                }).then(function (res) {
+                _context6.next = 2;
+                return fetch("/api/driver/rg/show_connected/" + this.id).then(function (res) {
                   return res.json();
-                }).then(function (data) {
-                  alert("".concat(_this5.driver.name, " \u0443\u0434\u0430\u043B\u0435\u043D"));
-                  window.location.href = "/home/drivers";
+                }).then(function (res) {
+                  _this5.routegroups = res;
                 })["catch"](function (err) {
-                  return console.log(err);
+                  return console.warn(err);
                 });
 
-              case 3:
+              case 2:
               case "end":
                 return _context6.stop();
             }
@@ -4367,36 +4761,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee6, this);
       }));
 
-      function deleteDriver() {
-        return _deleteDriver.apply(this, arguments);
+      function getRouteGroups() {
+        return _getRouteGroups.apply(this, arguments);
       }
 
-      return deleteDriver;
+      return getRouteGroups;
     }(),
-    updateDriver: function () {
-      var _updateDriver = _asyncToGenerator(
+    deleteDriver: function () {
+      var _deleteDriver = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
         var _this6 = this;
 
-        var driver;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                driver = this.driver;
+                if (!confirm("Вы точно хотите удалить?")) {
+                  _context7.next = 3;
+                  break;
+                }
+
                 _context7.next = 3;
-                return fetch("/api/driver/", {
-                  method: "put",
-                  body: JSON.stringify(driver),
-                  headers: {
-                    "Content-Type": "application/json"
-                  }
+                return fetch("/api/driver/".concat(this.driver.id), {
+                  method: "delete"
                 }).then(function (res) {
                   return res.json();
                 }).then(function (data) {
-                  alert("".concat(_this6.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
-                  window.location.href = "/home/driver/" + driver.id;
+                  alert("".concat(_this6.driver.name, " \u0443\u0434\u0430\u043B\u0435\u043D"));
+                  window.location.href = "/home/drivers";
                 })["catch"](function (err) {
                   return console.log(err);
                 });
@@ -4409,6 +4802,86 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee7, this);
       }));
 
+      function deleteDriver() {
+        return _deleteDriver.apply(this, arguments);
+      }
+
+      return deleteDriver;
+    }(),
+    connectRG: function () {
+      var _connectRG = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var _this7 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                console.log(this.routeGroupName);
+                _context8.next = 3;
+                return fetch("/api/driver/rg/connect/" + this.id + "/" + this.routeGroupName, {
+                  method: "post"
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u0420\u043E\u0443\u0442 \u0433\u0440\u0443\u043F\u043F\u0430 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430");
+
+                  _this7.getRouteGroups();
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 3:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      function connectRG() {
+        return _connectRG.apply(this, arguments);
+      }
+
+      return connectRG;
+    }(),
+    updateDriver: function () {
+      var _updateDriver = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        var _this8 = this;
+
+        var driver;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                driver = this.driver;
+                _context9.next = 3;
+                return fetch("/api/driver/", {
+                  method: "put",
+                  body: JSON.stringify(driver),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("".concat(_this8.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 3:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9, this);
+      }));
+
       function updateDriver() {
         return _updateDriver.apply(this, arguments);
       }
@@ -4418,17 +4891,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updateCar: function () {
       var _updateCar = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
-        var _this7 = this;
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+        var _this9 = this;
 
         var car;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
           while (1) {
-            switch (_context8.prev = _context8.next) {
+            switch (_context10.prev = _context10.next) {
               case 0:
                 car = this.car;
                 if (this.selected.child == "Есть") car.child = 1;else car.child = 0;
-                _context8.next = 4;
+                _context10.next = 4;
                 return fetch("/api/car/", {
                   method: "put",
                   body: JSON.stringify(car),
@@ -4438,9 +4911,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }).then(function (res) {
                   return res.json();
                 }).then(function (data) {
-                  alert("".concat(_this7.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
+                  alert("".concat(_this9.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
 
-                  _this7.toggleEditCar();
+                  _this9.toggleEditCar();
 
                   window.location.href = "/home/driver/" + driver.id;
                 })["catch"](function (err) {
@@ -4449,10 +4922,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 4:
               case "end":
-                return _context8.stop();
+                return _context10.stop();
             }
           }
-        }, _callee8, this);
+        }, _callee10, this);
       }));
 
       function updateCar() {
@@ -4464,92 +4937,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     updateCarPhotosBack: function () {
       var _updateCarPhotosBack = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
-        var carphotos, postphoto;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
-          while (1) {
-            switch (_context9.prev = _context9.next) {
-              case 0:
-                carphotos = this.carphotos;
-                postphoto = this.postphoto;
-                postphoto.photo = carphotos.car_photo_back;
-                postphoto.id = this.car.id;
-                _context9.next = 6;
-                return fetch("/api/carphoto/back", {
-                  method: "put",
-                  body: JSON.stringify(postphoto),
-                  headers: {
-                    "Content-Type": "application/json"
-                  }
-                }).then(function (res) {
-                  return res.json();
-                }).then(function (data) {
-                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
-                  window.location.href = "/home/driver/" + driver.id;
-                })["catch"](function (err) {
-                  return console.log(err);
-                });
-
-              case 6:
-              case "end":
-                return _context9.stop();
-            }
-          }
-        }, _callee9, this);
-      }));
-
-      function updateCarPhotosBack() {
-        return _updateCarPhotosBack.apply(this, arguments);
-      }
-
-      return updateCarPhotosBack;
-    }(),
-    updateCarPhotosSide: function () {
-      var _updateCarPhotosSide = _asyncToGenerator(
-      /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
-        var carphotos, postphoto;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
-          while (1) {
-            switch (_context10.prev = _context10.next) {
-              case 0:
-                carphotos = this.carphotos;
-                postphoto = this.postphoto;
-                postphoto.photo = carphotos.car_photo_side;
-                postphoto.id = this.car.id;
-                _context10.next = 6;
-                return fetch("/api/carphoto/side", {
-                  method: "put",
-                  body: JSON.stringify(postphoto),
-                  headers: {
-                    "Content-Type": "application/json"
-                  }
-                }).then(function (res) {
-                  return res.json();
-                }).then(function (data) {
-                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
-                  window.location.href = "/home/driver/" + driver.id;
-                })["catch"](function (err) {
-                  return console.log(err);
-                });
-
-              case 6:
-              case "end":
-                return _context10.stop();
-            }
-          }
-        }, _callee10, this);
-      }));
-
-      function updateCarPhotosSide() {
-        return _updateCarPhotosSide.apply(this, arguments);
-      }
-
-      return updateCarPhotosSide;
-    }(),
-    updateCarPhotosFront: function () {
-      var _updateCarPhotosFront = _asyncToGenerator(
-      /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee11() {
         var carphotos, postphoto;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee11$(_context11) {
@@ -4558,10 +4945,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 carphotos = this.carphotos;
                 postphoto = this.postphoto;
-                postphoto.photo = carphotos.car_photo_front;
+                postphoto.photo = carphotos.car_photo_back;
                 postphoto.id = this.car.id;
                 _context11.next = 6;
-                return fetch("/api/carphoto/front", {
+                return fetch("/api/carphoto/back", {
                   method: "put",
                   body: JSON.stringify(postphoto),
                   headers: {
@@ -4582,6 +4969,92 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee11, this);
+      }));
+
+      function updateCarPhotosBack() {
+        return _updateCarPhotosBack.apply(this, arguments);
+      }
+
+      return updateCarPhotosBack;
+    }(),
+    updateCarPhotosSide: function () {
+      var _updateCarPhotosSide = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee12() {
+        var carphotos, postphoto;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                carphotos = this.carphotos;
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_side;
+                postphoto.id = this.car.id;
+                _context12.next = 6;
+                return fetch("/api/carphoto/side", {
+                  method: "put",
+                  body: JSON.stringify(postphoto),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 6:
+              case "end":
+                return _context12.stop();
+            }
+          }
+        }, _callee12, this);
+      }));
+
+      function updateCarPhotosSide() {
+        return _updateCarPhotosSide.apply(this, arguments);
+      }
+
+      return updateCarPhotosSide;
+    }(),
+    updateCarPhotosFront: function () {
+      var _updateCarPhotosFront = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee13() {
+        var carphotos, postphoto;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee13$(_context13) {
+          while (1) {
+            switch (_context13.prev = _context13.next) {
+              case 0:
+                carphotos = this.carphotos;
+                postphoto = this.postphoto;
+                postphoto.photo = carphotos.car_photo_front;
+                postphoto.id = this.car.id;
+                _context13.next = 6;
+                return fetch("/api/carphoto/front", {
+                  method: "put",
+                  body: JSON.stringify(postphoto),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u043C\u0430\u0448\u0438\u043D\u0430 \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u0430");
+                  window.location.href = "/home/driver/" + driver.id;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 6:
+              case "end":
+                return _context13.stop();
+            }
+          }
+        }, _callee13, this);
       }));
 
       function updateCarPhotosFront() {
@@ -4606,43 +5079,43 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.imageSelected = e.target.files[0];
     },
     imageDriverChanged: function imageDriverChanged(e) {
-      var _this8 = this;
-
-      var fileReader = new FileReader();
-      fileReader.readAsDataURL(e.target.files[0]);
-
-      fileReader.onload = function (e) {
-        _this8.driver.photo = e.target.result;
-      };
-    },
-    imageCarBackChanged: function imageCarBackChanged(e) {
-      var _this9 = this;
-
-      var fileReader = new FileReader();
-      fileReader.readAsDataURL(e.target.files[0]);
-
-      fileReader.onload = function (e) {
-        _this9.carphotos.car_photo_back = e.target.result;
-      };
-    },
-    imageCarSideChanged: function imageCarSideChanged(e) {
       var _this10 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this10.carphotos.car_photo_side = e.target.result;
+        _this10.driver.photo = e.target.result;
       };
     },
-    imageCarFrontChanged: function imageCarFrontChanged(e) {
+    imageCarBackChanged: function imageCarBackChanged(e) {
       var _this11 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this11.carphotos.car_photo_front = e.target.result;
+        _this11.carphotos.car_photo_back = e.target.result;
+      };
+    },
+    imageCarSideChanged: function imageCarSideChanged(e) {
+      var _this12 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this12.carphotos.car_photo_side = e.target.result;
+      };
+    },
+    imageCarFrontChanged: function imageCarFrontChanged(e) {
+      var _this13 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this13.carphotos.car_photo_front = e.target.result;
       };
     }
   },
@@ -5032,6 +5505,143 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/Settings.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/Settings.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "ContentValue",
+  components: {},
+  data: function data() {
+    return {
+      data: {
+        item: {},
+        fields: {},
+        list: {}
+      },
+      newGroup: false
+    };
+  },
+  props: {},
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return this.fetchData();
+
+            case 2:
+              console.log(this.data.list);
+
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
+  methods: {
+    fetchData: function () {
+      var _fetchData = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return fetch("/api/route_group/groups").then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  _this.data.list = res.data;
+                })["catch"](function (err) {
+                  return console.warn(err);
+                });
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function fetchData() {
+        return _fetchData.apply(this, arguments);
+      }
+
+      return fetchData;
+    }(),
+    toggleGroup: function toggleGroup() {
+      this.newGroup = !this.newGroup;
+    },
+    key_random: function key_random(item) {
+      return Math.random() * Math.random();
+    },
+    route_group_post: function route_group_post() {
+      var _this2 = this;
+
+      console.log(this.data.item.name);
+      fetch("/api/route_group/", {
+        method: "POST",
+        body: JSON.stringify({
+          name: this.data.item.name
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        console.log("\u0413\u0440\u0443\u043F\u043F\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0430");
+
+        _this2.fetchData();
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/Сategory.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/Сategory.vue?vue&type=script&lang=js& ***!
@@ -5041,20 +5651,55 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _custom_TourCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../custom/TourCard.vue */ "./resources/js/components/custom/TourCard.vue");
-/* harmony import */ var _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./../custom/AddTour.vue */ "./resources/js/components/custom/AddTour.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _custom_TourCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../custom/TourCard.vue */ "./resources/js/components/custom/TourCard.vue");
+/* harmony import */ var _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../custom/AddTour.vue */ "./resources/js/components/custom/AddTour.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: "Сategory",
-  props: {},
+  name: "category",
+  props: ["id"],
   data: function data() {
-    return {};
+    return {
+      page_id: ""
+    };
   },
   methods: {},
+  created: function () {
+    var _created = _asyncToGenerator(
+    /*#__PURE__*/
+    _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              this.page_id = document.location.href[document.location.href.length - 1];
+              console.log(this.page_id);
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee, this);
+    }));
+
+    function created() {
+      return _created.apply(this, arguments);
+    }
+
+    return created;
+  }(),
   components: {
-    TourCard: _custom_TourCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"],
-    AddTour: _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+    TourCard: _custom_TourCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AddTour: _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 });
 
@@ -41251,17 +41896,14 @@ var render = function() {
     [
       _c("h2", { staticClass: "tour_title" }, [_vm._v("Управление турами")]),
       _vm._v(" "),
-      _c("tour", { attrs: { tour_disabled_up: "tour_disabled" } }),
-      _vm._v(" "),
-      _c("tour"),
-      _vm._v(" "),
-      _c("tour"),
-      _vm._v(" "),
-      _c("tour", { attrs: { tour_disabled_down: "tour_disabled" } }),
-      _vm._v(" "),
-      _c("AddTour")
+      _vm._l(_vm.categories, function(item) {
+        return _c("tour", {
+          key: _vm.random(item),
+          attrs: { id: item.id, name: item.name }
+        })
+      })
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -42839,11 +43481,56 @@ var render = function() {
           "div",
           { staticClass: "routgroup flex-column" },
           [
-            _vm._m(0),
+            _c("div", { staticClass: "v-flex flex-nowrap w-10" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.new_item.route_name,
+                    expression: "new_item.route_name"
+                  }
+                ],
+                staticClass: "main_input",
+                attrs: { type: "text" },
+                domProps: { value: _vm.new_item.route_name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.new_item, "route_name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "ml-4 btn btn-outline-success",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.rout_group_add_rout($event)
+                    }
+                  }
+                },
+                [_vm._v("добавить")]
+              )
+            ]),
             _vm._v(" "),
-            _c("RouteItem", { attrs: { name: "Krajcikborough" } }),
-            _vm._v(" "),
-            _c("RouteItem", { attrs: { name: "Douglasport" } }),
+            _vm._l(_vm.routes, function(item) {
+              return _c("RouteItem", {
+                key: _vm.random(item),
+                attrs: {
+                  route_id: _vm.id,
+                  id: item.id,
+                  name: item.name,
+                  getRouts: _vm.getRouts,
+                  purpose: "routegroups"
+                }
+              })
+            }),
             _vm._v(" "),
             _c("div", { staticClass: "d-flex .align-items-center" }, [
               _c(
@@ -42861,28 +43548,12 @@ var render = function() {
               )
             ])
           ],
-          1
+          2
         )
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "v-flex flex-nowrap w-10" }, [
-      _c("input", {
-        staticClass: "main_input",
-        attrs: { type: "text", placeholder: "Название точки" }
-      }),
-      _vm._v(" "),
-      _c("button", { staticClass: "ml-4 btn btn-outline-success" }, [
-        _vm._v("добавить")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -42960,9 +43631,19 @@ var render = function() {
   return _c("div", { staticClass: "routs_item_width" }, [
     _c("div", [_vm._v(_vm._s(_vm.name))]),
     _vm._v(" "),
-    _c("button", { staticClass: "btn btn-outline-danger ml-4" }, [
-      _vm._v("delete")
-    ])
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-outline-danger ml-4",
+        on: {
+          click: function($event) {
+            $event.preventDefault()
+            return _vm.disconnect($event)
+          }
+        }
+      },
+      [_vm._v("delete")]
+    )
   ])
 }
 var staticRenderFns = []
@@ -43021,28 +43702,85 @@ var render = function() {
     "a",
     { staticClass: "tour_card", attrs: { href: "/home/category/1" } },
     [
-      _vm._m(0),
+      _c("div", { staticClass: "tour_card_info" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        !_vm.edit
+          ? _c("div", { staticClass: "tour_card_title" }, [
+              _vm._v(_vm._s(_vm.tour_name))
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.edit
+          ? _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.tour_name,
+                  expression: "tour_name"
+                }
+              ],
+              staticClass: "main_input ml-4",
+              attrs: { type: "text" },
+              domProps: { value: _vm.tour_name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.tour_name = $event.target.value
+                }
+              }
+            })
+          : _vm._e()
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "tour_card_functions" }, [
-        _vm._m(1),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            class: "tour_functions_down " + _vm.tour_disabled_down,
-            attrs: { href: "#" }
-          },
-          [_vm._m(2)]
-        ),
-        _vm._v(" "),
-        _c(
-          "a",
-          {
-            class: "tour_functions_up " + _vm.tour_disabled_up,
-            attrs: { href: "#" }
-          },
-          [_vm._m(3)]
-        )
+        _c("div", { staticClass: "tour_functions_delete d-flex" }, [
+          _c(
+            "figure",
+            {
+              staticClass: "mb-0",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.toggleEdit($event)
+                }
+              }
+            },
+            [
+              !_vm.edit
+                ? _c("img", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../../public/images/pen.svg */ "./public/images/pen.svg"),
+                      alt: "edit"
+                    }
+                  })
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.edit
+                ? _c("img", {
+                    attrs: {
+                      src: __webpack_require__(/*! ../../../../public/images/close.svg */ "./public/images/close.svg"),
+                      alt: "close"
+                    }
+                  })
+                : _vm._e()
+            ]
+          ),
+          _vm._v(" "),
+          _c("figure", { staticClass: "mb-0 ml-3" }, [
+            _vm.edit
+              ? _c("img", {
+                  attrs: {
+                    src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"),
+                    alt: "edit"
+                  }
+                })
+              : _vm._e()
+          ])
+        ])
       ])
     ]
   )
@@ -43052,64 +43790,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tour_card_info" }, [
-      _c("div", { staticClass: "tour_card_icon" }, [
-        _c("figure", [
-          _c("img", {
-            attrs: {
-              src: __webpack_require__(/*! ../../../../public/images/icon-fire.svg */ "./public/images/icon-fire.svg"),
-              alt: "delete"
-            }
-          })
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "tour_card_title" }, [_vm._v("Популярное")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "tour_functions_delete", attrs: { href: "#" } },
-      [
-        _c("figure", [
-          _c("img", {
-            attrs: {
-              src: __webpack_require__(/*! ../../../../public/images/trash.svg */ "./public/images/trash.svg"),
-              alt: "delete"
-            }
-          })
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("figure", [
-      _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/images/arrow_down.svg */ "./public/images/arrow_down.svg"),
-          alt: "delete"
-        }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("figure", [
-      _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/images/arrow_up.svg */ "./public/images/arrow_up.svg"),
-          alt: "delete"
-        }
-      })
+    return _c("div", { staticClass: "tour_card_icon" }, [
+      _c("figure", [
+        _c("img", {
+          attrs: {
+            src: __webpack_require__(/*! ../../../../public/images/icon-fire.svg */ "./public/images/icon-fire.svg"),
+            alt: "delete"
+          }
+        })
+      ])
     ])
   }
 ]
@@ -44007,18 +44696,54 @@ var render = function() {
                           "d-flex justify-content-center flex-wrap w-100"
                       },
                       [
-                        _vm._m(0),
+                        _c("div", { staticClass: "routs_item_width" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.routeGroupName,
+                                expression: "routeGroupName"
+                              }
+                            ],
+                            attrs: { type: "text" },
+                            domProps: { value: _vm.routeGroupName },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.routeGroupName = $event.target.value
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-outline-primary ml-2",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.connectRG($event)
+                                }
+                              }
+                            },
+                            [_vm._v("Добавить группу")]
+                          )
+                        ]),
                         _vm._v(" "),
-                        _c("RouteItem", {
-                          attrs: { name: "Новосибирск-Барнаул" }
-                        }),
-                        _vm._v(" "),
-                        _c("RouteItem", { attrs: { name: "Барнаул-Ая" } }),
-                        _vm._v(" "),
-                        _c("RouteItem", { attrs: { name: "Ая-Белуха" } }),
-                        _vm._v(" "),
-                        _c("RouteItem", {
-                          attrs: { name: "Брянск-Девяткино" }
+                        _vm._l(_vm.routegroups, function(item) {
+                          return _c("RouteItem", {
+                            key: _vm.random(item),
+                            attrs: {
+                              name: item.name,
+                              id: _vm.id,
+                              route_id: item.id,
+                              purpose: "driverrouts",
+                              getRouts: _vm.getRouteGroups
+                            }
+                          })
                         }),
                         _vm._v(" "),
                         _c(
@@ -44043,7 +44768,7 @@ var render = function() {
                           ]
                         )
                       ],
-                      1
+                      2
                     )
                   : _vm._e(),
                 _vm._v(" "),
@@ -44081,20 +44806,7 @@ var render = function() {
       : _vm._e()
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "routs_item_width" }, [
-      _c("input", { attrs: { type: "text" } }),
-      _vm._v(" "),
-      _c("button", { staticClass: "btn btn-outline-primary ml-2" }, [
-        _vm._v("Добавить группу")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -44253,6 +44965,47 @@ var render = function() {
   ])
 }
 var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/Settings.vue?vue&type=template&id=2eba138e&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/pages/Settings.vue?vue&type=template&id=2eba138e& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("section", [
+        _c("button", [_vm._v("Туры")]),
+        _vm._v(" "),
+        _c("button", [_vm._v("О нас")]),
+        _vm._v(" "),
+        _c("button", [_vm._v("Иконки")])
+      ]),
+      _vm._v(" "),
+      _c("section", [_vm._v("content")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -56850,6 +57603,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_pages_ategory_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/pages/Сategory.vue */ "./resources/js/components/pages/Сategory.vue");
 /* harmony import */ var _components_DeletedDrivers_vue__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/DeletedDrivers.vue */ "./resources/js/components/DeletedDrivers.vue");
 /* harmony import */ var _components_pages_EditRouts_vue__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/pages/EditRouts.vue */ "./resources/js/components/pages/EditRouts.vue");
+/* harmony import */ var _components_pages_Settings_vue__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/pages/Settings.vue */ "./resources/js/components/pages/Settings.vue");
+
 
 
 
@@ -56876,7 +57631,8 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     tours: _components_Tours_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
     category: _components_pages_ategory_vue__WEBPACK_IMPORTED_MODULE_8__["default"],
     deleted: _components_DeletedDrivers_vue__WEBPACK_IMPORTED_MODULE_9__["default"],
-    editrouts: _components_pages_EditRouts_vue__WEBPACK_IMPORTED_MODULE_10__["default"]
+    editrouts: _components_pages_EditRouts_vue__WEBPACK_IMPORTED_MODULE_10__["default"],
+    contentvalue: _components_pages_Settings_vue__WEBPACK_IMPORTED_MODULE_11__["default"]
   }
 });
 
@@ -58920,6 +59676,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Route_vue_vue_type_template_id_48869823___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Route_vue_vue_type_template_id_48869823___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/Settings.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/pages/Settings.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Settings_vue_vue_type_template_id_2eba138e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Settings.vue?vue&type=template&id=2eba138e& */ "./resources/js/components/pages/Settings.vue?vue&type=template&id=2eba138e&");
+/* harmony import */ var _Settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Settings.vue?vue&type=script&lang=js& */ "./resources/js/components/pages/Settings.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Settings_vue_vue_type_template_id_2eba138e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Settings_vue_vue_type_template_id_2eba138e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/pages/Settings.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/Settings.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/pages/Settings.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Settings.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/Settings.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Settings_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/pages/Settings.vue?vue&type=template&id=2eba138e&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/pages/Settings.vue?vue&type=template&id=2eba138e& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Settings_vue_vue_type_template_id_2eba138e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Settings.vue?vue&type=template&id=2eba138e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/pages/Settings.vue?vue&type=template&id=2eba138e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Settings_vue_vue_type_template_id_2eba138e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Settings_vue_vue_type_template_id_2eba138e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

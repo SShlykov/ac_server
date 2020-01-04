@@ -3,12 +3,18 @@ import TourCard from "../custom/TourCard.vue";
 import AddTour from "./../custom/AddTour.vue";
 
 export default {
-  name: "Сategory",
-  props: {},
+  name: "category",
+  props: ["id"],
   data() {
-    return {};
+    return {
+      page_id: ""
+    };
   },
   methods: {},
+  async created() {
+    this.page_id = document.location.href[document.location.href.length - 1];
+    console.log(this.page_id);
+  },
   components: {
     TourCard,
     AddTour

@@ -10,6 +10,7 @@ import Tours from './components/Tours.vue';
 import Category from './components/pages/Сategory.vue';
 import Deleted from './components/DeletedDrivers.vue';
 import EditRouts from './components/pages/EditRouts.vue';
+import ContentValue from './components/pages/Settings.vue';
 
 require('./bootstrap');
 
@@ -25,6 +26,7 @@ const app = new Vue({
         tours: Tours,
         category: Category,
         deleted: Deleted,
-        editrouts: EditRouts
+        editrouts: EditRouts,
+        contentvalue: ContentValue
     }
 });

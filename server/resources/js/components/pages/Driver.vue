@@ -206,19 +206,20 @@
             <button class="btn btn-primary mt-4" @click.prevent="toggleEditRouts">Выйти</button>
           </div>
         </div>
-        
+
         <section class="d-flex align-items-center flex-column reviews">
           <h3 class="mb-4">Отзывы</h3>
-          <AddTour :driver_id="driver.id"></AddTour>
+          <AddTour :updateItem="getReview" :driver_id="driver.id"></AddTour>
           <Review
             v-bind:key="random(item)"
-            v-for="item in reviews"
+            v-for="item in reviews.slice().reverse()"
             :name="item.author"
             :date="item.updated_at"
             :stars="item.rating"
             :description="item.text"
             :id="item.id"
             :driver_id="driver.id"
+            :updateItem=" getReview"
           ></Review>
         </section>
       </div>
@@ -234,7 +235,7 @@ import Goback from "../common/goback";
 import Review from "../custom/Review";
 import RouteItem from "../custom/RouteItem";
 import AddTour from "../custom/AddTour";
-import AutoInput from '../custom/AutoInput';
+import AutoInput from "../custom/AutoInput";
 
 export default {
   name: "Driver",
@@ -307,9 +308,7 @@ export default {
     await this.getReview();
     await this.getRouteGroups();
     await this.getRotesNames();
-    for (let i = 0; i < this.reviews.lenght; i++) {
-      console.log(this.reviewsp[i]);
-    }
+    console.log(this.id);
     this.loading.data = true;
   },
   methods: {
@@ -350,16 +349,15 @@ export default {
         })
         .catch(err => console.warn(err));
     },
-    async getRotesNames()
-    {
-      let cashRoutes ='';
+    async getRotesNames() {
+      let cashRoutes = "";
       await fetch("/api/route_group/groups")
         .then(res => res.json())
         .then(res => {
           cashRoutes = res.data;
         })
         .catch(err => console.warn(err));
-      
+
       this.nameRouteGroups = cashRoutes.map(x => x.name);
       console.log(this.nameRouteGroups);
     },
@@ -483,8 +481,7 @@ export default {
         })
         .catch(err => console.log(err));
     },
-    postRouteName(item)
-    {
+    postRouteName(item) {
       this.routeGroupName = item;
     },
     random(item) {

@@ -12,6 +12,12 @@ export default {
   props: {
     driver_id: {
       required: false
+    },
+    tourName: {
+      required: false
+    },
+    updateItem: {
+      required: false
     }
   },
   data() {
@@ -25,13 +31,20 @@ export default {
     };
   },
   async created() {
-    if (this.driver_id) {
-      this.review.driver_id = this.driver_id;
-      this.review.author = "some name";
-      (this.review.rating = "1"), (this.review.text = "text");
-    }
+    await this.startDriver();
+    this.startTour();
   },
   methods: {
+    async startDriver() {
+      if (this.driver_id) {
+        this.review.driver_id = this.driver_id;
+        this.review.author = "some name";
+        (this.review.rating = "1"), (this.review.text = "text");
+      }
+    },
+    async startTour() {
+      if (this.tourName) console.log("Add tour created");
+    },
     async add_item() {
       let review = this.review;
       if (this.driver_id) {
@@ -46,11 +59,12 @@ export default {
           .then(res => res.json())
           .then(data => {
             alert(`${this.driver.name} удален`);
-            window.location.href = "/home/driver/" + this.driver_id;
           })
           .catch(err => console.log(err));
+        this.updateItem();
       }
-      window.location.href = "/home/driver/" + this.driver_id;
+      if (this.tourName) {
+      }
     }
   }
 };

@@ -14,23 +14,24 @@ class TourController extends Controller
         return TourResource::collection($tours);
     }
 
-    public function show_all()
+    public function all()
     {
         $tours = Tour::all();
 
-        return new TourResource($tours);
+        return TourResource::collection($tours);
     }
 
     public function store(Request $request)
     {
-        $tour = $request->isMethod('put') ? TourResource::findOrFail($request->id)
-            : new TourResource;
+        \Log::info($request);
+
+        $tour = $request->isMethod('put') ? Tour::findOrFail($request->id)
+            : new Tour;
 
         $tour->id = $request->input('id');
-        $tour->author = $request->input('author');
-        $tour->text = $request->input('text');
-        $tour->rating = $request->input('rating');
-        $tour->driver_id = $request->input('driver_id');
+        $tour->name = $request->input('name');
+        $tour->image = $request->input('image');
+        $tour->time = $request->input('time');
 
         $tour->save();
         return new TourResource($tour);

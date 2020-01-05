@@ -1,7 +1,16 @@
 <template>
   <div class="page_container">
     <h2 class="tour_title">Управление турами</h2>
-    <tour v-for="item in categories" :id="item.id" :name="item.name" v-bind:key="random(item)"></tour>
+    <AddTour :tourName="'some name'" class="mb-4"></AddTour>
+    <tour
+      v-for="item in tourItems"
+      :id="item.id"
+      :name="item.name"
+      :image="item.image"
+      :time="item.time"
+      :updateItem="getCategories"
+      v-bind:key="random(item)"
+    ></tour>
   </div>
 </template>
 
@@ -19,18 +28,18 @@ export default {
   },
   data() {
     return {
-      categories: {}
+      tourItems: {}
     };
   },
   async created() {
     this.getCategories();
-    console.log(this.categories);
+    console.log(this.tourItems);
   },
   methods: {
     async getCategories() {
-      await fetch(`/api/category`)
+      await fetch(`/api/alltour`)
         .then(res => res.json())
-        .then(res => (this.categories = res.data))
+        .then(res => (this.tourItems = res.data))
         .catch(err => console.log(err));
     },
     random(item) {

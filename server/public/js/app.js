@@ -1971,6 +1971,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1981,7 +1990,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      categories: {}
+      tourItems: {}
     };
   },
   created: function () {
@@ -1993,7 +2002,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               this.getCategories();
-              console.log(this.categories);
+              console.log(this.tourItems);
 
             case 2:
             case "end":
@@ -2021,10 +2030,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return fetch("/api/category").then(function (res) {
+                return fetch("/api/alltour").then(function (res) {
                   return res.json();
                 }).then(function (res) {
-                  return _this.categories = res.data;
+                  return _this.tourItems = res.data;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
@@ -2839,6 +2848,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   props: {
     driver_id: {
       required: false
+    },
+    tourName: {
+      required: false
+    },
+    updateItem: {
+      required: false
     }
   },
   data: function data() {
@@ -2859,13 +2874,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              if (this.driver_id) {
-                this.review.driver_id = this.driver_id;
-                this.review.author = "some name";
-                this.review.rating = "1", this.review.text = "text";
-              }
+              _context.next = 2;
+              return this.startDriver();
 
-            case 1:
+            case 2:
+              this.startTour();
+
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -2880,26 +2895,78 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return created;
   }(),
   methods: {
-    add_item: function () {
-      var _add_item = _asyncToGenerator(
+    startDriver: function () {
+      var _startDriver = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this = this;
-
-        var review;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                if (this.driver_id) {
+                  this.review.driver_id = this.driver_id;
+                  this.review.author = "some name";
+                  this.review.rating = "1", this.review.text = "text";
+                }
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function startDriver() {
+        return _startDriver.apply(this, arguments);
+      }
+
+      return startDriver;
+    }(),
+    startTour: function () {
+      var _startTour = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (this.tourName) console.log("Add tour created");
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function startTour() {
+        return _startTour.apply(this, arguments);
+      }
+
+      return startTour;
+    }(),
+    add_item: function () {
+      var _add_item = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var _this = this;
+
+        var review;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
                 review = this.review;
 
                 if (!this.driver_id) {
-                  _context2.next = 5;
+                  _context4.next = 6;
                   break;
                 }
 
                 console.log(this.review);
-                _context2.next = 5;
+                _context4.next = 5;
                 return fetch("/api/review/", {
                   method: "post",
                   body: JSON.stringify(review),
@@ -2910,20 +2977,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return res.json();
                 }).then(function (data) {
                   alert("".concat(_this.driver.name, " \u0443\u0434\u0430\u043B\u0435\u043D"));
-                  window.location.href = "/home/driver/" + _this.driver_id;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
 
               case 5:
-                window.location.href = "/home/driver/" + this.driver_id;
+                this.updateItem();
 
               case 6:
+                if (this.tourName) {}
+
+              case 7:
               case "end":
-                return _context2.stop();
+                return _context4.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee4, this);
       }));
 
       function add_item() {
@@ -3513,38 +3582,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IMPORTED_MODULE_2__["default"]);
@@ -3569,6 +3606,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
       required: true
     },
     driver_id: {
+      required: true
+    },
+    updateItem: {
       required: true
     }
   },
@@ -3673,8 +3713,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
               case 4:
                 this.toggleEdit();
+                this.updateItem();
 
-              case 5:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -4253,6 +4294,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     tour_disabled_up: {
       required: false
     },
+    updateItem: {
+      required: true
+    },
+    image: {
+      required: false
+    },
+    time: {
+      required: false
+    },
     tour_disabled_down: {
       required: false
     },
@@ -4267,7 +4317,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       outputDiv: "Hellow my friend!",
       edit: false,
-      tour_name: ""
+      tour_name: "",
+      tourItem: {
+        id: "",
+        name: "",
+        image: "",
+        time: ""
+      }
     };
   },
   created: function () {
@@ -4278,9 +4334,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              this.tour_name = this.name;
+              _context.next = 2;
+              return this.getTour();
 
-            case 1:
+            case 2:
             case "end":
               return _context.stop();
           }
@@ -4295,6 +4352,75 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return created;
   }(),
   methods: {
+    getTour: function () {
+      var _getTour = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.tourItem.name = this.name;
+                this.tourItem.id = this.id;
+                this.tourItem.image = this.image;
+                this.tourItem.time = this.time;
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function getTour() {
+        return _getTour.apply(this, arguments);
+      }
+
+      return getTour;
+    }(),
+    updateName: function () {
+      var _updateName = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                console.log(this.tourItem);
+                _context3.next = 3;
+                return fetch("/api/tour/", {
+                  method: "put",
+                  body: JSON.stringify(this.tourItem),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u0418\u043C\u044F \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D\u043E");
+
+                  _this.updateItem();
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function updateName() {
+        return _updateName.apply(this, arguments);
+      }
+
+      return updateName;
+    }(),
     changeText: function changeText() {
       this.outputDiv = "my little code";
     },
@@ -4637,6 +4763,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -4712,7 +4839,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     var _created = _asyncToGenerator(
     /*#__PURE__*/
     _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var i;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -4741,10 +4867,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getRotesNames();
 
             case 12:
-              for (i = 0; i < this.reviews.lenght; i++) {
-                console.log(this.reviewsp[i]);
-              }
-
+              console.log(this.id);
               this.loading.data = true;
 
             case 14:
@@ -4943,7 +5066,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                cashRoutes = '';
+                cashRoutes = "";
                 _context7.next = 3;
                 return fetch("/api/route_group/groups").then(function (res) {
                   return res.json();
@@ -5877,6 +6000,19 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5897,7 +6033,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           switch (_context.prev = _context.next) {
             case 0:
               this.page_id = document.location.href[document.location.href.length - 1];
-              console.log(this.page_id);
+              console.log(this.id);
 
             case 2:
             case "end":
@@ -42112,10 +42248,18 @@ var render = function() {
     [
       _c("h2", { staticClass: "tour_title" }, [_vm._v("Управление турами")]),
       _vm._v(" "),
-      _vm._l(_vm.categories, function(item) {
+      _c("AddTour", { staticClass: "mb-4", attrs: { tourName: "some name" } }),
+      _vm._v(" "),
+      _vm._l(_vm.tourItems, function(item) {
         return _c("tour", {
           key: _vm.random(item),
-          attrs: { id: item.id, name: item.name }
+          attrs: {
+            id: item.id,
+            name: item.name,
+            image: item.image,
+            time: item.time,
+            updateItem: _vm.getCategories
+          }
         })
       })
     ],
@@ -43461,11 +43605,7 @@ var render = function() {
                   _c("div", [
                     _c("div", { staticClass: "d-flex review_data_info" }, [
                       _c("div", { staticClass: "review_data_info-name" }, [
-                        _vm._v(
-                          "\n                        " +
-                            _vm._s(_vm.item.author) +
-                            "\n                    "
-                        )
+                        _vm._v(_vm._s(_vm.item.author))
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "ml-3 review_data_info-date" }, [
@@ -44008,79 +44148,92 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "a",
-    { staticClass: "tour_card", attrs: { href: "/home/category/1" } },
-    [
-      _c("div", { staticClass: "tour_card_info" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        !_vm.edit
-          ? _c("div", { staticClass: "tour_card_title" }, [
-              _vm._v(_vm._s(_vm.tour_name))
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.edit
-          ? _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.tour_name,
-                  expression: "tour_name"
-                }
-              ],
-              staticClass: "main_input ml-4",
-              attrs: { type: "text" },
-              domProps: { value: _vm.tour_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.tour_name = $event.target.value
-                }
-              }
-            })
-          : _vm._e()
-      ]),
+  return _c("div", { staticClass: "tour_card" }, [
+    _c("div", { staticClass: "tour_card_info" }, [
+      _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "tour_card_functions" }, [
-        _c("div", { staticClass: "tour_functions_delete d-flex" }, [
-          _c(
-            "figure",
+      !_vm.edit
+        ? _c(
+            "a",
             {
-              staticClass: "mb-0",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.toggleEdit($event)
-                }
-              }
+              staticClass: "tour_card_title",
+              attrs: { href: "/home/category/" + _vm.id }
             },
-            [
-              !_vm.edit
-                ? _c("img", {
-                    attrs: {
-                      src: __webpack_require__(/*! ../../../../public/images/pen.svg */ "./public/images/pen.svg"),
-                      alt: "edit"
-                    }
-                  })
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.edit
-                ? _c("img", {
-                    attrs: {
-                      src: __webpack_require__(/*! ../../../../public/images/close.svg */ "./public/images/close.svg"),
-                      alt: "close"
-                    }
-                  })
-                : _vm._e()
-            ]
-          ),
-          _vm._v(" "),
-          _c("figure", { staticClass: "mb-0 ml-3" }, [
+            [_vm._v(_vm._s(_vm.tourItem.name))]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.edit
+        ? _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.tourItem.name,
+                expression: "tourItem.name"
+              }
+            ],
+            staticClass: "main_input ml-4",
+            attrs: { type: "text" },
+            domProps: { value: _vm.tourItem.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.tourItem, "name", $event.target.value)
+              }
+            }
+          })
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "tour_card_functions" }, [
+      _c("div", { staticClass: "tour_functions_delete d-flex" }, [
+        _c(
+          "figure",
+          {
+            staticClass: "mb-0",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.toggleEdit($event)
+              }
+            }
+          },
+          [
+            !_vm.edit
+              ? _c("img", {
+                  attrs: {
+                    src: __webpack_require__(/*! ../../../../public/images/pen.svg */ "./public/images/pen.svg"),
+                    alt: "edit"
+                  }
+                })
+              : _vm._e(),
+            _vm._v(" "),
+            _vm.edit
+              ? _c("img", {
+                  attrs: {
+                    src: __webpack_require__(/*! ../../../../public/images/close.svg */ "./public/images/close.svg"),
+                    alt: "close"
+                  }
+                })
+              : _vm._e()
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "figure",
+          {
+            staticClass: "mb-0 ml-3",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.updateName($event)
+              }
+            }
+          },
+          [
             _vm.edit
               ? _c("img", {
                   attrs: {
@@ -44089,11 +44242,11 @@ var render = function() {
                   }
                 })
               : _vm._e()
-          ])
-        ])
+          ]
+        )
       ])
-    ]
-  )
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
@@ -44104,7 +44257,7 @@ var staticRenderFns = [
       _c("figure", [
         _c("img", {
           attrs: {
-            src: __webpack_require__(/*! ../../../../public/images/icon-fire.svg */ "./public/images/icon-fire.svg"),
+            src: __webpack_require__(/*! ../../../../public/images/bus.svg */ "./public/images/bus.svg"),
             alt: "delete"
           }
         })
@@ -45081,9 +45234,14 @@ var render = function() {
                   [
                     _c("h3", { staticClass: "mb-4" }, [_vm._v("Отзывы")]),
                     _vm._v(" "),
-                    _c("AddTour", { attrs: { driver_id: _vm.driver.id } }),
+                    _c("AddTour", {
+                      attrs: {
+                        updateItem: _vm.getReview,
+                        driver_id: _vm.driver.id
+                      }
+                    }),
                     _vm._v(" "),
-                    _vm._l(_vm.reviews, function(item) {
+                    _vm._l(_vm.reviews.slice().reverse(), function(item) {
                       return _c("Review", {
                         key: _vm.random(item),
                         attrs: {
@@ -45092,7 +45250,8 @@ var render = function() {
                           stars: item.rating,
                           description: item.text,
                           id: item.id,
-                          driver_id: _vm.driver.id
+                          driver_id: _vm.driver.id,
+                          updateItem: _vm.getReview
                         }
                       })
                     })
@@ -57836,6 +57995,17 @@ module.exports = "/images/arrow_up.svg?cb2ac4e3b184504fdf99d6b4f6f49abf";
 
 /***/ }),
 
+/***/ "./public/images/bus.svg":
+/*!*******************************!*\
+  !*** ./public/images/bus.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/bus.svg?2f83f237700c11e3d191a8c57a7bebfd";
+
+/***/ }),
+
 /***/ "./public/images/close.svg":
 /*!*********************************!*\
   !*** ./public/images/close.svg ***!
@@ -59039,15 +59209,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!******************************************************!*\
   !*** ./resources/js/components/custom/AutoInput.vue ***!
   \******************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AutoInput_vue_vue_type_template_id_7ec75de8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AutoInput.vue?vue&type=template&id=7ec75de8& */ "./resources/js/components/custom/AutoInput.vue?vue&type=template&id=7ec75de8&");
 /* harmony import */ var _AutoInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AutoInput.vue?vue&type=script&lang=js& */ "./resources/js/components/custom/AutoInput.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AutoInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AutoInput_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -59077,7 +59246,7 @@ component.options.__file = "resources/js/components/custom/AutoInput.vue"
 /*!*******************************************************************************!*\
   !*** ./resources/js/components/custom/AutoInput.vue?vue&type=script&lang=js& ***!
   \*******************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

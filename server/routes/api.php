@@ -80,8 +80,6 @@ Route::group(['prefix' => 'route_group'], function (){
 });
 
 
-Route::delete('/disconnect', 'RouteGroupController@disconnect');
-
 Route::group(['prefix' => 'routes_rout_group'], function (){
     $controller = "RoutesRouteGroupController@";
     Route::post('/', $controller . 'store');
@@ -92,7 +90,7 @@ Route::group(['prefix' => 'routes_rout_group'], function (){
 Route::group(['prefix' => 'tour'], function (){
     $controller = "TourController@";
     Route::get('/{id}', $controller . 'show');
-    Route::get('/all', $controller . 'show_all');
+    Route::get('/all', $controller . 'all');
     Route::get('/category/{id}', $controller . 'show_category');
     Route::post('/', $controller . 'store');
     Route::post('/connect/route', $controller . 'connect_rout_to_tour');
@@ -105,3 +103,7 @@ Route::group(['prefix' => 'category'], function (){
     Route::get('/', $controller . 'index');
 });
 
+
+
+Route::delete('/disconnect', 'RouteGroupController@disconnect');
+Route::get('/alltour', 'TourController@all');

@@ -1,9 +1,9 @@
 <template>
   <div class="page_container">
     <h2 class="tour_title">Управление турами</h2>
-    <AddTour :tourName="'some name'" class="mb-4"></AddTour>
+    <AddTour :tourName="'Название тура'" :updateItem="getCategories" class="mb-4"></AddTour>
     <tour
-      v-for="item in tourItems"
+      v-for="item in tourItems.slice().reverse()"
       :id="item.id"
       :name="item.name"
       :image="item.image"
@@ -28,7 +28,7 @@ export default {
   },
   data() {
     return {
-      tourItems: {}
+      tourItems: []
     };
   },
   async created() {

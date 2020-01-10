@@ -27,6 +27,13 @@ export default {
         author: "",
         text: "",
         rating: ""
+      },
+      tour: {
+        name: "",
+        image:
+          "https://sun9-38.userapi.com/c854320/v854320805/1b8e14/afhOhLK6rkU.jpg",
+        time: "Час пути",
+        text: "Описание"
       }
     };
   },
@@ -38,17 +45,18 @@ export default {
     async startDriver() {
       if (this.driver_id) {
         this.review.driver_id = this.driver_id;
-        this.review.author = "some name";
-        (this.review.rating = "1"), (this.review.text = "text");
+        this.review.author = "Имя автора";
+        (this.review.rating = "1"), (this.review.text = "Текст отзыва");
       }
     },
     async startTour() {
-      if (this.tourName) console.log("Add tour created");
+      if (this.tourName) {
+        this.tour.name = this.tourName + "." + Math.random() * Math.pow(10, 5);
+      }
     },
     async add_item() {
-      let review = this.review;
       if (this.driver_id) {
-        console.log(this.review);
+        let review = this.review;
         await fetch(`/api/review/`, {
           method: "post",
           body: JSON.stringify(review),
@@ -57,13 +65,23 @@ export default {
           }
         })
           .then(res => res.json())
-          .then(data => {
-            alert(`${this.driver.name} удален`);
-          })
+          .then(data => {})
           .catch(err => console.log(err));
         this.updateItem();
       }
       if (this.tourName) {
+        await fetch(`/api/tour/`, {
+          method: "post",
+          body: JSON.stringify(this.tour),
+          headers: {
+            "Content-Type": "application/json"
+          }
+        })
+          .then(res => res.json())
+          .then(data => {})
+          .catch(err => console.log(err));
+        this.updateItem();
+        this.startTour();
       }
     }
   }

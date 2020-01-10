@@ -1990,7 +1990,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      tourItems: {}
+      tourItems: []
     };
   },
   created: function () {
@@ -2863,6 +2863,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         author: "",
         text: "",
         rating: ""
+      },
+      tour: {
+        name: "",
+        image: "https://sun9-38.userapi.com/c854320/v854320805/1b8e14/afhOhLK6rkU.jpg",
+        time: "Час пути",
+        text: "Описание"
       }
     };
   },
@@ -2905,8 +2911,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 if (this.driver_id) {
                   this.review.driver_id = this.driver_id;
-                  this.review.author = "some name";
-                  this.review.rating = "1", this.review.text = "text";
+                  this.review.author = "Имя автора";
+                  this.review.rating = "1", this.review.text = "Текст отзыва";
                 }
 
               case 1:
@@ -2931,7 +2937,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                if (this.tourName) console.log("Add tour created");
+                if (this.tourName) {
+                  this.tour.name = this.tourName + "." + Math.random() * Math.pow(10, 5);
+                }
 
               case 1:
               case "end":
@@ -2951,22 +2959,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _add_item = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var _this = this;
-
         var review;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                review = this.review;
-
                 if (!this.driver_id) {
-                  _context4.next = 6;
+                  _context4.next = 5;
                   break;
                 }
 
-                console.log(this.review);
-                _context4.next = 5;
+                review = this.review;
+                _context4.next = 4;
                 return fetch("/api/review/", {
                   method: "post",
                   body: JSON.stringify(review),
@@ -2975,19 +2979,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }).then(function (res) {
                   return res.json();
-                }).then(function (data) {
-                  alert("".concat(_this.driver.name, " \u0443\u0434\u0430\u043B\u0435\u043D"));
-                })["catch"](function (err) {
+                }).then(function (data) {})["catch"](function (err) {
                   return console.log(err);
                 });
 
-              case 5:
+              case 4:
                 this.updateItem();
 
-              case 6:
-                if (this.tourName) {}
+              case 5:
+                if (!this.tourName) {
+                  _context4.next = 10;
+                  break;
+                }
 
-              case 7:
+                _context4.next = 8;
+                return fetch("/api/tour/", {
+                  method: "post",
+                  body: JSON.stringify(this.tour),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {})["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 8:
+                this.updateItem();
+                this.startTour();
+
+              case 10:
               case "end":
                 return _context4.stop();
             }
@@ -4288,6 +4310,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Tour",
   props: {
@@ -4426,7 +4459,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     toggleEdit: function toggleEdit() {
       this.edit = !this.edit;
-    }
+    },
+    deleteItem: function () {
+      var _deleteItem = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                console.log("22");
+
+                if (!confirm("Вы точно хотите удалить тур?")) {
+                  _context4.next = 4;
+                  break;
+                }
+
+                _context4.next = 4;
+                return fetch("/api/tour/" + this.id, {
+                  method: "delete"
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {})["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 4:
+                this.updateItem();
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function deleteItem() {
+        return _deleteItem.apply(this, arguments);
+      }
+
+      return deleteItem;
+    }()
   },
   components: {}
 }); // <a :class="'tour_functions_down ' + tour_disabled_down" href="#">
@@ -5848,7 +5922,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _custom_AutoInput_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../custom/AutoInput.vue */ "./resources/js/components/custom/AutoInput.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5869,12 +5942,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "ContentValue",
-  components: {
-    AutoInput: _custom_AutoInput_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
-  },
+  components: {},
   data: function data() {
     return {
       data: {
@@ -5882,6 +5958,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         fields: {},
         list: {}
       },
+      contentFlag: "Planning",
       newGroup: false
     };
   },
@@ -5975,6 +6052,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       })["catch"](function (err) {
         return console.log(err);
       });
+    },
+    changeViewContent: function changeViewContent(item) {
+      this.contentFlag = item;
     }
   }
 });
@@ -5994,6 +6074,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _custom_TourCard_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../custom/TourCard.vue */ "./resources/js/components/custom/TourCard.vue");
 /* harmony import */ var _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./../custom/AddTour.vue */ "./resources/js/components/custom/AddTour.vue");
+/* harmony import */ var _custom_AutoInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../custom/AutoInput */ "./resources/js/components/custom/AutoInput.vue");
+/* harmony import */ var _custom_RouteItem__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../custom/RouteItem */ "./resources/js/components/custom/RouteItem.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6013,17 +6095,105 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "category",
+  components: {
+    TourCard: _custom_TourCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AddTour: _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_2__["default"],
+    AutoInput: _custom_AutoInput__WEBPACK_IMPORTED_MODULE_3__["default"],
+    RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_4__["default"]
+  },
   props: ["id"],
   data: function data() {
     return {
-      page_id: ""
+      tour: {
+        id: "",
+        name: "",
+        image: "",
+        time: ""
+      },
+      editTour: false,
+      editCategories: false
     };
   },
-  methods: {},
   created: function () {
     var _created = _asyncToGenerator(
     /*#__PURE__*/
@@ -6032,10 +6202,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              this.page_id = document.location.href[document.location.href.length - 1];
-              console.log(this.id);
+              _context.next = 2;
+              return this.getTour();
 
             case 2:
+              console.log(this.tour);
+
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -6049,9 +6222,49 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
     return created;
   }(),
-  components: {
-    TourCard: _custom_TourCard_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
-    AddTour: _custom_AddTour_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
+  methods: {
+    getTour: function () {
+      var _getTour = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                console.log(this.id);
+                _context2.next = 3;
+                return fetch("/api/tour/" + this.id).then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  return _this.tour = res.data;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      function getTour() {
+        return _getTour.apply(this, arguments);
+      }
+
+      return getTour;
+    }(),
+    toggleEditTour: function toggleEditTour() {
+      this.editTour = !this.editTour;
+    },
+    toggleEditCategories: function toggleEditCategories() {
+      this.editCategories = !editCategories;
+    },
+    updateTour: function updateTour() {},
+    imageTourChange: function imageTourChange() {}
   }
 });
 
@@ -42248,9 +42461,12 @@ var render = function() {
     [
       _c("h2", { staticClass: "tour_title" }, [_vm._v("Управление турами")]),
       _vm._v(" "),
-      _c("AddTour", { staticClass: "mb-4", attrs: { tourName: "some name" } }),
+      _c("AddTour", {
+        staticClass: "mb-4",
+        attrs: { tourName: "Название тура", updateItem: _vm.getCategories }
+      }),
       _vm._v(" "),
-      _vm._l(_vm.tourItems, function(item) {
+      _vm._l(_vm.tourItems.slice().reverse(), function(item) {
         return _c("tour", {
           key: _vm.random(item),
           attrs: {
@@ -44222,28 +44438,37 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _c(
-          "figure",
-          {
-            staticClass: "mb-0 ml-3",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.updateName($event)
-              }
-            }
-          },
-          [
-            _vm.edit
-              ? _c("img", {
-                  attrs: {
-                    src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"),
-                    alt: "edit"
+        _c("figure", { staticClass: "mb-0 ml-3" }, [
+          _vm.edit
+            ? _c("img", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"),
+                  alt: "edit"
+                },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.updateName($event)
                   }
-                })
-              : _vm._e()
-          ]
-        )
+                }
+              })
+            : _vm._e(),
+          _vm._v(" "),
+          !_vm.edit
+            ? _c("img", {
+                attrs: {
+                  src: __webpack_require__(/*! ../../../../public/images/trash.svg */ "./public/images/trash.svg"),
+                  alt: "edit"
+                },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.deleteItem($event)
+                  }
+                }
+              })
+            : _vm._e()
+        ])
       ])
     ])
   ])
@@ -45446,45 +45671,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "w100" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("AutoInput"),
-      _vm._v(" "),
-      _c("section", [_vm._v("content")])
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", [
+  return _c("div", { staticClass: "w-100" }, [
+    _c("section", { staticClass: "d-flex justify-content-center" }, [
       _c(
         "button",
-        { staticClass: "btn btn-outline-dark", attrs: { type: "button" } },
-        [_vm._v("Туры")]
+        {
+          staticClass: "btn btn-outline-dark",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.changeViewContent("Planning")
+            }
+          }
+        },
+        [_vm._v("Спланировать тур")]
       ),
       _vm._v(" "),
       _c(
         "button",
-        { staticClass: "btn btn-outline-dark", attrs: { type: "button" } },
+        {
+          staticClass: "btn btn-outline-dark ml-2",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.changeViewContent("About")
+            }
+          }
+        },
         [_vm._v("О нас")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        { staticClass: "btn btn-outline-dark", attrs: { type: "button" } },
-        [_vm._v("Иконки")]
       )
-    ])
-  }
-]
+    ]),
+    _vm._v(" "),
+    _vm.contentFlag == "Planning"
+      ? _c("section", [_vm._v("Planning")])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.contentFlag == "About" ? _c("section", [_vm._v("About")]) : _vm._e()
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -45506,38 +45733,263 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "page_container" },
-    [
-      _vm._m(0),
-      _vm._v(" "),
-      _c("TourCard"),
-      _vm._v(" "),
-      _c("TourCard"),
-      _vm._v(" "),
-      _c("AddTour")
-    ],
-    1
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "category_title" }, [
+  return _c("div", { staticClass: "page_container" }, [
+    _c("div", { staticClass: "category_title" }, [
       _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/images/icon-fire.svg */ "./public/images/icon-fire.svg"),
-          alt: ""
-        }
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/bus.svg */ "./public/images/bus.svg"), alt: "" }
       }),
       _vm._v(" "),
-      _c("h2", { staticClass: "tour_title" }, [_vm._v("Популярное")])
-    ])
-  }
-]
+      _c("h2", { staticClass: "tour_title" }, [
+        _vm._v("Название: " + _vm._s(_vm.tour.name))
+      ])
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "mb-3 d-flex align-items-start" }, [
+      _c("figure", { staticClass: "tourPage_figure" }, [
+        _c("img", {
+          staticClass: "img-thumbnail rounded mx-auto d-block",
+          attrs: { src: _vm.tour.image, alt: "foto of tour" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("input", {
+        staticClass: "mt-3 ml-4",
+        attrs: { type: "file" },
+        on: { change: _vm.imageTourChange }
+      })
+    ]),
+    _vm._v(" "),
+    _c("section", { staticClass: "car_data" }, [
+      _c("h4", [_vm._v("Данные:")]),
+      _vm._v(" "),
+      !this.editTour
+        ? _c("div", { staticClass: "car_data_noedit" }, [
+            _c("div", { staticClass: "car_data_item" }, [
+              _c("span", { staticClass: "data" }, [_vm._v("ID:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text" }, [_vm._v(_vm._s(_vm.tour.id))])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "car_data_item" }, [
+              _c("span", { staticClass: "data" }, [_vm._v("Название:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text" }, [
+                _vm._v(_vm._s(_vm.tour.name))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "car_data_item" }, [
+              _c("span", { staticClass: "data" }, [_vm._v("Длительность:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text" }, [
+                _vm._v(_vm._s(_vm.tour.time))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "car_data_item" }, [
+              _c("span", { staticClass: "data" }, [_vm._v("Описание:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text" }, [
+                _vm._v(_vm._s(_vm.tour.text))
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-dark",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.toggleEditTour($event)
+                  }
+                }
+              },
+              [_vm._v("Редактировать")]
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      this.editTour
+        ? _c("div", { staticClass: "car_data_noedit" }, [
+            _c("div", { staticClass: "car_data_item" }, [
+              _c("span", { staticClass: "data" }, [_vm._v("ID:")]),
+              _vm._v(" "),
+              _c("span", { staticClass: "text" }, [_vm._v(_vm._s(_vm.tour.id))])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "car_data_item" }, [
+              _c("span", { staticClass: "data" }, [_vm._v("Название:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.tour.name,
+                    expression: "tour.name"
+                  }
+                ],
+                staticClass: "main_input",
+                attrs: { type: "text" },
+                domProps: { value: _vm.tour.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.tour, "name", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "car_data_item" }, [
+              _c("span", { staticClass: "data" }, [_vm._v("Длительность:")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.tour.time,
+                    expression: "tour.time"
+                  }
+                ],
+                staticClass: "main_input",
+                attrs: { type: "text" },
+                domProps: { value: _vm.tour.time },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.tour, "time", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-primary btn_edit",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.updateTour($event)
+                  }
+                }
+              },
+              [_vm._v("Сохранить")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-dark btn_edit",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.toggleEditTour($event)
+                  }
+                }
+              },
+              [_vm._v("Отмена")]
+            )
+          ])
+        : _vm._e()
+    ]),
+    _vm._v(" "),
+    !_vm.editCategories
+      ? _c("div", { staticClass: "data-block" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.toggleEditCategories($event)
+                }
+              }
+            },
+            [_vm._v("Изменить категории")]
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.editCategories
+      ? _c(
+          "div",
+          { staticClass: "d-flex justify-content-center flex-wrap w-100" },
+          [
+            _c(
+              "div",
+              { staticClass: "routs_item_width" },
+              [
+                _c("AutoInput", {
+                  attrs: {
+                    items: _vm.nameRouteGroups,
+                    returnData: _vm.postRouteName
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-primary ml-2",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.connectRG($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Добавить группу")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.routegroups, function(item) {
+              return _c("RouteItem", {
+                key: _vm.random(item),
+                attrs: {
+                  name: item.name,
+                  id: _vm.id,
+                  route_id: item.id,
+                  purpose: "driverrouts",
+                  getRouts: _vm.getRouteGroups
+                }
+              })
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-100 d-flex justify-content-center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary mt-4",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.toggleEditCategories($event)
+                    }
+                  }
+                },
+                [_vm._v("Выйти")]
+              )
+            ])
+          ],
+          2
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -58025,17 +58477,6 @@ module.exports = "/images/close.svg?8edc06cefb0e5b9788738a43dbf21cb5";
 /***/ (function(module, exports) {
 
 module.exports = "/images/eye.svg?e6f02caba5bd3ec90a855f386823197d";
-
-/***/ }),
-
-/***/ "./public/images/icon-fire.svg":
-/*!*************************************!*\
-  !*** ./public/images/icon-fire.svg ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/icon-fire.svg?16593c883d9f52555cb78211ba58c171";
 
 /***/ }),
 

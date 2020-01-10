@@ -15,8 +15,19 @@
           <img src="../../../../public/images/pen.svg" alt="edit" v-if="!edit" />
           <img src="../../../../public/images/close.svg" alt="close" v-if="edit" />
         </figure>
-        <figure class="mb-0 ml-3" @click.prevent="updateName">
-          <img src="../../../../public/images/save.svg" alt="edit" v-if="edit" />
+        <figure class="mb-0 ml-3">
+          <img
+            src="../../../../public/images/save.svg"
+            @click.prevent="updateName"
+            alt="edit"
+            v-if="edit"
+          />
+          <img
+            @click.prevent="deleteItem"
+            src="../../../../public/images/trash.svg"
+            alt="edit"
+            v-if="!edit"
+          />
         </figure>
       </div>
     </div>
@@ -93,6 +104,18 @@ export default {
     },
     toggleEdit() {
       this.edit = !this.edit;
+    },
+    async deleteItem() {
+      console.log("22");
+      if (confirm("Вы точно хотите удалить тур?")) {
+        await fetch(`/api/tour/` + this.id, {
+          method: "delete"
+        })
+          .then(res => res.json())
+          .then(data => {})
+          .catch(err => console.log(err));
+      }
+      this.updateItem();
     }
   },
   components: {}

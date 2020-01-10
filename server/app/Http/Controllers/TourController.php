@@ -32,6 +32,7 @@ class TourController extends Controller
         $tour->name = $request->input('name');
         $tour->image = $request->input('image');
         $tour->time = $request->input('time');
+        $tour->text = $request->input('text');
 
         $tour->save();
         return new TourResource($tour);
@@ -64,8 +65,9 @@ class TourController extends Controller
 
     public function destroy($id)
     {
+        
         try {
-            $tour = Tour::findOneOrFail();
+            $tour = Tour::findOrFail($id);
             if ($tour->delete()) {
                 return new TourResource($tour);
             }

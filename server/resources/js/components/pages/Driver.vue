@@ -219,7 +219,7 @@
             :description="item.text"
             :id="item.id"
             :driver_id="driver.id"
-            :updateItem=" getReview"
+            :updateItem="getReview"
           ></Review>
         </section>
       </div>

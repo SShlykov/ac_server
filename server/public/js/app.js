@@ -4056,7 +4056,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return fetch("/api/route_group/show_connected/".concat(this.id)).then(function (res) {
+                return fetch("/api/route_group/show_connected/" + this.id).then(function (res) {
                   return res.json();
                 }).then(function (res) {
                   _this.routes = res;

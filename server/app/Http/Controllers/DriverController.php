@@ -40,7 +40,9 @@ class DriverController extends Controller
         
         	file_put_contents($path, $decoded);
 	}
-        $driver = $request->isMethod('put') ? Driver::findOrFail($request->id)
+	\Log::info($request)
+
+	$driver = $request->isMethod('put') ? Driver::findOrFail($request->id)
             : new Driver;
 
         $driver->id = $request->input('id');
@@ -50,7 +52,7 @@ class DriverController extends Controller
         $driver->phone = $request->input('phone');
         
         $driver->photo = '/'.'images/'.'drivers/'.$file_name;
-
+	
         $driver->save();
         return new DriverResource($driver);
     }

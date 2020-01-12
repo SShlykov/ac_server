@@ -61,6 +61,7 @@ Route::group(['prefix' => 'review'], function (){
 Route::group(['prefix' => 'route'], function (){
     $controller = "RouteController@";
     Route::get('/{id}', $controller . 'show');
+    Route::get('/routes/all', $controller . 'all' );
     Route::get('/wrg/{id}', $controller . 'showRG');
     Route::get('/name/{name}', $controller . 'show_name');
     Route::post('/', $controller . 'store');

@@ -15,6 +15,12 @@ class RouteController extends Controller
         return RouteResource::collection($route);
     }
 
+    public function all()
+    {
+        $routes = Route::all();
+        return RouteResource::collection($routes);
+    }
+
     public function store(Request $request)
     {
         $route = $request->isMethod('put') ? Route::findOrFail($request->id)

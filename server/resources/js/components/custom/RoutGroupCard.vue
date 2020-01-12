@@ -6,8 +6,8 @@
       <button @click.prevent="route_group_delete" class="btn btn-outline-danger ml-3">Удалить</button>
     </div>
     <div class="routgroup flex-column" v-if="editCard">
-      <div class="v-flex flex-nowrap w-10">
-        <input class="main_input" type="text" v-model="new_item.route_name" />
+      <div class="d-flex flex-wrap justify-content-center w-100">
+        <AutoInput class="mb-2" :items="allNameRoutes" :returnData="getInput"></AutoInput>
         <button class="ml-4 btn btn-outline-success" @click.prevent="rout_group_add_rout">добавить</button>
       </div>
       <RouteItem
@@ -28,11 +28,13 @@
 
 <script>
 import RouteItem from "../custom/RouteItem";
+import AutoInput from "../custom/AutoInput";
 
 export default {
   name: "RoutGroupCard",
   components: {
-    RouteItem
+    RouteItem,
+    AutoInput
   },
   data() {
     return {
@@ -53,13 +55,16 @@ export default {
     },
     fetchData: {
       required: true
+    },
+    allNameRoutes: {
+      required: true
     }
   },
   async created() {
     await this.getRouts();
     this.new_item.route_group_id = this.id;
-    console.log(this.routes);
-    console.log(this.id);
+    //console.log(this.routes);
+    //console.log(this.id);
     //console.log(`_____________________`);
   },
   methods: {
@@ -76,7 +81,7 @@ export default {
     toggleEditCard() {
       this.editCard = !this.editCard;
     },
-    route_group_delete() {
+    async route_group_delete() {
       if (confirm("Вы точно хотите удалить?")) {
         fetch(`/api/route_group/` + this.id, {
           method: "delete"
@@ -107,6 +112,9 @@ export default {
           this.getRouts();
         })
         .catch(err => console.log(err));
+    },
+    getInput(item) {
+      this.new_item.route_name = item;
     }
   }
 };

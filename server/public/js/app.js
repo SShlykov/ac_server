@@ -4055,16 +4055,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                console.log("Front id :" + this.id);
+                _context2.next = 3;
                 return fetch("/api/route_group/show_connected/" + this.id).then(function (res) {
                   return res.json();
                 }).then(function (res) {
                   _this.routes = res;
+                  console.log("Take data :" + res);
                 })["catch"](function (err) {
                   return console.log(err);
                 });
 
-              case 2:
+              case 3:
               case "end":
                 return _context2.stop();
             }

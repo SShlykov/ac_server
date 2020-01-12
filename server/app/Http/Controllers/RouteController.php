@@ -38,7 +38,13 @@ class RouteController extends Controller
 
     public function show_name($name)
     {
+        \Log::info('DB request:');
+        \Log::info($request);
+
         $review =  Route::where('name', $name)->first();
+
+        \Log::info('DB review:');
+        \Log::info($review);
 
         return new RouteResource($review);
     }

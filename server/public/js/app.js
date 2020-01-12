@@ -5094,23 +5094,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getCar();
 
             case 4:
-              _context.next = 6;
+              console.log(this.car);
+              _context.next = 7;
               return this.getCarPhotos();
 
-            case 6:
-              _context.next = 8;
+            case 7:
+              _context.next = 9;
               return this.getReview();
 
-            case 8:
-              _context.next = 10;
+            case 9:
+              _context.next = 11;
               return this.getRouteGroups();
 
-            case 10:
-              _context.next = 12;
+            case 11:
+              _context.next = 13;
               return this.getRotesNames();
 
-            case 12:
-              console.log(this.id);
+            case 13:
               this.loading.data = true;
 
             case 14:
@@ -5205,19 +5205,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return fetch("/api/car/".concat(this.id)).then(function (res) {
+                return fetch("/api/driver/car/get_car/".concat(this.id)).then(function (res) {
                   return res.json();
                 }).then(function (res) {
-                  return _this3.car = res.data;
+                  return _this3.car = res;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
 
               case 2:
                 if (this.car.child == 1) this.selected.child = "Есть";else this.selected.child = "Нет";
-                console.log(this.types.cartypes.indexOf("Минивэн"));
 
-              case 4:
+              case 3:
               case "end":
                 return _context4.stop();
             }
@@ -46203,7 +46202,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("div", { staticClass: "car_data_item" }, [
                           _c("span", { staticClass: "data" }, [
-                            _vm._v("Цена/час:")
+                            _vm._v("Цена/км:")
                           ]),
                           _vm._v(" "),
                           _c("span", { staticClass: "text" }, [
@@ -46430,7 +46429,7 @@ var render = function() {
                         _vm._v(" "),
                         _c("div", { staticClass: "car_data_item" }, [
                           _c("span", { staticClass: "data" }, [
-                            _vm._v("Цена/час:")
+                            _vm._v("Цена/км:")
                           ]),
                           _vm._v(" "),
                           _c("input", {

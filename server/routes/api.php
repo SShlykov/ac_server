@@ -20,6 +20,7 @@ Route::group(['prefix' => 'driver'], function (){
     Route::get('/withTrashed/{count}', $controller . 'showWT');
     Route::get('/onlyTrashed/{count}', $controller . 'showOT');
     Route::get('/rg/show_connected/{driver_id}', $controller . 'show_connected');
+    Route::get('/car/get_car/{id}', $controller . 'get_car');
     Route::put('/restore/{id}', $controller . 'restore');
     Route::post('/', $controller . 'store');
     Route::post('/rg/connect/{driver_id}/{rg_id}', $controller . 'addRG');

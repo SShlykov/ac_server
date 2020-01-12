@@ -7307,7 +7307,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return fetch("/api/category/").then(function (res) {
+                return fetch("/api/category/all").then(function (res) {
                   return res.json();
                 }).then(function (res) {
                   return categories = res.data;

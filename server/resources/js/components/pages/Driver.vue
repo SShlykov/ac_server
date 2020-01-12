@@ -80,7 +80,7 @@
               <span class="text">{{car.fuel}}</span>
             </div>
             <div class="car_data_item">
-              <span class="data">Цена/час:</span>
+              <span class="data">Цена/км:</span>
               <span class="text">{{car.price}}</span>
             </div>
             <div class="car_data_item">
@@ -126,7 +126,7 @@
               </select>
             </div>
             <div class="car_data_item">
-              <span class="data">Цена/час:</span>
+              <span class="data">Цена/км:</span>
               <input class="main_input w50" type="text" v-model="car.price" />
             </div>
             <div class="car_data_item">
@@ -304,11 +304,11 @@ export default {
   async created() {
     await this.getDriver();
     await this.getCar();
+    console.log(this.car);
     await this.getCarPhotos();
     await this.getReview();
     await this.getRouteGroups();
     await this.getRotesNames();
-    console.log(this.id);
     this.loading.data = true;
   },
   methods: {
@@ -325,14 +325,13 @@ export default {
         .catch(err => console.log(err));
     },
     async getCar() {
-      await fetch(`/api/car/${this.id}`)
+      await fetch(`/api/driver/car/get_car/${this.id}`)
         .then(res => res.json())
-        .then(res => (this.car = res.data))
+        .then(res => (this.car = res))
         .catch(err => console.log(err));
 
       if (this.car.child == 1) this.selected.child = "Есть";
       else this.selected.child = "Нет";
-      console.log(this.types.cartypes.indexOf("Минивэн"));
     },
     async getCarPhotos() {
       await fetch(`/api/carphoto/${this.car.id}`)

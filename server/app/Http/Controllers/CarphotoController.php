@@ -112,7 +112,7 @@ class CarphotoController extends Controller
 
     public function show($id)
     {
-        $carphotos = Carphoto::findOrFail($id);
+        $carphotos = Carphoto::where('car_id' , $id)->first();
 
         return new CarphotoResource($carphotos);
     }

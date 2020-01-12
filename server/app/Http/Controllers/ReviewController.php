@@ -35,7 +35,7 @@ class ReviewController extends Controller
 
     public function show($id)
     {
-        $review = Review::findOrFail($id);
+        $review = Review::where('driver_id', $id)->first();
         return new ReviewResource($review);
 
     }

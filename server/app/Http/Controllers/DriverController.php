@@ -68,12 +68,14 @@ class DriverController extends Controller
 
         return new DriverResource($driver);
     }
+
     public function get_car($id)
     {
-    	$car = \App\Car::where('driver_id', $id);
+    	$car = \App\Car::where('driver_id', $id)->first();
 
-	return $car;
+	    return $car;
     }
+
     public function addRG($driver_id, $rg_id)
     {
         $driver = Driver::findOrFail($driver_id);

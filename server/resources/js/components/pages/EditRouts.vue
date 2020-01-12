@@ -39,7 +39,6 @@ export default {
   props: {},
   async created() {
     await this.fetchData();
-    console.log(this.data.list);
   },
   methods: {
     async fetchData() {

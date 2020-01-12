@@ -4090,11 +4090,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getRouts();
 
             case 2:
-              this.new_item.route_group_id = this.id; //console.log(this.routes);
-              //console.log(this.id);
-              //console.log(`_____________________`);
+              this.new_item.route_group_id = this.id;
+              console.log(this.routes);
+              console.log(this.id); //console.log(`_____________________`);
 
-            case 3:
+            case 5:
             case "end":
               return _context.stop();
           }
@@ -5962,9 +5962,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.fetchData();
 
             case 2:
-              console.log(this.data.list);
-
-            case 3:
             case "end":
               return _context.stop();
           }

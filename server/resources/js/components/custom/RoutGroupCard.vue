@@ -63,7 +63,7 @@ export default {
   },
   methods: {
     async getRouts() {
-      await fetch(`/api/route_group/show_connected/${this.id}`)
+      await fetch(`/api/route_group/show_connected/` + this.id)
         .then(res => res.json())
         .then(res => {
           this.routes = res;

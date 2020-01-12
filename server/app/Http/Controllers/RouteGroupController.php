@@ -12,8 +12,7 @@ class RouteGroupController extends Controller
     public function index()
     {
 	$routeGroup = RouteGroup::all();
-	\Log::info($routeGroup);
-        return RouteGroupResource::collection($routeGroup);
+        return ["data" =>  $routeGroup];
     }
 
     public function store(Request $request)
@@ -25,7 +24,7 @@ class RouteGroupController extends Controller
         $routeGroup->name = $request->input('name');
         $routeGroup->save();
 
-        return new RouteGroupResource($routeGroup);
+        return ["data" => $routeGroup];
     }
 
     public function connect(Request $request)
@@ -36,7 +35,7 @@ class RouteGroupController extends Controller
         
         $routeGroup->routes()->save($route);
 
-        return new RouteGroupResource($routeGroup);
+        return ["data" => $routeGroup];
     }
 
     public function disconnect(Request $request)
@@ -44,7 +43,7 @@ class RouteGroupController extends Controller
         $routeGroup = RouteGroup::findOrFail($request->input('route_group_id'));
         $route = Route::findOrFail($request->input('route_id'));
         $routeGroup->routes()->detach($route);
-        return new RouteGroupResource($routeGroup);
+        return ["data" => $routeGroup];
     }
 
     public function show_connected($id)
@@ -60,7 +59,7 @@ class RouteGroupController extends Controller
     {
         $review = RouteGroup::findOrFail($id);
 
-        return new RouteGroupResource($review);
+        return ["data" => $review];
     }
 
     public function destroy($id)
@@ -70,7 +69,7 @@ class RouteGroupController extends Controller
             if ($routeGroup) {
                 $routeGroup->delete();
             }
-            return new RouteGroupResource($routeGroup);
+            return ["data" => $routeGroup];
         } catch (\Exception $e) {
             $status = 400;
             $message = 'Something went wrong, please, report us';

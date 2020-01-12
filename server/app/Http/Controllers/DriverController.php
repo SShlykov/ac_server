@@ -21,11 +21,11 @@ class DriverController extends Controller
     }
     public function store(Request $request)
     {
-	if($request->photo){
-	    
 	
-        	$exploded = explode(',', $request->photo);
-        	$decoded = base64_decode($exploded[1]);
+	$exploded = explode(',', $request->photo);
+	$isNewPhoto = Str::contains($request->photo, 'base');	
+	if($isNewPhoto){
+		$decoded = base64_decode($exploded[1]);
 
         
         	if(Str::contains($exploded[0], 'jpeg'))
@@ -40,8 +40,6 @@ class DriverController extends Controller
         
         	file_put_contents($path, $decoded);
 	}
-	\Log::info($request)
-
 	$driver = $request->isMethod('put') ? Driver::findOrFail($request->id)
             : new Driver;
 
@@ -50,10 +48,16 @@ class DriverController extends Controller
         $driver->last_name = $request->input('last_name');
         $driver->locale = $request->input('locale');
         $driver->phone = $request->input('phone');
-        
-        $driver->photo = '/'.'images/'.'drivers/'.$file_name;
+       	if($isNewPhoto){ 
+        	$driver->photo = '/'.'images/'.'drivers/'.$file_name;
+       	}
+	\Log::info($driver);
+
+	$driver->save();
 	
-        $driver->save();
+	$car = $driver->car()->create();
+	$car->carphoto()->create();
+
         return new DriverResource($driver);
     }
 
@@ -64,7 +68,12 @@ class DriverController extends Controller
 
         return new DriverResource($driver);
     }
+    public function get_car($id)
+    {
+    	$car = \App\Car::where('driver_id', $id);
 
+	return $car;
+    }
     public function addRG($driver_id, $rg_id)
     {
         $driver = Driver::findOrFail($driver_id);

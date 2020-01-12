@@ -28,6 +28,7 @@
 
 <script>
 import RouteItem from "../custom/RouteItem";
+
 export default {
   name: "RoutGroupCard",
   components: {

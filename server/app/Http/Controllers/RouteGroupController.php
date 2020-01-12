@@ -29,6 +29,7 @@ class RouteGroupController extends Controller
 
     public function connect(Request $request)
     {
+
         $routeGroup = RouteGroup::findOrFail($request->input('route_group_id'));
 
         $route = Route::where('name', ($request->input('route_name')))->first();

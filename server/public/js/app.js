@@ -3645,6 +3645,70 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/NewRouteGroup.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/NewRouteGroup.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "NewRouteGroup",
+  components: {},
+  props: {
+    fetchData: {
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      editRout: false,
+      text: ""
+    };
+  },
+  methods: {
+    toggleEdit: function toggleEdit() {
+      this.editRout = !this.editRout;
+    },
+    route_group_post: function route_group_post() {
+      var _this = this;
+
+      fetch("/api/route_group/", {
+        method: "POST",
+        body: JSON.stringify({
+          name: this.text
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      }).then(function (res) {
+        return res.json();
+      }).then(function (data) {
+        console.log("\u0413\u0440\u0443\u043F\u043F\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0430");
+
+        _this.fetchData();
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/Review.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/Review.vue?vue&type=script&lang=js& ***!
@@ -5842,6 +5906,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _custom_RoutGroupCard__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../custom/RoutGroupCard */ "./resources/js/components/custom/RoutGroupCard.vue");
+/* harmony import */ var _custom_NewRouteGroup__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../custom/NewRouteGroup */ "./resources/js/components/custom/NewRouteGroup.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -5866,23 +5931,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "EditRouts",
   components: {
-    RouteGroupCard: _custom_RoutGroupCard__WEBPACK_IMPORTED_MODULE_1__["default"]
+    RouteGroupCard: _custom_RoutGroupCard__WEBPACK_IMPORTED_MODULE_1__["default"],
+    NewRouteGroup: _custom_NewRouteGroup__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -5966,7 +6021,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     route_group_post: function route_group_post() {
       var _this2 = this;
 
-      console.log(this.data.item.name);
       fetch("/api/route_group/", {
         method: "POST",
         body: JSON.stringify({
@@ -45092,6 +45146,100 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/NewRouteGroup.vue?vue&type=template&id=2803ae03&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/NewRouteGroup.vue?vue&type=template&id=2803ae03& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    !_vm.editRout
+      ? _c(
+          "button",
+          {
+            staticClass: "btn btn-primary ml-3",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.toggleEdit()
+              }
+            }
+          },
+          [_vm._v("Новая группа")]
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.editRout
+      ? _c("div", { staticClass: "rout_container rout_container_edit-routs" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.text,
+                expression: "text"
+              }
+            ],
+            staticClass: "main_input",
+            attrs: { type: "text", placeholder: "Название группы" },
+            domProps: { value: _vm.text },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.text = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn btn-primary ml-3",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.route_group_post()
+                }
+              }
+            },
+            [_vm._v("Добавить")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-dark ml-3",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.toggleEdit()
+                }
+              }
+            },
+            [_vm._v("Отменить")]
+          )
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/Review.vue?vue&type=template&id=128ea89b&":
 /*!****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/custom/Review.vue?vue&type=template&id=128ea89b& ***!
@@ -46863,79 +47011,23 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("a", { staticClass: "btn btn-dark", attrs: { href: "/home/routes" } }, [
-      _vm._v("Назад")
-    ]),
-    _vm._v(" "),
-    !_vm.newGroup
-      ? _c(
-          "button",
-          {
-            staticClass: "btn btn-primary ml-3",
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.toggleGroup()
-              }
-            }
-          },
-          [_vm._v("Новая группа")]
-        )
-      : _vm._e(),
-    _vm._v(" "),
-    _vm.newGroup
-      ? _c("div", { staticClass: "rout_container rout_container_edit-routs" }, [
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.data.item["name"],
-                expression: "data.item['name']"
-              }
-            ],
-            staticClass: "main_input",
-            attrs: { type: "text", placeholder: "Название группы" },
-            domProps: { value: _vm.data.item["name"] },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.data.item, "name", $event.target.value)
-              }
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn btn-primary ml-3",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.route_group_post()
-                }
-              }
-            },
-            [_vm._v("Добавить")]
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-dark ml-3",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.toggleGroup()
-                }
-              }
-            },
-            [_vm._v("Отменить")]
-          )
-        ])
-      : _vm._e(),
+    _c(
+      "div",
+      { staticClass: "d-flex align-items-center" },
+      [
+        _c(
+          "a",
+          { staticClass: "btn btn-dark", attrs: { href: "/home/routes" } },
+          [_vm._v("Назад")]
+        ),
+        _vm._v(" "),
+        _c("NewRouteGroup", {
+          staticClass: "ml-3",
+          attrs: { fetchData: _vm.fetchData }
+        })
+      ],
+      1
+    ),
     _vm._v(" "),
     _c(
       "div",
@@ -63006,6 +63098,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditItem_vue_vue_type_template_id_09bb0040___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_EditItem_vue_vue_type_template_id_09bb0040___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/NewRouteGroup.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/custom/NewRouteGroup.vue ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _NewRouteGroup_vue_vue_type_template_id_2803ae03___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NewRouteGroup.vue?vue&type=template&id=2803ae03& */ "./resources/js/components/custom/NewRouteGroup.vue?vue&type=template&id=2803ae03&");
+/* harmony import */ var _NewRouteGroup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NewRouteGroup.vue?vue&type=script&lang=js& */ "./resources/js/components/custom/NewRouteGroup.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _NewRouteGroup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _NewRouteGroup_vue_vue_type_template_id_2803ae03___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _NewRouteGroup_vue_vue_type_template_id_2803ae03___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/custom/NewRouteGroup.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/NewRouteGroup.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/custom/NewRouteGroup.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewRouteGroup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewRouteGroup.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/NewRouteGroup.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NewRouteGroup_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/custom/NewRouteGroup.vue?vue&type=template&id=2803ae03&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/custom/NewRouteGroup.vue?vue&type=template&id=2803ae03& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewRouteGroup_vue_vue_type_template_id_2803ae03___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./NewRouteGroup.vue?vue&type=template&id=2803ae03& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/custom/NewRouteGroup.vue?vue&type=template&id=2803ae03&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewRouteGroup_vue_vue_type_template_id_2803ae03___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_NewRouteGroup_vue_vue_type_template_id_2803ae03___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

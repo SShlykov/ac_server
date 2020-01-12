@@ -8,12 +8,12 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => 'Sergey',
-        'last_name' => 'Shlykov',
-        'email' => 's.n.shlykov@gmail.com',
+        'name' => 'Maria',
+        'last_name' => 'Ur',
+        'email' => 'your_mail@mail.ru',
         'password' => Hash::make(
             'secret'
         ),
-        'login' => 'sshlykov'
+        'login' => 'admin'
     ];
 });

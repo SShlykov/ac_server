@@ -3741,7 +3741,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IMPORTED_MODULE_2__["default"]);
@@ -45290,7 +45289,6 @@ var render = function() {
                 _c("textarea-autosize", {
                   ref: "myTextarea",
                   attrs: {
-                    readonly: "",
                     placeholder: "Текст отзыва",
                     "min-height": 30,
                     "max-height": 350

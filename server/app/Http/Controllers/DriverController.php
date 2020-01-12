@@ -21,23 +21,25 @@ class DriverController extends Controller
     }
     public function store(Request $request)
     {
-        \Log::info($request);
-        $exploded = explode(',', $request->photo);
-        $decoded = base64_decode($exploded[1]);
+	if($request->photo){
+	    
+	
+        	$exploded = explode(',', $request->photo);
+        	$decoded = base64_decode($exploded[1]);
 
         
-        if(Str::contains($exploded[0], 'jpeg'))
-        $extension = 'jpg';
-        else
-        $extension = 'png';
+        	if(Str::contains($exploded[0], 'jpeg'))
+        	$extension = 'jpg';
+       		else
+        	$extension = 'png';
         
         
-        $file_name = Str::random(40).'.'.$extension;
+        	$file_name = Str::random(40).'.'.$extension;
         
-        $path = public_path().'/'.'images/'.'drivers/'.$file_name;
+        	$path = public_path().'/'.'images/'.'drivers/'.$file_name;
         
-        file_put_contents($path, $decoded);
-
+        	file_put_contents($path, $decoded);
+	}
         $driver = $request->isMethod('put') ? Driver::findOrFail($request->id)
             : new Driver;
 

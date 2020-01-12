@@ -4,6 +4,14 @@
   width: 49% !important;
 }
 
+.w-35 {
+  width: 35% !important;
+}
+
+.w-20 {
+  width: 20% !important;
+}
+
 .w30 {
   width: 30%;
   min-width: 30%;
@@ -40,6 +48,18 @@
   min-width: 100%;
 }
 
+.mb10 {
+  margin-bottom: 10px;
+}
+
+.mb20 {
+  margin-bottom: 20px;
+}
+
+.mb30 {
+  margin-bottom: 30px;
+}
+
 .block {
   height: 60px;
   width: 60px;
@@ -63,6 +83,49 @@
   border-radius: 5px;
   min-height: 35px;
   padding-left: 5px;
+}
+
+.main_input_40 {
+  max-width: 40px;
+}
+
+.main_input_center {
+  padding: 0;
+  text-align: center;
+}
+
+.main_input:focus {
+  outline: 1px solid #3333ff;
+}
+
+.main_input_dropitems {
+  border: 1px solid #c7c7c7;
+  padding: 7px;
+  padding-left: 5px;
+  width: 164px;
+  background-color: white;
+}
+
+.main_input_dropitems:hover {
+  background-color: #ccccff;
+  color: black;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.main_input_close {
+  border: none;
+  background-color: transparent;
+  color: #000066;
+  font-weight: 600;
+}
+
+.main_input_container {
+  position: absolute;
+}
+
+.mw100 {
+  min-width: 100px;
 }
 
 .sideBar {
@@ -174,7 +237,7 @@
 .tour_card_title {
   margin-left: 20px;
   font-size: 16px;
-  color: #47a6ff;
+  color: #d66903;
   text-decoration: none;
 }
 
@@ -204,13 +267,24 @@
 .tour_add > figure {
   height: 50px;
   margin: 0;
+  display: flex;
+  align-items: center;
 }
 
-.tour_add > figure > div {
+.tour_add > figure > div,
+.tour_add > figure > button {
   height: 100%;
   font-size: 56px;
   display: flex;
   align-items: center;
+}
+
+.tour_add > figure > button {
+  display: inline-block;
+  border: none;
+  background-color: transparent;
+  vertical-align: center;
+  line-height: 0;
 }
 
 .tour_disabled {
@@ -365,6 +439,7 @@
   margin-right: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   transition: all 0.4s;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 420px) {
@@ -565,6 +640,7 @@
   border: 1px solid #cdcdcd;
   border-radius: 5px;
   min-height: 35px;
+  padding-left: 8px;
 }
 
 @media screen and (max-width: 991px) {
@@ -632,6 +708,7 @@
 
 .car_data {
   width: 100%;
+  margin-bottom: 40px;
 }
 
 .car_data_noedit {
@@ -640,9 +717,42 @@
   flex-wrap: wrap;
 }
 
+.car_data_noedit > button {
+  height: 43px;
+}
+
+.car_data_noedit > button.btn_edit {
+  height: 54px;
+  margin-right: 15px;
+}
+
 .car_data_item {
   display: flex;
   margin-right: 20px;
+  padding: 10px 20px;
+  box-shadow: 4px 2px 15px #b3b3b3;
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.car_data_item > select {
+  margin-left: 10px;
+  border-radius: 3px;
+  padding: 4px 8px;
+}
+
+.car_data_item > span {
+  display: flex;
+  align-items: center;
+}
+
+.car_data_item > input {
+  max-width: 150px;
+  margin-left: 10px;
+}
+
+.car_data_item > input.w50 {
+  max-width: 50px;
 }
 
 .car_data_item > .text {
@@ -651,6 +761,86 @@
 
 .car_data_item:last-child {
   margin-right: 0;
+}
+
+.button_add_item {
+  width: 95%;
+  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.25);
+  font-size: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: center;
+  height: 70px;
+  background: white;
+  border: none;
+  line-height: 0;
+  border-radius: 10px;
+}
+
+.tourPage_figure {
+  width: 300px;
+  margin: 0;
+}
+
+.tour-description_noedit {
+  background-color: transparent;
+  border: none;
+}
+
+.tour-description_edit {
+  background-color: white;
+  border-radius: 4px;
+}
+
+.settings_planning {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.settings_planning-icons {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  width: 550px;
+  margin-right: 20px;
+}
+
+.settings_planning-icons > figure {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.settings_planning-icons > input {
+  width: 90%;
+  margin-right: 10px;
+}
+
+.settings_planning-icons > span {
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.settings_planning-textarea {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  width: 100%;
+  margin-right: 20px;
+}
+
+.settings_planning-textarea > textarea {
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  width: 80%;
+  padding: 10px 20px;
 }
 
 /*!

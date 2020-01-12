@@ -14,7 +14,7 @@
             <img :src="this.driver.photo" class="w-100" />
           </figure>
         </div>
-        <div class="w49 p-4 data-block" v-if="!editMode">
+        <div class="w49 p-4 data-block mb30" v-if="!editMode">
           <h2>Водитель</h2>
           <span class="id-top">id водителя: {{this.driver.id}}</span>
           <h3>
@@ -35,7 +35,7 @@
             class="btn btn-outline-primary ml-2"
           >Редактировать водителя</button>
         </div>
-        <div class="w49 p-4 data-block" v-if="editMode">
+        <div class="w49 p-4 data-block mb30" v-if="editMode">
           <h2>Водитель</h2>
           <span class="id-top">id водителя: {{this.driver.id}}</span>
           <h3>
@@ -61,13 +61,14 @@
           >Выйти из режима редактирования</button>
         </div>
         <section class="car_data">
+          <h4>Данные машины</h4>
           <div class="car_data_noedit" v-if="!this.editCar">
             <div class="car_data_item">
               <span class="data">Название:</span>
               <span class="text">{{car.name}}</span>
             </div>
             <div class="car_data_item">
-              <span class="data">Тип:</span>
+              <span class="data">Тип машины:</span>
               <span class="text">{{car.type}}</span>
             </div>
             <div class="car_data_item">
@@ -96,32 +97,57 @@
           <div class="car_data_noedit" v-if="this.editCar">
             <div class="car_data_item">
               <span class="data">Название:</span>
-              <input type="text" :value="this.car.name" />
+              <input class="main_input" type="text" v-model="car.name" />
             </div>
             <div class="car_data_item">
-              <span class="data">Тип:</span>
-              <input type="text" :value="this.car.type" />
+              <span class="data">Тип машины:</span>
+              <select v-model="car.type">
+                <option selected v-bind:value="car.type">{{car.type}}</option>
+                <option
+                  v-for="option in typesModel"
+                  v-bind:key="random(option)"
+                  v-bind:value="option"
+                >{{option}}</option>
+              </select>
             </div>
             <div class="car_data_item">
               <span class="data">Количество мест:</span>
-              <input type="text" :value="this.car.sits" />
+              <input class="main_input w50" type="text" v-model="car.sits" />
             </div>
             <div class="car_data_item">
               <span class="data">Топливо:</span>
-              <input type="text" :value="this.car.fuel" />
+              <select v-model="car.fuel">
+                <option selected v-bind:value="car.fuel">{{car.fuel}}</option>
+                <option
+                  v-for="option in typesFuel"
+                  v-bind:key="random(option)"
+                  v-bind:value="option"
+                >{{option}}</option>
+              </select>
             </div>
             <div class="car_data_item">
               <span class="data">Цена/час:</span>
-              <input type="text" :value="this.car.price" />
+              <input class="main_input w50" type="text" v-model="car.price" />
             </div>
             <div class="car_data_item">
-              <span class="data">Дети:</span>
+              <span class="data">Детское кресло:</span>
+              <select v-model="selected.child">
+                <option v-if="car.child" selected value="Есть">Есть</option>
+                <option v-if="car.child" value="Нет">Нет</option>
+                <option v-if="!car.child" selected value="Нет">Нет</option>
+                <option v-if="!car.child" value="Есть">Есть</option>
+              </select>
             </div>
             <button
               type="button"
-              class="btn btn-outline-dark"
+              class="btn btn-outline-primary btn_edit"
+              @click.prevent="updateCar"
+            >Сохранить</button>
+            <button
+              type="button"
+              class="btn btn-outline-dark btn_edit"
               @click.prevent="toggleEditCar"
-            >Редактировать</button>
+            >Отмена</button>
           </div>
         </section>
         <section class="driver_car">
@@ -164,27 +190,36 @@
         </div>
         <div class="d-flex justify-content-center flex-wrap w-100" v-if="editRouts">
           <div class="routs_item_width">
-            <input type="text" />
-            <button class="btn btn-outline-primary ml-2">Добавить группу</button>
+            <AutoInput :items="nameRouteGroups" :returnData="postRouteName"></AutoInput>
+            <button class="btn btn-outline-primary ml-2" @click.prevent="connectRG">Добавить группу</button>
           </div>
-          <RouteItem :name="'Новосибирск-Барнаул'"></RouteItem>
-          <RouteItem :name="'Барнаул-Ая'"></RouteItem>
-          <RouteItem :name="'Ая-Белуха'"></RouteItem>
-          <RouteItem :name="'Брянск-Девяткино'"></RouteItem>
+          <RouteItem
+            v-bind:key="random(item)"
+            v-for="item in routegroups"
+            :name="item.name"
+            :id="id"
+            :route_id="item.id"
+            :purpose="'driverrouts'"
+            :getRouts="getRouteGroups"
+          ></RouteItem>
           <div class="w-100 d-flex justify-content-center">
             <button class="btn btn-primary mt-4" @click.prevent="toggleEditRouts">Выйти</button>
           </div>
         </div>
+
         <section class="d-flex align-items-center flex-column reviews">
           <h3 class="mb-4">Отзывы</h3>
+          <AddTour :updateItem="getReview" :driver_id="driver.id"></AddTour>
           <Review
             v-bind:key="random(item)"
-            v-for="item in reviews"
+            v-for="item in reviews.slice().reverse()"
             :name="item.author"
             :date="item.updated_at"
             :stars="item.rating"
             :description="item.text"
             :id="item.id"
+            :driver_id="driver.id"
+            :updateItem="getReview"
           ></Review>
         </section>
       </div>
@@ -199,6 +234,9 @@ import LoadingSpinner from "../common/LoadingSpinner/LoadingSpinner";
 import Goback from "../common/goback";
 import Review from "../custom/Review";
 import RouteItem from "../custom/RouteItem";
+import AddTour from "../custom/AddTour";
+import AutoInput from "../custom/AutoInput";
+
 export default {
   name: "Driver",
   components: {
@@ -207,13 +245,18 @@ export default {
     CarBlock,
     Spinner,
     Review,
-    RouteItem
+    RouteItem,
+    AddTour,
+    AutoInput
   },
   props: ["id"],
 
   data() {
     return {
       reviews: [],
+      routegroups: [],
+      nameRouteGroups: [],
+      routeGroupName: "",
       loading: {
         data: false
       },
@@ -227,6 +270,7 @@ export default {
       car: {
         id: "",
         name: "",
+        type: "",
         sits: "",
         fuel: "",
         price: "",
@@ -238,6 +282,10 @@ export default {
         car_photo_back: "",
         car_photo_front: ""
       },
+      types: {
+        cartypes: ["Седан", "Внедорожник", "Минивэн", "Хэтчбэк"],
+        fueltypes: ["Газ", "Дизель", "Бензин"]
+      },
       postphoto: {
         id: "",
         photo: ""
@@ -245,6 +293,11 @@ export default {
       editMode: false,
       editCar: false,
       editRouts: false,
+      selected: {
+        child: "",
+        fuel: "",
+        type: ""
+      },
       imageSelected: null
     };
   },
@@ -253,6 +306,9 @@ export default {
     await this.getCar();
     await this.getCarPhotos();
     await this.getReview();
+    await this.getRouteGroups();
+    await this.getRotesNames();
+    console.log(this.id);
     this.loading.data = true;
   },
   methods: {
@@ -273,14 +329,37 @@ export default {
         .then(res => res.json())
         .then(res => (this.car = res.data))
         .catch(err => console.log(err));
-    },
 
+      if (this.car.child == 1) this.selected.child = "Есть";
+      else this.selected.child = "Нет";
+      console.log(this.types.cartypes.indexOf("Минивэн"));
+    },
     async getCarPhotos() {
       await fetch(`/api/carphoto/${this.car.id}`)
         .then(res => res.json())
         .then(res => (this.carphotos = res.data))
         .catch(err => console.log(err));
       this.postphoto.id = this.car.id;
+    },
+    async getRouteGroups() {
+      await fetch("/api/driver/rg/show_connected/" + this.id)
+        .then(res => res.json())
+        .then(res => {
+          this.routegroups = res;
+        })
+        .catch(err => console.warn(err));
+    },
+    async getRotesNames() {
+      let cashRoutes = "";
+      await fetch("/api/route_group/groups")
+        .then(res => res.json())
+        .then(res => {
+          cashRoutes = res.data;
+        })
+        .catch(err => console.warn(err));
+
+      this.nameRouteGroups = cashRoutes.map(x => x.name);
+      console.log(this.nameRouteGroups);
     },
     async deleteDriver() {
       if (confirm("Вы точно хотите удалить?")) {
@@ -295,6 +374,21 @@ export default {
           .catch(err => console.log(err));
       }
     },
+    async connectRG() {
+      console.log(this.routeGroupName);
+      await fetch(
+        `/api/driver/rg/connect/` + this.id + `/` + this.routeGroupName,
+        {
+          method: "post"
+        }
+      )
+        .then(res => res.json())
+        .then(data => {
+          alert(`Роут группа успешно добавлена`);
+          this.getRouteGroups();
+        })
+        .catch(err => console.log(err));
+    },
     async updateDriver() {
       let driver = this.driver;
       await fetch(`/api/driver/`, {
@@ -307,6 +401,25 @@ export default {
         .then(res => res.json())
         .then(data => {
           alert(`${this.driver.name} обновлен`);
+          window.location.href = "/home/driver/" + driver.id;
+        })
+        .catch(err => console.log(err));
+    },
+    async updateCar() {
+      let car = this.car;
+      if (this.selected.child == "Есть") car.child = 1;
+      else car.child = 0;
+      await fetch(`/api/car/`, {
+        method: "put",
+        body: JSON.stringify(car),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert(`${this.driver.name} обновлен`);
+          this.toggleEditCar();
           window.location.href = "/home/driver/" + driver.id;
         })
         .catch(err => console.log(err));
@@ -368,6 +481,9 @@ export default {
         })
         .catch(err => console.log(err));
     },
+    postRouteName(item) {
+      this.routeGroupName = item;
+    },
     random(item) {
       return Math.random();
     },
@@ -417,6 +533,16 @@ export default {
       fileReader.onload = e => {
         this.carphotos.car_photo_front = e.target.result;
       };
+    }
+  },
+  computed: {
+    typesFuel: function() {
+      let fuel = this.car.fuel;
+      return this.types.fueltypes.filter(item => item != fuel);
+    },
+    typesModel: function() {
+      let model = this.car.type;
+      return this.types.cartypes.filter(item => item != model);
     }
   }
 };

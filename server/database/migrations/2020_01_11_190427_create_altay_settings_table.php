@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateToursTable extends Migration
+class CreateAltaySettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateToursTable extends Migration
      */
     public function up()
     {
-        Schema::create('tours', function (Blueprint $table) {
-            $table->increments('id');
+        Schema::create('altay_settings', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->string('name')->unique();
-            $table->string('image');
-            $table->string('time');
-            $table->string('text');
+            $table->string('heading')->default('');
+            $table->longText('text')->default('');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -31,6 +29,6 @@ class CreateToursTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tours');
+        Schema::dropIfExists('altay_settings');
     }
 }

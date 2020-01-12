@@ -17,11 +17,13 @@ class CarController extends Controller
 
     public function store(Request $request)
     {
+        \Log::info($request);
         $car = $request->isMethod('put') ? Car::findOrFail($request->id)
             : new Car;
 
         $car->id = $request->input('id');
         $car->name = $request->input('name');
+        $car->type = $request->input('type');
         $car->sits = $request->input('sits');
         $car->fuel = $request->input('fuel');
         $car->price = $request->input('price');

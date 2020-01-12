@@ -30,11 +30,19 @@ class RouteGroupController extends Controller
     public function connect(Request $request)
     {
         $routeGroup = RouteGroup::findOrFail($request->input('route_group_id'));
-        
-        $route = Route::findOrFail($request->input('route_id'));
+
+        $route = Route::where('name', ($request->input('route_name')))->first();
         
         $routeGroup->routes()->save($route);
 
+        return new RouteGroupResource($routeGroup);
+    }
+
+    public function disconnect(Request $request)
+    {
+        $routeGroup = RouteGroup::findOrFail($request->input('route_group_id'));
+        $route = Route::findOrFail($request->input('route_id'));
+        $routeGroup->routes()->detach($route);
         return new RouteGroupResource($routeGroup);
     }
 
@@ -44,6 +52,8 @@ class RouteGroupController extends Controller
 
         return $routeGroup;
     }
+
+
 
     public function show($id)
     {

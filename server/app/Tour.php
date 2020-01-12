@@ -9,7 +9,8 @@ class Tour extends Model
     protected $fillable = [
         'name',
         'image',
-        'time'
+        'time',
+        'text'
     ];
 
     public function category()

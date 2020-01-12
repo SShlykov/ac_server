@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <tours ></tours>
-        </div>
+            <editcategoris></editcategoris>
     </div>
 @endsection

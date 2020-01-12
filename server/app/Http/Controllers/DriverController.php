@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Driver;
 use App\Car;
 use App\Carphoto;
+use App\RouteGroup;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Http\Resources\Driver as DriverResource;
 
@@ -60,6 +61,36 @@ class DriverController extends Controller
         return new DriverResource($driver);
     }
 
+    public function addRG($driver_id, $rg_id)
+    {
+        $driver = Driver::findOrFail($driver_id);
+
+        //$rg = RouteGroup::findOrFail($rg_id);
+
+        $rg = RouteGroup::where('name', $rg_id)->first();
+
+        $driver->route_group()->attach($rg);
+
+        return $driver;
+    }
+
+    public function show_connected($driver_id)
+    {
+        $routeGroups = Driver::find($driver_id)->route_group()->get();
+
+        return $routeGroups;
+    }
+
+
+    public function disconnect(Request $request)
+    {
+        \Log::info($request);
+        $routeGroup = RouteGroup::findOrFail($request->input('route_group_id'));
+        $driver_id = Driver::findOrFail($request->input('route_id'));
+        $routeGroup->drivers()->detach($driver_id);
+        return new DriverResource($routeGroup);
+    }
+    
     public function delete($id)
     {
         $driver = Driver::findOrFail($id);

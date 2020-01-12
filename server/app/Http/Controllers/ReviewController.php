@@ -16,8 +16,10 @@ class ReviewController extends Controller
         return ReviewResource::collection($reviews);
     }
 
+
     public function store(Request $request)
     {
+        \Log::info($request);
         $review = $request->isMethod('put') ? Review::findOrFail($request->id)
             : new Review;
 
@@ -48,7 +50,7 @@ class ReviewController extends Controller
     public function destroy($id)
     {
         try {
-            $review = Review::findOneOrFail();
+            $review = Review::findOrFail($id);
             if ($review) {
                 $review->delete();
             }

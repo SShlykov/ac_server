@@ -13,6 +13,7 @@ class Tour extends JsonResource
             'name' => $this->name,
             'image'=> $this->image,
             'time' => $this->time,
+            'text' => $this->text
         ];
     }
 }

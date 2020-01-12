@@ -31,4 +31,9 @@ class Driver extends Model
     {
         return $this->hasOne(Route::class);
     }
+
+    public function route_group()
+    {
+        return $this->belongsToMany('\App\RouteGroup');
+    }
 }

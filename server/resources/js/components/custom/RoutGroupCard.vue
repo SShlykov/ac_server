@@ -63,10 +63,12 @@ export default {
   },
   methods: {
     async getRouts() {
+      console.log("Front id :" + this.id);
       await fetch(`/api/route_group/show_connected/` + this.id)
         .then(res => res.json())
         .then(res => {
           this.routes = res;
+          console.log("Take data :" + res);
         })
         .catch(err => console.log(err));
     },

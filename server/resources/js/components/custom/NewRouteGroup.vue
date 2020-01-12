@@ -10,9 +10,11 @@
 </template>
 
 <script>
+import AutoInput from "../custom/AutoInput";
+
 export default {
   name: "NewRouteGroup",
-  components: {},
+  components: { AutoInput },
   props: {
     fetchData: {
       required: true
@@ -44,6 +46,9 @@ export default {
           this.fetchData();
         })
         .catch(err => console.log(err));
+    },
+    getInput(item) {
+      this.text = item;
     }
   }
 };

@@ -3654,6 +3654,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _custom_AutoInput__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../custom/AutoInput */ "./resources/js/components/custom/AutoInput.vue");
 //
 //
 //
@@ -3665,9 +3666,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NewRouteGroup",
-  components: {},
+  components: {
+    AutoInput: _custom_AutoInput__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
     fetchData: {
       required: true
@@ -3703,6 +3707,9 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (err) {
         return console.log(err);
       });
+    },
+    getInput: function getInput(item) {
+      this.text = item;
     }
   }
 });
@@ -4017,6 +4024,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _custom_RouteItem__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../custom/RouteItem */ "./resources/js/components/custom/RouteItem.vue");
+/* harmony import */ var _custom_AutoInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../custom/AutoInput */ "./resources/js/components/custom/AutoInput.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -4052,10 +4060,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "RoutGroupCard",
   components: {
-    RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_1__["default"]
+    RouteItem: _custom_RouteItem__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AutoInput: _custom_AutoInput__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
@@ -4076,6 +4086,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     fetchData: {
       required: true
+    },
+    allNameRoutes: {
+      required: true
     }
   },
   created: function () {
@@ -4090,11 +4103,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getRouts();
 
             case 2:
-              this.new_item.route_group_id = this.id;
-              console.log(this.routes);
-              console.log(this.id); //console.log(`_____________________`);
+              this.new_item.route_group_id = this.id; //console.log(this.routes);
+              //console.log(this.id);
+              //console.log(`_____________________`);
 
-            case 5:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -4147,38 +4160,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     toggleEditCard: function toggleEditCard() {
       this.editCard = !this.editCard;
     },
-    route_group_delete: function route_group_delete() {
-      var _this2 = this;
+    route_group_delete: function () {
+      var _route_group_delete = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this2 = this;
 
-      if (confirm("Вы точно хотите удалить?")) {
-        fetch("/api/route_group/" + this.id, {
-          method: "delete"
-        }).then(function (res) {
-          return res.json();
-        }).then(function (data) {
-          _this2.fetchData();
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (confirm("Вы точно хотите удалить?")) {
+                  fetch("/api/route_group/" + this.id, {
+                    method: "delete"
+                  }).then(function (res) {
+                    return res.json();
+                  }).then(function (data) {
+                    _this2.fetchData();
 
-          alert("\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E");
-        })["catch"](function (err) {
-          return console.log(err);
-        });
+                    alert("\u0412\u044B\u043F\u043E\u043B\u043D\u0435\u043D\u043E");
+                  })["catch"](function (err) {
+                    return console.log(err);
+                  });
+                }
+
+              case 1:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function route_group_delete() {
+        return _route_group_delete.apply(this, arguments);
       }
-    },
+
+      return route_group_delete;
+    }(),
     random: function random(item) {
       return Math.random();
     },
     rout_group_add_rout: function () {
       var _rout_group_add_rout = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         var _this3 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
                 console.log(this.new_item.route_name);
-                _context3.next = 3;
+                _context4.next = 3;
                 return fetch("/api/route_group/connect", {
                   method: "post",
                   body: JSON.stringify(this.new_item),
@@ -4197,10 +4231,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, this);
+        }, _callee4, this);
       }));
 
       function rout_group_add_rout() {
@@ -4208,7 +4242,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       return rout_group_add_rout;
-    }()
+    }(),
+    getInput: function getInput(item) {
+      this.new_item.route_name = item;
+    }
   }
 });
 
@@ -5931,6 +5968,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5946,7 +5984,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         fields: {},
         list: {}
       },
-      newGroup: false
+      newGroup: false,
+      allRoutes: [],
+      allNameRoutes: []
     };
   },
   props: {},
@@ -5962,6 +6002,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.fetchData();
 
             case 2:
+              _context.next = 4;
+              return this.getAllRoutes();
+
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -6015,8 +6059,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     key_random: function key_random(item) {
       return Math.random() * Math.random();
     },
+    getAllRoutes: function () {
+      var _getAllRoutes = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this2 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return fetch("/api/route/routes/all").then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  _this2.allRoutes = res.data;
+                  console.log("Take data :" + res);
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+                this.allNameRoutes = this.allRoutes.map(function (x) {
+                  return x.name;
+                });
+                console.log(this.allRoutes);
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      function getAllRoutes() {
+        return _getAllRoutes.apply(this, arguments);
+      }
+
+      return getAllRoutes;
+    }(),
     route_group_post: function route_group_post() {
-      var _this2 = this;
+      var _this3 = this;
 
       fetch("/api/route_group/", {
         method: "POST",
@@ -6031,10 +6115,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }).then(function (data) {
         console.log("\u0413\u0440\u0443\u043F\u043F\u0430 \u0441\u043E\u0437\u0434\u0430\u043D\u0430");
 
-        _this2.fetchData();
+        _this3.fetchData();
       })["catch"](function (err) {
         return console.log(err);
       });
+    },
+    getInput: function getInput(item) {
+      this.text = item;
     }
   }
 });
@@ -45589,43 +45676,31 @@ var render = function() {
           "div",
           { staticClass: "routgroup flex-column" },
           [
-            _c("div", { staticClass: "v-flex flex-nowrap w-10" }, [
-              _c("input", {
-                directives: [
+            _c(
+              "div",
+              { staticClass: "d-flex flex-wrap justify-content-center w-100" },
+              [
+                _c("AutoInput", {
+                  staticClass: "mb-2",
+                  attrs: { items: _vm.allNameRoutes, returnData: _vm.getInput }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
                   {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.new_item.route_name,
-                    expression: "new_item.route_name"
-                  }
-                ],
-                staticClass: "main_input",
-                attrs: { type: "text" },
-                domProps: { value: _vm.new_item.route_name },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+                    staticClass: "ml-4 btn btn-outline-success",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.rout_group_add_rout($event)
+                      }
                     }
-                    _vm.$set(_vm.new_item, "route_name", $event.target.value)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "ml-4 btn btn-outline-success",
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.rout_group_add_rout($event)
-                    }
-                  }
-                },
-                [_vm._v("добавить")]
-              )
-            ]),
+                  },
+                  [_vm._v("добавить")]
+                )
+              ],
+              1
+            ),
             _vm._v(" "),
             _vm._l(_vm.routes, function(item) {
               return _c("RouteItem", {
@@ -47032,7 +47107,12 @@ var render = function() {
       _vm._l(this.data.list, function(item) {
         return _c("RouteGroupCard", {
           key: _vm.key_random(item),
-          attrs: { fetchData: _vm.fetchData, name: item.name, id: item.id }
+          attrs: {
+            fetchData: _vm.fetchData,
+            name: item.name,
+            id: item.id,
+            allNameRoutes: _vm.allNameRoutes
+          }
         })
       }),
       1
@@ -63242,14 +63322,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ./resources/js/components/custom/RoutGroupCard.vue ***!
   \**********************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RoutGroupCard_vue_vue_type_template_id_48ed0c00___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RoutGroupCard.vue?vue&type=template&id=48ed0c00& */ "./resources/js/components/custom/RoutGroupCard.vue?vue&type=template&id=48ed0c00&");
 /* harmony import */ var _RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RoutGroupCard.vue?vue&type=script&lang=js& */ "./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -63279,7 +63360,7 @@ component.options.__file = "resources/js/components/custom/RoutGroupCard.vue"
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

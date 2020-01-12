@@ -11,6 +11,7 @@
         :fetchData="fetchData"
         :name="item.name"
         :id="item.id"
+        :allNameRoutes="allNameRoutes"
       ></RouteGroupCard>
     </div>
   </div>
@@ -33,12 +34,15 @@ export default {
         fields: {},
         list: {}
       },
-      newGroup: false
+      newGroup: false,
+      allRoutes: [],
+      allNameRoutes: []
     };
   },
   props: {},
   async created() {
     await this.fetchData();
+    await this.getAllRoutes();
   },
   methods: {
     async fetchData() {
@@ -54,6 +58,17 @@ export default {
     },
     key_random(item) {
       return Math.random() * Math.random();
+    },
+    async getAllRoutes() {
+      await fetch(`/api/route/routes/all`)
+        .then(res => res.json())
+        .then(res => {
+          this.allRoutes = res.data;
+          console.log("Take data :" + res);
+        })
+        .catch(err => console.log(err));
+      this.allNameRoutes = this.allRoutes.map(x => x.name);
+      console.log(this.allRoutes);
     },
     route_group_post() {
       fetch(`/api/route_group/`, {
@@ -71,6 +86,10 @@ export default {
           this.fetchData();
         })
         .catch(err => console.log(err));
+    },
+
+    getInput(item) {
+      this.text = item;
     }
   }
 };

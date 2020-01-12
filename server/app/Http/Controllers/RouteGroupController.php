@@ -4,14 +4,15 @@ namespace App\Http\Controllers;
 
 use App\RouteGroup;
 use App\Route;
-use App\Http\Resources\RouteGroup as RouteGroupResource;
+use \App\Http\Resources\RouteGroup as RouteGroupResource;
 use Illuminate\Http\Request;
 
 class RouteGroupController extends Controller
 {
     public function index()
     {
-        $routeGroup = RouteGroup::all();
+	$routeGroup = RouteGroup::all();
+	\Log::info($routeGroup);
         return RouteGroupResource::collection($routeGroup);
     }
 
@@ -47,9 +48,9 @@ class RouteGroupController extends Controller
     }
 
     public function show_connected($id)
-    {        
-        $routeGroup = RouteGroup::find($id)->routes()->get();
-
+    {       
+        $routeGroup = RouteGroup::findOrFail($id);
+	\Log::info($routeGroup);
         return $routeGroup;
     }
 

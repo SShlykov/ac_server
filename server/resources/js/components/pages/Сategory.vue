@@ -169,7 +169,7 @@ export default {
     },
     async getCategorieNames() {
       let categories;
-      await fetch(`/api/category/`)
+      await fetch(`/api/category/all`)
         .then(res => res.json())
         .then(res => (categories = res.data))
         .catch(err => console.log(err));

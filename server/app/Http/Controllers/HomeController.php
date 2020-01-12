@@ -55,4 +55,8 @@ class HomeController extends Controller
     public function settings(){
         return view('pages.settings');
     }
+
+    public function editcategories(){
+        return view('pages.editcategories');
+    }
 }

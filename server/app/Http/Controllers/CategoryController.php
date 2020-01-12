@@ -14,4 +14,17 @@ class CategoryController extends Controller
         $category = Category::paginate(8);
         return CategoryResource::collection($category);
     }
+
+    public function update(Request $request)
+    {
+        \Log::info($request);
+
+        $category = Category::findOrFail($request->id);
+
+        $category->name = $request->input('name');
+
+        $category->save();
+
+        return $category;
+    }
 }

@@ -92,18 +92,28 @@ Route::group(['prefix' => 'tour'], function (){
     Route::get('/{id}', $controller . 'show');
     Route::get('/all', $controller . 'all');
     Route::get('/category/{id}', $controller . 'show_category');
+    Route::post('/connect/category', $controller . 'connect_category');
     Route::post('/', $controller . 'store');
     Route::post('/connect/route', $controller . 'connect_rout_to_tour');
     Route::put('/', $controller . 'store');
     Route::delete('/{id}', $controller . 'destroy');
+    Route::delete('/disconnect/category', $controller . 'disconnet_category');
 });
 
 Route::group(['prefix' => 'category'], function (){
     $controller = "CategoryController@";
-    Route::get('/', $controller . 'index');
+    Route::get('/all', $controller . 'index');
+    Route::put('/update', $controller . 'update');
 });
 
 
 
 Route::delete('/disconnect', 'RouteGroupController@disconnect');
 Route::get('/alltour', 'TourController@all');
+
+Route::group(['prefix' => 'settings'], function (){
+    $controller = "AltaySettingsController@";
+    Route::get('/all', $controller . 'index');
+    Route::put('/update', $controller . 'update');
+});
+

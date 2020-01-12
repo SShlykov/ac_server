@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Tour;
+use App\Category;
 use App\Http\Resources\Tour as TourResource;
 use Illuminate\Http\Request;
 
@@ -23,8 +24,6 @@ class TourController extends Controller
 
     public function store(Request $request)
     {
-        \Log::info($request);
-
         $tour = $request->isMethod('put') ? Tour::findOrFail($request->id)
             : new Tour;
 
@@ -45,10 +44,35 @@ class TourController extends Controller
         return new TourResource($tour);
     }
 
-    public function show_category($id){
+    public function show_category($id)
+    {
         $tour = Tour::findOrFail($id)->category()->get();
 
         return $tour;
+    }
+
+    public function connect_category(Request $request)
+    {
+        \Log::info($request);
+
+        $tour = Tour::findOrFail($request->input('tour_id'));
+
+        $category = Category::where('name', ($request->input('category_name')))->first();
+
+        $tour->category()->attach($category);
+
+        return new TourResource($tour);
+    }
+
+    public function disconnet_category(Request $request)
+    {
+        $tour = Tour::findOrFail($request->input('route_id'));
+
+        $category = Category::findOrFail($request->input('route_group_id'));
+
+        $tour->category()->detach($category);
+
+        return new TourResource($tour);
     }
 
     public function connect_rout_to_tour(Request $request)

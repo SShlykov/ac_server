@@ -29,3 +29,5 @@ Route::get('/home/drivers/deleted', 'HomeController@deleteddrivers');
 Route::get('/home/routs/edit', 'HomeController@editrouts');
 
 Route::get('/home/settings', 'HomeController@settings');
+
+Route::get('/home/editcategories', 'HomeController@editcategories');

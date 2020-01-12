@@ -11,6 +11,7 @@ import Category from "./components/pages/Сategory.vue";
 import Deleted from "./components/DeletedDrivers.vue";
 import EditRouts from "./components/pages/EditRouts.vue";
 import ContentValue from "./components/pages/Settings.vue";
+import EditCategoris from "./components/pages/EditCategoris.vue";
 
 require("./bootstrap");
 
@@ -27,6 +28,7 @@ const app = new Vue({
         category: Category,
         deleted: Deleted,
         editrouts: EditRouts,
-        contentvalue: ContentValue
+        contentvalue: ContentValue,
+        editcategoris: EditCategoris
     }
 });

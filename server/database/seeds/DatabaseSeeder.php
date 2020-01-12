@@ -18,5 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call(RewiewTableSeeder::class);
 
         $this->call(RouteGroupSeeder::class);
+
+        //$this->call(AltaySettingsTableSeeder::class);
     }
 }

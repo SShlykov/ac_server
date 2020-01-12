@@ -52,6 +52,7 @@
         </div>
       </div>
       <textarea-autosize
+        readonly
         placeholder="Текст отзыва"
         ref="myTextarea"
         v-model="item.text"

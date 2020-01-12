@@ -4,6 +4,14 @@
   width: 49% !important;
 }
 
+.w-35 {
+  width: 35% !important;
+}
+
+.w-20 {
+  width: 20% !important;
+}
+
 .w30 {
   width: 30%;
   min-width: 30%;
@@ -773,6 +781,66 @@
 .tourPage_figure {
   width: 300px;
   margin: 0;
+}
+
+.tour-description_noedit {
+  background-color: transparent;
+  border: none;
+}
+
+.tour-description_edit {
+  background-color: white;
+  border-radius: 4px;
+}
+
+.settings_planning {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.settings_planning-icons {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  width: 550px;
+  margin-right: 20px;
+}
+
+.settings_planning-icons > figure {
+  margin: 0;
+  margin-right: 10px;
+}
+
+.settings_planning-icons > input {
+  width: 90%;
+  margin-right: 10px;
+}
+
+.settings_planning-icons > span {
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.settings_planning-textarea {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 4px 9px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  width: 100%;
+  margin-right: 20px;
+}
+
+.settings_planning-textarea > textarea {
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  width: 80%;
+  padding: 10px 20px;
 }
 
 /*!

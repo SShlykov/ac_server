@@ -51,7 +51,11 @@ export default {
     },
     async startTour() {
       if (this.tourName) {
-        this.tour.name = this.tourName + "." + Math.random() * Math.pow(10, 5);
+        this.tour.name =
+          "Тур " +
+          Math.random()
+            .toString(36)
+            .replace(/[^a-z]+/g, "");
       }
     },
     async add_item() {

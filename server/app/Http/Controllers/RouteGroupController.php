@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use App\RouteGroup;
 use App\Route;
-use App\Http\Resources\RouteGroup as RouteGroupResource;
+use \App\Http\Resources\RouteGroup as RouteGroupResource;
 use Illuminate\Http\Request;
 
 class RouteGroupController extends Controller
 {
     public function index()
     {
-        $routeGroup = RouteGroup::all();
-        return RouteGroupResource::collection($routeGroup);
+	$routeGroup = RouteGroup::all();
+        return ["data" =>  $routeGroup];
     }
 
     public function store(Request $request)
@@ -24,7 +24,7 @@ class RouteGroupController extends Controller
         $routeGroup->name = $request->input('name');
         $routeGroup->save();
 
-        return new RouteGroupResource($routeGroup);
+        return ["data" => $routeGroup];
     }
 
     public function connect(Request $request)
@@ -36,7 +36,7 @@ class RouteGroupController extends Controller
         
         $routeGroup->routes()->save($route);
 
-        return new RouteGroupResource($routeGroup);
+        return ["data" => $routeGroup];
     }
 
     public function disconnect(Request $request)
@@ -44,13 +44,13 @@ class RouteGroupController extends Controller
         $routeGroup = RouteGroup::findOrFail($request->input('route_group_id'));
         $route = Route::findOrFail($request->input('route_id'));
         $routeGroup->routes()->detach($route);
-        return new RouteGroupResource($routeGroup);
+        return ["data" => $routeGroup];
     }
 
     public function show_connected($id)
-    {        
-        $routeGroup = RouteGroup::find($id)->routes()->get();
-
+    {       
+        $routeGroup = RouteGroup::findOrFail($id);
+	\Log::info($routeGroup);
         return $routeGroup;
     }
 
@@ -60,7 +60,7 @@ class RouteGroupController extends Controller
     {
         $review = RouteGroup::findOrFail($id);
 
-        return new RouteGroupResource($review);
+        return ["data" => $review];
     }
 
     public function destroy($id)
@@ -70,7 +70,7 @@ class RouteGroupController extends Controller
             if ($routeGroup) {
                 $routeGroup->delete();
             }
-            return new RouteGroupResource($routeGroup);
+            return ["data" => $routeGroup];
         } catch (\Exception $e) {
             $status = 400;
             $message = 'Something went wrong, please, report us';

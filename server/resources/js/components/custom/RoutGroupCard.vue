@@ -58,8 +58,8 @@ export default {
   async created() {
     await this.getRouts();
     this.new_item.route_group_id = this.id;
-    //console.log(this.routes);
-    //console.log(this.id);
+    console.log(this.routes);
+    console.log(this.id);
     //console.log(`_____________________`);
   },
   methods: {

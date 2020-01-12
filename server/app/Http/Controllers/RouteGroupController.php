@@ -49,8 +49,7 @@ class RouteGroupController extends Controller
 
     public function show_connected($id)
     {       
-        $routeGroup = RouteGroup::findOrFail($id);
-	\Log::info($routeGroup);
+        $routeGroup = RouteGroup::find($id)->routes()->get();
         return $routeGroup;
     }
 

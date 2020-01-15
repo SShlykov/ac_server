@@ -7,10 +7,10 @@
       <Spinner />
     </div>
     <div class="driver-page card p-3" v-if="this.loading.data">
-      <Goback></Goback>
+      <a href="/home/drivers">Назад</a>
       <div class="w-100 card d-flex justify-content-center flex-wrap flex-row">
         <div class="w49 hfull p-3">
-          <figure class>
+          <figure class="driverpage-friver-photo">
             <img :src="this.driver.photo" class="w-100" />
           </figure>
         </div>
@@ -371,6 +371,7 @@ export default {
             window.location.href = "/home/drivers";
           })
           .catch(err => console.log(err));
+        window.location.href = "/home/drivers";
       }
     },
     async connectRG() {
@@ -400,9 +401,10 @@ export default {
         .then(res => res.json())
         .then(data => {
           alert(`${this.driver.name} обновлен`);
-          window.location.href = "/home/driver/" + driver.id;
         })
         .catch(err => console.log(err));
+      this.getDriver();
+      this.toggleEditMode();
     },
     async updateCar() {
       let car = this.car;
@@ -419,9 +421,9 @@ export default {
         .then(data => {
           alert(`${this.driver.name} обновлен`);
           this.toggleEditCar();
-          window.location.href = "/home/driver/" + driver.id;
         })
         .catch(err => console.log(err));
+      this.getCar();
     },
     async updateCarPhotosBack() {
       let carphotos = this.carphotos;

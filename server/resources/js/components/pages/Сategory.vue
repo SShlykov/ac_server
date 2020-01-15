@@ -1,5 +1,6 @@
 <template>
   <div class="page_container">
+    <a href="/home/tours">Назад</a>
     <div class="category_title">
       <img src="../../../../public/images/bus.svg" alt />
       <h2 class="tour_title">Название: {{tour.name}}</h2>
@@ -8,7 +9,19 @@
       <figure class="tourPage_figure">
         <img :src="tour.image" class="img-thumbnail rounded mx-auto d-block" alt="foto of tour" />
       </figure>
-      <input class="mt-3 ml-4" type="file" @change="imageTourChange" />
+      <div class="d-flex flex-column ml-4">
+        <input class="mt-3 mb-3" type="file" @change="imageTourChange" />
+        <button
+          v-if="!tourImageChanged"
+          @click.prevent="chooseImage"
+          class="btn btn-outline-primary w-50 disabled"
+        >Сохранить</button>
+        <button
+          @click.prevent="uploadImage"
+          v-if="tourImageChanged"
+          class="btn btn-outline-primary w-50"
+        >Сохранить</button>
+      </div>
     </section>
     <section class="car_data">
       <h4>Данные:</h4>
@@ -58,12 +71,12 @@
       </div>
     </section>
     <section class="mb-5 tour-description w-100 d-flex flex-column">
-      <h4>Текст:</h4>
+      <h4>Описание тура:</h4>
       <textarea-autosize
         readonly
         class="tour-description_noedit"
         v-if="!editText"
-        placeholder="Текст отзыва"
+        placeholder="Описание тура"
         ref="myTextarea"
         v-model="tour.text"
         :min-height="30"
@@ -79,7 +92,7 @@
         :max-height="350"
       />
       <div v-if="!editText" class="mt-2 d-flex">
-        <button class="btn btn-outline-primary" @click.prevent="toggleEditText()">Изменить текст</button>
+        <button class="btn btn-outline-primary" @click.prevent="toggleEditText()">Изменить описание</button>
       </div>
       <div v-if="editText" class="mt-1 d-flex">
         <button class="btn btn-outline-primary" @click.prevent="updateTour">Сохранить</button>
@@ -87,7 +100,7 @@
       </div>
     </section>
     <div class="d-flex w-100" v-if="!editCategories">
-      <button class="btn btn-primary" @click.prevent="toggleEditCategories">Изменить категории</button>
+      <button class="btn btn-primary" @click.prevent="toggleEditCategories">Изменить группы точек</button>
     </div>
     <div class="d-flex justify-content-center flex-wrap w-100" v-if="editCategories">
       <div class="routs_item_width">
@@ -150,6 +163,7 @@ export default {
       editTour: false,
       editCategories: false,
       editText: false,
+      tourImageChanged: false,
       selectNameCategory: "",
       namesCaterory: [],
       connectedCategoryes: []
@@ -200,6 +214,23 @@ export default {
         .catch(err => console.log(err));
       this.getConnectedCategoryes();
     },
+    async uploadImage() {
+      await fetch(`/api/tour/upload/photo`, {
+        method: "put",
+        body: JSON.stringify(this.tour),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => {
+          alert("Картинка обновлена");
+        })
+        .catch(err => console.log(err));
+      this.getTour();
+      if (this.editText) this.toggleEditText();
+      if (this.editTour) this.toggleEditTour();
+    },
     async updateTour() {
       await fetch(`/api/tour/`, {
         method: "put",
@@ -224,7 +255,18 @@ export default {
     toggleEditText() {
       this.editText = !this.editText;
     },
-    imageTourChange() {},
+    imageTourChange(e) {
+      let fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = e => {
+        this.tour.image = e.target.result;
+      };
+      this.tourImageChanged = true;
+    },
+    chooseImage() {
+      alert("Выберите картинку");
+    },
     random(item) {
       return Math.random();
     }

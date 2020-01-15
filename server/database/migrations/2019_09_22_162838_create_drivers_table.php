@@ -15,7 +15,7 @@ class CreateDriversTable extends Migration
             $table->string('slug')->nullable();
             $table->bigInteger('phone');
             $table->string('locale');
-            $table->string('photo');
+            $table->string('photo')->default('https://sun9-38.userapi.com/c854320/v854320805/1b8e14/afhOhLK6rkU.jpg');
             $table->timestamps();
             $table->softDeletes();
         });

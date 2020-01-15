@@ -2130,6 +2130,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2161,7 +2165,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         edit: false,
         showAddForm: false,
         loading: true
-      }
+      },
+      default_image: "https://sun9-38.userapi.com/c854320/v854320805/1b8e14/afhOhLK6rkU.jpg"
     };
   },
   created: function () {
@@ -2248,6 +2253,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     getKeys: function getKeys() {
       this.data.keys = Object.keys(this.data.list[0]);
+    },
+    getNewDriverImage: function getNewDriverImage(item) {
+      this.default_image = item;
     },
     showAddForm: function showAddForm() {
       this.data.loading = false;
@@ -2553,6 +2561,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     fetchData: {
       required: true
+    },
+    returnImage: {
+      required: false
     }
   },
   data: function data() {
@@ -2576,6 +2587,7 @@ __webpack_require__.r(__webpack_exports__);
 
       fileReader.onload = function (e) {
         _this.data.item.photo = e.target.result;
+        if (_this.returnImage) _this.returnImage(e.target.result);
       };
     },
     parsePropsToState: function parsePropsToState(arr) {
@@ -3474,6 +3486,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -5450,7 +5464,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context8.prev = _context8.next) {
               case 0:
                 if (!confirm("Вы точно хотите удалить?")) {
-                  _context8.next = 3;
+                  _context8.next = 4;
                   break;
                 }
 
@@ -5467,6 +5481,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 3:
+                window.location.href = "/home/drivers";
+
+              case 4:
               case "end":
                 return _context8.stop();
             }
@@ -5541,12 +5558,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return res.json();
                 }).then(function (data) {
                   alert("".concat(_this8.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
-                  window.location.href = "/home/driver/" + driver.id;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
 
               case 3:
+                this.getDriver();
+                this.toggleEditMode();
+
+              case 5:
               case "end":
                 return _context10.stop();
             }
@@ -5586,13 +5606,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   alert("".concat(_this9.driver.name, " \u043E\u0431\u043D\u043E\u0432\u043B\u0435\u043D"));
 
                   _this9.toggleEditCar();
-
-                  window.location.href = "/home/driver/" + driver.id;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
 
               case 4:
+                this.getCar();
+
+              case 5:
               case "end":
                 return _context11.stop();
             }
@@ -7016,10 +7037,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
                 });
 
               case 2:
-                console.log(this.DBPageContent);
                 this.getContentObject();
 
-              case 4:
+              case 3:
               case "end":
                 return _context3.stop();
             }
@@ -7060,9 +7080,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
                   _loop(key);
                 }
 
-                console.log(this.pageContent);
-
-              case 3:
+              case 2:
               case "end":
                 return _context4.stop();
             }
@@ -7094,7 +7112,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
                   }
                 }).then(function (res) {
                   return res.json();
-                }).then(function (data) {})["catch"](function (err) {
+                }).then(function (data) {
+                  console.log(item);
+                })["catch"](function (err) {
                   return console.log(err);
                 });
 
@@ -7331,6 +7351,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IMPORTED_MODULE_2__["default"]);
@@ -7363,6 +7396,7 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
       editTour: false,
       editCategories: false,
       editText: false,
+      tourImageChanged: false,
       selectNameCategory: "",
       namesCaterory: [],
       connectedCategoryes: []
@@ -7549,8 +7583,8 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
       return connectCategoryToTour;
     }(),
-    updateTour: function () {
-      var _updateTour = _asyncToGenerator(
+    uploadImage: function () {
+      var _uploadImage = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
@@ -7558,6 +7592,48 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
             switch (_context6.prev = _context6.next) {
               case 0:
                 _context6.next = 2;
+                return fetch("/api/tour/upload/photo", {
+                  method: "put",
+                  body: JSON.stringify(this.tour),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("Картинка обновлена");
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+                this.getTour();
+                if (this.editText) this.toggleEditText();
+                if (this.editTour) this.toggleEditTour();
+
+              case 5:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this);
+      }));
+
+      function uploadImage() {
+        return _uploadImage.apply(this, arguments);
+      }
+
+      return uploadImage;
+    }(),
+    updateTour: function () {
+      var _updateTour = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.next = 2;
                 return fetch("/api/tour/", {
                   method: "put",
                   body: JSON.stringify(this.tour),
@@ -7577,10 +7653,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
               case 5:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
           }
-        }, _callee6, this);
+        }, _callee7, this);
       }));
 
       function updateTour() {
@@ -7598,7 +7674,21 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
     toggleEditText: function toggleEditText() {
       this.editText = !this.editText;
     },
-    imageTourChange: function imageTourChange() {},
+    imageTourChange: function imageTourChange(e) {
+      var _this3 = this;
+
+      var fileReader = new FileReader();
+      fileReader.readAsDataURL(e.target.files[0]);
+
+      fileReader.onload = function (e) {
+        _this3.tour.image = e.target.result;
+      };
+
+      this.tourImageChanged = true;
+    },
+    chooseImage: function chooseImage() {
+      alert("Выберите картинку");
+    },
     random: function random(item) {
       return Math.random();
     }
@@ -43933,9 +44023,18 @@ var render = function() {
                 attrs: {
                   fields: this.data.keys,
                   path: this.path,
-                  fetchData: _vm.fetchData
+                  fetchData: _vm.fetchData,
+                  returnImage: this.getNewDriverImage
                 }
               })
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.title == "Водители"
+            ? _c("figure", { staticClass: "driver-view-photo" }, [
+                _c("img", {
+                  attrs: { src: _vm.default_image, alt: "new_driver_image" }
+                })
+              ])
             : _vm._e()
         ],
         1
@@ -45076,10 +45175,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("img", {
-      staticClass: "card-img-top",
-      attrs: { src: _vm.item.photo, alt: _vm.item.name + _vm.item.id }
-    }),
+    _c("figure", { staticClass: "driver-card-figure" }, [
+      _c("img", {
+        staticClass: "card-img-top",
+        attrs: { src: _vm.item.photo, alt: _vm.item.name + _vm.item.id }
+      })
+    ]),
     _vm._v(" "),
     _c("h3", [
       _vm._v("Водитель " + _vm._s(_vm.item.name + " " + _vm.item.last_name))
@@ -46162,197 +46263,587 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     this.loading.data
-      ? _c(
-          "div",
-          { staticClass: "driver-page card p-3" },
-          [
-            _c("Goback"),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "w-100 card d-flex justify-content-center flex-wrap flex-row"
-              },
-              [
-                _c("div", { staticClass: "w49 hfull p-3" }, [
-                  _c("figure", {}, [
-                    _c("img", {
-                      staticClass: "w-100",
-                      attrs: { src: this.driver.photo }
-                    })
+      ? _c("div", { staticClass: "driver-page card p-3" }, [
+          _c("a", { attrs: { href: "/home/drivers" } }, [_vm._v("Назад")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "w-100 card d-flex justify-content-center flex-wrap flex-row"
+            },
+            [
+              _c("div", { staticClass: "w49 hfull p-3" }, [
+                _c("figure", { staticClass: "driverpage-friver-photo" }, [
+                  _c("img", {
+                    staticClass: "w-100",
+                    attrs: { src: this.driver.photo }
+                  })
+                ])
+              ]),
+              _vm._v(" "),
+              !_vm.editMode
+                ? _c("div", { staticClass: "w49 p-4 data-block mb30" }, [
+                    _c("h2", [_vm._v("Водитель")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "id-top" }, [
+                      _vm._v("id водителя: " + _vm._s(this.driver.id))
+                    ]),
+                    _vm._v(" "),
+                    _c("h3", [
+                      _c("span", [_vm._v("Имя водителя:")]),
+                      _vm._v(
+                        "\n          " + _vm._s(this.driver.name) + "\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("h3", [
+                      _c("span", [_vm._v("Фамилия водителя:")]),
+                      _vm._v(
+                        "\n          " +
+                          _vm._s(this.driver.last_name) +
+                          "\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("h3", [
+                      _c("span", [_vm._v("Телефон водителя:")]),
+                      _vm._v(
+                        "\n          +" +
+                          _vm._s(this.driver.phone) +
+                          "\n        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.deleteDriver($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Удалить")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary ml-2",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.toggleEditMode($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Редактировать водителя")]
+                    )
                   ])
-                ]),
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.editMode
+                ? _c("div", { staticClass: "w49 p-4 data-block mb30" }, [
+                    _c("h2", [_vm._v("Водитель")]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "id-top" }, [
+                      _vm._v("id водителя: " + _vm._s(this.driver.id))
+                    ]),
+                    _vm._v(" "),
+                    _c("h3", [
+                      _c("span", [_vm._v("Имя водителя:")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.driver.name,
+                            expression: "driver.name"
+                          }
+                        ],
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.driver.name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.driver, "name", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("h3", [
+                      _c("span", [_vm._v("Фамилия водителя::")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.driver.last_name,
+                            expression: "driver.last_name"
+                          }
+                        ],
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.driver.last_name },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.driver,
+                              "last_name",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("h3", [
+                      _c("span", [_vm._v("Телефон водителя:")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.driver.phone,
+                            expression: "driver.phone"
+                          }
+                        ],
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.driver.phone },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(_vm.driver, "phone", $event.target.value)
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("h3", [
+                      _c("span", [_vm._v("Картинка водителя:")]),
+                      _vm._v(" "),
+                      _c("input", {
+                        attrs: { type: "file" },
+                        on: { change: _vm.imageDriverChanged }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-primary",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.updateDriver($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Сохранить")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-outline-secondary",
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.toggleEditMode($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Выйти из режима редактирования")]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
+              _c("section", { staticClass: "car_data" }, [
+                _c("h4", [_vm._v("Данные машины")]),
                 _vm._v(" "),
-                !_vm.editMode
-                  ? _c("div", { staticClass: "w49 p-4 data-block mb30" }, [
-                      _c("h2", [_vm._v("Водитель")]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "id-top" }, [
-                        _vm._v("id водителя: " + _vm._s(this.driver.id))
+                !this.editCar
+                  ? _c("div", { staticClass: "car_data_noedit" }, [
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Название:")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "text" }, [
+                          _vm._v(_vm._s(_vm.car.name))
+                        ])
                       ]),
                       _vm._v(" "),
-                      _c("h3", [
-                        _c("span", [_vm._v("Имя водителя:")]),
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(this.driver.name) +
-                            "\n        "
-                        )
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Тип машины:")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "text" }, [
+                          _vm._v(_vm._s(_vm.car.type))
+                        ])
                       ]),
                       _vm._v(" "),
-                      _c("h3", [
-                        _c("span", [_vm._v("Фамилия водителя:")]),
-                        _vm._v(
-                          "\n          " +
-                            _vm._s(this.driver.last_name) +
-                            "\n        "
-                        )
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Количество мест:")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "text" }, [
+                          _vm._v(_vm._s(_vm.car.sits))
+                        ])
                       ]),
                       _vm._v(" "),
-                      _c("h3", [
-                        _c("span", [_vm._v("Телефон водителя:")]),
-                        _vm._v(
-                          "\n          +" +
-                            _vm._s(this.driver.phone) +
-                            "\n        "
-                        )
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Топливо:")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "text" }, [
+                          _vm._v(_vm._s(_vm.car.fuel))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Цена/км:")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", { staticClass: "text" }, [
+                          _vm._v(_vm._s(_vm.car.price))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [_vm._v("Дети:")]),
+                        _vm._v(" "),
+                        _vm.car.child
+                          ? _c("span", { staticClass: "text" }, [
+                              _vm._v("Есть детское кресло")
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        !_vm.car.child
+                          ? _c("span", { staticClass: "text" }, [
+                              _vm._v("Нет детского кресла")
+                            ])
+                          : _vm._e()
                       ]),
                       _vm._v(" "),
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-danger",
+                          staticClass: "btn btn-outline-dark",
+                          attrs: { type: "button" },
                           on: {
                             click: function($event) {
                               $event.preventDefault()
-                              return _vm.deleteDriver($event)
+                              return _vm.toggleEditCar($event)
                             }
                           }
                         },
-                        [_vm._v("Удалить")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-outline-primary ml-2",
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.toggleEditMode($event)
-                            }
-                          }
-                        },
-                        [_vm._v("Редактировать водителя")]
+                        [_vm._v("Редактировать")]
                       )
                     ])
                   : _vm._e(),
                 _vm._v(" "),
-                _vm.editMode
-                  ? _c("div", { staticClass: "w49 p-4 data-block mb30" }, [
-                      _c("h2", [_vm._v("Водитель")]),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "id-top" }, [
-                        _vm._v("id водителя: " + _vm._s(this.driver.id))
-                      ]),
-                      _vm._v(" "),
-                      _c("h3", [
-                        _c("span", [_vm._v("Имя водителя:")]),
+                this.editCar
+                  ? _c("div", { staticClass: "car_data_noedit" }, [
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Название:")
+                        ]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.driver.name,
-                              expression: "driver.name"
+                              value: _vm.car.name,
+                              expression: "car.name"
                             }
                           ],
+                          staticClass: "main_input",
                           attrs: { type: "text" },
-                          domProps: { value: _vm.driver.name },
+                          domProps: { value: _vm.car.name },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(_vm.driver, "name", $event.target.value)
+                              _vm.$set(_vm.car, "name", $event.target.value)
                             }
                           }
                         })
                       ]),
                       _vm._v(" "),
-                      _c("h3", [
-                        _c("span", [_vm._v("Фамилия водителя::")]),
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Тип машины:")
+                        ]),
                         _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.driver.last_name,
-                              expression: "driver.last_name"
-                            }
-                          ],
-                          attrs: { type: "text" },
-                          domProps: { value: _vm.driver.last_name },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.car.type,
+                                expression: "car.type"
                               }
-                              _vm.$set(
-                                _vm.driver,
-                                "last_name",
-                                $event.target.value
+                            ],
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.car,
+                                  "type",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              {
+                                attrs: { selected: "" },
+                                domProps: { value: _vm.car.type }
+                              },
+                              [_vm._v(_vm._s(_vm.car.type))]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.typesModel, function(option) {
+                              return _c(
+                                "option",
+                                {
+                                  key: _vm.random(option),
+                                  domProps: { value: option }
+                                },
+                                [_vm._v(_vm._s(option))]
                               )
-                            }
-                          }
-                        })
+                            })
+                          ],
+                          2
+                        )
                       ]),
                       _vm._v(" "),
-                      _c("h3", [
-                        _c("span", [_vm._v("Телефон водителя:")]),
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Количество мест:")
+                        ]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
                             {
                               name: "model",
                               rawName: "v-model",
-                              value: _vm.driver.phone,
-                              expression: "driver.phone"
+                              value: _vm.car.sits,
+                              expression: "car.sits"
                             }
                           ],
+                          staticClass: "main_input w50",
                           attrs: { type: "text" },
-                          domProps: { value: _vm.driver.phone },
+                          domProps: { value: _vm.car.sits },
                           on: {
                             input: function($event) {
                               if ($event.target.composing) {
                                 return
                               }
-                              _vm.$set(_vm.driver, "phone", $event.target.value)
+                              _vm.$set(_vm.car, "sits", $event.target.value)
                             }
                           }
                         })
                       ]),
                       _vm._v(" "),
-                      _c("h3", [
-                        _c("span", [_vm._v("Картинка водителя:")]),
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Топливо:")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.car.fuel,
+                                expression: "car.fuel"
+                              }
+                            ],
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.car,
+                                  "fuel",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c(
+                              "option",
+                              {
+                                attrs: { selected: "" },
+                                domProps: { value: _vm.car.fuel }
+                              },
+                              [_vm._v(_vm._s(_vm.car.fuel))]
+                            ),
+                            _vm._v(" "),
+                            _vm._l(_vm.typesFuel, function(option) {
+                              return _c(
+                                "option",
+                                {
+                                  key: _vm.random(option),
+                                  domProps: { value: option }
+                                },
+                                [_vm._v(_vm._s(option))]
+                              )
+                            })
+                          ],
+                          2
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Цена/км:")
+                        ]),
                         _vm._v(" "),
                         _c("input", {
-                          attrs: { type: "file" },
-                          on: { change: _vm.imageDriverChanged }
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.car.price,
+                              expression: "car.price"
+                            }
+                          ],
+                          staticClass: "main_input w50",
+                          attrs: { type: "text" },
+                          domProps: { value: _vm.car.price },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(_vm.car, "price", $event.target.value)
+                            }
+                          }
                         })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "car_data_item" }, [
+                        _c("span", { staticClass: "data" }, [
+                          _vm._v("Детское кресло:")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "select",
+                          {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.selected.child,
+                                expression: "selected.child"
+                              }
+                            ],
+                            on: {
+                              change: function($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function(o) {
+                                    return o.selected
+                                  })
+                                  .map(function(o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.selected,
+                                  "child",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _vm.car.child
+                              ? _c(
+                                  "option",
+                                  { attrs: { selected: "", value: "Есть" } },
+                                  [_vm._v("Есть")]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            _vm.car.child
+                              ? _c("option", { attrs: { value: "Нет" } }, [
+                                  _vm._v("Нет")
+                                ])
+                              : _vm._e(),
+                            _vm._v(" "),
+                            !_vm.car.child
+                              ? _c(
+                                  "option",
+                                  { attrs: { selected: "", value: "Нет" } },
+                                  [_vm._v("Нет")]
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            !_vm.car.child
+                              ? _c("option", { attrs: { value: "Есть" } }, [
+                                  _vm._v("Есть")
+                                ])
+                              : _vm._e()
+                          ]
+                        )
                       ]),
                       _vm._v(" "),
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-outline-primary",
+                          staticClass: "btn btn-outline-primary btn_edit",
+                          attrs: { type: "button" },
                           on: {
                             click: function($event) {
                               $event.preventDefault()
-                              return _vm.updateDriver($event)
+                              return _vm.updateCar($event)
                             }
                           }
                         },
@@ -46362,649 +46853,245 @@ var render = function() {
                       _c(
                         "button",
                         {
-                          staticClass: "btn btn-outline-secondary",
+                          staticClass: "btn btn-outline-dark btn_edit",
+                          attrs: { type: "button" },
                           on: {
                             click: function($event) {
                               $event.preventDefault()
-                              return _vm.toggleEditMode($event)
+                              return _vm.toggleEditCar($event)
                             }
                           }
                         },
-                        [_vm._v("Выйти из режима редактирования")]
+                        [_vm._v("Отмена")]
                       )
                     ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("section", { staticClass: "car_data" }, [
-                  _c("h4", [_vm._v("Данные машины")]),
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("section", { staticClass: "driver_car" }, [
+                _c("div", { staticClass: "driver_car_container" }, [
+                  _c("p", [_vm._v("Вид сзади")]),
                   _vm._v(" "),
-                  !this.editCar
-                    ? _c("div", { staticClass: "car_data_noedit" }, [
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Название:")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text" }, [
-                            _vm._v(_vm._s(_vm.car.name))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Тип машины:")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text" }, [
-                            _vm._v(_vm._s(_vm.car.type))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Количество мест:")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text" }, [
-                            _vm._v(_vm._s(_vm.car.sits))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Топливо:")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text" }, [
-                            _vm._v(_vm._s(_vm.car.fuel))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Цена/км:")
-                          ]),
-                          _vm._v(" "),
-                          _c("span", { staticClass: "text" }, [
-                            _vm._v(_vm._s(_vm.car.price))
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Дети:")
-                          ]),
-                          _vm._v(" "),
-                          _vm.car.child
-                            ? _c("span", { staticClass: "text" }, [
-                                _vm._v("Есть детское кресло")
-                              ])
-                            : _vm._e(),
-                          _vm._v(" "),
-                          !_vm.car.child
-                            ? _c("span", { staticClass: "text" }, [
-                                _vm._v("Нет детского кресла")
-                              ])
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-dark",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.toggleEditCar($event)
-                              }
-                            }
-                          },
-                          [_vm._v("Редактировать")]
-                        )
-                      ])
-                    : _vm._e(),
+                  _c("figure", [
+                    _c("img", {
+                      attrs: {
+                        src: this.carphotos.car_photo_back,
+                        alt: "car side"
+                      }
+                    })
+                  ]),
                   _vm._v(" "),
-                  this.editCar
-                    ? _c("div", { staticClass: "car_data_noedit" }, [
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Название:")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.car.name,
-                                expression: "car.name"
-                              }
-                            ],
-                            staticClass: "main_input",
-                            attrs: { type: "text" },
-                            domProps: { value: _vm.car.name },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(_vm.car, "name", $event.target.value)
-                              }
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Тип машины:")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.car.type,
-                                  expression: "car.type"
-                                }
-                              ],
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.car,
-                                    "type",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                {
-                                  attrs: { selected: "" },
-                                  domProps: { value: _vm.car.type }
-                                },
-                                [_vm._v(_vm._s(_vm.car.type))]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(_vm.typesModel, function(option) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: _vm.random(option),
-                                    domProps: { value: option }
-                                  },
-                                  [_vm._v(_vm._s(option))]
-                                )
-                              })
-                            ],
-                            2
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Количество мест:")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.car.sits,
-                                expression: "car.sits"
-                              }
-                            ],
-                            staticClass: "main_input w50",
-                            attrs: { type: "text" },
-                            domProps: { value: _vm.car.sits },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(_vm.car, "sits", $event.target.value)
-                              }
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Топливо:")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.car.fuel,
-                                  expression: "car.fuel"
-                                }
-                              ],
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.car,
-                                    "fuel",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _c(
-                                "option",
-                                {
-                                  attrs: { selected: "" },
-                                  domProps: { value: _vm.car.fuel }
-                                },
-                                [_vm._v(_vm._s(_vm.car.fuel))]
-                              ),
-                              _vm._v(" "),
-                              _vm._l(_vm.typesFuel, function(option) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: _vm.random(option),
-                                    domProps: { value: option }
-                                  },
-                                  [_vm._v(_vm._s(option))]
-                                )
-                              })
-                            ],
-                            2
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Цена/км:")
-                          ]),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.car.price,
-                                expression: "car.price"
-                              }
-                            ],
-                            staticClass: "main_input w50",
-                            attrs: { type: "text" },
-                            domProps: { value: _vm.car.price },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.$set(_vm.car, "price", $event.target.value)
-                              }
-                            }
-                          })
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "car_data_item" }, [
-                          _c("span", { staticClass: "data" }, [
-                            _vm._v("Детское кресло:")
-                          ]),
-                          _vm._v(" "),
-                          _c(
-                            "select",
-                            {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.selected.child,
-                                  expression: "selected.child"
-                                }
-                              ],
-                              on: {
-                                change: function($event) {
-                                  var $$selectedVal = Array.prototype.filter
-                                    .call($event.target.options, function(o) {
-                                      return o.selected
-                                    })
-                                    .map(function(o) {
-                                      var val =
-                                        "_value" in o ? o._value : o.value
-                                      return val
-                                    })
-                                  _vm.$set(
-                                    _vm.selected,
-                                    "child",
-                                    $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  )
-                                }
-                              }
-                            },
-                            [
-                              _vm.car.child
-                                ? _c(
-                                    "option",
-                                    { attrs: { selected: "", value: "Есть" } },
-                                    [_vm._v("Есть")]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              _vm.car.child
-                                ? _c("option", { attrs: { value: "Нет" } }, [
-                                    _vm._v("Нет")
-                                  ])
-                                : _vm._e(),
-                              _vm._v(" "),
-                              !_vm.car.child
-                                ? _c(
-                                    "option",
-                                    { attrs: { selected: "", value: "Нет" } },
-                                    [_vm._v("Нет")]
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              !_vm.car.child
-                                ? _c("option", { attrs: { value: "Есть" } }, [
-                                    _vm._v("Есть")
-                                  ])
-                                : _vm._e()
-                            ]
-                          )
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-primary btn_edit",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.updateCar($event)
-                              }
-                            }
-                          },
-                          [_vm._v("Сохранить")]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "button",
-                          {
-                            staticClass: "btn btn-outline-dark btn_edit",
-                            attrs: { type: "button" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.toggleEditCar($event)
-                              }
-                            }
-                          },
-                          [_vm._v("Отмена")]
-                        )
-                      ])
-                    : _vm._e()
+                  _c("input", {
+                    attrs: { type: "file" },
+                    on: { change: _vm.imageCarBackChanged }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-primary mt-2",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.updateCarPhotosBack($event)
+                        }
+                      }
+                    },
+                    [_vm._v("Сохранить")]
+                  )
                 ]),
                 _vm._v(" "),
-                _c("section", { staticClass: "driver_car" }, [
-                  _c("div", { staticClass: "driver_car_container" }, [
-                    _c("p", [_vm._v("Вид сзади")]),
-                    _vm._v(" "),
-                    _c("figure", [
-                      _c("img", {
-                        attrs: {
-                          src: this.carphotos.car_photo_back,
-                          alt: "car side"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { type: "file" },
-                      on: { change: _vm.imageCarBackChanged }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-outline-primary mt-2",
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.updateCarPhotosBack($event)
-                          }
-                        }
-                      },
-                      [_vm._v("Сохранить")]
-                    )
+                _c("div", { staticClass: "driver_car_container" }, [
+                  _c("p", [_vm._v("Вид сбоку")]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      attrs: {
+                        src: this.carphotos.car_photo_side,
+                        alt: "car_back"
+                      }
+                    })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "driver_car_container" }, [
-                    _c("p", [_vm._v("Вид сбоку")]),
-                    _vm._v(" "),
-                    _c("figure", [
-                      _c("img", {
-                        attrs: {
-                          src: this.carphotos.car_photo_side,
-                          alt: "car_back"
+                  _c("input", {
+                    attrs: { type: "file" },
+                    on: { change: _vm.imageCarSideChanged }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-primary mt-2",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.updateCarPhotosSide($event)
                         }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { type: "file" },
-                      on: { change: _vm.imageCarSideChanged }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-outline-primary mt-2",
-                        on: {
-                          click: function($event) {
-                            $event.preventDefault()
-                            return _vm.updateCarPhotosSide($event)
-                          }
-                        }
-                      },
-                      [_vm._v("Сохранить")]
-                    )
+                      }
+                    },
+                    [_vm._v("Сохранить")]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "driver_car_container" }, [
+                  _c("p", [_vm._v("Вид спереди")]),
+                  _vm._v(" "),
+                  _c("figure", [
+                    _c("img", {
+                      attrs: {
+                        src: this.carphotos.car_photo_front,
+                        alt: "car front"
+                      }
+                    })
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "driver_car_container" }, [
-                    _c("p", [_vm._v("Вид спереди")]),
-                    _vm._v(" "),
-                    _c("figure", [
-                      _c("img", {
-                        attrs: {
-                          src: this.carphotos.car_photo_front,
-                          alt: "car front"
+                  _c("input", {
+                    attrs: { type: "file" },
+                    on: { change: _vm.imageCarFrontChanged }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-outline-primary mt-2",
+                      on: {
+                        click: function($event) {
+                          $event.preventDefault()
+                          return _vm.updateCarPhotosFront($event)
                         }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      attrs: { type: "file" },
-                      on: { change: _vm.imageCarFrontChanged }
-                    }),
-                    _vm._v(" "),
+                      }
+                    },
+                    [_vm._v("Сохранить")]
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              !_vm.editRouts
+                ? _c("div", { staticClass: "data-block" }, [
                     _c(
                       "button",
                       {
-                        staticClass: "btn btn-outline-primary mt-2",
+                        staticClass: "btn btn-primary",
                         on: {
                           click: function($event) {
                             $event.preventDefault()
-                            return _vm.updateCarPhotosFront($event)
+                            return _vm.toggleEditRouts($event)
                           }
                         }
                       },
-                      [_vm._v("Сохранить")]
+                      [_vm._v("Изменить маршруты")]
                     )
                   ])
-                ]),
-                _vm._v(" "),
-                !_vm.editRouts
-                  ? _c("div", { staticClass: "data-block" }, [
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.editRouts
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "d-flex justify-content-center flex-wrap w-100"
+                    },
+                    [
                       _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-primary",
-                          on: {
-                            click: function($event) {
-                              $event.preventDefault()
-                              return _vm.toggleEditRouts($event)
-                            }
-                          }
-                        },
-                        [_vm._v("Изменить маршруты")]
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.editRouts
-                  ? _c(
-                      "div",
-                      {
-                        staticClass:
-                          "d-flex justify-content-center flex-wrap w-100"
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "routs_item_width" },
-                          [
-                            _c("AutoInput", {
-                              attrs: {
-                                items: _vm.nameRouteGroups,
-                                returnData: _vm.postRouteName
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-outline-primary ml-2",
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.connectRG($event)
-                                  }
-                                }
-                              },
-                              [_vm._v("Добавить группу")]
-                            )
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _vm._l(_vm.routegroups, function(item) {
-                          return _c("RouteItem", {
-                            key: _vm.random(item),
+                        "div",
+                        { staticClass: "routs_item_width" },
+                        [
+                          _c("AutoInput", {
                             attrs: {
-                              name: item.name,
-                              id: _vm.id,
-                              route_id: item.id,
-                              purpose: "driverrouts",
-                              getRouts: _vm.getRouteGroups
+                              items: _vm.nameRouteGroups,
+                              returnData: _vm.postRouteName
                             }
-                          })
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          {
-                            staticClass: "w-100 d-flex justify-content-center"
-                          },
-                          [
-                            _c(
-                              "button",
-                              {
-                                staticClass: "btn btn-primary mt-4",
-                                on: {
-                                  click: function($event) {
-                                    $event.preventDefault()
-                                    return _vm.toggleEditRouts($event)
-                                  }
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-outline-primary ml-2",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.connectRG($event)
                                 }
-                              },
-                              [_vm._v("Выйти")]
-                            )
-                          ]
-                        )
-                      ],
-                      2
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "section",
-                  {
-                    staticClass: "d-flex align-items-center flex-column reviews"
-                  },
-                  [
-                    _c("h3", { staticClass: "mb-4" }, [_vm._v("Отзывы")]),
-                    _vm._v(" "),
-                    _c("AddTour", {
+                              }
+                            },
+                            [_vm._v("Добавить группу")]
+                          )
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _vm._l(_vm.routegroups, function(item) {
+                        return _c("RouteItem", {
+                          key: _vm.random(item),
+                          attrs: {
+                            name: item.name,
+                            id: _vm.id,
+                            route_id: item.id,
+                            purpose: "driverrouts",
+                            getRouts: _vm.getRouteGroups
+                          }
+                        })
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "w-100 d-flex justify-content-center" },
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-primary mt-4",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.toggleEditRouts($event)
+                                }
+                              }
+                            },
+                            [_vm._v("Выйти")]
+                          )
+                        ]
+                      )
+                    ],
+                    2
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "section",
+                {
+                  staticClass: "d-flex align-items-center flex-column reviews"
+                },
+                [
+                  _c("h3", { staticClass: "mb-4" }, [_vm._v("Отзывы")]),
+                  _vm._v(" "),
+                  _c("AddTour", {
+                    attrs: {
+                      updateItem: _vm.getReview,
+                      driver_id: _vm.driver.id
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm._l(_vm.reviews.slice().reverse(), function(item) {
+                    return _c("Review", {
+                      key: _vm.random(item),
                       attrs: {
-                        updateItem: _vm.getReview,
-                        driver_id: _vm.driver.id
+                        name: item.author,
+                        date: item.updated_at,
+                        stars: item.rating,
+                        description: item.text,
+                        id: item.id,
+                        driver_id: _vm.driver.id,
+                        updateItem: _vm.getReview
                       }
-                    }),
-                    _vm._v(" "),
-                    _vm._l(_vm.reviews.slice().reverse(), function(item) {
-                      return _c("Review", {
-                        key: _vm.random(item),
-                        attrs: {
-                          name: item.author,
-                          date: item.updated_at,
-                          stars: item.rating,
-                          description: item.text,
-                          id: item.id,
-                          driver_id: _vm.driver.id,
-                          updateItem: _vm.getReview
-                        }
-                      })
                     })
-                  ],
-                  2
-                )
-              ]
-            )
-          ],
-          1
-        )
+                  })
+                ],
+                2
+              )
+            ]
+          )
+        ])
       : _vm._e()
   ])
 }
@@ -47713,7 +47800,7 @@ var render = function() {
                             click: function($event) {
                               $event.preventDefault()
                               return _vm.updateSetting(
-                                _vm.pageContent.planning_time
+                                _vm.pageContent.planning_transfer
                               )
                             }
                           }
@@ -48708,6 +48795,8 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "page_container" }, [
+    _c("a", { attrs: { href: "/home/tours" } }, [_vm._v("Назад")]),
+    _vm._v(" "),
     _c("div", { staticClass: "category_title" }, [
       _c("img", {
         attrs: { src: __webpack_require__(/*! ../../../../public/images/bus.svg */ "./public/images/bus.svg"), alt: "" }
@@ -48726,11 +48815,45 @@ var render = function() {
         })
       ]),
       _vm._v(" "),
-      _c("input", {
-        staticClass: "mt-3 ml-4",
-        attrs: { type: "file" },
-        on: { change: _vm.imageTourChange }
-      })
+      _c("div", { staticClass: "d-flex flex-column ml-4" }, [
+        _c("input", {
+          staticClass: "mt-3 mb-3",
+          attrs: { type: "file" },
+          on: { change: _vm.imageTourChange }
+        }),
+        _vm._v(" "),
+        !_vm.tourImageChanged
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-primary w-50 disabled",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.chooseImage($event)
+                  }
+                }
+              },
+              [_vm._v("Сохранить")]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.tourImageChanged
+          ? _c(
+              "button",
+              {
+                staticClass: "btn btn-outline-primary w-50",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.uploadImage($event)
+                  }
+                }
+              },
+              [_vm._v("Сохранить")]
+            )
+          : _vm._e()
+      ])
     ]),
     _vm._v(" "),
     _c("section", { staticClass: "car_data" }, [
@@ -48883,7 +49006,7 @@ var render = function() {
       "section",
       { staticClass: "mb-5 tour-description w-100 d-flex flex-column" },
       [
-        _c("h4", [_vm._v("Текст:")]),
+        _c("h4", [_vm._v("Описание тура:")]),
         _vm._v(" "),
         !_vm.editText
           ? _c("textarea-autosize", {
@@ -48891,7 +49014,7 @@ var render = function() {
               staticClass: "tour-description_noedit",
               attrs: {
                 readonly: "",
-                placeholder: "Текст отзыва",
+                placeholder: "Описание тура",
                 "min-height": 30,
                 "max-height": 350
               },
@@ -48937,7 +49060,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Изменить текст")]
+                [_vm._v("Изменить описание")]
               )
             ])
           : _vm._e(),
@@ -48990,7 +49113,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Изменить категории")]
+            [_vm._v("Изменить группы точек")]
           )
         ])
       : _vm._e(),
@@ -63322,15 +63445,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ./resources/js/components/custom/RoutGroupCard.vue ***!
   \**********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _RoutGroupCard_vue_vue_type_template_id_48ed0c00___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RoutGroupCard.vue?vue&type=template&id=48ed0c00& */ "./resources/js/components/custom/RoutGroupCard.vue?vue&type=template&id=48ed0c00&");
 /* harmony import */ var _RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RoutGroupCard.vue?vue&type=script&lang=js& */ "./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _RoutGroupCard_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -63360,7 +63482,7 @@ component.options.__file = "resources/js/components/custom/RoutGroupCard.vue"
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/custom/RoutGroupCard.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

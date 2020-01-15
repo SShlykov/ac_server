@@ -25,7 +25,11 @@
           :path="this.path"
           :fetchData="fetchData"
           v-if="this.data.keys"
+          :returnImage="this.getNewDriverImage"
         />
+        <figure v-if="title=='Водители'" class="driver-view-photo">
+          <img v-bind:src="default_image" alt="new_driver_image" />
+        </figure>
       </div>
     </div>
     <div class="d-flex flex-wrap container-fluid w-100" v-if="!data.loading">
@@ -74,7 +78,9 @@ export default {
         edit: false,
         showAddForm: false,
         loading: true
-      }
+      },
+      default_image:
+        "https://sun9-38.userapi.com/c854320/v854320805/1b8e14/afhOhLK6rkU.jpg"
     };
   },
   async created() {
@@ -107,6 +113,9 @@ export default {
     },
     getKeys() {
       this.data.keys = Object.keys(this.data.list[0]);
+    },
+    getNewDriverImage(item) {
+      this.default_image = item;
     },
     showAddForm() {
       this.data.loading = false;

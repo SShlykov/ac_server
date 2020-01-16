@@ -6,6 +6,7 @@ use App\Tour;
 use App\Category;
 use App\Http\Resources\Tour as TourResource;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TourController extends Controller
 {
@@ -13,6 +14,36 @@ class TourController extends Controller
     {
         $tours = Tour::paginate(15);
         return TourResource::collection($tours);
+    }
+
+    public function postphoto(Request $request)
+    {
+
+        $exploded = explode(',', $request->image);
+        //\Log::info($exploded);
+        $decoded = base64_decode($exploded[1]);
+        
+        if(Str::contains($exploded[0], 'jpeg'))
+        $extension = 'jpg';
+        else
+        $extension = 'png';
+        
+        
+        $file_name = Str::random(40).'.'.$extension;
+        
+        $path = public_path().'/'.'images/'.'tours/'.$file_name;
+        
+        file_put_contents($path, $decoded);
+
+        $tour = Tour::findOrFail($request->id); //*
+
+        $tour->image = '/'.'images/'.'tours/'.$file_name;
+
+        $tour->id = $request->input('id');
+
+
+        $tour->save();
+        return new TourResource($tour);
     }
 
     public function all()

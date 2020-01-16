@@ -98,6 +98,7 @@ Route::group(['prefix' => 'tour'], function (){
     Route::post('/', $controller . 'store');
     Route::post('/connect/route', $controller . 'connect_rout_to_tour');
     Route::put('/', $controller . 'store');
+    Route::put('/upload/photo', $controller . 'postphoto');
     Route::delete('/{id}', $controller . 'destroy');
     Route::delete('/disconnect/category', $controller . 'disconnet_category');
 });

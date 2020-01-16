@@ -171,7 +171,7 @@
               class="btn btn-outline-primary"
             >Редактировать</button>
             <button
-              @click.prevent="updateSetting(pageContent.planning_time)"
+              @click.prevent="updateSetting(pageContent.planning_transfer)"
               v-if="iconsEdit.TransferEdit"
               class="mr-2 btn btn-outline-primary"
             >Сохранить</button>
@@ -525,7 +525,6 @@ export default {
   async created() {
     await this.fetchData();
     await this.getContent();
-    //console.log(this.pageContent.planning_car.text);
   },
   methods: {
     async fetchData() {
@@ -543,7 +542,6 @@ export default {
           this.DBPageContent = res.data;
         })
         .catch(err => console.warn(err));
-      console.log(this.DBPageContent);
       this.getContentObject();
     },
     async getContentObject() {
@@ -557,7 +555,6 @@ export default {
           }
         });
       }
-      console.log(this.pageContent);
     },
     async updateSetting(item) {
       await fetch(`/api/settings/update`, {
@@ -568,7 +565,9 @@ export default {
         }
       })
         .then(res => res.json())
-        .then(data => {})
+        .then(data => {
+          console.log(item);
+        })
         .catch(err => console.log(err));
 
       for (let key in this.iconsEdit) {

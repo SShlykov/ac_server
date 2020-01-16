@@ -38,6 +38,9 @@ export default {
     },
     fetchData: {
       required: true
+    },
+    returnImage: {
+      required: false
     }
   },
   data() {
@@ -60,6 +63,7 @@ export default {
 
       fileReader.onload = e => {
         this.data.item.photo = e.target.result;
+        if (this.returnImage) this.returnImage(e.target.result);
       };
     },
     parsePropsToState(arr) {

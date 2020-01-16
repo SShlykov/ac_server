@@ -480,6 +480,7 @@
 
 .item_form > div > #photo {
   background-color: transparent;
+  color: transparent;
   border: none;
   height: 45px;
   width: 400px;
@@ -500,7 +501,7 @@
   border-radius: 3px;
   padding: 8px 0px 8px 10px;
   width: 130px;
-  margin-left: 230px;
+  margin-left: 135px;
   outline: none;
   white-space: nowrap;
   -webkit-user-select: none;
@@ -778,7 +779,11 @@
 
 .tourPage_figure {
   width: 300px;
-  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  overflow: hidden;
 }
 
 .tour-description_noedit {
@@ -839,6 +844,35 @@
   border-radius: 5px;
   width: 80%;
   padding: 10px 20px;
+}
+
+.driver-card-figure {
+  display: flex;
+  align-items: center;
+  height: 200px;
+  overflow: hidden;
+}
+
+.driverpage-friver-photo {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  overflow: hidden;
+}
+
+.driver-view-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-left: 100px;
+  overflow: hidden;
+  height: 300px;
+  width: 450px;
+}
+
+.driver-view-photo > img {
+  width: 100%;
 }
 
 /*!

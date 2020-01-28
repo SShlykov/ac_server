@@ -106,6 +106,7 @@ Route::group(['prefix' => 'tour'], function (){
 Route::group(['prefix' => 'category'], function (){
     $controller = "CategoryController@";
     Route::get('/all', $controller . 'index');
+    Route::get('/getTours/{id}', $controller . 'show_tours');
     Route::put('/update', $controller . 'update');
 });
 

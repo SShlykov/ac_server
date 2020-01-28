@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Tour;
 use Illuminate\Http\Request;
 use App\Http\Resources\Category as CategoryResource;
 
@@ -15,6 +16,7 @@ class CategoryController extends Controller
         return CategoryResource::collection($category);
     }
 
+
     public function update(Request $request)
     {
         \Log::info($request);
@@ -24,6 +26,14 @@ class CategoryController extends Controller
         $category->name = $request->input('name');
 
         $category->save();
+
+        return $category;
+    }
+
+
+    public function show_tours($id)
+    {
+        $category = Category::findOrFail($id)->tours()->get();
 
         return $category;
     }

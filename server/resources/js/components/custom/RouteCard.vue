@@ -17,6 +17,9 @@ export default {
     },
     destroyItem: {
       required: true
+    },
+    fetchData: {
+      required: false
     }
   },
   methods: {
@@ -32,7 +35,10 @@ export default {
           })
           .catch(err => console.log(err));
       }
+      this.fetchData();
     }
   }
 };
 </script>
+
+

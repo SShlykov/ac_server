@@ -39,7 +39,12 @@
         v-bind:key="item.id"
         style="width: 18rem;"
       >
-        <slot :item="item" :destroyItem="destroyItem" :deleteItem="deleteItem" />
+        <slot
+          :item="item"
+          :fetchData="fetchData"
+          :destroyItem="destroyItem"
+          :deleteItem="deleteItem"
+        />
       </div>
       <Pagination
         :pagination="this.data.pagination"
@@ -99,7 +104,6 @@ export default {
           vm.makePagination(res.meta, res.links);
         })
         .catch(err => console.warn(err));
-
       await this.getKeys();
       this.data.loading = false;
     },

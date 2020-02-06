@@ -2134,6 +2134,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -4292,6 +4297,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     destroyItem: {
       required: true
+    },
+    fetchData: {
+      required: false
     }
   },
   methods: {
@@ -4311,6 +4319,8 @@ __webpack_require__.r(__webpack_exports__);
           return console.log(err);
         });
       }
+
+      this.fetchData();
     }
   }
 });
@@ -43826,8 +43836,15 @@ var render = function() {
         fn: function(ref) {
           var item = ref.item
           var destroyItem = ref.destroyItem
+          var fetchData = ref.fetchData
           return [
-            _c("RouteCard", { attrs: { item: item, destroyItem: destroyItem } })
+            _c("RouteCard", {
+              attrs: {
+                fetchData: fetchData,
+                item: item,
+                destroyItem: destroyItem
+              }
+            })
           ]
         }
       }
@@ -44057,6 +44074,7 @@ var render = function() {
                 [
                   _vm._t("default", null, {
                     item: item,
+                    fetchData: _vm.fetchData,
                     destroyItem: _vm.destroyItem,
                     deleteItem: _vm.deleteItem
                   })
@@ -64287,8 +64305,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\OpenServer\OSPanel\localhost\server\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\OpenServer\OSPanel\localhost\server\resources\sass\app.sass */"./resources/sass/app.sass");
+__webpack_require__(/*! C:\OpenServer\OSPanel\domains\localhost\server\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\OpenServer\OSPanel\domains\localhost\server\resources\sass\app.sass */"./resources/sass/app.sass");
 
 
 /***/ })

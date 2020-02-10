@@ -6857,6 +6857,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IMPORTED_MODULE_2__["default"]);
@@ -6994,17 +7004,41 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
     return created;
   }(),
   methods: {
-    fetchData: function () {
-      var _fetchData = _asyncToGenerator(
+    clearPhotos: function () {
+      var _clearPhotos = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var _this = this;
-
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
+                console.log("i work");
+
+              case 1:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function clearPhotos() {
+        return _clearPhotos.apply(this, arguments);
+      }
+
+      return clearPhotos;
+    }(),
+    fetchData: function () {
+      var _fetchData = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var _this = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
                 return fetch("/api/route_group/groups").then(function (res) {
                   return res.json();
                 }).then(function (res) {
@@ -7015,10 +7049,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
               case 2:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }));
 
       function fetchData() {
@@ -7030,14 +7064,14 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
     getContent: function () {
       var _getContent = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
         var _this2 = this;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
-            switch (_context3.prev = _context3.next) {
+            switch (_context4.prev = _context4.next) {
               case 0:
-                _context3.next = 2;
+                _context4.next = 2;
                 return fetch("/api/settings/all").then(function (res) {
                   return res.json();
                 }).then(function (res) {
@@ -7051,10 +7085,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
               case 3:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
           }
-        }, _callee3, this);
+        }, _callee4, this);
       }));
 
       function getContent() {
@@ -7066,14 +7100,14 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
     getContentObject: function () {
       var _getContentObject = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
         var _this3 = this;
 
         var _loop, key;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
           while (1) {
-            switch (_context4.prev = _context4.next) {
+            switch (_context5.prev = _context5.next) {
               case 0:
                 _loop = function _loop(key) {
                   _this3.DBPageContent.map(function (x) {
@@ -7092,10 +7126,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
               case 2:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee5, this);
       }));
 
       function getContentObject() {
@@ -7107,13 +7141,13 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
     updateSetting: function () {
       var _updateSetting = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5(item) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6(item) {
         var key;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context6.prev = _context6.next) {
               case 0:
-                _context5.next = 2;
+                _context6.next = 2;
                 return fetch("/api/settings/update", {
                   method: "put",
                   body: JSON.stringify(item),
@@ -7137,10 +7171,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
               case 4:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5, this);
+        }, _callee6, this);
       }));
 
       function updateSetting(_x) {
@@ -47339,8 +47373,45 @@ var render = function() {
           }
         },
         [_vm._v("Контакты")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-outline-dark ml-2",
+          attrs: { type: "button" },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.changeViewContent("Advance")
+            }
+          }
+        },
+        [_vm._v("Дополнительно")]
       )
     ]),
+    _vm._v(" "),
+    _vm.contentFlag == "Advance"
+      ? _c("section", [
+          _c("h4", { staticClass: "mb-3" }, [
+            _vm._v("Дополнительные настройки")
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-outline-primary",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.clearPhotos()
+                }
+              }
+            },
+            [_vm._v("Удалить лишние картинки")]
+          )
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _vm.contentFlag == "Planning"
       ? _c("section", [

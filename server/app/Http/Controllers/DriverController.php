@@ -8,11 +8,45 @@ use App\Driver;
 use App\Car;
 use App\Carphoto;
 use App\RouteGroup;
+use App\Rewiew;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Http\Resources\Driver as DriverResource;
 
 class DriverController extends Controller
 {
+    public function showAllDriversData()
+    {   $bigArray = array();
+        $tempArray = array();
+        $reviews = array();
+        $quantity = 0;
+        $sum = 0;
+        $drivers = Driver::all();
+        foreach ($drivers as $driver) 
+        {
+            $quantity = 0;
+            $sum = 0;
+            unset($tempArray);
+            $tempArray = array();
+            unset($reviews);
+            $reviews = array();
+            $tempArray['driver'] = $driver;
+            $tempArray['car'] = $driver->car;
+            $carphoto = $driver->car->carphoto;
+            foreach ($driver->rewiew as $rewiew)
+            {
+                $quantity++;
+                $sum = $sum + $rewiew->rating;
+            }
+            unset($driver->car);
+            unset($driver->rewiew);
+            $reviews['quantity'] = $quantity;
+            $reviews['rating'] = round($sum/$quantity, 1);
+            $tempArray['reviews'] = $reviews;
+            $bigArray[] = $tempArray;
+        }
+        return $bigArray;
+    }
+
     public function index($count)
     {
         $count = gettype(intval($count)) == 'integer' ? $count: 5;

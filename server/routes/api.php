@@ -6,7 +6,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
 Route::get('drivers/{count}', 'DriverController@index');
 Route::get('cars/{count}', 'CarController@index');
 Route::get('carphotos/{count}', 'CarphotoController@index');
@@ -17,6 +16,7 @@ Route::get('tours/{count}', 'TourController@index');
 Route::group(['prefix' => 'driver'], function (){
     $controller = "DriverController@";
     Route::get('/{id}', $controller . 'show');
+    Route::get('/showall/driversData', $controller . 'showAllDriversData');
     Route::get('/withTrashed/{count}', $controller . 'showWT');
     Route::get('/onlyTrashed/{count}', $controller . 'showOT');
     Route::get('/rg/show_connected/{driver_id}', $controller . 'show_connected');
@@ -103,13 +103,18 @@ Route::group(['prefix' => 'tour'], function (){
     Route::delete('/disconnect/category', $controller . 'disconnet_category');
 });
 
+Route::group(['prefix' => 'settings'], function (){
+    $controller = "PhotosController@";
+    Route::get('/updatePhotos', $controller . 'index');
+});
+
+
 Route::group(['prefix' => 'category'], function (){
     $controller = "CategoryController@";
     Route::get('/all', $controller . 'index');
     Route::get('/getTours/{id}', $controller . 'show_tours');
     Route::put('/update', $controller . 'update');
 });
-
 
 
 Route::delete('/disconnect', 'RouteGroupController@disconnect');

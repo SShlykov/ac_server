@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Review::class, function (Faker $faker) {
     return [
-        'author' => $faker->name() . '' . $faker->lastName(),
+        'author' => $faker->name() . ' ' . $faker->lastName(),
         'text' => $faker->paragraph(),
         'rating' => $faker->numberBetween(1, 5),
         'driver_id' => '1'

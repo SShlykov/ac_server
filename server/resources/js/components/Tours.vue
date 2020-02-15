@@ -14,8 +14,6 @@
   </div>
 </template>
 
-
-
 <script>
 import Tour from "./custom/Tour.vue";
 import AddTour from "./custom/AddTour.vue";
@@ -32,7 +30,7 @@ export default {
     };
   },
   async created() {
-    this.getCategories();
+    await this.getCategories();
     console.log(this.tourItems);
   },
   methods: {

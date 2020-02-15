@@ -33,7 +33,7 @@
       <div class="settings_planning d-flex">
         <div class="settings_planning-icons mb-5">
           <figure>
-            <img src="../../../../public/images/car.svg" alt />
+            <img src="../../../../public/storage/images/car.svg" alt />
           </figure>
           <div v-if="!iconsEdit.CarEdit" class="mr-2">{{pageContent.planning_car.text}}</div>
           <input
@@ -62,7 +62,7 @@
         </div>
         <div class="settings_planning-icons mb-5">
           <figure>
-            <img src="../../../../public/images/photo.svg" alt />
+            <img src="../../../../public/storage/images/photo.svg" alt />
           </figure>
           <div v-if="!iconsEdit.PhotoEdit" class="mr-2">{{pageContent.planning_photo.text}}</div>
           <input
@@ -91,7 +91,7 @@
         </div>
         <div class="settings_planning-icons mb-5">
           <figure>
-            <img src="../../../../public/images/coins.svg" alt />
+            <img src="../../../../public/storage/images/coins.svg" alt />
           </figure>
           <div v-if="!iconsEdit.CoinsEdit" class="mr-2">{{pageContent.planning_coins.text}}</div>
           <input
@@ -120,7 +120,7 @@
         </div>
         <div class="settings_planning-icons mb-5">
           <figure>
-            <img src="../../../../public/images/timer.svg" alt />
+            <img src="../../../../public/storage/images/timer.svg" alt />
           </figure>
           <div v-if="!iconsEdit.TimeEdit" class="mr-2">{{pageContent.planning_time.text}}</div>
           <input

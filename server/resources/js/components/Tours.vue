@@ -31,7 +31,6 @@ export default {
   },
   async created() {
     await this.getCategories();
-    console.log(this.tourItems);
   },
   methods: {
     async getCategories() {

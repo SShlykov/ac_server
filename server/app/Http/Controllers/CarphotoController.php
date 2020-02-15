@@ -34,14 +34,14 @@ class CarphotoController extends Controller
 
         $file_name = Str::random(40) . '.' . $extension;
 
-        $path = public_path() . '/storage/' . 'images/' . 'cars/' . $file_name;
+        $path = public_path() . '/' . 'images/' . 'cars/' . $file_name;
 
         file_put_contents($path, $decoded);
 
         $carphotos = $request->isMethod('put') ? Carphoto::findOrFail($request->id)
         : new Carphoto;
 
-        $carphotos->car_photo_back = '/storage/' . 'images/' . 'cars/' . $file_name;
+        $carphotos->car_photo_back = '/' . 'images/' . 'cars/' . $file_name;
 
         $carphotos->id = $request->input('id');
 
@@ -61,14 +61,14 @@ class CarphotoController extends Controller
 
         $file_name = Str::random(40) . '.' . $extension;
 
-        $path = public_path() . '/storage/' . 'images/' . 'cars/' . $file_name;
+        $path = public_path() . '/' . 'images/' . 'cars/' . $file_name;
 
         file_put_contents($path, $decoded);
 
         $carphotos = $request->isMethod('put') ? Carphoto::findOrFail($request->id)
         : new Carphoto;
 
-        $carphotos->car_photo_front = '/storage/' . 'images/' . 'cars/' . $file_name;
+        $carphotos->car_photo_front = '/' . 'images/' . 'cars/' . $file_name;
 
         $carphotos->id = $request->input('id');
 
@@ -88,14 +88,14 @@ class CarphotoController extends Controller
 
         $file_name = Str::random(40) . '.' . $extension;
 
-        $path = public_path() . '/storage/' . 'images/' . 'cars/' . $file_name;
+        $path = public_path() . '/' . 'images/' . 'cars/' . $file_name;
 
         file_put_contents($path, $decoded);
 
         $carphotos = $request->isMethod('put') ? Carphoto::findOrFail($request->id)
         : new Carphoto;
 
-        $carphotos->car_photo_side = '/storage/' . 'images/' . 'cars/' . $file_name;
+        $carphotos->car_photo_side = '/' . 'images/' . 'cars/' . $file_name;
 
         $carphotos->id = $request->input('id');
 

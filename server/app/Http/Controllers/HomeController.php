@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class HomeController extends Controller
 {
     public function __construct()
@@ -35,28 +33,37 @@ class HomeController extends Controller
     {
         return view('pages.tests');
     }
-        public function tours()
+    public function tours()
     {
         return view('pages.tours');
     }
-        public function category($id)
+    public function category($id)
     {
         return view('pages.category', ['id' => $id]);
     }
 
-    public function deleteddrivers(){
+    public function deleteddrivers()
+    {
         return view('pages.deleteddrivers');
     }
 
-    public function editrouts(){
+    public function editrouts()
+    {
         return view('pages.editrouts');
     }
 
-    public function settings(){
+    public function settings()
+    {
         return view('pages.settings');
     }
 
-    public function editcategories(){
+    public function editcategories()
+    {
         return view('pages.editcategories');
+    }
+
+    public function notices()
+    {
+        return view('pages.notices');
     }
 }

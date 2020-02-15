@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Tour;
 use App\Category;
 use App\Http\Resources\Tour as TourResource;
+use App\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -22,25 +22,24 @@ class TourController extends Controller
         $exploded = explode(',', $request->image);
         //\Log::info($exploded);
         $decoded = base64_decode($exploded[1]);
-        
-        if(Str::contains($exploded[0], 'jpeg'))
-        $extension = 'jpg';
-        else
-        $extension = 'png';
-        
-        
-        $file_name = Str::random(40).'.'.$extension;
-        
-        $path = public_path().'/'.'images/'.'tours/'.$file_name;
-        
+
+        if (Str::contains($exploded[0], 'jpeg')) {
+            $extension = 'jpg';
+        } else {
+            $extension = 'png';
+        }
+
+        $file_name = Str::random(40) . '.' . $extension;
+
+        $path = public_path() . '/storage/' . 'images/' . 'tours/' . $file_name;
+
         file_put_contents($path, $decoded);
 
         $tour = Tour::findOrFail($request->id); //*
 
-        $tour->image = '/'.'images/'.'tours/'.$file_name;
+        $tour->image = '/storage/' . 'images/' . 'tours/' . $file_name;
 
         $tour->id = $request->input('id');
-
 
         $tour->save();
         return new TourResource($tour);
@@ -56,7 +55,7 @@ class TourController extends Controller
     public function store(Request $request)
     {
         $tour = $request->isMethod('put') ? Tour::findOrFail($request->id)
-            : new Tour;
+        : new Tour;
 
         $tour->id = $request->input('id');
         $tour->name = $request->input('name');
@@ -107,7 +106,7 @@ class TourController extends Controller
     }
 
     public function connect_rout_to_tour(Request $request)
-    {   
+    {
         $tour = Tour::findOrFail($request->input('tour_id'));
 
         $route = \App\Route::findOrFail($request->input('route_id'));
@@ -120,7 +119,7 @@ class TourController extends Controller
 
     public function destroy($id)
     {
-        
+
         try {
             $tour = Tour::findOrFail($id);
             if ($tour->delete()) {
@@ -135,7 +134,7 @@ class TourController extends Controller
             }
             return [
                 "error" => $message,
-                "status" => $status
+                "status" => $status,
             ];
         }
     }

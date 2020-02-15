@@ -25,6 +25,8 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/home/settings">Наcтройки</a></li>
                 <li class="nav-item">
+                    <a class="nav-link" href="/home/notices">Запросы</a></li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Altaycross</a></li>
                 <li class="nav-item dropdown">
                 <li class="nav-item naw-wrapper">

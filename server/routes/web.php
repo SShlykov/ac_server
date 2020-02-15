@@ -1,10 +1,10 @@
 <?php
 
 Route::get('/', function () {
-   if (Auth::user()) {
-       return redirect('/home');
-   }
-   return view('welcome');
+    if (Auth::user()) {
+        return redirect('/home');
+    }
+    return view('welcome');
     // return phpinfo();
 });
 
@@ -29,5 +29,7 @@ Route::get('/home/drivers/deleted', 'HomeController@deleteddrivers');
 Route::get('/home/routs/edit', 'HomeController@editrouts');
 
 Route::get('/home/settings', 'HomeController@settings');
+
+Route::get('/home/notices', 'HomeController@notices');
 
 Route::get('/home/editcategories', 'HomeController@editcategories');

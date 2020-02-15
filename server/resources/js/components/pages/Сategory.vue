@@ -100,7 +100,7 @@
       </div>
     </section>
     <div class="d-flex w-100" v-if="!editCategories">
-      <button class="btn btn-primary" @click.prevent="toggleEditCategories">Изменить группы точек</button>
+      <button class="btn btn-primary" @click.prevent="toggleEditCategories">Изменить категории</button>
     </div>
     <div class="d-flex justify-content-center flex-wrap w-100" v-if="editCategories">
       <div class="routs_item_width">

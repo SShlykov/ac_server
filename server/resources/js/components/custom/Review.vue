@@ -174,7 +174,8 @@ export default {
     },
     toggleEdit() {
       this.editMode = !this.editMode;
-    }
+    },
+    z() {}
   },
   components: {}
 };

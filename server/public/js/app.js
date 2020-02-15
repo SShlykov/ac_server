@@ -2003,9 +2003,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getCategories();
 
             case 2:
-              console.log(this.tourItems);
-
-            case 3:
             case "end":
               return _context.stop();
           }
@@ -5535,26 +5532,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getCar();
 
             case 4:
-              console.log(this.car);
-              _context.next = 7;
+              _context.next = 6;
               return this.getCarPhotos();
 
-            case 7:
-              _context.next = 9;
+            case 6:
+              _context.next = 8;
               return this.getReview();
 
-            case 9:
-              _context.next = 11;
+            case 8:
+              _context.next = 10;
               return this.getRouteGroups();
 
-            case 11:
-              _context.next = 13;
+            case 10:
+              _context.next = 12;
               return this.getRotesNames();
 
-            case 13:
+            case 12:
               this.loading.data = true;
 
-            case 14:
+            case 13:
             case "end":
               return _context.stop();
           }
@@ -5763,9 +5759,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 this.nameRouteGroups = cashRoutes.map(function (x) {
                   return x.name;
                 });
-                console.log(this.nameRouteGroups);
 
-              case 5:
+              case 4:
               case "end":
                 return _context7.stop();
             }
@@ -5833,8 +5828,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context9.prev = _context9.next) {
               case 0:
-                console.log(this.routeGroupName);
-                _context9.next = 3;
+                _context9.next = 2;
                 return fetch("/api/driver/rg/connect/" + this.id + "/" + this.routeGroupName, {
                   method: "post"
                 }).then(function (res) {
@@ -5847,7 +5841,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return console.log(err);
                 });
 
-              case 3:
+              case 2:
               case "end":
                 return _context9.stop();
             }

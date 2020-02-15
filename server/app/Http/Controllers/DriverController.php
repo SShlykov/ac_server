@@ -67,7 +67,7 @@ class DriverController extends Controller
 
             $file_name = Str::random(40) . '.' . $extension;
 
-            $path = public_path() . '/storage/' . 'images/' . 'drivers/' . $file_name;
+            $path = public_path() . '/' . 'images/' . 'drivers/' . $file_name;
 
             file_put_contents($path, $decoded);
         }
@@ -80,15 +80,11 @@ class DriverController extends Controller
         $driver->locale = $request->input('locale');
         $driver->phone = $request->input('phone');
         if ($isNewPhoto) {
-            $driver->photo = '/storage/' . 'images/' . 'drivers/' . $file_name;
+            $driver->photo = '/' . 'images/' . 'drivers/' . $file_name;
         }
-        \Log::info($driver);
-
         $driver->save();
-
         $car = $driver->car()->create();
         $car->carphoto()->create();
-
         return new DriverResource($driver);
     }
 

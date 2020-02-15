@@ -31,13 +31,13 @@ class TourController extends Controller
 
         $file_name = Str::random(40) . '.' . $extension;
 
-        $path = public_path() . '/storage/' . 'images/' . 'tours/' . $file_name;
+        $path = public_path() . '/' . 'images/' . 'tours/' . $file_name;
 
         file_put_contents($path, $decoded);
 
         $tour = Tour::findOrFail($request->id); //*
 
-        $tour->image = '/storage/' . 'images/' . 'tours/' . $file_name;
+        $tour->image = '/' . 'images/' . 'tours/' . $file_name;
 
         $tour->id = $request->input('id');
 

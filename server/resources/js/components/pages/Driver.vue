@@ -304,7 +304,6 @@ export default {
   async created() {
     await this.getDriver();
     await this.getCar();
-    console.log(this.car);
     await this.getCarPhotos();
     await this.getReview();
     await this.getRouteGroups();
@@ -358,7 +357,6 @@ export default {
         .catch(err => console.warn(err));
 
       this.nameRouteGroups = cashRoutes.map(x => x.name);
-      console.log(this.nameRouteGroups);
     },
     async deleteDriver() {
       if (confirm("Вы точно хотите удалить?")) {
@@ -375,7 +373,6 @@ export default {
       }
     },
     async connectRG() {
-      console.log(this.routeGroupName);
       await fetch(
         `/api/driver/rg/connect/` + this.id + `/` + this.routeGroupName,
         {

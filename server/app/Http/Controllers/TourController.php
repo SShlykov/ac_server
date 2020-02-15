@@ -18,9 +18,9 @@ class TourController extends Controller
 
     public function postphoto(Request $request)
     {
+        \Log::info('request  ' . $request);
 
         $exploded = explode(',', $request->image);
-        //\Log::info($exploded);
         $decoded = base64_decode($exploded[1]);
 
         if (Str::contains($exploded[0], 'jpeg')) {
@@ -32,6 +32,8 @@ class TourController extends Controller
         $file_name = Str::random(40) . '.' . $extension;
 
         $path = public_path() . '/' . 'images/' . 'tours/' . $file_name;
+
+        \Log::info('path: ' . $path);
 
         file_put_contents($path, $decoded);
 

@@ -18,7 +18,6 @@ class TourController extends Controller
 
     public function postphoto(Request $request)
     {
-        \Log::info('request  ' . $request);
 
         $exploded = explode(',', $request->image);
         $decoded = base64_decode($exploded[1]);
@@ -37,14 +36,14 @@ class TourController extends Controller
 
         file_put_contents($path, $decoded);
 
-        $tour = Tour::findOrFail($request->id); //*
+        $tour = Tour::findOrFail($request->id);
 
         $tour->image = '/' . 'images/' . 'tours/' . $file_name;
 
         $tour->id = $request->input('id');
 
         $tour->save();
-        return new TourResource($tour);
+        return $tour;
     }
 
     public function all()

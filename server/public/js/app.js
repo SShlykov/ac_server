@@ -45978,7 +45978,7 @@ var render = function() {
             _c("span", [_vm._v(_vm._s(_vm.orderdData.client_mail))])
           ]),
           _vm._v(" "),
-          _vm.orderdData.client_phone
+          _vm.orderdData.client_phone !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Телефон:")]),
                 _vm._v(" "),
@@ -45986,15 +45986,15 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _vm.orderdData.client_address
-              ? _c("span", [_vm._v("Адрес:")])
-              : _vm._e(),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.orderdData.client_address))])
-          ]),
+          _vm.orderdData.client_address !== "."
+            ? _c("li", [
+                _c("span", [_vm._v("Адрес:")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.orderdData.client_address))])
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.transfer_date
+          _vm.orderdData.transfer_date !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Дата трансфера:")]),
                 _vm._v(" "),
@@ -46002,7 +46002,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.transfer_time
+          _vm.orderdData.transfer_time !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Время трансфера:")]),
                 _vm._v(" "),
@@ -46010,7 +46010,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.transfer_route
+          _vm.orderdData.transfer_route !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Маршрут:")]),
                 _vm._v(" "),
@@ -46018,7 +46018,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.transfer_price
+          _vm.orderdData.transfer_price !== 0
             ? _c("li", [
                 _c("span", [_vm._v("Стоимость заказа:")]),
                 _vm._v(" "),
@@ -46028,7 +46028,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.driver_name
+          _vm.orderdData.driver_name !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Водитель:")]),
                 _vm._v(" "),
@@ -46096,7 +46096,7 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _vm.orderdData.client_phone
+          _vm.orderdData.client_phone !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Телефон:")]),
                 _vm._v(" "),
@@ -46126,7 +46126,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.client_address
+          _vm.orderdData.client_address !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Адрес:")]),
                 _vm._v(" "),
@@ -46156,7 +46156,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.transfer_date
+          _vm.orderdData.transfer_date !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Дата трансфера:")]),
                 _vm._v(" "),
@@ -46186,7 +46186,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.transfer_time
+          _vm.orderdData.transfer_time !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Время трансфера:")]),
                 _vm._v(" "),
@@ -46216,7 +46216,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.transfer_route
+          _vm.orderdData.transfer_route !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Маршрут:")]),
                 _vm._v(" "),
@@ -46246,7 +46246,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.transfer_price
+          _vm.orderdData.transfer_price !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Стоимость заказа:")]),
                 _vm._v(" "),
@@ -46276,7 +46276,7 @@ var render = function() {
               ])
             : _vm._e(),
           _vm._v(" "),
-          _vm.orderdData.driver_name
+          _vm.orderdData.driver_name !== "."
             ? _c("li", [
                 _c("span", [_vm._v("Водитель:")]),
                 _vm._v(" "),

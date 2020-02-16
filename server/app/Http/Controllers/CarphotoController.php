@@ -41,11 +41,20 @@ class CarphotoController extends Controller
         $carphotos = $request->isMethod('put') ? Carphoto::findOrFail($request->id)
         : new Carphoto;
 
+        if ($request->isMethod('put')) {
+            $path_old_photo = $carphotos->car_photo_back;
+        }
+
         $carphotos->car_photo_back = '/' . 'images/' . 'cars/' . $file_name;
 
         $carphotos->id = $request->input('id');
 
         $carphotos->save();
+
+        if ($path_old_photo) {
+            unlink(public_path() . $path_old_photo);
+        }
+
         return new CarphotoResource($carphotos);
     }
     public function postFrontPhoto(Request $request)
@@ -68,11 +77,22 @@ class CarphotoController extends Controller
         $carphotos = $request->isMethod('put') ? Carphoto::findOrFail($request->id)
         : new Carphoto;
 
+        $path_old_photo;
+
+        if ($request->isMethod('put')) {
+            $path_old_photo = $carphotos->car_photo_front;
+        }
+
         $carphotos->car_photo_front = '/' . 'images/' . 'cars/' . $file_name;
 
         $carphotos->id = $request->input('id');
 
         $carphotos->save();
+
+        if ($path_old_photo) {
+            unlink(public_path() . $path_old_photo);
+        }
+
         return new CarphotoResource($carphotos);
     }
     public function postSidePhoto(Request $request)
@@ -95,11 +115,22 @@ class CarphotoController extends Controller
         $carphotos = $request->isMethod('put') ? Carphoto::findOrFail($request->id)
         : new Carphoto;
 
+        $path_old_photo;
+
+        if ($request->isMethod('put')) {
+            $path_old_photo = $carphotos->car_photo_side;
+        }
+
         $carphotos->car_photo_side = '/' . 'images/' . 'cars/' . $file_name;
 
         $carphotos->id = $request->input('id');
 
         $carphotos->save();
+
+        if ($path_old_photo) {
+            unlink(public_path() . $path_old_photo);
+        }
+
         return new CarphotoResource($carphotos);
     }
 

@@ -129,5 +129,7 @@ Route::get('/alltour', 'TourController@all');
 Route::group(['prefix' => 'settings'], function () {
     $controller = "AltaySettingsController@";
     Route::get('/all', $controller . 'index');
+    Route::get('/deletephotos', $controller . 'deletephotos');
     Route::put('/update', $controller . 'update');
+
 });

@@ -32,17 +32,28 @@ class TourController extends Controller
 
         $path = public_path() . '/' . 'images/' . 'tours/' . $file_name;
 
-        \Log::info('path: ' . $path);
-
         file_put_contents($path, $decoded);
 
         $tour = Tour::findOrFail($request->id);
+
+        $path_old_photo = '';
+
+        $have = strpos($tour->image, "https://");
+
+        if ($have !== 0) {
+            $path_old_photo = $tour->image;
+        }
 
         $tour->image = '/' . 'images/' . 'tours/' . $file_name;
 
         $tour->id = $request->input('id');
 
         $tour->save();
+
+        if ($path_old_photo) {
+            unlink(public_path() . $path_old_photo);
+        }
+
         return $tour;
     }
 
@@ -84,7 +95,6 @@ class TourController extends Controller
 
     public function connect_category(Request $request)
     {
-        \Log::info($request);
 
         $tour = Tour::findOrFail($request->input('tour_id'));
 

@@ -74,6 +74,12 @@ class DriverController extends Controller
         $driver = $request->isMethod('put') ? Driver::findOrFail($request->id)
         : new Driver;
 
+        $path_old_photo;
+
+        if ($request->isMethod('put')) {
+            $path_old_photo = $driver->photo;
+        }
+
         $driver->id = $request->input('id');
         $driver->name = $request->input('name');
         $driver->last_name = $request->input('last_name');
@@ -85,6 +91,11 @@ class DriverController extends Controller
         $driver->save();
         $car = $driver->car()->create();
         $car->carphoto()->create();
+
+        if ($path_old_photo) {
+            unlink(public_path() . $path_old_photo);
+        }
+
         return new DriverResource($driver);
     }
 

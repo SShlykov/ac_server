@@ -3852,14 +3852,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "NoticeCard",
   props: {
@@ -45986,47 +45978,63 @@ var render = function() {
             _c("span", [_vm._v(_vm._s(_vm.orderdData.client_mail))])
           ]),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Телефон:")]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.orderdData.client_phone))])
-          ]),
+          _vm.orderdData.client_phone
+            ? _c("li", [
+                _c("span", [_vm._v("Телефон:")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.orderdData.client_phone))])
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("li", [
-            _c("span", [_vm._v("Адрес:")]),
+            _vm.orderdData.client_address
+              ? _c("span", [_vm._v("Адрес:")])
+              : _vm._e(),
             _vm._v(" "),
             _c("span", [_vm._v(_vm._s(_vm.orderdData.client_address))])
           ]),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Дата трансфера:")]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.orderdData.transfer_date))])
-          ]),
+          _vm.orderdData.transfer_date
+            ? _c("li", [
+                _c("span", [_vm._v("Дата трансфера:")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.orderdData.transfer_date))])
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Время трансфера:")]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.orderdData.transfer_time))])
-          ]),
+          _vm.orderdData.transfer_time
+            ? _c("li", [
+                _c("span", [_vm._v("Время трансфера:")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.orderdData.transfer_time))])
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Маршрут:")]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.orderdData.transfer_route))])
-          ]),
+          _vm.orderdData.transfer_route
+            ? _c("li", [
+                _c("span", [_vm._v("Маршрут:")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.orderdData.transfer_route))])
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Стоимость заказа:")]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.orderdData.transfer_price + "₽"))])
-          ]),
+          _vm.orderdData.transfer_price
+            ? _c("li", [
+                _c("span", [_vm._v("Стоимость заказа:")]),
+                _vm._v(" "),
+                _c("span", [
+                  _vm._v(_vm._s(_vm.orderdData.transfer_price + "₽"))
+                ])
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Водитель:")]),
-            _vm._v(" "),
-            _c("span", [_vm._v(_vm._s(_vm.orderdData.driver_name))])
-          ]),
+          _vm.orderdData.driver_name
+            ? _c("li", [
+                _c("span", [_vm._v("Водитель:")]),
+                _vm._v(" "),
+                _c("span", [_vm._v(_vm._s(_vm.orderdData.driver_name))])
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("li", [
             _c("span", [_vm._v("Статус заказа:")]),
@@ -46088,185 +46096,215 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Телефон:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.orderdData.client_phone,
-                  expression: "orderdData.client_phone"
-                }
-              ],
-              domProps: { value: _vm.orderdData.client_phone },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _vm.orderdData.client_phone
+            ? _c("li", [
+                _c("span", [_vm._v("Телефон:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.orderdData.client_phone,
+                      expression: "orderdData.client_phone"
+                    }
+                  ],
+                  domProps: { value: _vm.orderdData.client_phone },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.orderdData,
+                        "client_phone",
+                        $event.target.value
+                      )
+                    }
                   }
-                  _vm.$set(_vm.orderdData, "client_phone", $event.target.value)
-                }
-              }
-            })
-          ]),
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Адрес:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.orderdData.client_address,
-                  expression: "orderdData.client_address"
-                }
-              ],
-              domProps: { value: _vm.orderdData.client_address },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _vm.orderdData.client_address
+            ? _c("li", [
+                _c("span", [_vm._v("Адрес:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.orderdData.client_address,
+                      expression: "orderdData.client_address"
+                    }
+                  ],
+                  domProps: { value: _vm.orderdData.client_address },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.orderdData,
+                        "client_address",
+                        $event.target.value
+                      )
+                    }
                   }
-                  _vm.$set(
-                    _vm.orderdData,
-                    "client_address",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ]),
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Дата трансфера:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.orderdData.transfer_date,
-                  expression: "orderdData.transfer_date"
-                }
-              ],
-              domProps: { value: _vm.orderdData.transfer_date },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _vm.orderdData.transfer_date
+            ? _c("li", [
+                _c("span", [_vm._v("Дата трансфера:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.orderdData.transfer_date,
+                      expression: "orderdData.transfer_date"
+                    }
+                  ],
+                  domProps: { value: _vm.orderdData.transfer_date },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.orderdData,
+                        "transfer_date",
+                        $event.target.value
+                      )
+                    }
                   }
-                  _vm.$set(_vm.orderdData, "transfer_date", $event.target.value)
-                }
-              }
-            })
-          ]),
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Время трансфера:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.orderdData.transfer_time,
-                  expression: "orderdData.transfer_time"
-                }
-              ],
-              domProps: { value: _vm.orderdData.transfer_time },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _vm.orderdData.transfer_time
+            ? _c("li", [
+                _c("span", [_vm._v("Время трансфера:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.orderdData.transfer_time,
+                      expression: "orderdData.transfer_time"
+                    }
+                  ],
+                  domProps: { value: _vm.orderdData.transfer_time },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.orderdData,
+                        "transfer_time",
+                        $event.target.value
+                      )
+                    }
                   }
-                  _vm.$set(_vm.orderdData, "transfer_time", $event.target.value)
-                }
-              }
-            })
-          ]),
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Маршрут:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.orderdData.transfer_route,
-                  expression: "orderdData.transfer_route"
-                }
-              ],
-              domProps: { value: _vm.orderdData.transfer_route },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _vm.orderdData.transfer_route
+            ? _c("li", [
+                _c("span", [_vm._v("Маршрут:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.orderdData.transfer_route,
+                      expression: "orderdData.transfer_route"
+                    }
+                  ],
+                  domProps: { value: _vm.orderdData.transfer_route },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.orderdData,
+                        "transfer_route",
+                        $event.target.value
+                      )
+                    }
                   }
-                  _vm.$set(
-                    _vm.orderdData,
-                    "transfer_route",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ]),
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Стоимость заказа:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.orderdData.transfer_price,
-                  expression: "orderdData.transfer_price"
-                }
-              ],
-              domProps: { value: _vm.orderdData.transfer_price },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _vm.orderdData.transfer_price
+            ? _c("li", [
+                _c("span", [_vm._v("Стоимость заказа:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.orderdData.transfer_price,
+                      expression: "orderdData.transfer_price"
+                    }
+                  ],
+                  domProps: { value: _vm.orderdData.transfer_price },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.orderdData,
+                        "transfer_price",
+                        $event.target.value
+                      )
+                    }
                   }
-                  _vm.$set(
-                    _vm.orderdData,
-                    "transfer_price",
-                    $event.target.value
-                  )
-                }
-              }
-            })
-          ]),
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
-          _c("li", [
-            _c("span", [_vm._v("Водитель:")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.orderdData.driver_name,
-                  expression: "orderdData.driver_name"
-                }
-              ],
-              domProps: { value: _vm.orderdData.driver_name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+          _vm.orderdData.driver_name
+            ? _c("li", [
+                _c("span", [_vm._v("Водитель:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.orderdData.driver_name,
+                      expression: "orderdData.driver_name"
+                    }
+                  ],
+                  domProps: { value: _vm.orderdData.driver_name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.orderdData,
+                        "driver_name",
+                        $event.target.value
+                      )
+                    }
                   }
-                  _vm.$set(_vm.orderdData, "driver_name", $event.target.value)
-                }
-              }
-            })
-          ]),
+                })
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c("li", [
             _c("span", [_vm._v("Статус заказа:")]),

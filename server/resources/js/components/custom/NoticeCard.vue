@@ -10,31 +10,31 @@
         <span>Почта клиента:</span>
         <span>{{orderdData.client_mail}}</span>
       </li>
-      <li v-if="orderdData.client_phone">
+      <li v-if="orderdData.client_phone!=='.'">
         <span>Телефон:</span>
         <span>{{orderdData.client_phone}}</span>
       </li>
-      <li>
-        <span v-if="orderdData.client_address">Адрес:</span>
+      <li v-if="orderdData.client_address!=='.'">
+        <span>Адрес:</span>
         <span>{{orderdData.client_address}}</span>
       </li>
-      <li v-if="orderdData.transfer_date">
+      <li v-if="orderdData.transfer_date!=='.'">
         <span>Дата трансфера:</span>
         <span>{{orderdData.transfer_date}}</span>
       </li>
-      <li v-if="orderdData.transfer_time">
+      <li v-if="orderdData.transfer_time!=='.'">
         <span>Время трансфера:</span>
         <span>{{orderdData.transfer_time}}</span>
       </li>
-      <li v-if="orderdData.transfer_route">
+      <li v-if="orderdData.transfer_route!=='.'">
         <span>Маршрут:</span>
         <span>{{orderdData.transfer_route}}</span>
       </li>
-      <li v-if="orderdData.transfer_price">
+      <li v-if="orderdData.transfer_price!==0">
         <span>Стоимость заказа:</span>
         <span>{{orderdData.transfer_price + '₽'}}</span>
       </li>
-      <li v-if="orderdData.driver_name">
+      <li v-if="orderdData.driver_name!=='.'">
         <span>Водитель:</span>
         <span>{{orderdData.driver_name}}</span>
       </li>
@@ -54,31 +54,31 @@
         <span>Почта клиента:</span>
         <input v-model="orderdData.client_mail" />
       </li>
-      <li v-if="orderdData.client_phone">
+      <li v-if="orderdData.client_phone!=='.'">
         <span>Телефон:</span>
         <input v-model="orderdData.client_phone" />
       </li>
-      <li v-if="orderdData.client_address">
+      <li v-if="orderdData.client_address!=='.'">
         <span>Адрес:</span>
         <input v-model="orderdData.client_address" />
       </li>
-      <li v-if="orderdData.transfer_date">
+      <li v-if="orderdData.transfer_date!=='.'">
         <span>Дата трансфера:</span>
         <input v-model="orderdData.transfer_date" />
       </li>
-      <li v-if="orderdData.transfer_time">
+      <li v-if="orderdData.transfer_time!=='.'">
         <span>Время трансфера:</span>
         <input v-model="orderdData.transfer_time" />
       </li>
-      <li v-if="orderdData.transfer_route">
+      <li v-if="orderdData.transfer_route!=='.'">
         <span>Маршрут:</span>
         <input v-model="orderdData.transfer_route" />
       </li>
-      <li v-if="orderdData.transfer_price">
+      <li v-if="orderdData.transfer_price!=='.'">
         <span>Стоимость заказа:</span>
         <input v-model="orderdData.transfer_price" />
       </li>
-      <li v-if="orderdData.driver_name">
+      <li v-if="orderdData.driver_name!=='.'">
         <span>Водитель:</span>
         <input v-model="orderdData.driver_name" />
       </li>

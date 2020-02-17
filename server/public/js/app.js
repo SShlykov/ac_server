@@ -8140,6 +8140,9 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
                 });
 
               case 2:
+                console.log(this.connectedRoutes);
+
+              case 3:
               case "end":
                 return _context5.stop();
             }

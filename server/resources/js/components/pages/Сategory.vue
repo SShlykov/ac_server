@@ -228,6 +228,7 @@ export default {
         .then(res => res.json())
         .then(res => (this.connectedRoutes = res))
         .catch(err => console.log(err));
+      console.log(this.connectedRoutes);
     },
     async getConnectedCategoryes() {
       await fetch(`/api/tour/category/` + this.id)

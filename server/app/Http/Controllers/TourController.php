@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Http\Resources\Tour as TourResource;
+use App\Route;
 use App\Tour;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -116,16 +117,37 @@ class TourController extends Controller
         return new TourResource($tour);
     }
 
-    public function connect_rout_to_tour(Request $request)
+    public function disconnet_route(Request $request)
     {
+        \Log::info($request);
+
         $tour = Tour::findOrFail($request->input('tour_id'));
 
-        $route = \App\Route::findOrFail($request->input('route_id'));
+        $route = Route::findOrFail($request->input('route_id'));
+
+        $tour->routes()->detach($route);
+
+        return new TourResource($tour);
+    }
+
+    public function connect_route_to_tour(Request $request)
+    {
+
+        $tour = Tour::findOrFail($request->input('tour_id'));
+
+        $route = Route::where('name', ($request->input('route_name')))->first();
 
         $tour->routes()->attach($route);
 
         return new TourResource($tour);
 
+    }
+
+    public function show_routes($tourid)
+    {
+        $tour = Tour::find($tourid)->routes()->get();
+
+        return $tour;
     }
 
     public function destroy($id)

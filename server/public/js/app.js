@@ -4716,21 +4716,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var _this = this;
 
+        var requestData;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                console.log(this.purpose);
+
                 if (!(this.purpose == "routegroups")) {
-                  _context2.next = 4;
+                  _context2.next = 5;
                   break;
                 }
 
-                if (!confirm("Вы точно хотите удалить?")) {
-                  _context2.next = 4;
+                if (!confirm("Вы точно хотите отсоеденить?")) {
+                  _context2.next = 5;
                   break;
                 }
 
-                _context2.next = 4;
+                _context2.next = 5;
                 return fetch("/api/disconnect", {
                   method: "delete",
                   body: JSON.stringify(this.item),
@@ -4747,15 +4750,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return console.log(err);
                 });
 
-              case 4:
-                console.log(this.item);
-
+              case 5:
                 if (!(this.purpose == "driverrouts")) {
                   _context2.next = 9;
                   break;
                 }
 
-                if (!confirm("Вы точно хотите удалить?")) {
+                if (!confirm("Вы точно хотите отсоеденить?")) {
                   _context2.next = 9;
                   break;
                 }
@@ -4778,19 +4779,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
 
               case 9:
-                if (!(this.purpose == "tourcategory")) {
+                if (!(this.purpose == "tourroutes")) {
                   _context2.next = 14;
                   break;
                 }
 
-                console.log("diconnet category");
+                requestData = {
+                  tour_id: this.id,
+                  route_id: this.route_id
+                };
 
-                if (!confirm("Вы точно хотите удалить?")) {
+                if (!confirm("Вы точно хотите отсоеденить?")) {
                   _context2.next = 14;
                   break;
                 }
 
                 _context2.next = 14;
+                return fetch("/api/tour/disconnect/route", {
+                  method: "delete",
+                  body: JSON.stringify(requestData),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {
+                  alert("\u0443\u0434\u0430\u043B\u0435\u043D");
+
+                  _this.getRouts();
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 14:
+                if (!(this.purpose == "tourcategory")) {
+                  _context2.next = 18;
+                  break;
+                }
+
+                if (!confirm("Вы точно хотите отсоеденить?")) {
+                  _context2.next = 18;
+                  break;
+                }
+
+                _context2.next = 18;
                 return fetch("/api/tour/disconnect/category", {
                   method: "delete",
                   body: JSON.stringify(this.item),
@@ -4807,7 +4839,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return console.log(err);
                 });
 
-              case 14:
+              case 18:
               case "end":
                 return _context2.stop();
             }
@@ -7877,6 +7909,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IMPORTED_MODULE_2__["default"]);
@@ -7902,17 +7958,17 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
         time: "",
         text: ""
       },
-      dataConnect: {
-        tour_id: "",
-        category_name: ""
-      },
       editTour: false,
       editCategories: false,
       editText: false,
+      editRoutes: false,
       tourImageChanged: false,
       selectNameCategory: "",
+      selectNameRoute: "",
       namesCaterory: [],
-      connectedCategoryes: []
+      connectedCategoryes: [],
+      connectedRoutes: [],
+      namesRoutes: []
     };
   },
   created: function () {
@@ -7935,6 +7991,14 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
               return this.getConnectedCategoryes();
 
             case 6:
+              _context.next = 8;
+              return this.getConnectedRoutes();
+
+            case 8:
+              _context.next = 10;
+              return this.getRoutesNames();
+
+            case 10:
             case "end":
               return _context.stop();
           }
@@ -8019,31 +8083,101 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
       return getCategorieNames;
     }(),
-    getConnectedCategoryes: function () {
-      var _getConnectedCategoryes = _asyncToGenerator(
+    getRoutesNames: function () {
+      var _getRoutesNames = _asyncToGenerator(
       /*#__PURE__*/
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
-        var _this2 = this;
-
+        var routes;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
                 _context4.next = 2;
-                return fetch("/api/tour/category/" + this.id).then(function (res) {
+                return fetch("/api/route/routes/all").then(function (res) {
                   return res.json();
                 }).then(function (res) {
-                  return _this2.connectedCategoryes = res;
+                  return routes = res.data;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+                this.namesRoutes = routes.map(function (el) {
+                  return el.name;
+                });
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4, this);
+      }));
+
+      function getRoutesNames() {
+        return _getRoutesNames.apply(this, arguments);
+      }
+
+      return getRoutesNames;
+    }(),
+    getConnectedRoutes: function () {
+      var _getConnectedRoutes = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var _this2 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return fetch("/api/tour/show/routes/" + this.id).then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  return _this2.connectedRoutes = res;
                 })["catch"](function (err) {
                   return console.log(err);
                 });
 
               case 2:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
           }
-        }, _callee4, this);
+        }, _callee5, this);
+      }));
+
+      function getConnectedRoutes() {
+        return _getConnectedRoutes.apply(this, arguments);
+      }
+
+      return getConnectedRoutes;
+    }(),
+    getConnectedCategoryes: function () {
+      var _getConnectedCategoryes = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var _this3 = this;
+
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return fetch("/api/tour/category/" + this.id).then(function (res) {
+                  return res.json();
+                }).then(function (res) {
+                  return _this3.connectedCategoryes = res;
+                })["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 2:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this);
       }));
 
       function getConnectedCategoryes() {
@@ -8055,21 +8189,26 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
     getNameCategory: function getNameCategory(item) {
       this.selectNameCategory = item;
     },
+    getNameRoute: function getNameRoute(item) {
+      this.selectNameRoute = item;
+    },
     connectCategoryToTour: function () {
       var _connectCategoryToTour = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var dataRequest;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
-                console.log(this.selectNameCategory);
-                this.dataConnect.tour_id = this.id;
-                this.dataConnect.category_name = this.selectNameCategory;
-                _context5.next = 5;
+                dataRequest = {
+                  tour_id: this.id,
+                  category_name: this.selectNameCategory
+                };
+                _context7.next = 3;
                 return fetch("/api/tour/connect/category", {
                   method: "post",
-                  body: JSON.stringify(this.dataConnect),
+                  body: JSON.stringify(dataRequest),
                   headers: {
                     "Content-Type": "application/json"
                   }
@@ -8079,15 +8218,15 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
                   return console.log(err);
                 });
 
-              case 5:
+              case 3:
                 this.getConnectedCategoryes();
 
-              case 6:
+              case 4:
               case "end":
-                return _context5.stop();
+                return _context7.stop();
             }
           }
-        }, _callee5, this);
+        }, _callee7, this);
       }));
 
       function connectCategoryToTour() {
@@ -8096,15 +8235,58 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
       return connectCategoryToTour;
     }(),
+    connectRouteToTour: function () {
+      var _connectRouteToTour = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var dataRequest;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                dataRequest = {
+                  tour_id: this.id,
+                  route_name: this.selectNameRoute
+                };
+                _context8.next = 3;
+                return fetch("/api/tour/connect/route", {
+                  method: "post",
+                  body: JSON.stringify(dataRequest),
+                  headers: {
+                    "Content-Type": "application/json"
+                  }
+                }).then(function (res) {
+                  return res.json();
+                }).then(function (data) {})["catch"](function (err) {
+                  return console.log(err);
+                });
+
+              case 3:
+                this.getConnectedRoutes();
+
+              case 4:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      function connectRouteToTour() {
+        return _connectRouteToTour.apply(this, arguments);
+      }
+
+      return connectRouteToTour;
+    }(),
     uploadImage: function () {
       var _uploadImage = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee9() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee9$(_context9) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context9.prev = _context9.next) {
               case 0:
-                _context6.next = 2;
+                _context9.next = 2;
                 return fetch("/api/tour/upload/photo", {
                   method: "put",
                   body: JSON.stringify(this.tour),
@@ -8126,10 +8308,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
               case 5:
               case "end":
-                return _context6.stop();
+                return _context9.stop();
             }
           }
-        }, _callee6, this);
+        }, _callee9, this);
       }));
 
       function uploadImage() {
@@ -8141,12 +8323,12 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
     updateTour: function () {
       var _updateTour = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee10() {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee10$(_context10) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context10.prev = _context10.next) {
               case 0:
-                _context7.next = 2;
+                _context10.next = 2;
                 return fetch("/api/tour/", {
                   method: "put",
                   body: JSON.stringify(this.tour),
@@ -8166,10 +8348,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
 
               case 5:
               case "end":
-                return _context7.stop();
+                return _context10.stop();
             }
           }
-        }, _callee7, this);
+        }, _callee10, this);
       }));
 
       function updateTour() {
@@ -8187,14 +8369,17 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_textarea_autosize__WEBPACK_IM
     toggleEditText: function toggleEditText() {
       this.editText = !this.editText;
     },
+    toggleEditRouted: function toggleEditRouted() {
+      this.editRoutes = !this.editRoutes;
+    },
     imageTourChange: function imageTourChange(e) {
-      var _this3 = this;
+      var _this4 = this;
 
       var fileReader = new FileReader();
       fileReader.readAsDataURL(e.target.files[0]);
 
       fileReader.onload = function (e) {
-        _this3.tour.image = e.target.result;
+        _this4.tour.image = e.target.result;
       };
 
       this.tourImageChanged = true;
@@ -46915,7 +47100,7 @@ var render = function() {
           }
         }
       },
-      [_vm._v("delete")]
+      [_vm._v("Отсоеденить")]
     )
   ])
 }
@@ -47118,105 +47303,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", { staticClass: "tour_card category_card" })
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "tour_card category_card" }, [
-      _c("figure", [
-        _c("img", {
-          attrs: {
-            src:
-              "data:image/jpeg;base64,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",
-            alt: ""
-          }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "category_card_routs" }, [
-        _c("textarea", { attrs: { name: "routs", cols: "30", rows: "10" } }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "category_card_label", attrs: { for: "routs" } },
-          [_vm._v("Точки маршрута")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "category_card_description" }, [
-        _c("textarea", {
-          attrs: { name: "description", cols: "30", rows: "10" }
-        }),
-        _vm._v(" "),
-        _c(
-          "label",
-          { staticClass: "category_card_label", attrs: { for: "description" } },
-          [_vm._v("Описание тура")]
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "category_card_functions" }, [
-        _c("div", { staticClass: "category_card_functions-circle" }, [
-          _c("figure", [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"),
-                alt: ""
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "category_card_functions-circle" }, [
-          _c("figure", [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(/*! ../../../../public/images/trash.svg */ "./public/images/trash.svg"),
-                alt: ""
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "category_card_functions-circle" }, [
-          _c("figure", [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../public/images/eye.svg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                alt: ""
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "category_card_functions-circle" }, [
-          _c("figure", [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../public/images/arrow_down.svg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                alt: ""
-              }
-            })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "category_card_functions-circle" }, [
-          _c("figure", [
-            _c("img", {
-              attrs: {
-                src: __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module '../../../../public/images/arrow_up.svg'"); e.code = 'MODULE_NOT_FOUND'; throw e; }())),
-                alt: ""
-              }
-            })
-          ])
-        ])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -50177,7 +50266,7 @@ var render = function() {
     ),
     _vm._v(" "),
     !_vm.editCategories
-      ? _c("div", { staticClass: "d-flex w-100" }, [
+      ? _c("div", { staticClass: "d-flex w-100 mb-5" }, [
           _c(
             "button",
             {
@@ -50249,6 +50338,90 @@ var render = function() {
                     click: function($event) {
                       $event.preventDefault()
                       return _vm.toggleEditCategories($event)
+                    }
+                  }
+                },
+                [_vm._v("Выйти")]
+              )
+            ])
+          ],
+          2
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    !_vm.editRoutes
+      ? _c("div", { staticClass: "d-flex w-100" }, [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-primary",
+              on: {
+                click: function($event) {
+                  $event.preventDefault()
+                  return _vm.toggleEditRouted($event)
+                }
+              }
+            },
+            [_vm._v("Изменить маршруты")]
+          )
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.editRoutes
+      ? _c(
+          "div",
+          { staticClass: "d-flex justify-content-center flex-wrap w-100" },
+          [
+            _c(
+              "div",
+              { staticClass: "routs_item_width" },
+              [
+                _c("AutoInput", {
+                  attrs: {
+                    items: _vm.namesRoutes,
+                    returnData: _vm.getNameRoute
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-outline-primary ml-2",
+                    on: {
+                      click: function($event) {
+                        $event.preventDefault()
+                        return _vm.connectRouteToTour($event)
+                      }
+                    }
+                  },
+                  [_vm._v("Добавить точку")]
+                )
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.connectedRoutes, function(item) {
+              return _c("RouteItem", {
+                key: _vm.random(item),
+                attrs: {
+                  name: item.name,
+                  id: _vm.id,
+                  route_id: item.id,
+                  purpose: "tourroutes",
+                  getRouts: _vm.getConnectedRoutes
+                }
+              })
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "w-100 d-flex justify-content-center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-primary mt-4",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.toggleEditRouted($event)
                     }
                   }
                 },
@@ -62683,28 +62856,6 @@ module.exports = function(module) {
 /***/ (function(module, exports) {
 
 module.exports = "/images/bus.svg?d1fdeffc6b4e061803035d5693ef0a5c";
-
-/***/ }),
-
-/***/ "./public/images/save.svg":
-/*!********************************!*\
-  !*** ./public/images/save.svg ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/save.svg?e098697c621fd800cb422a339a27fcf1";
-
-/***/ }),
-
-/***/ "./public/images/trash.svg":
-/*!*********************************!*\
-  !*** ./public/images/trash.svg ***!
-  \*********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/trash.svg?544611126da65299b967902b9eaec831";
 
 /***/ }),
 

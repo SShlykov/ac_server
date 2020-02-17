@@ -1,7 +1,7 @@
 <template>
   <div class="routs_item_width">
     <div>{{ name }}</div>
-    <button class="btn btn-outline-danger ml-4" @click.prevent="disconnect">delete</button>
+    <button class="btn btn-outline-danger ml-4" @click.prevent="disconnect">Отсоеденить</button>
   </div>
 </template>
 
@@ -39,8 +39,9 @@ export default {
   },
   methods: {
     async disconnect() {
+      console.log(this.purpose);
       if (this.purpose == "routegroups") {
-        if (confirm("Вы точно хотите удалить?")) {
+        if (confirm("Вы точно хотите отсоеденить?")) {
           await fetch(`/api/disconnect`, {
             method: "delete",
             body: JSON.stringify(this.item),
@@ -56,9 +57,8 @@ export default {
             .catch(err => console.log(err));
         }
       }
-      console.log(this.item);
       if (this.purpose == "driverrouts") {
-        if (confirm("Вы точно хотите удалить?")) {
+        if (confirm("Вы точно хотите отсоеденить?")) {
           await fetch(`/api/driver/rg/disconnect`, {
             method: "delete",
             body: JSON.stringify(this.item),
@@ -74,9 +74,29 @@ export default {
             .catch(err => console.log(err));
         }
       }
+      if (this.purpose == "tourroutes") {
+        const requestData = {
+          tour_id: this.id,
+          route_id: this.route_id
+        };
+        if (confirm("Вы точно хотите отсоеденить?")) {
+          await fetch(`/api/tour/disconnect/route`, {
+            method: "delete",
+            body: JSON.stringify(requestData),
+            headers: {
+              "Content-Type": "application/json"
+            }
+          })
+            .then(res => res.json())
+            .then(data => {
+              alert(`удален`);
+              this.getRouts();
+            })
+            .catch(err => console.log(err));
+        }
+      }
       if (this.purpose == "tourcategory") {
-        console.log("diconnet category");
-        if (confirm("Вы точно хотите удалить?")) {
+        if (confirm("Вы точно хотите отсоеденить?")) {
           await fetch(`/api/tour/disconnect/category`, {
             method: "delete",
             body: JSON.stringify(this.item),

@@ -92,14 +92,17 @@ Route::group(['prefix' => 'tour'], function () {
     $controller = "TourController@";
     Route::get('/{id}', $controller . 'show');
     Route::get('/all', $controller . 'all');
+    Route::get('/show/routes/{tourid}', $controller . 'show_routes');
     Route::get('/category/{id}', $controller . 'show_category');
     Route::post('/connect/category', $controller . 'connect_category');
     Route::post('/', $controller . 'store');
-    Route::post('/connect/route', $controller . 'connect_rout_to_tour');
+    Route::post('/connect/route', $controller . 'connect_route_to_tour');
     Route::put('/', $controller . 'store');
     Route::put('/upload/photo', $controller . 'postphoto');
     Route::delete('/{id}', $controller . 'destroy');
     Route::delete('/disconnect/category', $controller . 'disconnet_category');
+    Route::delete('/disconnect/route', $controller . 'disconnet_route');
+
 });
 
 Route::group(['prefix' => 'settings'], function () {

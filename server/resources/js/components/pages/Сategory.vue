@@ -99,7 +99,7 @@
         <button class="btn btn-outline-secondary ml-2" @click.prevent="toggleEditText()">Отменить</button>
       </div>
     </section>
-    <div class="d-flex w-100" v-if="!editCategories">
+    <div class="d-flex w-100 mb-5" v-if="!editCategories">
       <button class="btn btn-primary" @click.prevent="toggleEditCategories">Изменить категории</button>
     </div>
     <div class="d-flex justify-content-center flex-wrap w-100" v-if="editCategories">
@@ -121,6 +121,30 @@
       ></RouteItem>
       <div class="w-100 d-flex justify-content-center">
         <button class="btn btn-primary mt-4" @click.prevent="toggleEditCategories">Выйти</button>
+      </div>
+    </div>
+    <div class="d-flex w-100" v-if="!editRoutes">
+      <button class="btn btn-primary" @click.prevent="toggleEditRouted">Изменить маршруты</button>
+    </div>
+    <div class="d-flex justify-content-center flex-wrap w-100" v-if="editRoutes">
+      <div class="routs_item_width">
+        <AutoInput :items="namesRoutes" :returnData="getNameRoute"></AutoInput>
+        <button
+          class="btn btn-outline-primary ml-2"
+          @click.prevent="connectRouteToTour"
+        >Добавить точку</button>
+      </div>
+      <RouteItem
+        v-bind:key="random(item)"
+        v-for="item in connectedRoutes"
+        :name="item.name"
+        :id="id"
+        :route_id="item.id"
+        :purpose="'tourroutes'"
+        :getRouts="getConnectedRoutes"
+      ></RouteItem>
+      <div class="w-100 d-flex justify-content-center">
+        <button class="btn btn-primary mt-4" @click.prevent="toggleEditRouted">Выйти</button>
       </div>
     </div>
   </div>
@@ -156,23 +180,25 @@ export default {
         time: "",
         text: ""
       },
-      dataConnect: {
-        tour_id: "",
-        category_name: ""
-      },
       editTour: false,
       editCategories: false,
       editText: false,
+      editRoutes: false,
       tourImageChanged: false,
       selectNameCategory: "",
+      selectNameRoute: "",
       namesCaterory: [],
-      connectedCategoryes: []
+      connectedCategoryes: [],
+      connectedRoutes: [],
+      namesRoutes: []
     };
   },
   async created() {
     await this.getTour();
     await this.getCategorieNames();
     await this.getConnectedCategoryes();
+    await this.getConnectedRoutes();
+    await this.getRoutesNames();
   },
   methods: {
     async getTour() {
@@ -189,6 +215,20 @@ export default {
         .catch(err => console.log(err));
       this.namesCaterory = categories.map(x => x.name);
     },
+    async getRoutesNames() {
+      let routes;
+      await fetch(`/api/route/routes/all`)
+        .then(res => res.json())
+        .then(res => (routes = res.data))
+        .catch(err => console.log(err));
+      this.namesRoutes = routes.map(el => el.name);
+    },
+    async getConnectedRoutes() {
+      await fetch(`/api/tour/show/routes/` + this.id)
+        .then(res => res.json())
+        .then(res => (this.connectedRoutes = res))
+        .catch(err => console.log(err));
+    },
     async getConnectedCategoryes() {
       await fetch(`/api/tour/category/` + this.id)
         .then(res => res.json())
@@ -198,13 +238,17 @@ export default {
     getNameCategory(item) {
       this.selectNameCategory = item;
     },
+    getNameRoute(item) {
+      this.selectNameRoute = item;
+    },
     async connectCategoryToTour() {
-      console.log(this.selectNameCategory);
-      this.dataConnect.tour_id = this.id;
-      this.dataConnect.category_name = this.selectNameCategory;
+      const dataRequest = {
+        tour_id: this.id,
+        category_name: this.selectNameCategory
+      };
       await fetch(`/api/tour/connect/category`, {
         method: "post",
-        body: JSON.stringify(this.dataConnect),
+        body: JSON.stringify(dataRequest),
         headers: {
           "Content-Type": "application/json"
         }
@@ -213,6 +257,23 @@ export default {
         .then(data => {})
         .catch(err => console.log(err));
       this.getConnectedCategoryes();
+    },
+    async connectRouteToTour() {
+      const dataRequest = {
+        tour_id: this.id,
+        route_name: this.selectNameRoute
+      };
+      await fetch(`/api/tour/connect/route`, {
+        method: "post",
+        body: JSON.stringify(dataRequest),
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => {})
+        .catch(err => console.log(err));
+      this.getConnectedRoutes();
     },
     async uploadImage() {
       await fetch(`/api/tour/upload/photo`, {
@@ -254,6 +315,9 @@ export default {
     },
     toggleEditText() {
       this.editText = !this.editText;
+    },
+    toggleEditRouted() {
+      this.editRoutes = !this.editRoutes;
     },
     imageTourChange(e) {
       let fileReader = new FileReader();

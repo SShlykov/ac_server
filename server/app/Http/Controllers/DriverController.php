@@ -18,6 +18,7 @@ class DriverController extends Controller
     {$bigArray = array();
         $tempArray = array();
         $reviews = array();
+        $routeGroup = array();
         $quantity = 0;
         $sum = 0;
         $drivers = Driver::all();
@@ -28,6 +29,8 @@ class DriverController extends Controller
             $tempArray = array();
             unset($reviews);
             $reviews = array();
+            unset($routeGroup);
+            $routeGroup = array();
             $tempArray['driver'] = $driver;
             $tempArray['car'] = $driver->car;
             $carphoto = $driver->car->carphoto;
@@ -37,15 +40,18 @@ class DriverController extends Controller
             }
             unset($driver->car);
             unset($driver->rewiew);
+            unset($driver->route_group);
             $reviews['quantity'] = $quantity;
-            \Log::info($sum);
-            \Log::info($quantity);
             if ($quantity > 0) {
                 $reviews['rating'] = round($sum / $quantity, 1);
             } else {
                 $reviews['rating'] = 0;
             }
             $tempArray['reviews'] = $reviews;
+            foreach ($driver->route_group as $routeG) {
+                array_push($routeGroup, $routeG->routes);
+            }
+            $tempArray['routes'] = $routeGroup;
             $bigArray[] = $tempArray;
         }
         return $bigArray;

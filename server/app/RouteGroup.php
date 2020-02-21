@@ -8,14 +8,14 @@ class RouteGroup extends Model
 {
     protected $fillable = [
         'name',
-        'description'
+        'description',
     ];
     public function routes()
     {
         return $this->belongsToMany('App\Route');
     }
 
-    public function  drivers()
+    public function drivers()
     {
         return $this->belongsToMany('\App\Driver');
     }

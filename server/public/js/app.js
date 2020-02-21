@@ -3081,14 +3081,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "AutoInput",
   props: {
@@ -3097,6 +3089,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     returnData: {
       require: true
+    },
+    inputText: {
+      require: false
     }
   },
   data: function data() {
@@ -3145,7 +3140,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.returnData(item);
     },
     filterText: function filterText() {
-      if (this.textInput == "") this.updateShowItems();else {
+      if (this.inputText == "") this.updateShowItems();else {
         this.showItems = [];
         var count = 0;
 
@@ -4384,6 +4379,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4428,9 +4428,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               return this.getRouts();
 
             case 2:
-              this.new_item.route_group_id = this.id; //console.log(this.routes);
-              //console.log(this.id);
-              //console.log(`_____________________`);
+              this.new_item.route_group_id = this.id;
 
             case 3:
             case "end":
@@ -5161,48 +5159,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "TourCard",
@@ -5240,6 +5196,10 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -5861,6 +5821,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   alert("\u0420\u043E\u0443\u0442 \u0433\u0440\u0443\u043F\u043F\u0430 \u0443\u0441\u043F\u0435\u0448\u043D\u043E \u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D\u0430");
 
                   _this7.getRouteGroups();
+
+                  _this7.routeGroupName = "";
                 })["catch"](function (err) {
                   return console.log(err);
                 });
@@ -45552,13 +45514,13 @@ var render = function() {
         {
           name: "model",
           rawName: "v-model",
-          value: _vm.textInput,
-          expression: "textInput"
+          value: _vm.inputText,
+          expression: "inputText"
         }
       ],
       staticClass: "main_input",
       attrs: { type: "text" },
-      domProps: { value: _vm.textInput },
+      domProps: { value: _vm.inputText },
       on: {
         focus: function($event) {
           _vm.magic_flag = true
@@ -45568,7 +45530,7 @@ var render = function() {
           if ($event.target.composing) {
             return
           }
-          _vm.textInput = $event.target.value
+          _vm.inputText = $event.target.value
         }
       }
     }),
@@ -45585,7 +45547,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("\n        X\n    ")]
+          [_vm._v("X")]
         )
       : _vm._e(),
     _vm._v(" "),
@@ -45606,7 +45568,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("\n            " + _vm._s(item) + "\n        ")]
+              [_vm._v(_vm._s(item))]
             )
           }),
           0
@@ -46960,7 +46922,11 @@ var render = function() {
               [
                 _c("AutoInput", {
                   staticClass: "mb-2",
-                  attrs: { items: _vm.allNameRoutes, returnData: _vm.getInput }
+                  attrs: {
+                    inputText: _vm.new_item.route_name,
+                    items: _vm.allNameRoutes,
+                    returnData: _vm.getInput
+                  }
                 }),
                 _vm._v(" "),
                 _c(
@@ -48079,6 +48045,7 @@ var render = function() {
                         [
                           _c("AutoInput", {
                             attrs: {
+                              inputText: _vm.routeGroupName,
                               items: _vm.nameRouteGroups,
                               returnData: _vm.postRouteName
                             }

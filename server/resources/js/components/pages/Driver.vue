@@ -190,7 +190,11 @@
         </div>
         <div class="d-flex justify-content-center flex-wrap w-100" v-if="editRouts">
           <div class="routs_item_width">
-            <AutoInput :items="nameRouteGroups" :returnData="postRouteName"></AutoInput>
+            <AutoInput
+              :inputText="routeGroupName"
+              :items="nameRouteGroups"
+              :returnData="postRouteName"
+            ></AutoInput>
             <button class="btn btn-outline-primary ml-2" @click.prevent="connectRG">Добавить группу</button>
           </div>
           <RouteItem
@@ -383,6 +387,7 @@ export default {
         .then(data => {
           alert(`Роут группа успешно добавлена`);
           this.getRouteGroups();
+          this.routeGroupName = "";
         })
         .catch(err => console.log(err));
     },
@@ -548,3 +553,4 @@ export default {
 
 <style scoped>
 </style>
+

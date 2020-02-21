@@ -7,7 +7,12 @@
     </div>
     <div class="routgroup flex-column" v-if="editCard">
       <div class="d-flex flex-wrap justify-content-center w-100">
-        <AutoInput class="mb-2" :items="allNameRoutes" :returnData="getInput"></AutoInput>
+        <AutoInput
+          :inputText="new_item.route_name"
+          class="mb-2"
+          :items="allNameRoutes"
+          :returnData="getInput"
+        ></AutoInput>
         <button class="ml-4 btn btn-outline-success" @click.prevent="rout_group_add_rout">добавить</button>
       </div>
       <RouteItem
@@ -63,9 +68,6 @@ export default {
   async created() {
     await this.getRouts();
     this.new_item.route_group_id = this.id;
-    //console.log(this.routes);
-    //console.log(this.id);
-    //console.log(`_____________________`);
   },
   methods: {
     async getRouts() {

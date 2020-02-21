@@ -38,7 +38,13 @@ class DriverController extends Controller
             unset($driver->car);
             unset($driver->rewiew);
             $reviews['quantity'] = $quantity;
-            $reviews['rating'] = round($sum / $quantity, 1);
+            \Log::info($sum);
+            \Log::info($quantity);
+            if ($quantity > 0) {
+                $reviews['rating'] = round($sum / $quantity, 1);
+            } else {
+                $reviews['rating'] = 0;
+            }
             $tempArray['reviews'] = $reviews;
             $bigArray[] = $tempArray;
         }

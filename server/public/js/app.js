@@ -3135,7 +3135,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     writeToInput: function writeToInput(item) {
-      this.textInput = item;
+      this.inputText = item;
       this.closeDropList();
       this.returnData(item);
     },
@@ -3149,7 +3149,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             break;
           }
 
-          if (this.items[i].toUpperCase().indexOf(this.textInput.toUpperCase()) != -1) {
+          if (this.items[i].toUpperCase().indexOf(this.inputText.toUpperCase()) != -1) {
             this.showItems.push(this.items[i]);
             count++;
           }
@@ -4548,6 +4548,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   alert("\u0434\u043E\u0431\u0430\u0432\u043B\u0435\u043D");
 
                   _this3.getRouts();
+
+                  _this3.new_item.route_name = "";
                 })["catch"](function (err) {
                   return console.log(err);
                 });
@@ -6850,16 +6852,6 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -48407,45 +48399,8 @@ var render = function() {
           }
         },
         [_vm._v("Контакты")]
-      ),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          staticClass: "btn btn-outline-dark ml-2",
-          attrs: { type: "button" },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.changeViewContent("Advance")
-            }
-          }
-        },
-        [_vm._v("Дополнительно")]
       )
     ]),
-    _vm._v(" "),
-    _vm.contentFlag == "Advance"
-      ? _c("section", [
-          _c("h4", { staticClass: "mb-3" }, [
-            _vm._v("Дополнительные настройки")
-          ]),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-outline-primary",
-              on: {
-                click: function($event) {
-                  $event.preventDefault()
-                  return _vm.clearPhotos()
-                }
-              }
-            },
-            [_vm._v("Удалить лишние картинки")]
-          )
-        ])
-      : _vm._e(),
     _vm._v(" "),
     _vm.contentFlag == "Planning"
       ? _c("section", [

@@ -52,7 +52,7 @@ export default {
       }
     },
     writeToInput(item) {
-      this.textInput = item;
+      this.inputText = item;
       this.closeDropList();
       this.returnData(item);
     },
@@ -66,7 +66,7 @@ export default {
             break;
           }
           if (
-            this.items[i].toUpperCase().indexOf(this.textInput.toUpperCase()) !=
+            this.items[i].toUpperCase().indexOf(this.inputText.toUpperCase()) !=
             -1
           ) {
             this.showItems.push(this.items[i]);

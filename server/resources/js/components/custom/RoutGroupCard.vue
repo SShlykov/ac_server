@@ -112,6 +112,7 @@ export default {
         .then(data => {
           alert(`добавлен`);
           this.getRouts();
+          this.new_item.route_name = "";
         })
         .catch(err => console.log(err));
     },

@@ -16,16 +16,6 @@
         type="button"
         class="btn btn-outline-dark ml-2"
       >Контакты</button>
-      <button
-        @click.prevent="changeViewContent('Advance')"
-        type="button"
-        class="btn btn-outline-dark ml-2"
-      >Дополнительно</button>
-    </section>
-
-    <section v-if="contentFlag=='Advance'">
-      <h4 class="mb-3">Дополнительные настройки</h4>
-      <button @click.prevent="clearPhotos()" class="btn btn-outline-primary">Удалить лишние картинки</button>
     </section>
 
     <section v-if="contentFlag=='Planning'">

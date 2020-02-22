@@ -49,7 +49,13 @@ class DriverController extends Controller
             }
             $tempArray['reviews'] = $reviews;
             foreach ($driver->route_group as $routeG) {
-                array_push($routeGroup, $routeG->routes);
+                foreach ($routeG->routes as $route) {
+                    if (in_array($route->name, $routeGroup)) {} else {
+                        array_push($routeGroup, $route->name);
+                    }
+
+                }
+
             }
             $tempArray['routes'] = $routeGroup;
             $bigArray[] = $tempArray;

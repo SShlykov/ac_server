@@ -3,7 +3,7 @@
     <div class="tour_card_info">
       <div class="tour_card_icon">
         <figure>
-          <img src="../../../../public/storage/images/bus.svg" alt="bus" />
+          <img src="../../../../public/images/bus.svg" alt="bus" />
         </figure>
       </div>
       <a :href="'/home/category/' + id" class="tour_card_title" v-if="!edit">{{tourItem.name}}</a>
@@ -12,19 +12,19 @@
     <div class="tour_card_functions">
       <div class="tour_functions_delete d-flex">
         <figure class="mb-0" @click.prevent="toggleEdit">
-          <img src="../../../../public/storage/images/pen.svg" alt="edit" v-if="!edit" />
-          <img src="../../../../public/storage/images/close.svg" alt="close" v-if="edit" />
+          <img src="../../../../public/images/pen.svg" alt="edit" v-if="!edit" />
+          <img src="../../../../public/images/close.svg" alt="close" v-if="edit" />
         </figure>
         <figure class="mb-0 ml-3">
           <img
-            src="../../../../public/storage/images/save.svg"
+            src="../../../../public/images/save.svg"
             @click.prevent="updateName"
             alt="edit"
             v-if="edit"
           />
           <img
             @click.prevent="deleteItem"
-            src="../../../../public/storage/images/trash.svg"
+            src="../../../../public/images/trash.svg"
             alt="edit"
             v-if="!edit"
           />

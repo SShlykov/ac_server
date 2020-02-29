@@ -46586,7 +46586,7 @@ var render = function() {
                           return _c("div", { key: _vm.random(item) }, [
                             _c("img", {
                               attrs: {
-                                src: __webpack_require__(/*! ../../../../public/storage/images/StarGreen.svg */ "./storage/app/public/images/StarGreen.svg"),
+                                src: __webpack_require__(/*! ../../../../public/images/StarGreen.svg */ "./public/images/StarGreen.svg"),
                                 alt: "GreenStars"
                               }
                             })
@@ -46597,7 +46597,7 @@ var render = function() {
                           return _c("div", { key: _vm.random(item) }, [
                             _c("img", {
                               attrs: {
-                                src: __webpack_require__(/*! ../../../../public/storage/images/StarGray.svg */ "./storage/app/public/images/StarGray.svg"),
+                                src: __webpack_require__(/*! ../../../../public/images/StarGray.svg */ "./public/images/StarGray.svg"),
                                 alt: "GrayStars"
                               }
                             })
@@ -46798,10 +46798,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", [
       _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/storage/images/pen.svg */ "./storage/app/public/images/pen.svg"),
-          alt: ""
-        }
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/pen.svg */ "./public/images/pen.svg"), alt: "" }
       })
     ])
   },
@@ -46811,10 +46808,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", [
       _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/storage/images/trash.svg */ "./storage/app/public/images/trash.svg"),
-          alt: ""
-        }
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/trash.svg */ "./public/images/trash.svg"), alt: "" }
       })
     ])
   },
@@ -46824,10 +46818,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", [
       _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/storage/images/save.svg */ "./storage/app/public/images/save.svg"),
-          alt: ""
-        }
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"), alt: "" }
       })
     ])
   },
@@ -46837,10 +46828,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", [
       _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/storage/images/close.svg */ "./storage/app/public/images/close.svg"),
-          alt: ""
-        }
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/close.svg */ "./public/images/close.svg"), alt: "" }
       })
     ])
   }
@@ -47174,7 +47162,7 @@ var render = function() {
             !_vm.edit
               ? _c("img", {
                   attrs: {
-                    src: __webpack_require__(/*! ../../../../public/storage/images/pen.svg */ "./storage/app/public/images/pen.svg"),
+                    src: __webpack_require__(/*! ../../../../public/images/pen.svg */ "./public/images/pen.svg"),
                     alt: "edit"
                   }
                 })
@@ -47183,7 +47171,7 @@ var render = function() {
             _vm.edit
               ? _c("img", {
                   attrs: {
-                    src: __webpack_require__(/*! ../../../../public/storage/images/close.svg */ "./storage/app/public/images/close.svg"),
+                    src: __webpack_require__(/*! ../../../../public/images/close.svg */ "./public/images/close.svg"),
                     alt: "close"
                   }
                 })
@@ -47195,7 +47183,7 @@ var render = function() {
           _vm.edit
             ? _c("img", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../../public/storage/images/save.svg */ "./storage/app/public/images/save.svg"),
+                  src: __webpack_require__(/*! ../../../../public/images/save.svg */ "./public/images/save.svg"),
                   alt: "edit"
                 },
                 on: {
@@ -47210,7 +47198,7 @@ var render = function() {
           !_vm.edit
             ? _c("img", {
                 attrs: {
-                  src: __webpack_require__(/*! ../../../../public/storage/images/trash.svg */ "./storage/app/public/images/trash.svg"),
+                  src: __webpack_require__(/*! ../../../../public/images/trash.svg */ "./public/images/trash.svg"),
                   alt: "edit"
                 },
                 on: {
@@ -47235,7 +47223,7 @@ var staticRenderFns = [
       _c("figure", [
         _c("img", {
           attrs: {
-            src: __webpack_require__(/*! ../../../../public/storage/images/bus.svg */ "./storage/app/public/images/bus.svg"),
+            src: __webpack_require__(/*! ../../../../public/images/bus.svg */ "./public/images/bus.svg"),
             alt: "bus"
           }
         })
@@ -49816,10 +49804,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", [
       _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/storage/images/car.svg */ "./storage/app/public/images/car.svg"),
-          alt: ""
-        }
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/car.svg */ "./public/images/car.svg"), alt: "" }
       })
     ])
   },
@@ -49829,10 +49814,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", [
       _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/storage/images/photo.svg */ "./storage/app/public/images/photo.svg"),
-          alt: ""
-        }
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/photo.svg */ "./public/images/photo.svg"), alt: "" }
       })
     ])
   },
@@ -49842,10 +49824,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", [
       _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/storage/images/coins.svg */ "./storage/app/public/images/coins.svg"),
-          alt: ""
-        }
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/coins.svg */ "./public/images/coins.svg"), alt: "" }
       })
     ])
   },
@@ -49855,10 +49834,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("figure", [
       _c("img", {
-        attrs: {
-          src: __webpack_require__(/*! ../../../../public/storage/images/timer.svg */ "./storage/app/public/images/timer.svg"),
-          alt: ""
-        }
+        attrs: { src: __webpack_require__(/*! ../../../../public/images/timer.svg */ "./public/images/timer.svg"), alt: "" }
       })
     ])
   }
@@ -62773,6 +62749,28 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./public/images/StarGray.svg":
+/*!************************************!*\
+  !*** ./public/images/StarGray.svg ***!
+  \************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/StarGray.svg?e6d063f2bf468417b86fca4c365ac427";
+
+/***/ }),
+
+/***/ "./public/images/StarGreen.svg":
+/*!*************************************!*\
+  !*** ./public/images/StarGreen.svg ***!
+  \*************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/StarGreen.svg?141392310152c00ce643d294e630d465";
+
+/***/ }),
+
 /***/ "./public/images/bus.svg":
 /*!*******************************!*\
   !*** ./public/images/bus.svg ***!
@@ -62781,6 +62779,94 @@ module.exports = function(module) {
 /***/ (function(module, exports) {
 
 module.exports = "/images/bus.svg?d1fdeffc6b4e061803035d5693ef0a5c";
+
+/***/ }),
+
+/***/ "./public/images/car.svg":
+/*!*******************************!*\
+  !*** ./public/images/car.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/car.svg?d1a2535f5f043dc06168ee57dbdb98b8";
+
+/***/ }),
+
+/***/ "./public/images/close.svg":
+/*!*********************************!*\
+  !*** ./public/images/close.svg ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/close.svg?9d242156da56e477e91de7bc481b1868";
+
+/***/ }),
+
+/***/ "./public/images/coins.svg":
+/*!*********************************!*\
+  !*** ./public/images/coins.svg ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/coins.svg?1ea97309d6ed6384ce75533de5d34555";
+
+/***/ }),
+
+/***/ "./public/images/pen.svg":
+/*!*******************************!*\
+  !*** ./public/images/pen.svg ***!
+  \*******************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/pen.svg?d1c5b2304eb119dd4834b92ba9b914d2";
+
+/***/ }),
+
+/***/ "./public/images/photo.svg":
+/*!*********************************!*\
+  !*** ./public/images/photo.svg ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/photo.svg?5304a6e0a98eecd98579adf2df309f42";
+
+/***/ }),
+
+/***/ "./public/images/save.svg":
+/*!********************************!*\
+  !*** ./public/images/save.svg ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/save.svg?e098697c621fd800cb422a339a27fcf1";
+
+/***/ }),
+
+/***/ "./public/images/timer.svg":
+/*!*********************************!*\
+  !*** ./public/images/timer.svg ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/timer.svg?f3df943e15b0b944cc28394923f1963f";
+
+/***/ }),
+
+/***/ "./public/images/trash.svg":
+/*!*********************************!*\
+  !*** ./public/images/trash.svg ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/trash.svg?544611126da65299b967902b9eaec831";
 
 /***/ }),
 
@@ -65449,127 +65535,6 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ "./storage/app/public/images/StarGray.svg":
-/*!************************************************!*\
-  !*** ./storage/app/public/images/StarGray.svg ***!
-  \************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/StarGray.svg?e6d063f2bf468417b86fca4c365ac427";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/StarGreen.svg":
-/*!*************************************************!*\
-  !*** ./storage/app/public/images/StarGreen.svg ***!
-  \*************************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/StarGreen.svg?141392310152c00ce643d294e630d465";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/bus.svg":
-/*!*******************************************!*\
-  !*** ./storage/app/public/images/bus.svg ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/bus.svg?d1fdeffc6b4e061803035d5693ef0a5c";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/car.svg":
-/*!*******************************************!*\
-  !*** ./storage/app/public/images/car.svg ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/car.svg?d1a2535f5f043dc06168ee57dbdb98b8";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/close.svg":
-/*!*********************************************!*\
-  !*** ./storage/app/public/images/close.svg ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/close.svg?9d242156da56e477e91de7bc481b1868";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/coins.svg":
-/*!*********************************************!*\
-  !*** ./storage/app/public/images/coins.svg ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/coins.svg?1ea97309d6ed6384ce75533de5d34555";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/pen.svg":
-/*!*******************************************!*\
-  !*** ./storage/app/public/images/pen.svg ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/pen.svg?d1c5b2304eb119dd4834b92ba9b914d2";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/photo.svg":
-/*!*********************************************!*\
-  !*** ./storage/app/public/images/photo.svg ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/photo.svg?5304a6e0a98eecd98579adf2df309f42";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/save.svg":
-/*!********************************************!*\
-  !*** ./storage/app/public/images/save.svg ***!
-  \********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/save.svg?e098697c621fd800cb422a339a27fcf1";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/timer.svg":
-/*!*********************************************!*\
-  !*** ./storage/app/public/images/timer.svg ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/timer.svg?f3df943e15b0b944cc28394923f1963f";
-
-/***/ }),
-
-/***/ "./storage/app/public/images/trash.svg":
-/*!*********************************************!*\
-  !*** ./storage/app/public/images/trash.svg ***!
-  \*********************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = "/images/trash.svg?544611126da65299b967902b9eaec831";
 
 /***/ }),
 
